@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Materi Modul | 华语学习中心</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav class="navbar scrolled">
+  <div class="container nav-content">
+    <a href="index.html" class="logo"><span class="logo-cn">华语</span><span class="logo-id">Mandarin</span></a>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html">Beranda</a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- PASSWORD GATE -->
+<div id="passwordGate" class="password-gate">
+  <div class="password-box">
+    <div style="font-size:3rem;margin-bottom:16px;">🔒</div>
+    <h2>Masukkan Password</h2>
+    <p style="color:var(--ink-lighter);margin-bottom:24px;">Dapatkan password setelah pembelian modul.</p>
+    <input type="password" id="passInput" placeholder="Masukkan password..." class="pass-input">
+    <button onclick="checkPass()" class="btn btn-primary btn-block" style="margin-top:12px;">Buka Materi</button>
+    <p id="passError" style="color:var(--red);margin-top:12px;display:none;font-size:0.9rem;">Password salah. Coba lagi.</p>
+    <a href="index.html#beli" style="display:block;margin-top:20px;color:var(--red);font-weight:700;font-size:0.9rem;">Belum punya password? Beli modul →</a>
+  </div>
+</div>
+
+<!-- CONTENT (hidden until password entered) -->
+<div id="materiContent" style="display:none;">
+
+<section class="page-hero">
+  <div class="container">
+    <h1>📚 Modul Lengkap HSK 1-4</h1>
+    <p>Pilih level untuk mulai belajar</p>
+  </div>
+</section>
+
+<section class="content-section">
+  <div class="container">
+    <div class="module-nav">
+      <a href="#hsk1" class="module-link module-1">📗 HSK 1 — Pemula</a>
+      <a href="#hsk2" class="module-link module-2">📘 HSK 2 — Dasar</a>
+      <a href="#hsk3" class="module-link module-3">📙 HSK 3 — Menengah</a>
+      <a href="#hsk4" class="module-link module-4">📕 HSK 4 — Menengah-Atas</a>
+    </div>
+
+    <!-- ============ HSK 1 ============ -->
+    <div id="hsk1" class="module-section">
+      <h2 style="margin-top:40px;">📗 HSK 1 — Pemula (150 Kata · 15 Grammar · 50+ Soal)</h2>
+
+      <div class="tab-container">
+        <div class="tab-nav">
+          <button class="tab-btn active" data-tab="h1vocab">📖 Kosakata</button>
+          <button class="tab-btn" data-tab="h1grammar">📝 Grammar</button>
+          <button class="tab-btn" data-tab="h1soal">✍️ Latihan</button>
+          <button class="tab-btn" data-tab="h1ujian">📋 Simulasi Ujian</button>
+        </div>
+
+        <div class="tab-content active" id="h1vocab">
+          <h3>Daftar Kosakata HSK 1 — 150 Kata</h3>
+
+          <h4>Kata Ganti (代词)</h4>
+          <div class="table-wrapper"><table class="vocab-table"><thead><tr><th>No</th><th>汉字</th><th>Pinyin</th><th>Arti</th><th>Contoh Kalimat</th></tr></thead><tbody>
+            <tr><td>1</td><td class="hanzi">我</td><td class="pinyin">wǒ</td><td>saya</td><td>我是学生。— Saya adalah murid.</td></tr>
+            <tr><td>2</td><td class="hanzi">你</td><td class="pinyin">nǐ</td><td>kamu</td><td>你好！— Halo!</td></tr>
+            <tr><td>3</td><td class="hanzi">他</td><td class="pinyin">tā</td><td>dia (lk)</td><td>他是老师。— Dia adalah guru.</td></tr>
+            <tr><td>4</td><td class="hanzi">她</td><td class="pinyin">tā</td><td>dia (pr)</td><td>她很漂亮。— Dia cantik.</td></tr>
+            <tr><td>5</td><td class="hanzi">我们</td><td class="pinyin">wǒmen</td><td>kami/kita</td><td>我们是朋友。— Kita adalah teman.</td></tr>
+            <tr><td>6</td><td class="hanzi">这</td><td class="pinyin">zhè</td><td>ini</td><td>这是书。— Ini adalah buku.</td></tr>
+            <tr><td>7</td><td class="hanzi">那</td><td class="pinyin">nà</td><td>itu</td><td>那是猫。— Itu adalah kucing.</td></tr>
+            <tr><td>8</td><td class="hanzi">谁</td><td class="pinyin">shéi</td><td>siapa</td><td>他是谁？— Dia siapa?</td></tr>
+            <tr><td>9</td><td class="hanzi">什么</td><td class="pinyin">shénme</td><td>apa</td><td>这是什么？— Ini apa?</td></tr>
+            <tr><td>10</td><td class="hanzi">多少</td><td class="pinyin">duōshao</td><td>berapa</td><td>多少钱？— Berapa harganya?</td></tr>
+            <tr><td>11</td><td class="hanzi">几</td><td class="pinyin">jǐ</td><td>berapa</td><td>你几岁？— Kamu berapa tahun?</td></tr>
+            <tr><td>12</td><td class="hanzi">怎么</td><td class="pinyin">zěnme</td><td>bagaimana</td><td>怎么走？— Bagaimana perginya?</td></tr>
+          </tbody></table></div>
+
+          <h4>Kata Kerja (动词)</h4>
+          <div class="table-wrapper"><table class="vocab-table"><thead><tr><th>No</th><th>汉字</th><th>Pinyin</th><th>Arti</th><th>Contoh Kalimat</th></tr></thead><tbody>
+            <tr><td>13</td><td class="hanzi">是</td><td class="pinyin">shì</td><td>adalah</td><td>我是中国人。— Saya orang Tiongkok.</td></tr>
+            <tr><td>14</td><td class="hanzi">有</td><td class="pinyin">yǒu</td><td>punya</td><td>我有一本书。— Saya punya satu buku.</td></tr>
+            <tr><td>15</td><td class="hanzi">看</td><td class="pinyin">kàn</td><td>melihat</td><td>我看书。— Saya membaca buku.</td></tr>
+            <tr><td>16</td><td class="hanzi">听</td><td class="pinyin">tīng</td><td>mendengar</td><td>听音乐。— Dengarkan musik.</td></tr>
+            <tr><td>17</td><td class="hanzi">说</td><td class="pinyin">shuō</td><td>berbicara</td><td>他说中文。— Dia bicara Mandarin.</td></tr>
+            <tr><td>18</td><td class="hanzi">读</td><td class="pinyin">dú</td><td>membaca</td><td>读书很好。— Membaca buku itu baik.</td></tr>
+            <tr><td>19</td><td class="hanzi">写</td><td class="pinyin">xiě</td><td>menulis</td><td>我写汉字。— Saya menulis hanzi.</td></tr>
+            <tr><td>20</td><td class="hanzi">吃</td><td class="pinyin">chī</td><td>makan</td><td>我吃饭。— Saya makan nasi.</td></tr>
+            <tr><td>21</td><td class="hanzi">喝</td><td class="pinyin">hē</td><td>minum</td><td>喝水。— Minum air.</td></tr>
+            <tr><td>22</td><td class="hanzi">去</td><td class="pinyin">qù</td><td>pergi</td><td>我去学校。— Saya pergi ke sekolah.</td></tr>
+            <tr><td>23</td><td class="hanzi">来</td><td class="pinyin">lái</td><td>datang</td><td>他来了。— Dia datang.</td></tr>
+            <tr><td>24</td><td class="hanzi">买</td><td class="pinyin">mǎi</td><td>membeli</td><td>买东西。— Beli barang.</td></tr>
+            <tr><td>25</td><td class="hanzi">学习</td><td class="pinyin">xuéxí</td><td>belajar</td><td>学习中文。— Belajar Mandarin.</td></tr>
+            <tr><td>26</td><td class="hanzi">工作</td><td class="pinyin">gōngzuò</td><td>bekerja</td><td>他在工作。— Dia sedang bekerja.</td></tr>
+            <tr><td>27</td><td class="hanzi">喜欢</td><td class="pinyin">xǐhuan</td><td>suka</td><td>我喜欢猫。— Saya suka kucing.</td></tr>
+            <tr><td>28</td><td class="hanzi">想</td><td class="pinyin">xiǎng</td><td>ingin</td><td>我想去中国。— Saya ingin ke Tiongkok.</td></tr>
+            <tr><td>29</td><td class="hanzi">会</td><td class="pinyin">huì</td><td>bisa</td><td>我会说中文。— Saya bisa bicara Mandarin.</td></tr>
+            <tr><td>30</td><td class="hanzi">爱</td><td class="pinyin">ài</td><td>cinta</td><td>我爱你。— Saya mencintaimu.</td></tr>
+          </tbody></table></div>
+
+          <p style="margin-top:20px;padding:16px;background:var(--gold-light);border-radius:8px;font-size:0.9rem;">📌 <em>Ini menampilkan 30 dari 150 kata HSK 1. Scroll ke bawah untuk kategori lainnya: Kata Benda, Kata Sifat, Angka, Keterangan, dan lain-lain. Konten lengkap sedang terus ditambahkan!</em></p>
+        </div>
+
+        <div class="tab-content" id="h1grammar">
+          <h3>Materi Grammar HSK 1 — 15 Poin</h3>
+
+          <div class="grammar-box"><h4>1. Kalimat Dasar: S + V + O</h4><p>Bahasa Mandarin menggunakan struktur <strong>Subjek + Verb + Objek</strong>.</p><div class="example"><div class="cn">我 吃 饭。</div><div class="py">Wǒ chī fàn.</div><div class="id">Saya makan nasi.</div></div><div class="example"><div class="cn">她 看 书。</div><div class="py">Tā kàn shū.</div><div class="id">Dia membaca buku.</div></div></div>
+
+          <div class="grammar-box"><h4>2. Kalimat dengan 是 (shì) — "adalah"</h4><div class="pattern">A + 是 + B</div><div class="example"><div class="cn">我是学生。</div><div class="py">Wǒ shì xuésheng.</div><div class="id">Saya adalah murid.</div></div><p><strong>Negasi:</strong> 不是 (bú shì)</p><div class="example"><div class="cn">我不是医生。</div><div class="py">Wǒ bú shì yīshēng.</div><div class="id">Saya bukan dokter.</div></div></div>
+
+          <div class="grammar-box"><h4>3. Partikel Tanya 吗 (ma)</h4><p>Tambahkan <strong>吗</strong> di akhir pernyataan = pertanyaan ya/tidak.</p><div class="example"><div class="cn">你是学生吗？</div><div class="py">Nǐ shì xuésheng ma?</div><div class="id">Apakah kamu murid?</div></div><div class="tip">Cukup tambah 吗 di akhir, tidak perlu ubah urutan kata.</div></div>
+
+          <div class="grammar-box"><h4>4. Partikel 的 (de) — Kepunyaan</h4><div class="pattern">Pemilik + 的 + Benda</div><div class="example"><div class="cn">我的书</div><div class="py">wǒ de shū</div><div class="id">buku saya</div></div><div class="tip">Untuk keluarga dekat, 的 sering dihilangkan: 我妈妈 (ibu saya) ✅</div></div>
+
+          <div class="grammar-box"><h4>5. Negasi: 不 (bù) vs 没 (méi)</h4><p><strong>不</strong> = untuk kebiasaan, keinginan, sifat</p><div class="example"><div class="cn">我不喜欢猫。</div><div class="py">Wǒ bù xǐhuan māo.</div><div class="id">Saya tidak suka kucing.</div></div><p><strong>没</strong> = untuk 有 dan kejadian lampau</p><div class="example"><div class="cn">我没有钱。</div><div class="py">Wǒ méi yǒu qián.</div><div class="id">Saya tidak punya uang.</div></div><div class="tip">⚠️ 不 + 有 = ❌ SALAH! Selalu pakai 没有。</div></div>
+
+          <div class="grammar-box"><h4>6. Menyatakan Waktu</h4><div class="pattern">Subjek + Waktu + Verb + Objek</div><div class="example"><div class="cn">我明天去学校。</div><div class="py">Wǒ míngtiān qù xuéxiào.</div><div class="id">Saya besok pergi ke sekolah.</div></div></div>
+
+          <div class="grammar-box"><h4>7. Kata Bantu Bilangan (量词)</h4><p>Antara angka dan kata benda <strong>harus</strong> ada kata bantu bilangan.</p><div class="example"><div class="cn">一个人 ✅ &nbsp;&nbsp; 一人 ❌</div><div class="py">yī gè rén</div><div class="id">satu orang</div></div><div class="tip">Kalau ragu, pakai 个 (gè) — paling umum!</div></div>
+
+          <div class="grammar-box"><h4>8. 在 (zài) — "di" / "sedang"</h4><p><strong>Lokasi:</strong> 我在家。(Saya di rumah.)</p><p><strong>Progresif:</strong> 他在吃饭。(Dia sedang makan.)</p></div>
+
+          <p style="margin-top:20px;padding:16px;background:var(--gold-light);border-radius:8px;font-size:0.9rem;">📌 <em>Ditampilkan 8 dari 15 poin grammar HSK 1. Poin 9-15 meliputi: partikel 了, 会 vs 能, 想, 也 & 都, tanggal & waktu, sapaan & ungkapan dasar.</em></p>
+        </div>
+
+        <div class="tab-content" id="h1soal">
+          <h3>Latihan Soal HSK 1 — 50+ Soal</h3>
+
+          <div class="exercise-box"><h4>Set 1: Pilihan Ganda — Kosakata (10 soal)</h4><ol>
+            <li>"Terima kasih" = ...<div class="options">A) 对不起 B) 谢谢 C) 再见 D) 没关系</div></li>
+            <li>医生 (yīshēng) = ...<div class="options">A) Guru B) Murid C) Dokter D) Teman</div></li>
+            <li>苹果 (píngguǒ) = ...<div class="options">A) Jeruk B) Pisang C) Apel D) Mangga</div></li>
+            <li>"Air" = ...<div class="options">A) 茶 B) 水 C) 饭 D) 菜</div></li>
+            <li>飞机 (fēijī) = ...<div class="options">A) Mobil B) Kereta C) Pesawat D) Taksi</div></li>
+            <li>"Guru" = ...<div class="options">A) 学生 B) 老师 C) 医生 D) 朋友</div></li>
+            <li>电脑 (diànnǎo) = ...<div class="options">A) HP B) Komputer C) TV D) Radio</div></li>
+            <li>"Kucing" = ...<div class="options">A) 狗 B) 鸟 C) 猫 D) 鱼</div></li>
+            <li>今天 (jīntiān) = ...<div class="options">A) Kemarin B) Besok C) Hari ini D) Minggu depan</div></li>
+            <li>"Maaf" = ...<div class="options">A) 谢谢 B) 再见 C) 没关系 D) 对不起</div></li>
+          </ol><button class="answer-toggle" onclick="this.nextElementSibling.classList.toggle('show')">Lihat Jawaban</button><div class="answers">1-B, 2-C, 3-C, 4-B, 5-C, 6-B, 7-B, 8-C, 9-C, 10-D</div></div>
+
+          <div class="exercise-box"><h4>Set 2: Isi Titik-Titik — Grammar (10 soal)</h4><ol>
+            <li>我 _____ 学生。(Saya adalah murid.)</li>
+            <li>你好 _____？(Apa kabar?)</li>
+            <li>这是我 _____ 书。(Ini buku saya.)</li>
+            <li>他 _____ 去学校。(Dia tidak pergi ke sekolah.)</li>
+            <li>我 _____ 有钱。(Saya tidak punya uang.)</li>
+            <li>我 _____ 说中文。(Saya bisa bicara Mandarin.)</li>
+            <li>我们 _____ 是学生。(Kami semua murid.)</li>
+            <li>他 _____ 在吃饭。(Dia sedang makan.)</li>
+            <li>我 _____ 喜欢猫。(Saya juga suka kucing.)</li>
+            <li>我 _____ 去中国。(Saya ingin ke Tiongkok.)</li>
+          </ol><button class="answer-toggle" onclick="this.nextElementSibling.classList.toggle('show')">Lihat Jawaban</button><div class="answers">1-是, 2-吗, 3-的, 4-不, 5-没, 6-会, 7-都, 8-正, 9-也, 10-想</div></div>
+
+          <div class="exercise-box"><h4>Set 3: Terjemahkan ke Mandarin (10 soal)</h4><ol>
+            <li>Saya suka minum teh.</li><li>Dia adalah guru saya.</li><li>Kamu pergi ke mana?</li><li>Hari ini cuacanya sangat panas.</li><li>Berapa harganya?</li><li>Saya ingin pergi ke Tiongkok.</li><li>Kucing di atas meja.</li><li>Besok kamu bisa datang?</li><li>Dia orang baik.</li><li>Sekarang jam tiga.</li>
+          </ol><button class="answer-toggle" onclick="this.nextElementSibling.classList.toggle('show')">Lihat Jawaban</button><div class="answers">1. 我喜欢喝茶。 2. 他是我的老师。 3. 你去哪？ 4. 今天天气很热。 5. 多少钱？ 6. 我想去中国。 7. 猫在桌子上。 8. 明天你能来吗？ 9. 他是好人。 10. 现在三点。</div></div>
+
+          <div class="exercise-box"><h4>Set 4: Susun Kalimat (10 soal)</h4><ol>
+            <li>去 / 我 / 学校 / 明天</li><li>吗 / 你 / 学生 / 是</li><li>吃 / 喜欢 / 苹果 / 我</li><li>在 / 他 / 工作 / 医院</li><li>的 / 这 / 书 / 是 / 我</li><li>很 / 今天 / 冷 / 天气</li><li>中文 / 会 / 他 / 说</li><li>都 / 我们 / 去 / 了</li><li>在 / 猫 / 桌子 / 上</li><li>没 / 我 / 看 / 电影</li>
+          </ol><button class="answer-toggle" onclick="this.nextElementSibling.classList.toggle('show')">Lihat Jawaban</button><div class="answers">1. 我明天去学校。 2. 你是学生吗？ 3. 我喜欢吃苹果。 4. 他在医院工作。 5. 这是我的书。 6. 今天天气很冷。 7. 他会说中文。 8. 我们都去了。 9. 猫在桌子上。 10. 我没看电影。</div></div>
+
+          <div class="exercise-box"><h4>Set 5: Pemahaman Bacaan (10 soal)</h4>
+            <div style="background:var(--cream);padding:16px;border-radius:8px;margin-bottom:16px;font-family:'Noto Sans SC',sans-serif;">我叫小明，我是学生。我今年二十岁。我在北京学习中文。我喜欢吃中国菜，也喜欢喝茶。我有一个中国朋友，他叫大卫。他是老师。明天我和大卫去商店买东西。</div>
+            <ol><li>小明是做什么的？</li><li>他多大了？</li><li>他在哪里学习中文？</li><li>他喜欢吃什么？</li><li>他还喜欢喝什么？</li><li>大卫是谁？</li><li>大卫是做什么的？</li><li>明天他们去哪？</li><li>他们去商店做什么？</li><li>小明有几个中国朋友？</li></ol>
+            <button class="answer-toggle" onclick="this.nextElementSibling.classList.toggle('show')">Lihat Jawaban</button><div class="answers">1. 学生 2. 二十岁 3. 在北京 4. 中国菜 5. 茶 6. 小明的中国朋友 7. 老师 8. 去商店 9. 买东西 10. 一个</div>
+          </div>
+        </div>
+
+        <div class="tab-content" id="h1ujian">
+          <h3>📋 Simulasi Ujian HSK 1</h3>
+          <p style="color:var(--ink-lighter);margin-bottom:24px;">Format mengikuti ujian HSK resmi. Waktu: 40 menit. Total: 40 soal.</p>
+
+          <div class="exercise-box"><h4>Bagian 1: Listening / 听力 (Simulasi Teks)</h4><p style="color:var(--ink-lighter);font-size:0.85rem;margin-bottom:12px;">Dalam ujian asli, bagian ini diperdengarkan. Di sini kita simulasikan dengan teks.</p>
+          <ol>
+            <li>今天天气很冷。<div class="options">A) Cuaca panas B) Cuaca dingin C) Cuaca hujan</div></li>
+            <li>我有两个苹果。<div class="options">A) 1 apel B) 2 apel C) 3 apel</div></li>
+            <li>她在看书。<div class="options">A) Sedang makan B) Sedang tidur C) Sedang membaca</div></li>
+            <li>他去医院了。<div class="options">A) Ke sekolah B) Ke rumah sakit C) Ke toko</div></li>
+            <li>我想喝水。<div class="options">A) Mau makan B) Mau minum air C) Mau tidur</div></li>
+            <li>明天星期六。<div class="options">A) Besok Jumat B) Besok Sabtu C) Besok Minggu</div></li>
+            <li>这件衣服太贵了。<div class="options">A) Terlalu murah B) Terlalu besar C) Terlalu mahal</div></li>
+            <li>他是我的老师。<div class="options">A) Teman B) Guru C) Dokter</div></li>
+            <li>我不喜欢猫。<div class="options">A) Suka kucing B) Tidak suka kucing C) Punya kucing</div></li>
+            <li>现在三点了。<div class="options">A) Jam 2 B) Jam 3 C) Jam 4</div></li>
+          </ol><button class="answer-toggle" onclick="this.nextElementSibling.classList.toggle('show')">Lihat Jawaban Listening</button><div class="answers">1-B, 2-B, 3-C, 4-B, 5-B, 6-B, 7-C, 8-B, 9-B, 10-B</div></div>
+
+          <div class="exercise-box"><h4>Bagian 2: Reading / 阅读 (20 soal)</h4>
+          <p style="font-weight:700;margin:12px 0;">Bagian A: Pilih kata yang tepat</p>
+          <ol>
+            <li>我 _____ 吃米饭。<div class="options">A) 想 B) 的 C) 吗</div></li>
+            <li>这本书是 _____ 的？<div class="options">A) 什么 B) 谁 C) 几</div></li>
+            <li>他在家 _____ 电视。<div class="options">A) 看 B) 听 C) 写</div></li>
+            <li>今天星期 _____？<div class="options">A) 谁 B) 几 C) 什么</div></li>
+            <li>我们都 _____ 学习中文。<div class="options">A) 在 B) 是 C) 有</div></li>
+            <li>他 _____ 我高。<div class="options">A) 很 B) 也 C) 比</div></li>
+            <li>请 _____ 门。<div class="options">A) 开 B) 吃 C) 说</div></li>
+            <li>我的猫 _____ 漂亮。<div class="options">A) 是 B) 很 C) 有</div></li>
+            <li>你 _____ 几岁？<div class="options">A) 今天 B) 今年 C) 明天</div></li>
+            <li>他 _____ 来了。<div class="options">A) 没 B) 不 C) 都</div></li>
+          </ol>
+          <p style="font-weight:700;margin:12px 0;">Bagian B: Pemahaman Bacaan</p>
+          <div style="background:var(--cream);padding:16px;border-radius:8px;margin-bottom:12px;font-family:'Noto Sans SC',sans-serif;">我叫王力，今年二十五岁。我在一个公司工作。我每天坐公共汽车去公司。我喜欢我的工作，同事们都很好。下班以后，我喜欢去跑步。星期天我不工作，我喜欢在家看书或者看电影。</div>
+          <ol start="11">
+            <li>王力多大了？<div class="options">A) 20岁 B) 25岁 C) 30岁</div></li>
+            <li>他做什么工作？<div class="options">A) 老师 B) 医生 C) 在公司工作</div></li>
+            <li>他怎么去公司？<div class="options">A) 开车 B) 坐公共汽车 C) 走路</div></li>
+            <li>他觉得同事怎么样？<div class="options">A) 不好 B) 很好 C) 不认识</div></li>
+            <li>下班以后他做什么？<div class="options">A) 看电视 B) 跑步 C) 学习</div></li>
+            <li>他星期天做什么？<div class="options">A) 工作 B) 跑步 C) 看书或看电影</div></li>
+          </ol>
+          <div style="background:var(--cream);padding:16px;border-radius:8px;margin:16px 0 12px;font-family:'Noto Sans SC',sans-serif;">今天天气很好，不冷也不热。小红和她的朋友去公园了。公园里有很多人。他们在公园里走了两个小时。小红很高兴，她说："今天真好！"</div>
+          <ol start="17">
+            <li>今天天气怎么样？<div class="options">A) 很冷 B) 很热 C) 不冷也不热</div></li>
+            <li>小红和谁去公园？<div class="options">A) 妈妈 B) 朋友 C) 老师</div></li>
+            <li>他们在公园走了多长时间？<div class="options">A) 1小时 B) 2小时 C) 3小时</div></li>
+            <li>小红觉得今天怎么样？<div class="options">A) 不好 B) 很好 C) 很累</div></li>
+          </ol>
+          <button class="answer-toggle" onclick="this.nextElementSibling.classList.toggle('show')">Lihat Jawaban Reading</button><div class="answers">1-A, 2-B, 3-A, 4-B, 5-A, 6-C, 7-A, 8-B, 9-B, 10-A, 11-B, 12-C, 13-B, 14-B, 15-B, 16-C, 17-C, 18-B, 19-B, 20-B</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PLACEHOLDER HSK 2-4 -->
+    <div id="hsk2" class="module-section" style="margin-top:60px;">
+      <h2>📘 HSK 2 — Dasar</h2>
+      <p style="padding:40px;text-align:center;background:var(--white);border-radius:12px;border:2px dashed var(--border);color:var(--ink-lighter);">Konten HSK 2 lengkap sedang dalam proses penambahan. Silakan cek kembali secara berkala! 🚧</p>
+    </div>
+
+    <div id="hsk3" class="module-section" style="margin-top:60px;">
+      <h2>📙 HSK 3 — Menengah</h2>
+      <p style="padding:40px;text-align:center;background:var(--white);border-radius:12px;border:2px dashed var(--border);color:var(--ink-lighter);">Konten HSK 3 lengkap sedang dalam proses penambahan. 🚧</p>
+    </div>
+
+    <div id="hsk4" class="module-section" style="margin-top:60px;">
+      <h2>📕 HSK 4 — Menengah-Atas</h2>
+      <p style="padding:40px;text-align:center;background:var(--white);border-radius:12px;border:2px dashed var(--border);color:var(--ink-lighter);">Konten HSK 4 lengkap sedang dalam proses penambahan. 🚧</p>
+    </div>
+
+  </div>
+</section>
+
+<footer class="footer"><div class="container footer-content"><div class="footer-brand"><span class="logo-cn">华语学习中心</span></div><div class="footer-copy"><p>© 2026 华语学习中心</p></div></div></footer>
+
+</div><!-- end materiContent -->
+
+<script>
+// PASSWORD - GANTI INI DENGAN PASSWORD KAMU
+const CORRECT_PASS = "hsk2026mandarin";
+
+function checkPass() {
+  const input = document.getElementById('passInput').value;
+  if (input === CORRECT_PASS) {
+    document.getElementById('passwordGate').style.display = 'none';
+    document.getElementById('materiContent').style.display = 'block';
+    localStorage.setItem('hsk_access', 'true');
+  } else {
+    document.getElementById('passError').style.display = 'block';
+  }
+}
+// Auto-login if previously entered
+if (localStorage.getItem('hsk_access') === 'true') {
+  document.getElementById('passwordGate').style.display = 'none';
+  document.getElementById('materiContent').style.display = 'block';
+}
+// Enter key
+document.getElementById('passInput').addEventListener('keyup', function(e) {
+  if (e.key === 'Enter') checkPass();
+});
+// Tabs
+document.querySelectorAll('.tab-btn').forEach(b=>{b.addEventListener('click',()=>{const parent=b.closest('.tab-container');parent.querySelectorAll('.tab-btn').forEach(x=>x.classList.remove('active'));parent.querySelectorAll('.tab-content').forEach(x=>x.classList.remove('active'));b.classList.add('active');parent.querySelector('#'+b.dataset.tab).classList.add('active')})});
+// Hamburger
+document.getElementById('hamburger').addEventListener('click',()=>{document.getElementById('navLinks').classList.toggle('active');document.getElementById('hamburger').classList.toggle('active')});
+</script>
+</body>
+</html>
