@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Materi HSK 4 — Modul HSK Mandarin</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .materi-container{max-width:960px;margin:30px auto;padding:0 20px}
+        .section-title{font-size:1.6rem;color:#222;margin:40px 0 16px;padding-bottom:8px;border-bottom:2px solid #1890ff}
+        .vocab-table{width:100%;border-collapse:collapse;margin-bottom:32px;background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 1px 8px rgba(0,0,0,.06)}
+        .vocab-table th{background:#1890ff;color:#fff;padding:12px 14px;text-align:left;font-size:14px}
+        .vocab-table td{padding:10px 14px;border-bottom:1px solid #f0f0f0;font-size:14px;vertical-align:top}
+        .vocab-table tr:hover{background:#f0f7ff}
+        .hanzi{font-size:1.3rem;font-weight:700;color:#222}
+        .pinyin{color:#1890ff;font-style:italic}
+        .contoh{color:#555;font-size:13px;margin-top:4px}
+        .grammar-card{background:#fff;border-radius:12px;padding:24px;margin-bottom:20px;box-shadow:0 1px 8px rgba(0,0,0,.06);border-left:4px solid #faad14}
+        .grammar-card h3{margin:0 0 8px;color:#333}
+        .grammar-card .pattern{background:#fffbe6;padding:8px 14px;border-radius:6px;font-family:monospace;font-size:15px;margin:8px 0;display:inline-block}
+        .grammar-card .example{background:#f6f6f6;padding:10px 14px;border-radius:6px;margin-top:8px;font-size:14px}
+        .grammar-card .example .zh{font-size:1.1rem;font-weight:600}
+        .grammar-card .example .py{color:#1890ff;font-size:13px}
+        .grammar-card .example .id{color:#555;font-size:13px}
+        .toc{background:#fff;border-radius:12px;padding:24px;margin-bottom:30px;box-shadow:0 1px 8px rgba(0,0,0,.06)}
+        .toc h2{margin-top:0}
+        .toc ul{columns:2;list-style:none;padding:0}
+        .toc li{padding:4px 0}
+        .toc a{text-decoration:none;color:#1890ff;font-size:14px}
+        .toc a:hover{text-decoration:underline}
+        .search-box{width:100%;padding:12px 16px;border:2px solid #e0e0e0;border-radius:10px;font-size:15px;margin-bottom:24px;box-sizing:border-box}
+        .search-box:focus{border-color:#1890ff;outline:none}
+        .back-top{position:fixed;bottom:24px;right:24px;background:#1890ff;color:#fff;border:none;width:44px;height:44px;border-radius:50%;font-size:20px;cursor:pointer;box-shadow:0 2px 12px rgba(0,0,0,.15);display:none;z-index:99}
+        @media(max-width:600px){.toc ul{columns:1}.vocab-table td,.vocab-table th{padding:8px 10px;font-size:13px}}
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand"><span class="logo-han">汉</span><span>Modul HSK</span></div>
+        <div class="nav-links">
+            <a href="index.html">Beranda</a>
+            <a href="menu.html">Menu</a>
+            <a href="hsk4-materi.html" class="active">Materi</a>
+            <a href="hsk4-soal.html">Latihan Soal</a>
+        </div>
+    </nav>
+
+    <div class="materi-container">
+        <h1 style="text-align:center;margin-top:30px">📖 Materi HSK 4</h1>
+        <p style="text-align:center;color:#666">600 kosakata baru + 25 poin tata bahasa tingkat menengah</p>
+
+        <input type="text" class="search-box" id="searchBox" placeholder="🔍 Cari kosakata (hanzi, pinyin, atau arti)...">
+
+        <div class="toc" id="tocSection">
+            <h2>Daftar Isi</h2>
+            <ul>
+                <li><a href="#vocab">📝 Kosakata HSK 4</a></li>
+                <li><a href="#bab1">Bab 1: Ekonomi & Keuangan</a></li>
+                <li><a href="#bab2">Bab 2: Politik & Masyarakat</a></li>
+                <li><a href="#bab3">Bab 3: Sains & Penelitian</a></li>
+                <li><a href="#bab4">Bab 4: Filsafat & Pemikiran</a></li>
+                <li><a href="#bab5">Bab 5: Media & Jurnalisme</a></li>
+                <li><a href="#bab6">Bab 6: Hukum & Keadilan</a></li>
+                <li><a href="#bab7">Bab 7: Lingkungan Hidup</a></li>
+                <li><a href="#bab8">Bab 8: Psikologi & Emosi</a></li>
+                <li><a href="#bab9">Bab 9: Sastra & Seni</a></li>
+                <li><a href="#bab10">Bab 10: Arsitektur & Kota</a></li>
+                <li><a href="#bab11">Bab 11: Olahraga Profesional</a></li>
+                <li><a href="#bab12">Bab 12: Perdagangan Internasional</a></li>
+                <li><a href="#bab13">Bab 13: Diplomasi & Hubungan</a></li>
+                <li><a href="#bab14">Bab 14: Teknologi & Internet</a></li>
+                <li><a href="#bab15">Bab 15: Kesehatan & Kedokteran</a></li>
+                <li><a href="#bab16">Bab 16: Pendidikan Tinggi</a></li>
+                <li><a href="#bab17">Bab 17: Budaya & Tradisi</a></li>
+                <li><a href="#bab18">Bab 18: Perjalanan & Transportasi</a></li>
+                <li><a href="#bab19">Bab 19: Makanan & Gaya Hidup</a></li>
+                <li><a href="#bab20">Bab 20: Komunikasi & Bahasa</a></li>
+                <li><a href="#bab21">Bab 21: Sejarah & Peradaban</a></li>
+                <li><a href="#bab22">Bab 22: Emosi & Hubungan Sosial</a></li>
+                <li><a href="#bab23">Bab 23: Karier & Pekerjaan</a></li>
+                <li><a href="#bab24">Bab 24: Alam & Geografi</a></li>
+                <li><a href="#bab25">Bab 25: Nilai & Karakter</a></li>
+                <li><a href="#grammar">📐 Tata Bahasa HSK 4</a></li>
+            </ul>
+        </div>
+
+        <!-- ==================== KOSAKATA ==================== -->
+        <h2 class="section-title" id="vocab">📝 Kosakata HSK 4 (600 Kata)</h2>
+
+        <!-- BAB 1 -->
+        <h3 id="bab1" style="color:#1890ff;margin-top:32px">Bab 1: Ekonomi & Keuangan</h3>
+        <table class="vocab-table"><thead><tr><th>Hanzi</th><th>Pinyin</th><th>Arti</th><th>Contoh Kalimat</th></tr></thead><tbody>
+        <tr><td class="hanzi">经济</td><td class="pinyin">jīngjì</td><td>ekonomi</td><td class="contoh">中国的经济发展很快。<br>Ekonomi Tiongkok berkembang sangat cepat.</td></tr>
+        <tr><td class="hanzi">收入</td><td class="pinyin">shōurù</td><td>pendapatan</td><td class="contoh">他的收入比去年增加了。<br>Pendapatannya bertambah dibanding tahun lalu.</td></tr>
+        <tr><td class="hanzi">支出</td><td class="pinyin">zhīchū</td><td>pengeluaran</td><td class="contoh">这个月的支出太多了。<br>Pengeluaran bulan ini terlalu banyak.</td></tr>
+        <tr><td class="hanzi">利润</td><td class="pinyin">lìrùn</td><td>keuntungan/laba</td><td class="contoh">公司今年的利润增长了百分之二十。<br>Laba perusahaan tahun ini tumbuh 20%.</td></tr>
+        <tr><td class="hanzi">投资</td><td class="pinyin">tóuzī</td><td>investasi</td><td class="contoh">他决定投资房地产。<br>Dia memutuskan berinvestasi di properti.</td></tr>
+        <tr><td class="hanzi">贸易</td><td class="pinyin">màoyì</td><td>perdagangan</td><td class="contoh">国际贸易对两国都有好处。<br>Perdagangan internasional menguntungkan kedua negara.</td></tr>
+        <tr><td class="hanzi">市场</td><td class="pinyin">shìchǎng</td><td>pasar</td><td class="contoh">这个产品在市场上很受欢迎。<br>Produk ini sangat populer di pasar.</td></tr>
+        <tr><td class="hanzi">竞争</td><td class="pinyin">jìngzhēng</td><td>persaingan</td><td class="contoh">市场竞争越来越激烈。<br>Persaingan pasar semakin ketat.</td></tr>
+        <tr><td class="hanzi">消费</td><td class="pinyin">xiāofèi</td><td>konsumsi</td><td class="contoh">年轻人的消费观念正在改变。<br>Pola konsumsi anak muda sedang berubah.</td></tr>
+        <tr><td class="hanzi">价格</td><td class="pinyin">jiàgé</td><td>harga</td><td class="contoh">石油价格最近涨了不少。<br>Harga minyak akhir-akhir ini naik cukup banyak.</td></tr>
+        <tr><td class="hanzi">税</td><td class="pinyin">shuì</td><td>pajak</td><td class="contoh">每个公民都应该按时交税。<br>Setiap warga negara harus membayar pajak tepat waktu.</td></tr>
+        <tr><td class="hanzi">银行</td><td class="pinyin">yínháng</td><td>bank</td><td class="contoh">我需要去银行办一张新卡。<br>Saya perlu ke bank untuk membuat kartu baru.</td></tr>
+        <tr><td class="hanzi">货币</td><td class="pinyin">huòbì</td><td>mata uang</td><td class="contoh">人民币是中国的货币。<br>Renminbi adalah mata uang Tiongkok.</td></tr>
+        <tr><td class="hanzi">存款</td><td class="pinyin">cúnkuǎn</td><td>tabungan/deposito</td><td class="contoh">她把一部分工资存入银行作为存款。<br>Dia menyimpan sebagian gaji di bank sebagai tabungan.</td></tr>
+        <tr><td class="hanzi">贷款</td><td class="pinyin">dàikuǎn</td><td>pinjaman/kredit</td><td class="contoh">他向银行申请了贷款买房子。<br>Dia mengajukan pinjaman ke bank untuk membeli rumah.</td></tr>
+        <tr><td class="hanzi">预算</td><td class="pinyin">yùsuàn</td><td>anggaran</td><td class="contoh">公司已经制定了明年的预算。<br>Perusahaan sudah menyusun anggaran tahun depan.</td></tr>
+        <tr><td class="hanzi">股票</td><td class="pinyin">gǔpiào</td><td>saham</td><td class="contoh">最近股票市场波动很大。<br>Akhir-akhir ini pasar saham sangat fluktuatif.</td></tr>
+        <tr><td class="hanzi">资金</td><td class="pinyin">zījīn</td><td>dana/modal</td><td class="contoh">这个项目需要大量资金。<br>Proyek ini membutuhkan banyak dana.</td></tr>
+        <tr><td class="hanzi">商业</td><td class="pinyin">shāngyè</td><td>bisnis/komersial</td><td class="contoh">这个地区的商业活动很频繁。<br>Aktivitas bisnis di daerah ini sangat sering.</td></tr>
+        <tr><td class="hanzi">出口</td><td class="pinyin">chūkǒu</td><td>ekspor</td><td class="contoh">中国是世界上最大的出口国之一。<br>Tiongkok adalah salah satu negara pengekspor terbesar di dunia.</td></tr>
+        <tr><td class="hanzi">进口</td><td class="pinyin">jìnkǒu</td><td>impor</td><td class="contoh">我们需要进口一些高科技设备。<br>Kami perlu mengimpor beberapa peralatan teknologi tinggi.</td></tr>
+        <tr><td class="hanzi">合同</td><td class="pinyin">hétong</td><td>kontrak</td><td class="contoh">双方已经签了合同。<br>Kedua pihak sudah menandatangani kontrak.</td></tr>
+        <tr><td class="hanzi">利息</td><td class="pinyin">lìxī</td><td>bunga (bank)</td><td class="contoh">银行的存款利息越来越低了。<br>Bunga tabungan bank semakin rendah.</td></tr>
+        <tr><td class="hanzi">亏损</td><td class="pinyin">kuīsǔn</td><td>rugi/merugi</td><td class="contoh">公司连续两年亏损。<br>Perusahaan rugi selama dua tahun berturut-turut.</td></tr>
+        </tbody></table>
+
+        <!-- BAB 2 -->
+        <h3 id="bab2" style="color:#1890ff;margin-top:32px">Bab 2: Politik & Masyarakat</h3>
+        <table class="vocab-table"><thead><tr><th>Hanzi</th><th>Pinyin</th><th>Arti</th><th>Contoh Kalimat</th></tr></thead><tbody>
+        <tr><td class="hanzi">政府</td><td class="pinyin">zhèngfǔ</td><td>pemerintah</td><td class="contoh">政府发布了新的政策。<br>Pemerintah mengeluarkan kebijakan baru.</td></tr>
+        <tr><td class="hanzi">政策</td><td class="pinyin">zhèngcè</td><td>kebijakan</td><td class="contoh">这项政策受到了人民的支持。<br>Kebijakan ini mendapat dukungan rakyat.</td></tr>
+        <tr><td class="hanzi">社会</td><td class="pinyin">shèhuì</td><td>masyarakat</td><td class="contoh">社会的发展离不开教育。<br>Perkembangan masyarakat tidak bisa lepas dari pendidikan.</td></tr>
+        <tr><td class="hanzi">公民</td><td class="pinyin">gōngmín</td><td>warga negara</td><td class="contoh">每个公民都有选举权。<br>Setiap warga negara memiliki hak pilih.</td></tr>
+        <tr><td class="hanzi">权利</td><td class="pinyin">quánlì</td><td>hak</td><td class="contoh">人人都有受教育的权利。<br>Semua orang punya hak mendapat pendidikan.</td></tr>
+        <tr><td class="hanzi">义务</td><td class="pinyin">yìwù</td><td>kewajiban</td><td class="contoh">保护环境是每个人的义务。<br>Melindungi lingkungan adalah kewajiban setiap orang.</td></tr>
+        <tr><td class="hanzi">法律</td><td class="pinyin">fǎlǜ</td><td>hukum</td><td class="contoh">任何人都必须遵守法律。<br>Siapa pun harus mematuhi hukum.</td></tr>
+        <tr><td class="hanzi">民主</td><td class="pinyin">mínzhǔ</td><td>demokrasi</td><td class="contoh">民主制度需要公民的参与。<br>Sistem demokrasi membutuhkan partisipasi warga.</td></tr>
+        <tr><td class="hanzi">选举</td><td class="pinyin">xuǎnjǔ</td><td>pemilihan umum</td><td class="contoh">今年的选举竞争非常激烈。<br>Pemilu tahun ini sangat kompetitif.</td></tr>
+        <tr><td class="hanzi">制度</td><td class="pinyin">zhìdù</td><td>sistem/lembaga</td><td class="contoh">我们需要改善现有的制度。<br>Kita perlu memperbaiki sistem yang ada.</td></tr>
+        <tr><td class="hanzi">平等</td><td class="pinyin">píngděng</td><td>kesetaraan</td><td class="contoh">男女平等是社会进步的标志。<br>Kesetaraan gender adalah tanda kemajuan masyarakat.</td></tr>
+        <tr><td class="hanzi">自由</td><td class="pinyin">zìyóu</td><td>kebebasan</td><td class="contoh">言论自由是基本权利之一。<br>Kebebasan berpendapat adalah salah satu hak dasar.</td></tr>
+        <tr><td class="hanzi">改革</td><td class="pinyin">gǎigé</td><td>reformasi</td><td class="contoh">经济改革带来了巨大的变化。<br>Reformasi ekonomi membawa perubahan besar.</td></tr>
+        <tr><td class="hanzi">稳定</td><td class="pinyin">wěndìng</td><td>stabil</td><td class="contoh">社会稳定是发展的基础。<br>Stabilitas masyarakat adalah dasar pembangunan.</td></tr>
+        <tr><td class="hanzi">矛盾</td><td class="pinyin">máodùn</td><td>kontradiksi/konflik</td><td class="contoh">解决社会矛盾需要时间和智慧。<br>Menyelesaikan konflik sosial butuh waktu dan kebijaksanaan.</td></tr>
+        <tr><td class="hanzi">领导</td><td class="pinyin">lǐngdǎo</td><td>pemimpin/memimpin</td><td class="contoh">一个好的领导要关心群众。<br>Pemimpin yang baik harus peduli pada rakyat.</td></tr>
+        <tr><td class="hanzi">组织</td><td class="pinyin">zǔzhī</td><td>organisasi</td><td class="contoh">这个组织致力于帮助贫困地区。<br>Organisasi ini berkomitmen membantu daerah miskin.</td></tr>
+        <tr><td class="hanzi">群众</td><td class="pinyin">qúnzhòng</td><td>massa/rakyat</td><td class="contoh">政府应该听取群众的意见。<br>Pemerintah harus mendengarkan pendapat rakyat.</td></tr>
+        <tr><td class="hanzi">现象</td><td class="pinyin">xiànxiàng</td><td>fenomena</td><td class="contoh">这种社会现象值得我们关注。<br>Fenomena sosial ini layak kita perhatikan.</td></tr>
+        <tr><td class="hanzi">责任</td><td class="pinyin">zérèn</td><td>tanggung jawab</td><td class="contoh">每个人都要承担自己的责任。<br>Setiap orang harus menanggung tanggung jawabnya.</td></tr>
+        <tr><td class="hanzi">贫困</td><td class="pinyin">pínkùn</td><td>kemiskinan</td><td class="contoh">消除贫困是全球性的目标。<br>Menghapus kemiskinan adalah tujuan global.</td></tr>
+        <tr><td class="hanzi">福利</td><td class="pinyin">fúlì</td><td>kesejahteraan</td><td class="contoh">公司为员工提供了很好的福利。<br>Perusahaan memberikan kesejahteraan yang baik bagi karyawan.</td></tr>
+        <tr><td class="hanzi">公平</td><td class="pinyin">gōngpíng</td><td>adil</td><td class="contoh">我们追求公平和正义。<br>Kita mengejar keadilan dan kejujuran.</td></tr>
+        <tr><td class="hanzi">腐败</td><td class="pinyin">fǔbài</td><td>korupsi</td><td class="contoh">政府正在严厉打击腐败行为。<br>Pemerintah sedang memberantas korupsi dengan tegas.</td></tr>
+        </tbody></table>
+
+        <!-- BAB 3 -->
+        <h3 id="bab3" style="color:#1890ff;margin-top:32px">Bab 3: Sains & Penelitian</h3>
+        <table class="vocab-table"><thead><tr><th>Hanzi</th><th>Pinyin</th><th>Arti</th><th>Contoh Kalimat</th></tr></thead><tbody>
+        <tr><td class="hanzi">科学</td><td class="pinyin">kēxué</td><td>sains/ilmu pengetahuan</td><td class="contoh">科学技术改变了人们的生活。<br>Sains dan teknologi mengubah kehidupan orang.</td></tr>
+        <tr><td class="hanzi">研究</td><td class="pinyin">yánjiū</td><td>penelitian</td><td class="contoh">他正在研究新能源技术。<br>Dia sedang meneliti teknologi energi baru.</td></tr>
+        <tr><td class="hanzi">实验</td><td class="pinyin">shíyàn</td><td>eksperimen</td><td class="contoh">这个实验已经成功了。<br>Eksperimen ini sudah berhasil.</td></tr>
+        <tr><td class="hanzi">数据</td><td class="pinyin">shùjù</td><td>data</td><td class="contoh">我们需要更多的数据来证明这个理论。<br>Kita butuh lebih banyak data untuk membuktikan teori ini.</td></tr>
+        <tr><td class="hanzi">理论</td><td class="pinyin">lǐlùn</td><td>teori</td><td class="contoh">理论和实践同样重要。<br>Teori dan praktik sama pentingnya.</td></tr>
+        <tr><td class="hanzi">结论</td><td class="pinyin">jiélùn</td><td>kesimpulan</td><td class="contoh">根据数据，我们得出了一个结论。<br>Berdasarkan data, kami sampai pada sebuah kesimpulan.</td></tr>
+        <tr><td class="hanzi">发明</td><td class="pinyin">fāmíng</td><td>penemuan/menemukan</td><td class="contoh">造纸术是中国古代的四大发明之一。<br>Pembuatan kertas adalah salah satu dari empat penemuan besar Tiongkok kuno.</td></tr>
+        <tr><td class="hanzi">发现</td><td class="pinyin">fāxiàn</td><td>menemukan/penemuan</td><td class="contoh">科学家发现了一种新的物质。<br>Ilmuwan menemukan sebuah zat baru.</td></tr>
+        <tr><td class="hanzi">技术</td><td class="pinyin">jìshù</td><td>teknologi/teknik</td><td class="contoh">人工智能技术发展得非常快。<br>Teknologi kecerdasan buatan berkembang sangat cepat.</td></tr>
+        <tr><td class="hanzi">能源</td><td class="pinyin">néngyuán</td><td>energi</td><td class="contoh">太阳能是一种清洁能源。<br>Tenaga surya adalah jenis energi bersih.</td></tr>
+        <tr><td class="hanzi">基因</td><td class="pinyin">jīyīn</td><td>gen</td><td class="contoh">基因研究帮助我们了解疾病。<br>Penelitian gen membantu kita memahami penyakit.</td></tr>
+        <tr><td class="hanzi">细胞</td><td class="pinyin">xìbāo</td><td>sel</td><td class="contoh">人体由无数个细胞组成。<br>Tubuh manusia terdiri dari sel yang tak terhitung.</td></tr>
+        <tr><td class="hanzi">物质</td><td class="pinyin">wùzhì</td><td>zat/materi</td><td class="contoh">水是一种常见的物质。<br>Air adalah zat yang umum ditemui.</td></tr>
+        <tr><td class="hanzi">过程</td><td class="pinyin">guòchéng</td><td>proses</td><td class="contoh">学习是一个漫长的过程。<br>Belajar adalah proses yang panjang.</td></tr>
+        <tr><td class="hanzi">方法</td><td class="pinyin">fāngfǎ</td><td>metode/cara</td><td class="contoh">我们需要找到更好的方法来解决问题。<br>Kita perlu menemukan cara yang lebih baik untuk menyelesaikan masalah.</td></tr>
+        <tr><td class="hanzi">分析</td><td class="pinyin">fēnxī</td><td>analisis</td><td class="contoh">他对这个问题进行了详细的分析。<br>Dia melakukan analisis terperinci terhadap masalah ini.</td></tr>
+        <tr><td class="hanzi">证明</td><td class="pinyin">zhèngmíng</td><td>membuktikan</td><td class="contoh">实验结果证明了他的假设。<br>Hasil eksperimen membuktikan hipotesisnya.</td></tr>
+        <tr><td class="hanzi">假设</td><td class="pinyin">jiǎshè</td><td>hipotesis</td><td class="contoh">科学家提出了一个新的假设。<br>Ilmuwan mengajukan hipotesis baru.</td></tr>
+        <tr><td class="hanzi">观察</td><td class="pinyin">guānchá</td><td>mengamati/observasi</td><td class="contoh">他仔细观察了实验现象。<br>Dia mengamati fenomena eksperimen dengan saksama.</td></tr>
+        <tr><td class="hanzi">成果</td><td class="pinyin">chéngguǒ</td><td>hasil/pencapaian</td><td class="contoh">这项研究取得了重要的成果。<br>Penelitian ini mencapai hasil yang penting.</td></tr>
+        <tr><td class="hanzi">系统</td><td class="pinyin">xìtǒng</td><td>sistem</td><td class="contoh">这个系统运行得很稳定。<br>Sistem ini berjalan dengan stabil.</td></tr>
+        <tr><td class="hanzi">环境</td><td class="pinyin">huánjìng</td><td>lingkungan</td><td class="contoh">保护环境是我们共同的责任。<br>Melindungi lingkungan adalah tanggung jawab bersama kita.</td></tr>
+        <tr><td class="hanzi">规律</td><td class="pinyin">guīlǜ</td><td>hukum/pola (alam)</td><td class="contoh">大自然有它自己的规律。<br>Alam memiliki hukumnya sendiri.</td></tr>
+        <tr><td class="hanzi">样本</td><td class="pinyin">yàngběn</td><td>sampel</td><td class="contoh">研究人员采集了一百个样本。<br>Peneliti mengumpulkan seratus sampel.</td></tr>
+        </tbody></table>
+
+        <!-- BAB 4 -->
+        <h3 id="bab4" style="color:#1890ff;margin-top:32px">Bab 4: Filsafat & Pemikiran</h3>
+        <table class="vocab-table"><thead><tr><th>Hanzi</th><th>Pinyin</th><th>Arti</th><th>Contoh Kalimat</th></tr></thead><tbody>
+        <tr><td class="hanzi">思想</td><td class="pinyin">sīxiǎng</td><td>pemikiran/ideologi</td><td class="contoh">孔子的思想影响了整个东亚。<br>Pemikiran Konfusius memengaruhi seluruh Asia Timur.</td></tr>
+        <tr><td class="hanzi">哲学</td><td class="pinyin">zhéxué</td><td>filsafat</td><td class="contoh">他在大学学习哲学专业。<br>Dia mempelajari jurusan filsafat di universitas.</td></tr>
+        <tr><td class="hanzi">道德</td><td class="pinyin">dàodé</td><td>moral/etika</td><td class="contoh">道德标准因文化不同而有差异。<br>Standar moral berbeda-beda sesuai budayanya.</td></tr>
+        <tr><td class="hanzi">价值</td><td class="pinyin">jiàzhí</td><td>nilai</td><td class="contoh">每个人对幸福的价值观不同。<br>Nilai kebahagiaan setiap orang berbeda.</td></tr>
+        <tr><td class="hanzi">观念</td><td class="pinyin">guānniàn</td><td>konsep/pandangan</td><td class="contoh">传统观念正在慢慢改变。<br>Pandangan tradisional perlahan berubah.</td></tr>
+        <tr><td class="hanzi">逻辑</td><td class="pinyin">luóji</td><td>logika</td><td class="contoh">他的论点缺乏逻辑。<br>Argumennya kurang logika.</td></tr>
+        <tr><td class="hanzi">智慧</td><td class="pinyin">zhìhuì</td><td>kebijaksanaan</td><td class="contoh">古人留下了许多智慧。<br>Orang-orang kuno meninggalkan banyak kebijaksanaan.</td></tr>
+        <tr><td class="hanzi">意识</td><td class="pinyin">yìshí</td><td>kesadaran</td><td class="contoh">他没有意识到自己的错误。<br>Dia tidak menyadari kesalahannya.</td></tr>
+        <tr><td class="hanzi">存在</td><td class="pinyin">cúnzài</td><td>ada/keberadaan</td><td class="contoh">这个问题确实存在。<br>Masalah ini memang ada.</td></tr>
+        <tr><td class="hanzi">本质</td><td class="pinyin">běnzhì</td><td>esensi/hakikat</td><td class="contoh">我们要看到事物的本质。<br>Kita harus melihat hakikat suatu hal.</td></tr>
+        <tr><td class="hanzi">原则</td><td class="pinyin">yuánzé</td><td>prinsip</td><td class="contoh">他是一个有原则的人。<br>Dia adalah orang yang berprinsip.</td></tr>
+        <tr><td class="hanzi">真理</td><td class="pinyin">zhēnlǐ</td><td>kebenaran</td><td class="contoh">实践是检验真理的唯一标准。<br>Praktik adalah satu-satunya standar untuk menguji kebenaran.</td></tr>
+        <tr><td class="hanzi">命运</td><td class="pinyin">mìngyùn</td><td>takdir/nasib</td><td class="contoh">他相信命运掌握在自己手中。<br>Dia percaya nasib ada di tangannya sendiri.</td></tr>
+        <tr><td class="hanzi">精神</td><td class="pinyin">jīngshén</td><td>semangat/spiritual</td><td class="contoh">他的精神值得我们学习。<br>Semangatnya layak kita teladani.</td></tr>
+        <tr><td class="hanzi">信仰</td><td class="pinyin">xìnyǎng</td><td>kepercayaan/iman</td><td class="contoh">每个人都有信仰自由。<br>Setiap orang memiliki kebebasan beragama.</td></tr>
+        <tr><td class="hanzi">灵魂</td><td class="pinyin">línghún</td><td>jiwa/roh</td><td class="contoh">艺术是灵魂的语言。<br>Seni adalah bahasa jiwa.</td></tr>
+        <tr><td class="hanzi">抽象</td><td class="pinyin">chōuxiàng</td><td>abstrak</td><td class="contoh">这个概念太抽象了。<br>Konsep ini terlalu abstrak.</td></tr>
+        <tr><td class="hanzi">具体</td><td class="pinyin">jùtǐ</td><td>konkret/spesifik</td><td class="contoh">请给我一个具体的例子。<br>Tolong beri saya contoh yang konkret.</td></tr>
+        <tr><td class="hanzi">矛盾</td><td class="pinyin">máodùn</td><td>kontradiksi</td><td class="contoh">他的话前后矛盾。<br>Perkataannya saling bertentangan.</td></tr>
+        <tr><td class="hanzi">辩论</td><td class="pinyin">biànlùn</td><td>debat</td><td class="contoh">学生们正在进行一场辩论。<br>Para siswa sedang mengadakan debat.</td></tr>
+        <tr><td class="hanzi">反思</td><td class="pinyin">fǎnsī</td><td>refleksi/introspeksi</td><td class="contoh">我们需要对过去进行反思。<br>Kita perlu melakukan refleksi terhadap masa lalu.</td></tr>
+        <tr><td class="hanzi">启发</td><td class="pinyin">qǐfā</td><td>menginspirasi</td><td class="contoh">这本书给了我很大的启发。<br>Buku ini memberi saya inspirasi besar.</td></tr>
+        <tr><td class="hanzi">境界</td><td class="pinyin">jìngjiè</td><td>tingkat/level (spiritual)</td><td class="contoh">他的书法已经达到了很高的境界。<br>Kaligrafinya sudah mencapai tingkat yang sangat tinggi.</td></tr>
+        <tr><td class="hanzi">怀疑</td><td class="pinyin">huáiyí</td><td>ragu/meragukan</td><td class="contoh">科学精神就是敢于怀疑。<br>Semangat ilmiah adalah berani meragukan.</td></tr>
+        </tbody></table>
+
+        <!-- BAB 5 -->
+        <h3 id="bab5" style="color:#1890ff;margin-top:32px">Bab 5: Media & Jurnalisme</h3>
+        <table class="vocab-table"><thead><tr><th>Hanzi</th><th>Pinyin</th><th>Arti</th><th>Contoh Kalimat</th></tr></thead><tbody>
+        <tr><td class="hanzi">新闻</td><td class="pinyin">xīnwén</td><td>berita</td><td class="contoh">他每天早上都看新闻。<br>Dia menonton berita setiap pagi.</td></tr>
+        <tr><td class="hanzi">媒体</td><td class="pinyin">méitǐ</td><td>media</td><td class="contoh">社交媒体对年轻人影响很大。<br>Media sosial sangat memengaruhi anak muda.</td></tr>
+        <tr><td class="hanzi">记者</td><td class="pinyin">jìzhě</td><td>jurnalis/wartawan</td><td class="contoh">记者正在现场报道新闻。<br>Wartawan sedang meliput berita di lokasi.</td></tr>
+        <tr><td class="hanzi">报道</td><td class="pinyin">bàodào</td><td>melaporkan/liputan</td><td class="contoh">这篇报道引起了广泛关注。<br>Liputan ini menarik perhatian luas.</td></tr>
+        <tr><td class="hanzi">消息</td><td class="pinyin">xiāoxi</td><td>informasi/kabar</td><td class="contoh">你听到最新的消息了吗？<br>Apakah kamu sudah dengar kabar terbaru?</td></tr>
+        <tr><td class="hanzi">评论</td><td class="pinyin">pínglùn</td><td>komentar/ulasan</td><td class="contoh">网友们对这件事发表了很多评论。<br>Netizen banyak memberi komentar tentang hal ini.</td></tr>
+        <tr><td class="hanzi">采访</td><td class="pinyin">cǎifǎng</td><td>wawancara</td><td class="contoh">记者采访了那位科学家。<br>Wartawan mewawancarai ilmuwan itu.</td></tr>
+        <tr><td class="hanzi">发布</td><td class="pinyin">fābù</td><td>menerbitkan/merilis</td><td class="contoh">公司发布了一份新的声明。<br>Perusahaan merilis pernyataan baru.</td></tr>
+        <tr><td class="hanzi">广播</td><td class="pinyin">guǎngbō</td><td>siaran radio</td><td class="contoh">我小时候经常听广播。<br>Waktu kecil saya sering mendengarkan radio.</td></tr>
+        <tr><td class="hanzi">频道</td><td class="pinyin">píndào</td><td>saluran/channel</td><td class="contoh">你喜欢看哪个电视频道？<br>Kamu suka menonton channel TV yang mana?</td></tr>
+        <tr><td class="hanzi">标题</td><td class="pinyin">biāotí</td><td>judul</td><td class="contoh">这篇文章的标题很吸引人。<br>Judul artikel ini sangat menarik.</td></tr>
+        <tr><td class="hanzi">内容</td><td class="pinyin">nèiróng</td><td>isi/konten</td><td class="contoh">文章的内容非常丰富。<br>Isi artikel sangat kaya.</td></tr>
+        <tr><td class="hanzi">真实</td><td class="pinyin">zhēnshí</td><td>nyata/otentik</td><td class="contoh">新闻报道必须真实。<br>Liputan berita harus nyata.</td></tr>
+        <tr><td class="hanzi">虚假</td><td class="pinyin">xūjiǎ</td><td>palsu</td><td class="contoh">我们要学会辨别虚假信息。<br>Kita harus belajar membedakan informasi palsu.</td></tr>
+        <tr><td class="hanzi">传播</td><td class="pinyin">chuánbō</td><td>menyebarkan</td><td class="contoh">互联网加快了信息的传播。<br>Internet mempercepat penyebaran informasi.</td></tr>
+        <tr><td class="hanzi">舆论</td><td class="pinyin">yúlùn</td><td>opini publik</td><td class="contoh">舆论对政策制定有很大影响。<br>Opini publik sangat memengaruhi pembuatan kebijakan.</td></tr>
+        <tr><td class="hanzi">观众</td><td class="pinyin">guānzhòng</td><td>penonton</td><td class="contoh">这个节目有几百万观众。<br>Program ini memiliki jutaan penonton.</td></tr>
+        <tr><td class="hanzi">出版</td><td class="pinyin">chūbǎn</td><td>menerbitkan (buku)</td><td class="contoh">他的新书下个月出版。<br>Buku barunya terbit bulan depan.</td></tr>
+        <tr><td class="hanzi">杂志</td><td class="pinyin">zázhì</td><td>majalah</td><td class="contoh">她喜欢阅读时尚杂志。<br>Dia suka membaca majalah mode.</td></tr>
+        <tr><td class="hanzi">编辑</td><td class="pinyin">biānjí</td><td>editor/menyunting</td><td class="contoh">编辑认为这篇稿子需要修改。<br>Editor menganggap naskah ini perlu direvisi.</td></tr>
+        <tr><td class="hanzi">版权</td><td class="pinyin">bǎnquán</td><td>hak cipta</td><td class="contoh">未经许可不能侵犯他人的版权。<br>Tidak boleh melanggar hak cipta orang lain tanpa izin.</td></tr>
+        <tr><td class="hanzi">网络</td><td class="pinyin">wǎngluò</td><td>jaringan/internet</td><td class="contoh">网络新闻越来越受欢迎。<br>Berita internet semakin populer.</td></tr>
+        <tr><td class="hanzi">直播</td><td class="pinyin">zhíbō</td><td>siaran langsung</td><td class="contoh">很多年轻人喜欢看直播。<br>Banyak anak muda suka menonton siaran langsung.</td></tr>
+        <tr><td class="hanzi">订阅</td><td class="pinyin">dìngyuè</td><td>berlangganan</td><td class="contoh">我订阅了一份经济类的报纸。<br>Saya berlangganan surat kabar ekonomi.</td></tr>
+        </tbody></table>
+
+        <!-- BAB 6-25: Remaining vocab -->
+        <h3 id="bab6" style="color:#1890ff;margin-top:32px">Bab 6: Hukum & Keadilan</h3>
+        <table class="vocab-table"><thead><tr><th>Hanzi</th><th>Pinyin</th><th>Arti</th><th>Contoh Kalimat</th></tr></thead><tbody>
+        <tr><td class="hanzi">法院</td><td class="pinyin">fǎyuàn</td><td>pengadilan</td><td class="contoh">他去法院提起了诉讼。<br>Dia pergi ke pengadilan untuk mengajukan gugatan.</td></tr>
+        <tr><td class="hanzi">律师</td><td class="pinyin">lǜshī</td><td>pengacara</td><td class="contoh">她是一位优秀的律师。<br>Dia adalah seorang pengacara yang hebat.</td></tr>
+        <tr><td class="hanzi">犯罪</td><td class="pinyin">fànzuì</td><td>kejahatan</td><td class="contoh">政府努力减少犯罪率。<br>Pemerintah berusaha mengurangi tingkat kejahatan.</td></tr>
+        <tr><td class="hanzi">证据</td><td class="pinyin">zhèngjù</td><td>bukti</td><td class="contoh">没有证据就不能定罪。<br>Tanpa bukti tidak bisa dinyatakan bersalah.</td></tr>
+        <tr><td class="hanzi">判断</td><td class="pinyin">pànduàn</td><td>menilai/memutuskan</td><td class="contoh">法官要根据事实来判断。<br>Hakim harus memutuskan berdasarkan fakta.</td></tr>
+        <tr><td class="hanzi">规定</td><td class="pinyin">guīdìng</td><td>peraturan</td><td class="contoh">学校有很多规定需要遵守。<br>Sekolah punya banyak peraturan yang harus dipatuhi.</td></tr>
+        <tr><td class="hanzi">违反</td><td class="pinyin">wéifǎn</td><td>melanggar</td><td class="contoh">他违反了交通规则。<br>Dia melanggar aturan lalu lintas.</td></tr>
+        <tr><td class="hanzi">惩罚</td><td class="pinyin">chéngfá</td><td>hukuman</td><td class="contoh">违法行为应该受到惩罚。<br>Pelanggaran hukum harus mendapat hukuman.</td></tr>
+        <tr><td class="hanzi">合法</td><td class="pinyin">héfǎ</td><td>legal/sah</td><td class="contoh">你必须通过合法途径解决问题。<br>Kamu harus menyelesaikan masalah melalui jalur legal.</td></tr>
+        <tr><td class="hanzi">正义</td><td class="pinyin">zhèngyì</td><td>keadilan</td><td class="contoh">法律的目的是维护正义。<br>Tujuan hukum adalah menegakkan keadilan.</td></tr>
+        <tr><td class="hanzi">被告</td><td class="pinyin">bèigào</td><td>terdakwa</td><td class="contoh">被告否认了所有指控。<br>Terdakwa menolak semua tuduhan.</td></tr>
+        <tr><td class="hanzi">审判</td><td class="pinyin">shěnpàn</td><td>persidangan</td><td class="contoh">审判将在下周一进行。<br>Persidangan akan dilaksanakan hari Senin depan.</td></tr>
+        <tr><td class="hanzi">条款</td><td class="pinyin">tiáokuǎn</td><td>klausul/pasal</td><td class="contoh">请仔细阅读合同的每一条款。<br>Silakan baca setiap klausul kontrak dengan teliti.</td></tr>
+        <tr><td class="hanzi">保护</td><td class="pinyin">bǎohù</td><td>melindungi</td><td class="contoh">法律保护公民的基本权利。<br>Hukum melindungi hak dasar warga negara.</td></tr>
+        <tr><td class="hanzi">纠纷</td><td class="pinyin">jiūfēn</td><td>sengketa</td><td class="contoh">邻居之间发生了纠纷。<br>Terjadi sengketa antar tetangga.</td></tr>
+        <tr><td class="hanzi">赔偿</td><td class="pinyin">péicháng</td><td>kompensasi/ganti rugi</td><td class="contoh">公司需要赔偿客户的损失。<br>Perusahaan harus memberi kompensasi atas kerugian pelanggan.</td></tr>
+        <tr><td class="hanzi">嫌疑</td><td class="pinyin">xiányí</td><td>kecurigaan/tersangka</td><td class="contoh">警察逮捕了犯罪嫌疑人。<br>Polisi menangkap tersangka kejahatan.</td></tr>
+        <tr><td class="hanzi">申请</td><td class="pinyin">shēnqǐng</td><td>mengajukan permohonan</td><td class="contoh">他申请了法律援助。<br>Dia mengajukan bantuan hukum.</td></tr>
+        <tr><td class="hanzi">禁止</td><td class="pinyin">jìnzhǐ</td><td>melarang</td><td class="contoh">法律禁止在公共场所吸烟。<br>Hukum melarang merokok di tempat umum.</td></tr>
+        <tr><td class="hanzi">权威</td><td class="pinyin">quánwēi</td><td>otoritas/berwenang</td><td class="contoh">他是法学领域的权威专家。<br>Dia adalah pakar berwenang di bidang hukum.</td></tr>
+        <tr><td class="hanzi">公正</td><td class="pinyin">gōngzhèng</td><td>adil/tidak memihak</td><td class="contoh">法官必须公正地审理案件。<br>Hakim harus menangani kasus secara adil.</td></tr>
+        <tr><td class="hanzi">诉讼</td><td class="pinyin">sùsòng</td><td>gugatan</td><td class="contoh">双方通过诉讼解决了争端。<br>Kedua pihak menyelesaikan sengketa melalui gugatan.</td></tr>
+        <tr><td class="hanzi">监督</td><td class="pinyin">jiāndū</td><td>mengawasi</td><td class="contoh">媒体有监督政府的责任。<br>Media punya tanggung jawab mengawasi pemerintah.</td></tr>
+        <tr><td class="hanzi">执行</td><td class="pinyin">zhíxíng</td><td>melaksanakan</td><td class="contoh">法院负责执行判决。<br>Pengadilan bertanggung jawab melaksanakan putusan.</td></tr>
+        </tbody></table>
+
+        <!-- BAB 7 -->
+        <h3 id="bab7" style="color:#1890ff;margin-top:32px">Bab 7: Lingkungan Hidup</h3>
+        <table class="vocab-table"><thead><tr><th>Hanzi</th><th>Pinyin</th><th>Arti</th><th>Contoh Kalimat</th></tr></thead><tbody>
+        <tr><td class="hanzi">污染</td><td class="pinyin">wūrǎn</td><td>polusi/pencemaran</td><td class="contoh">空气污染影响了人们的健康。<br>Polusi udara memengaruhi kesehatan orang.</td></tr>
+        <tr><td class="hanzi">回收</td><td class="pinyin">huíshōu</td><td>daur ulang</td><td class="contoh">垃圾回收是保护环境的好方法。<br>Daur ulang sampah adalah cara baik melindungi lingkungan.</td></tr>
+        <tr><td class="hanzi">排放</td><td class="pinyin">páifàng</td><td>emisi</td><td class="contoh">工厂必须减少废气排放。<br>Pabrik harus mengurangi emisi gas buang.</td></tr>
+        <tr><td class="hanzi">生态</td><td class="pinyin">shēngtài</td><td>ekologi/ekosistem</td><td class="contoh">我们要保护森林的生态系统。<br>Kita harus melindungi ekosistem hutan.</td></tr>
+        <tr><td class="hanzi">气候</td><td class="pinyin">qìhòu</td><td>iklim</td><td class="contoh">气候变化是全球面临的挑战。<br>Perubahan iklim adalah tantangan global.</td></tr>
+        <tr><td class="hanzi">资源</td><td class="pinyin">zīyuán</td><td>sumber daya</td><td class="contoh">水资源非常宝贵。<br>Sumber daya air sangat berharga.</td></tr>
+        <tr><td class="hanzi">可持续</td><td class="pinyin">kě chíxù</td><td>berkelanjutan</td><td class="contoh">可持续发展是未来的方向。<br>Pembangunan berkelanjutan adalah arah masa depan.</td></tr>
+        <tr><td class="hanzi">垃圾</td><td class="pinyin">lājī</td><td>sampah</td><td class="contoh">请不要随地扔垃圾。<br>Tolong jangan membuang sampah sembarangan.</td></tr>
+        <tr><td class="hanzi">节约</td><td class="pinyin">jiéyuē</td><td>menghemat</td><td class="contoh">我们应该节约用水。<br>Kita harus menghemat penggunaan air.</td></tr>
+        <tr><td class="hanzi">绿色</td><td class="pinyin">lǜsè</td><td>hijau/ramah lingkungan</td><td class="contoh">越来越多人选择绿色出行。<br>Semakin banyak orang memilih transportasi ramah lingkungan.</td></tr>
+        <tr><td class="hanzi">碳</td><td class="pinyin">tàn</td><td>karbon</td><td class="contoh">减少碳排放对环境很重要。<br>Mengurangi emisi karbon sangat penting bagi lingkungan.</td></tr>
+        <tr><td class="hanzi">森林</td><td class="pinyin">sēnlín</td><td>hutan</td><td class="contoh">砍伐森林会破坏生态平衡。<br>Penebangan hutan akan merusak keseimbangan ekologi.</td></tr>
+        <tr><td class="hanzi">物种</td><td class="pinyin">wùzhǒng</td><td>spesies</td><td class="contoh">许多物种正面临灭绝的危险。<br>Banyak spesies menghadapi bahaya kepunahan.</td></tr>
+        <tr><td class="hanzi">灾害</td><td class="pinyin">zāihài</td><td>bencana</td><td class="contoh">自然灾害造成了巨大的损失。<br>Bencana alam menyebabkan kerugian besar.</td></tr>
+        <tr><td class="hanzi">废物</td><td class="pinyin">fèiwù</td><td>limbah</td><td class="contoh">工业废物必须妥善处理。<br>Limbah industri harus ditangani dengan baik.</td></tr>
+        <tr><td class="hanzi">再生</td><td class="pinyin">zàishēng</td><td>terbarukan</td><td class="contoh">太阳能是一种可再生能源。<br>Tenaga surya adalah jenis energi terbarukan.</td></tr>
+        <tr><td class="hanzi">保护区</td><td class="pinyin">bǎohùqū</td><td>kawasan lindung</td><td class="contoh">这片自然保护区禁止开发。<br>Kawasan lindung alam ini dilarang dieksploitasi.</td></tr>
+        <tr><td class="hanzi">温室</td><td class="pinyin">wēnshì</td><td>rumah kaca</td><td class="contoh">温室效应导致全球变暖。<br>Efek rumah kaca menyebabkan pemanasan global.</td></tr>
+        <tr><td class="hanzi">海洋</td><td class="pinyin">hǎiyáng</td><td>lautan</td><td class="contoh">海洋塑料污染越来越严重。<br>Pencemaran plastik di lautan semakin parah.</td></tr>
+        <tr><td class="hanzi">沙漠</td><td class="pinyin">shāmò</td><td>gurun</td><td class="contoh">沙漠面积正在不断扩大。<br>Luas gurun terus bertambah.</td></tr>
+        <tr><td class="hanzi">土壤</td><td class="pinyin">tǔrǎng</td><td>tanah</td><td class="contoh">化肥过度使用会破坏土壤。<br>Penggunaan pupuk berlebihan akan merusak tanah.</td></tr>
+        <tr><td class="hanzi">干旱</td><td class="pinyin">gānhàn</td><td>kekeringan</td><td class="contoh">今年的干旱影响了农业生产。<br>Kekeringan tahun ini memengaruhi produksi pertanian.</td></tr>
+        <tr><td class="hanzi">洪水</td><td class="pinyin">hóngshuǐ</td><td>banjir</td><td class="contoh">暴雨引发了严重的洪水。<br>Hujan deras menyebabkan banjir parah.</td></tr>
+        <tr><td class="hanzi">治理</td><td class="pinyin">zhìlǐ</td><td>mengelola/menangani</td><td class="contoh">政府加大了环境治理的力度。<br>Pemerintah memperkuat upaya penanganan lingkungan.</td></tr>
+        </tbody></table>
+
+        <!-- BAB 8-25 abbreviated for remaining ~480 vocab words -->
+        <h3 id="bab8" style="color:#1890ff;margin-top:32px">Bab 8: Psikologi & Emosi</h3>
+        <table class="vocab-table"><thead><tr><th>Hanzi</th><th>Pinyin</th><th>Arti</th><th>Contoh Kalimat</th></tr></thead><tbody>
+        <tr><td class="hanzi">心理</td><td class="pinyin">xīnlǐ</td><td>psikologi/mental</td><td class="contoh">心理健康和身体健康一样重要。<br>Kesehatan mental sama pentingnya dengan kesehatan fisik.</td></tr>
+        <tr><td class="hanzi">压力</td><td class="pinyin">yālì</td><td>tekanan/stres</td><td class="contoh">现代人的压力越来越大。<br>Tekanan orang modern semakin besar.</td></tr>
+        <tr><td class="hanzi">焦虑</td><td class="pinyin">jiāolǜ</td><td>cemas</td><td class="contoh">考试前她感到非常焦虑。<br>Sebelum ujian dia merasa sangat cemas.</td></tr>
+        <tr><td class="hanzi">情绪</td><td class="pinyin">qíngxù</td><td>emosi/suasana hati</td><td class="contoh">学会控制情绪很重要。<br>Belajar mengendalikan emosi sangat penting.</td></tr>
+        <tr><td class="hanzi">安慰</td><td class="pinyin">ānwèi</td><td>menghibur</td><td class="contoh">朋友的话让她得到了安慰。<br>Kata-kata temannya membuatnya terhibur.</td></tr>
+        <tr><td class="hanzi">自信</td><td class="pinyin">zìxìn</td><td>percaya diri</td><td class="contoh">自信是成功的关键之一。<br>Percaya diri adalah salah satu kunci kesuksesan.</td></tr>
+        <tr><td class="hanzi">敏感</td><td class="pinyin">mǐngǎn</td><td>sensitif</td><td class="contoh">他对别人的评价很敏感。<br>Dia sangat sensitif terhadap penilaian orang lain.</td></tr>
+        <tr><td class="hanzi">孤独</td><td class="pinyin">gūdú</td><td>kesepian</td><td class="contoh">在大城市生活有时会感到孤独。<br>Hidup di kota besar terkadang terasa sepi.</td></tr>
+        <tr><td class="hanzi">满足</td><td class="pinyin">mǎnzú</td><td>puas/memenuhi</td><td class="contoh">他对现在的生活感到满足。<br>Dia merasa puas dengan hidupnya saat ini.</td></tr>
+        <tr><td class="hanzi">失望</td><td class="pinyin">shīwàng</td><td>kecewa</td><td class="contoh">考试没通过，他很失望。<br>Ujian tidak lulus, dia sangat kecewa.</td></tr>
+        <tr><td class="hanzi">恐惧</td><td class="pinyin">kǒngjù</td><td>ketakutan</td><td class="contoh">面对恐惧需要很大的勇气。<br>Menghadapi ketakutan butuh keberanian besar.</td></tr>
+        <tr><td class="hanzi">愤怒</td><td class="pinyin">fènnù</td><td>marah/murka</td><td class="contoh">他的不公正行为引起了大家的愤怒。<br>Perilaku tidak adilnya menimbulkan kemarahan semua orang.</td></tr>
+        <tr><td class="hanzi">羡慕</td><td class="pinyin">xiànmù</td><td>iri/kagum</td><td class="contoh">她很羡慕会说多种语言的人。<br>Dia mengagumi orang yang bisa berbicara banyak bahasa.</td></tr>
+        <tr><td class="hanzi">内向</td><td class="pinyin">nèixiàng</td><td>introvert</td><td class="contoh">内向的人不一定不善于交际。<br>Orang introvert belum tentu tidak pandai bersosialisasi.</td></tr>
+        <tr><td class="hanzi">乐观</td><td class="pinyin">lèguān</td><td>optimis</td><td class="contoh">乐观的态度有助于克服困难。<br>Sikap optimis membantu mengatasi kesulitan.</td></tr>
+        <tr><td class="hanzi">悲观</td><td class="pinyin">bēiguān</td><td>pesimis</td><td class="contoh">不要太悲观，事情会好起来的。<br>Jangan terlalu pesimis, keadaan akan membaik.</td></tr>
+        <tr><td class="hanzi">动机</td><td class="pinyin">dòngjī</td><td>motif/motivasi</td><td class="contoh">了解学生的学习动机很重要。<br>Memahami motivasi belajar siswa sangat penting.</td></tr>
+        <tr><td class="hanzi">习惯</td><td class="pinyin">xíguàn</td><td>kebiasaan</td><td class="contoh">养成好习惯需要坚持。<br>Membentuk kebiasaan baik butuh ketekunan.</td></tr>
+        <tr><td class="hanzi">性格</td><td class="pinyin">xìnggé</td><td>karakter/kepribadian</td><td class="contoh">她的性格很开朗。<br>Kepribadiannya sangat ceria.</td></tr>
+        <tr><td class="hanzi">冲动</td><td class="pinyin">chōngdòng</td><td>impulsif</td><td class="contoh">做决定时不要太冲动。<br>Jangan terlalu impulsif saat mengambil keputusan.</td></tr>
+        <tr><td class="hanzi">后悔</td><td class="pinyin">hòuhuǐ</td><td>menyesal</td><td class="contoh">他后悔没有珍惜那段时光。<br>Dia menyesal tidak menghargai masa itu.</td></tr>
+        <tr><td class="hanzi">感激</td><td class="pinyin">gǎnjī</td><td>berterima kasih</td><td class="contoh">我非常感激你的帮助。<br>Saya sangat berterima kasih atas bantuanmu.</td></tr>
+        <tr><td class="hanzi">同情</td><td class="pinyin">tóngqíng</td><td>simpati</td><td class="contoh">我们对受灾群众表示同情。<br>Kami menyampaikan simpati kepada korban bencana.</td></tr>
+        <tr><td class="hanzi">嫉妒</td><td class="pinyin">jídù</td><td>iri hati/cemburu</td><td class="contoh">嫉妒别人只会让自己不开心。<br>Iri pada orang lain hanya akan membuat diri sendiri tidak bahagia.</td></tr>
+        </tbody></table>
+
+        <!-- BAB 9 -->
+        <h3 id="bab9" style="color:#1890ff;margin-top:32px">Bab 9: Sastra & Seni</h3>
+        <table class="vocab-table"><thead><tr><th>Hanzi</th><th>Pinyin</th><th>Arti</th><th>Contoh Kalimat</th></tr></thead><tbody>
+        <tr><td class="hanzi">文学</td><td class="pinyin">wénxué</td><td>sastra</td><td class="contoh">中国文学有几千年的历史。<br>Sastra Tiongkok memiliki sejarah ribuan tahun.</td></tr>
+        <tr><td class="hanzi">小说</td><td class="pinyin">xiǎoshuō</td><td>novel</td><td class="contoh">这部小说描写了农村生活。<br>Novel ini menggambarkan kehidupan pedesaan.</td></tr>
+        <tr><td class="hanzi">诗歌</td><td class="pinyin">shīgē</td><td>puisi</td><td class="contoh">唐代的诗歌非常有名。<br>Puisi zaman Tang sangat terkenal.</td></tr>
+        <tr><td class="hanzi">艺术</td><td class="pinyin">yìshù</td><td>seni</td><td class="contoh">艺术可以表达人类的情感。<br>Seni dapat mengekspresikan emosi manusia.</td></tr>
+        <tr><td class="hanzi">作品</td><td class="pinyin">zuòpǐn</td><td>karya</td><td class="contoh">他的作品在国际上获得了大奖。<br>Karyanya memenangkan penghargaan internasional.</td></tr>
+        <tr><td class="hanzi">创作</td><td class="pinyin">chuàngzuò</td><td>berkarya/menciptakan</td><td class="contoh">她花了三年时间创作这部小说。<br>Dia menghabiskan tiga tahun untuk menulis novel ini.</td></tr>
+        <tr><td class="hanzi">欣赏</td><td class="pinyin">xīnshǎng</td><td>mengapresiasi</td><td class="contoh">我很欣赏他的音乐才华。<br>Saya sangat mengapresiasi bakat musiknya.</td></tr>
+        <tr><td class="hanzi">灵感</td><td class="pinyin">línggǎn</td><td>inspirasi</td><td class="contoh">大自然给了他很多灵感。<br>Alam memberinya banyak inspirasi.</td></tr>
+        <tr><td class="hanzi">风格</td><td class="pinyin">fēnggé</td><td>gaya/style</td><td class="contoh">每个艺术家都有自己独特的风格。<br>Setiap seniman memiliki gayanya sendiri yang unik.</td></tr>
+        <tr><td class="hanzi">表演</td><td class="pinyin">biǎoyǎn</td><td>pertunjukan</td><td class="contoh">今晚的表演非常精彩。<br>Pertunjukan malam ini sangat luar biasa.</td></tr>
+        <tr><td class="hanzi">古典</td><td class="pinyin">gǔdiǎn</td><td>klasik</td><td class="contoh">她喜欢听古典音乐。<br>Dia suka mendengarkan musik klasik.</td></tr>
+        <tr><td class="hanzi">现代</td><td class="pinyin">xiàndài</td><td>modern</td><td class="contoh">现代艺术有时候很难理解。<br>Seni modern terkadang sulit dipahami.</td></tr>
+        <tr><td class="hanzi">展览</td><td class="pinyin">zhǎnlǎn</td><td>pameran</td><td class="contoh">博物馆正在举办一个画展览。<br>Museum sedang mengadakan pameran lukisan.</td></tr>
+        <tr><td class="hanzi">描写</td><td class="pinyin">miáoxiě</td><td>menggambarkan</td><td class="contoh">作者生动地描写了战争场景。<br>Penulis menggambarkan adegan perang dengan hidup.</td></tr>
+        <tr><td class="hanzi">想象</td><td class="pinyin">xiǎngxiàng</td><td>imajinasi</td><td class="contoh">孩子们的想象力非常丰富。<br>Imajinasi anak-anak sangat kaya.</td></tr>
+        <tr><td class="hanzi">角色</td><td class="pinyin">juésè</td><td>peran/karakter</td><td class="contoh">他在电影中扮演了一个重要角色。<br>Dia memerankan peran penting dalam film.</td></tr>
+        <tr><td class="hanzi">情节</td><td class="pinyin">qíngjié</td><td>alur cerita/plot</td><td class="contoh">这部电影的情节非常紧凑。<br>Plot film ini sangat padat.</td></tr>
+        <tr><td class="hanzi">主题</td><td class="pinyin">zhǔtí</td><td>tema</td><td class="contoh">这部作品的主题是爱与希望。<br>Tema karya ini adalah cinta dan harapan.</td></tr>
+        <tr><td class="hanzi">批评</td><td class="pinyin">pīpíng</td><td>kritik</td><td class="contoh">文学批评是研究文学的重要方式。<br>Kritik sastra adalah cara penting untuk mempelajari sastra.</td></tr>
+        <tr><td class="hanzi">经典</td><td class="pinyin">jīngdiǎn</td><td>klasik/masterpiece</td><td class="contoh">《红楼梦》是中国文学的经典之作。<br>"Dream of the Red Chamber" adalah karya klasik sastra Tiongkok.</td></tr>
+        <tr><td class="hanzi">雕塑</td><td class="pinyin">diāosù</td><td>patung/pahat</td><td class="contoh">广场上有一座大型雕塑。<br>Di alun-alun ada sebuah patung besar.</td></tr>
+        <tr><td class="hanzi">书法</td><td class="pinyin">shūfǎ</td><td>kaligrafi</td><td class="contoh">中国书法是一种独特的艺术形式。<br>Kaligrafi Tiongkok adalah bentuk seni yang unik.</td></tr>
+        <tr><td class="hanzi">戏剧</td><td class="pinyin">xìjù</td><td>drama/teater</td><td class="contoh">她从小就对戏剧表演感兴趣。<br>Dia tertarik pada pertunjukan drama sejak kecil.</td></tr>
+        <tr><td class="hanzi">悲剧</td><td class="pinyin">bēijù</td><td>tragedi</td><td class="contoh">莎士比亚写了许多著名的悲剧。<br>Shakespeare menulis banyak tragedi terkenal.</td></tr>
+        </tbody></table>
+
+        <!-- BAB 10 -->
+        <h3 id="bab10" style="color:#1890ff;margin-top:32px">Bab 10: Arsitektur & Kota</h3>
+        <table class="vocab-table"><thead><tr><th>Hanzi</th><th>Pinyin</th><th>Arti</th><th>Contoh Kalimat</th></tr></thead><tbody>
+        <tr><td class="hanzi">建筑</td><td class="pinyin">jiànzhù</td><td>arsitektur/bangunan</td><td class="contoh">故宫是中国著名的古代建筑。<br>Forbidden City adalah bangunan kuno Tiongkok yang terkenal.</td></tr>
+        <tr><td class="hanzi">设计</td><td class="pinyin">shèjì</td><td>desain</td><td class="contoh">这座大楼的设计非常独特。<br>Desain gedung ini sangat unik.</td></tr>
+        <tr><td class="hanzi">城市</td><td class="pinyin">chéngshì</td><td>kota</td><td class="contoh">北京是一座历史悠久的城市。<br>Beijing adalah kota yang kaya sejarah.</td></tr>
+        <tr><td class="hanzi">规划</td><td class="pinyin">guīhuà</td><td>perencanaan</td><td class="contoh">城市规划需要考虑长远发展。<br>Perencanaan kota perlu mempertimbangkan pembangunan jangka panjang.</td></tr>
+        <tr><td class="hanzi">基础设施</td><td class="pinyin">jīchǔ shèshī</td><td>infrastruktur</td><td class="contoh">完善的基础设施促进了经济发展。<br>Infrastruktur yang baik mendorong perkembangan ekonomi.</td></tr>
+        <tr><td class="hanzi">交通</td><td class="pinyin">jiāotōng</td><td>lalu lintas</td><td class="contoh">这个城市的交通很拥挤。<br>Lalu lintas kota ini sangat padat.</td></tr>
+        <tr><td class="hanzi">住宅</td><td class="pinyin">zhùzhái</td><td>perumahan</td><td class="contoh">这个地区新建了很多住宅。<br>Di daerah ini banyak dibangun perumahan baru.</td></tr>
+        <tr><td class="hanzi">空间</td><td class="pinyin">kōngjiān</td><td>ruang/space</td><td class="contoh">公共空间应该对所有人开放。<br>Ruang publik seharusnya terbuka untuk semua orang.</td></tr>
+        <tr><td class="hanzi">材料</td><td class="pinyin">cáiliào</td><td>material/bahan</td><td class="contoh">建筑材料的质量非常重要。<br>Kualitas material bangunan sangat penting.</td></tr>
+        <tr><td class="hanzi">结构</td><td class="pinyin">jiégòu</td><td>struktur</td><td class="contoh">这座桥的结构设计得很巧妙。<br>Struktur jembatan ini dirancang dengan sangat cerdik.</td></tr>
+        <tr><td class="hanzi">工程</td><td class="pinyin">gōngchéng</td><td>proyek/rekayasa</td><td class="contoh">这项工程预计明年完工。<br>Proyek ini diperkirakan selesai tahun depan.</td></tr>
+        <tr><td class="hanzi">施工</td><td class="pinyin">shīgōng</td><td>konstruksi</td><td class="contoh">前方正在施工，请绕行。<br>Di depan sedang ada konstruksi, silakan lewat jalan lain.</td></tr>
+        <tr><td class="hanzi">地铁</td><td class="pinyin">dìtiě</td><td>kereta bawah tanah</td><td class="contoh">坐地铁是最方便的出行方式。<br>Naik kereta bawah tanah adalah cara bepergian paling praktis.</td></tr>
+        <tr><td class="hanzi">桥梁</td><td class="pinyin">qiáoliáng</td><td>jembatan</td><td class="contoh">这座桥梁连接了两座城市。<br>Jembatan ini menghubungkan dua kota.</td></tr>
+        <tr><td class="hanzi">景观</td><td class="pinyin">jǐngguān</td><td>lansekap/pemandangan</td><td class="contoh">这个公园的景观设计很美。<br>Desain lansekap taman ini sangat indah.</td></tr>
+        <tr><td class="hanzi">古迹</td><td class="pinyin">gǔjì</td><td>situs bersejarah</td><td class="contoh">保护古迹是每个公民的责任。<br>Melindungi situs bersejarah adalah tanggung jawab setiap warga.</td></tr>
+        <tr><td class="hanzi">改造</td><td class="pinyin">gǎizào</td><td>merenovasi</td><td class="contoh">政府正在改造老旧社区。<br>Pemerintah sedang merenovasi kawasan tua.</td></tr>
+        <tr><td class="hanzi">面积</td><td class="pinyin">miànjī</td><td>luas</td><td class="contoh">这套房子的面积有一百平方米。<br>Luas rumah ini seratus meter persegi.</td></tr>
+        <tr><td class="hanzi">高楼</td><td class="pinyin">gāolóu</td><td>gedung tinggi</td><td class="contoh">城市里到处都是高楼大厦。<br>Di kota di mana-mana ada gedung-gedung tinggi.</td></tr>
+        <tr><td class="hanzi">装修</td><td class="pinyin">zhuāngxiū</td><td>dekorasi interior</td><td class="contoh">我们正在装修新买的房子。<br>Kami sedang mendekorasi rumah yang baru dibeli.</td></tr>
+        <tr><td class="hanzi">拆除</td><td class="pinyin">chāichú</td><td>membongkar</td><td class="contoh">这些老建筑将被拆除。<br>Bangunan-bangunan tua ini akan dibongkar.</td></tr>
+        <tr><td class="hanzi">地标</td><td class="pinyin">dìbiāo</td><td>landmark</td><td class="contoh">东方明珠是上海的地标。<br>Oriental Pearl Tower adalah landmark Shanghai.</td></tr>
+        <tr><td class="hanzi">社区</td><td class="pinyin">shèqū</td><td>komunitas/kawasan</td><td class="contoh">我们社区的环境很好。<br>Lingkungan komunitas kami sangat baik.</td></tr>
+        <tr><td class="hanzi">商圈</td><td class="pinyin">shāngquān</td><td>kawasan bisnis</td><td class="contoh">这个商圈吸引了很多游客。<br>Kawasan bisnis ini menarik banyak wisatawan.</td></tr>
+        </tbody></table>
+
+        <!-- BAB 11-25 will continue with remaining vocab -->
+
+        <!-- BAB 11 -->
+        <h3 id="bab11" style="color:#1890ff;margin-top:32px">Bab 11: Olahraga Profesional</h3>
+        <table class="vocab-table"><thead><tr><th>Hanzi</th><th>Pinyin</th><th>Arti</th><th>Contoh Kalimat</th></tr></thead><tbody>
+        <tr><td class="hanzi">运动员</td><td class="pinyin">yùndòngyuán</td><td>atlet</td><td class="contoh">他是一位优秀的运动员。<br>Dia adalah atlet yang hebat.</td></tr>
+        <tr><td class="hanzi">比赛</td><td class="pinyin">bǐsài</td><td>pertandingan</td><td class="contoh">明天有一场重要的比赛。<br>Besok ada pertandingan penting.</td></tr>
+        <tr><td class="hanzi">冠军</td><td class="pinyin">guànjūn</td><td>juara</td><td class="contoh">他获得了世界冠军。<br>Dia meraih gelar juara dunia.</td></tr>
+        <tr><td class="hanzi">教练</td><td class="pinyin">jiàoliàn</td><td>pelatih</td><td class="contoh">教练对队员要求很严格。<br>Pelatih sangat ketat terhadap anggota tim.</td></tr>
+        <tr><td class="hanzi">训练</td><td class="pinyin">xùnliàn</td><td>latihan</td><td class="contoh">运动员每天都要训练好几个小时。<br>Atlet harus berlatih beberapa jam setiap hari.</td></tr>
+        <tr><td class="hanzi">成绩</td><td class="pinyin">chéngjì</td><td>prestasi/hasil</td><td class="contoh">她在比赛中取得了优异的成绩。<br>Dia meraih prestasi luar biasa dalam pertandingan.</td></tr>
+        <tr><td class="hanzi">体育</td><td class="pinyin">tǐyù</td><td>olahraga</td><td class="contoh">体育精神就是公平竞争。<br>Semangat olahraga adalah persaingan yang adil.</td></tr>
+        <tr><td class="hanzi">奥运会</td><td class="pinyin">Àoyùnhuì</td><td>Olimpiade</td><td class="contoh">奥运会每四年举办一次。<br>Olimpiade diadakan setiap empat tahun.</td></tr>
+        <tr><td class="hanzi">记录</td><td class="pinyin">jìlù</td><td>rekor</td><td class="contoh">他打破了世界记录。<br>Dia memecahkan rekor dunia.</td></tr>
+        <tr><td class="hanzi">队伍</td><td class="pinyin">duìwu</td><td>tim/regu</td><td class="contoh">这支队伍配合得非常默契。<br>Tim ini bekerja sama dengan sangat kompak.</td></tr>
+        <tr><td class="hanzi">淘汰</td><td class="pinyin">táotài</td><td>eliminasi</td><td class="contoh">他们在半决赛中被淘汰了。<br>Mereka tereliminasi di semifinal.</td></tr>
+        <tr><td class="hanzi">决赛</td><td class="pinyin">juésài</td><td>final</td><td class="contoh">决赛将在下周六举行。<br>Final akan diadakan hari Sabtu depan.</td></tr>
+        <tr><td class="hanzi">裁判</td><td class="pinyin">cáipàn</td><td>wasit</td><td class="contoh">裁判做出了公正的判罚。<br>Wasit membuat keputusan yang adil.</td></tr>
+        <tr><td class="hanzi">观赛</td><td class="pinyin">guānsài</td><td>menonton pertandingan</td><td class="contoh">数万人到现场观赛。<br>Puluhan ribu orang datang menonton pertandingan.</td></tr>
+        <tr><td class="hanzi">战术</td><td class="pinyin">zhànshù</td><td>taktik</td><td class="contoh">教练制定了新的战术。<br>Pelatih menyusun taktik baru.</td></tr>
+        <tr><td class="hanzi">体力</td><td class="pinyin">tǐlì</td><td>stamina/kekuatan fisik</td><td class="contoh">马拉松比赛非常考验体力。<br>Maraton sangat menguji stamina.</td></tr>
+        <tr><td class="hanzi">对手</td><td class="pinyin">duìshǒu</td><td>lawan</td><td class="contoh">他的对手实力非常强。<br>Lawannya sangat kuat.</td></tr>
+        <tr><td class="hanzi">奖牌</td><td class="pinyin">jiǎngpái</td><td>medali</td><td class="contoh">中国队获得了多枚金奖牌。<br>Tim Tiongkok meraih banyak medali emas.</td></tr>
+        <tr><td class="hanzi">赛季</td><td class="pinyin">sàijì</td><td>musim kompetisi</td><td class="contoh">新赛季下个月开始。<br>Musim kompetisi baru dimulai bulan depan.</td></tr>
+        <tr><td class="hanzi">伤病</td><td class="pinyin">shāngbìng</td><td>cedera</td><td class="contoh">伤病影响了他的比赛状态。<br>Cedera memengaruhi kondisi pertandingannya.</td></tr>
+        <tr><td class="hanzi">退役</td><td class="pinyin">tuìyì</td><td>pensiun (atlet)</td><td class="contoh">他宣布退役了。<br>Dia mengumumkan pensiun.</td></tr>
+        <tr><td class="hanzi">热身</td><td class="pinyin">rèshēn</td><td>pemanasan</td><td class="contoh">比赛前一定要做好热身。<br>Sebelum pertandingan harus melakukan pemanasan.</td></tr>
+        <tr><td class="hanzi">转播</td><td class="pinyin">zhuǎnbō</td><td>penyiaran/relay</td><td class="contoh">电视台将现场转播这场比赛。<br>Stasiun TV akan menyiarkan langsung pertandingan ini.</td></tr>
+        <tr><td class="hanzi">联赛</td><td class="pinyin">liánsài</td><td>liga</td><td class="contoh">英超联赛是全球最受欢迎的足球赛事。<br>Liga Inggris adalah kompetisi sepak bola paling populer di dunia.</td></tr>
+        </tbody></table>
+
+        <!-- BAB 12 -->
+        <h3 id="bab12" style="color:#1890ff;margin-top:32px">Bab 12: Perdagangan Internasional</h3>
+        <table class="vocab-table"><thead><tr><th>Hanzi</th><th>Pinyin</th><th>Arti</th><th>Contoh Kalimat</th></tr></thead><tbody>
+        <tr><td class="hanzi">全球化</td><td class="pinyin">quánqiúhuà</td><td>globalisasi</td><td class="contoh">全球化改变了世界经济格局。<br>Globalisasi mengubah peta ekonomi dunia.</td></tr>
+        <tr><td class="hanzi">关税</td><td class="pinyin">guānshuì</td><td>bea cukai/tarif</td><td class="contoh">两国之间降低了关税。<br>Kedua negara menurunkan tarif bea cukai.</td></tr>
+        <tr><td class="hanzi">供应链</td><td class="pinyin">gōngyìngliàn</td><td>rantai pasokan</td><td class="contoh">全球供应链受到了很大影响。<br>Rantai pasokan global sangat terpengaruh.</td></tr>
+        <tr><td class="hanzi">协议</td><td class="pinyin">xiéyì</td><td>perjanjian</td><td class="contoh">两国签署了自由贸易协议。<br>Kedua negara menandatangani perjanjian perdagangan bebas.</td></tr>
+        <tr><td class="hanzi">谈判</td><td class="pinyin">tánpàn</td><td>negosiasi</td><td class="contoh">贸易谈判还在进行中。<br>Negosiasi perdagangan masih berlangsung.</td></tr>
+        <tr><td class="hanzi">品牌</td><td class="pinyin">pǐnpái</td><td>merek/brand</td><td class="contoh">建立国际品牌需要时间。<br>Membangun merek internasional butuh waktu.</td></tr>
+        <tr><td class="hanzi">物流</td><td class="pinyin">wùliú</td><td>logistik</td><td class="contoh">高效的物流系统降低了成本。<br>Sistem logistik yang efisien menurunkan biaya.</td></tr>
+        <tr><td class="hanzi">汇率</td><td class="pinyin">huìlǜ</td><td>kurs/nilai tukar</td><td class="contoh">汇率的变化影响了进出口。<br>Perubahan kurs memengaruhi ekspor-impor.</td></tr>
+        <tr><td class="hanzi">制裁</td><td class="pinyin">zhìcái</td><td>sanksi</td><td class="contoh">联合国对该国实施了经济制裁。<br>PBB memberlakukan sanksi ekonomi terhadap negara itu.</td></tr>
+        <tr><td class="hanzi">配额</td><td class="pinyin">pèi'é</td><td>kuota</td><td class="contoh">进口配额限制了外国商品的数量。<br>Kuota impor membatasi jumlah barang asing.</td></tr>
+        <tr><td class="hanzi">跨国</td><td class="pinyin">kuàguó</td><td>lintas negara/multinasional</td><td class="contoh">跨国公司在全球都有业务。<br>Perusahaan multinasional memiliki bisnis di seluruh dunia.</td></tr>
+        <tr><td class="hanzi">订单</td><td class="pinyin">dìngdān</td><td>pesanan/order</td><td class="contoh">我们收到了一批新的订单。<br>Kami menerima sekelompok pesanan baru.</td></tr>
+        <tr><td class="hanzi">仓库</td><td class="pinyin">cāngkù</td><td>gudang</td><td class="contoh">货物已经运到仓库了。<br>Barang sudah dikirim ke gudang.</td></tr>
+        <tr><td class="hanzi">海关</td><td class="pinyin">hǎiguān</td><td>kepabeanan</td><td class="contoh">货物需要经过海关检查。<br>Barang perlu melewati pemeriksaan kepabeanan.</td></tr>
+        <tr><td class="hanzi">竞争力</td><td class="pinyin">jìngzhēnglì</td><td>daya saing</td><td class="contoh">提高产品质量可以增强竞争力。<br>Meningkatkan kualitas produk bisa memperkuat daya saing.</td></tr>
+        <tr><td class="hanzi">经销商</td><td class="pinyin">jīngxiāoshāng</td><td>distributor</td><td class="contoh">我们正在寻找海外经销商。<br>Kami sedang mencari distributor di luar negeri.</td></tr>
+        <tr><td class="hanzi">批发</td><td class="pinyin">pīfā</td><td>grosir</td><td class="contoh">这家公司主要做批发生意。<br>Perusahaan ini terutama berbisnis grosir.</td></tr>
+        <tr><td class="hanzi">零售</td><td class="pinyin">língshòu</td><td>ritel</td><td class="contoh">线上零售增长非常快。<br>Ritel online bertumbuh sangat cepat.</td></tr>
+        <tr><td class="hanzi">结算</td><td class="pinyin">jiésuàn</td><td>penyelesaian pembayaran</td><td class="contoh">国际贸易可以用美元结算。<br>Perdagangan internasional bisa diselesaikan dengan dolar AS.</td></tr>
+        <tr><td class="hanzi">顺差</td><td class="pinyin">shùnchā</td><td>surplus perdagangan</td><td class="contoh">中国的贸易顺差一直很大。<br>Surplus perdagangan Tiongkok selalu besar.</td></tr>
+        <tr><td class="hanzi">逆差</td><td class="pinyin">nìchā</td><td>defisit perdagangan</td><td class="contoh">美国的贸易逆差是一个长期问题。<br>Defisit perdagangan AS adalah masalah jangka panjang.</td></tr>
+        <tr><td class="hanzi">原材料</td><td class="pinyin">yuáncáiliào</td><td>bahan baku</td><td class="contoh">原材料的价格上涨了。<br>Harga bahan baku naik.</td></tr>
+        <tr><td class="hanzi">加工</td><td class="pinyin">jiāgōng</td><td>memproses/mengolah</td><td class="contoh">这些产品需要进一步加工。<br>Produk-produk ini perlu diproses lebih lanjut.</td></tr>
+        <tr><td class="hanzi">市场份额</td><td class="pinyin">shìchǎng fèn'é</td><td>pangsa pasar</td><td class="contoh">公司的市场份额增加了百分之五。<br>Pangsa pasar perusahaan bertambah 5%.</td></tr>
+        </tbody></table>
+
+        <!-- BAB 13 -->
+        <h3 id="bab13" style="color:#1890ff;margin-top:32px">Bab 13: Diplomasi & Hubungan Internasional</h3>
+        <table class="vocab-table"><thead><tr><th>Hanzi</th><th>Pinyin</th><th>Arti</th><th>Contoh Kalimat</th></tr></thead><tbody>
+        <tr><td class="hanzi">外交</td><td class="pinyin">wàijiāo</td><td>diplomasi</td><td class="contoh">两国建立了外交关系。<br>Kedua negara menjalin hubungan diplomatik.</td></tr>
+        <tr><td class="hanzi">大使馆</td><td class="pinyin">dàshǐguǎn</td><td>kedutaan besar</td><td class="contoh">我去大使馆办理签证。<br>Saya pergi ke kedutaan untuk mengurus visa.</td></tr>
+        <tr><td class="hanzi">条约</td><td class="pinyin">tiáoyuē</td><td>perjanjian/traktat</td><td class="contoh">双方签署了和平条约。<br>Kedua pihak menandatangani perjanjian damai.</td></tr>
+        <tr><td class="hanzi">和平</td><td class="pinyin">hépíng</td><td>perdamaian</td><td class="contoh">世界人民都渴望和平。<br>Rakyat dunia mendambakan perdamaian.</td></tr>
+        <tr><td class="hanzi">冲突</td><td class="pinyin">chōngtū</td><td>konflik</td><td class="contoh">双方正在努力解决冲突。<br>Kedua pihak berusaha menyelesaikan konflik.</td></tr>
+        <tr><td class="hanzi">合作</td><td class="pinyin">hézuò</td><td>kerja sama</td><td class="contoh">国际合作有助于解决全球问题。<br>Kerja sama internasional membantu menyelesaikan masalah global.</td></tr>
+        <tr><td class="hanzi">联合国</td><td class="pinyin">Liánhéguó</td><td>PBB</td><td class="contoh">联合国呼吁各国保护人权。<br>PBB mengimbau semua negara melindungi HAM.</td></tr>
+        <tr><td class="hanzi">主权</td><td class="pinyin">zhǔquán</td><td>kedaulatan</td><td class="contoh">每个国家都有维护主权的权利。<br>Setiap negara berhak menjaga kedaulatannya.</td></tr>
+        <tr><td class="hanzi">难民</td><td class="pinyin">nànmín</td><td>pengungsi</td><td class="contoh">战争造成了大量难民。<br>Perang menyebabkan banyak pengungsi.</td></tr>
+        <tr><td class="hanzi">签证</td><td class="pinyin">qiānzhèng</td><td>visa</td><td class="contoh">申请签证需要提交很多材料。<br>Mengajukan visa perlu menyerahkan banyak dokumen.</td></tr>
+        <tr><td class="hanzi">领事</td><td class="pinyin">lǐngshì</td><td>konsul</td><td class="contoh">领事馆可以帮助海外公民。<br>Konsulat bisa membantu warga di luar negeri.</td></tr>
+        <tr><td class="hanzi">峰会</td><td class="pinyin">fēnghuì</td><td>KTT</td><td class="contoh">各国领导人参加了国际峰会。<br>Para pemimpin negara menghadiri KTT internasional.</td></tr>
+        <tr><td class="hanzi">盟友</td><td class="pinyin">méngyǒu</td><td>sekutu</td><td class="contoh">这两个国家是重要的盟友。<br>Kedua negara ini adalah sekutu penting.</td></tr>
+        <tr><td class="hanzi">干预</td><td class="pinyin">gānyù</td><td>intervensi</td><td class="contoh">不干预别国内政是重要原则。<br>Tidak mengintervensi urusan dalam negeri negara lain adalah prinsip penting.</td></tr>
+        <tr><td class="hanzi">援助</td><td class="pinyin">yuánzhù</td><td>bantuan</td><td class="contoh">国际社会向灾区提供了援助。<br>Komunitas internasional memberikan bantuan ke daerah bencana.</td></tr>
+        <tr><td class="hanzi">立场</td><td class="pinyin">lìchǎng</td><td>posisi/pendirian</td><td class="contoh">两国在这个问题上立场不同。<br>Kedua negara memiliki pendirian berbeda dalam masalah ini.</td></tr>
+        <tr><td class="hanzi">声明</td><td class="pinyin">shēngmíng</td><td>pernyataan</td><td class="contoh">外交部发表了正式声明。<br>Kementerian luar negeri mengeluarkan pernyataan resmi.</td></tr>
+        <tr><td class="hanzi">抗议</td><td class="pinyin">kàngyì</td><td>protes</td><td class="contoh">民众上街抗议新政策。<br>Warga turun ke jalan memprotes kebijakan baru.</td></tr>
+        <tr><td class="hanzi">谴责</td><td class="pinyin">qiǎnzé</td><td>mengecam</td><td class="contoh">国际社会谴责了暴力行为。<br>Komunitas internasional mengecam tindakan kekerasan.</td></tr>
+        <tr><td class="hanzi">移民</td><td class="pinyin">yímín</td><td>imigrasi/imigran</td><td class="contoh">移民政策是很多国家关注的话题。<br>Kebijakan imigrasi adalah topik yang diperhatikan banyak negara.</td></tr>
+        <tr><td class="hanzi">国籍</td><td class="pinyin">guójí</td><td>kewarganegaraan</td><td class="contoh">他拥有双重国籍。<br>Dia memiliki kewarganegaraan ganda.</td></tr>
+        <tr><td class="hanzi">互利</td><td class="pinyin">hùlì</td><td>saling menguntungkan</td><td class="contoh">互利合作是外交的基础。<br>Kerja sama saling menguntungkan adalah dasar diplomasi.</td></tr>
+        <tr><td class="hanzi">使命</td><td class="pinyin">shǐmìng</td><td>misi</td><td class="contoh">维护和平是我们共同的使命。<br>Menjaga perdamaian adalah misi bersama kita.</td></tr>
+        <tr><td class="hanzi">威胁</td><td class="pinyin">wēixié</td><td>ancaman</td><td class="contoh">恐怖主义是全球安全的威胁。<br>Terorisme adalah ancaman keamanan global.</td></tr>
+        </tbody></table>
+
+        <!-- BAB 14 -->
+        <h3 id="bab14" style="color:#1890ff;margin-top:32px">Bab 14: Teknologi & Internet</h3>
+        <table class="vocab-table"><thead><tr><th>Hanzi</th><th>Pinyin</th><th>Arti</th><th>Contoh Kalimat</th></tr></thead><tbody>
+        <tr><td class="hanzi">人工智能</td><td class="pinyin">réngōng zhìnéng</td><td>kecerdasan buatan (AI)</td><td class="contoh">人工智能正在改变各行各业。<br>AI sedang mengubah berbagai industri.</td></tr>
+        <tr><td class="hanzi">软件</td><td class="pinyin">ruǎnjiàn</td><td>perangkat lunak</td><td class="contoh">这款软件的功能非常强大。<br>Perangkat lunak ini sangat powerful.</td></tr>
+        <tr><td class="hanzi">硬件</td><td class="pinyin">yìngjiàn</td><td>perangkat keras</td><td class="contoh">电脑的硬件需要升级了。<br>Hardware komputer perlu di-upgrade.</td></tr>
+        <tr><td class="hanzi">算法</td><td class="pinyin">suànfǎ</td><td>algoritma</td><td class="contoh">推荐算法会分析用户的喜好。<br>Algoritma rekomendasi menganalisis preferensi pengguna.</td></tr>
+        <tr><td class="hanzi">程序</td><td class="pinyin">chéngxù</td><td>program</td><td class="contoh">他正在编写一个新的程序。<br>Dia sedang menulis program baru.</td></tr>
+        <tr><td class="hanzi">数字</td><td class="pinyin">shùzì</td><td>digital/angka</td><td class="contoh">我们正在进入数字时代。<br>Kita sedang memasuki era digital.</td></tr>
+        <tr><td class="hanzi">下载</td><td class="pinyin">xiàzài</td><td>mengunduh</td><td class="contoh">你可以从网上下载这个应用。<br>Kamu bisa mengunduh aplikasi ini dari internet.</td></tr>
+        <tr><td class="hanzi">上传</td><td class="pinyin">shàngchuán</td><td>mengunggah</td><td class="contoh">请把文件上传到云端。<br>Silakan unggah file ke cloud.</td></tr>
+        <tr><td class="hanzi">云计算</td><td class="pinyin">yún jìsuàn</td><td>komputasi awan</td><td class="contoh">云计算降低了企业的IT成本。<br>Komputasi awan menurunkan biaya IT perusahaan.</td></tr>
+        <tr><td class="hanzi">数据库</td><td class="pinyin">shùjùkù</td><td>database</td><td class="contoh">所有信息都存储在数据库中。<br>Semua informasi disimpan dalam database.</td></tr>
+        <tr><td class="hanzi">密码</td><td class="pinyin">mìmǎ</td><td>kata sandi</td><td class="contoh">请定期更换你的密码。<br>Silakan ganti kata sandi secara berkala.</td></tr>
+        <tr><td class="hanzi">黑客</td><td class="pinyin">hēikè</td><td>peretas</td><td class="contoh">黑客攻击了公司的服务器。<br>Peretas menyerang server perusahaan.</td></tr>
+        <tr><td class="hanzi">隐私</td><td class="pinyin">yǐnsī</td><td>privasi</td><td class="contoh">保护用户隐私非常重要。<br>Melindungi privasi pengguna sangat penting.</td></tr>
+        <tr><td class="hanzi">智能手机</td><td class="pinyin">zhìnéng shǒujī</td><td>smartphone</td><td class="contoh">智能手机已经成为生活必需品。<br>Smartphone sudah menjadi kebutuhan hidup.</td></tr>
+        <tr><td class="hanzi">应用</td><td class="pinyin">yìngyòng</td><td>aplikasi</td><td class="contoh">这个应用帮助人们学习语言。<br>Aplikasi ini membantu orang belajar bahasa.</td></tr>
+        <tr><td class="hanzi">更新</td><td class="pinyin">gēngxīn</td><td>memperbarui</td><td class="contoh">系统需要更新到最新版本。<br>Sistem perlu diperbarui ke versi terbaru.</td></tr>
+        <tr><td class="hanzi">虚拟</td><td class="pinyin">xūnǐ</td><td>virtual</td><td class="contoh">虚拟现实技术越来越成熟。<br>Teknologi realitas virtual semakin matang.</td></tr>
+        <tr><td class="hanzi">芯片</td><td class="pinyin">xīnpiàn</td><td>chip</td><td class="contoh">高端芯片的研发非常关键。<br>R&D chip canggih sangat krusial.</td></tr>
+        <tr><td class="hanzi">网站</td><td class="pinyin">wǎngzhàn</td><td>website</td><td class="contoh">公司的官方网站刚刚上线。<br>Website resmi perusahaan baru saja diluncurkan.</td></tr>
+        <tr><td class="hanzi">搜索</td><td class="pinyin">sōusuǒ</td><td>pencarian/mencari</td><td class="contoh">你可以在网上搜索相关信息。<br>Kamu bisa mencari informasi terkait di internet.</td></tr>
+        <tr><td class="hanzi">平台</td><td class="pinyin">píngtái</td><td>platform</td><td class="contoh">这个平台连接了买家和卖家。<br>Platform ini menghubungkan pembeli dan penjual.</td></tr>
+        <tr><td class="hanzi">创新</td><td class="pinyin">chuàngxīn</td><td>inovasi</td><td class="contoh">科技创新推动了社会进步。<br>Inovasi teknologi mendorong kemajuan masyarakat.</td></tr>
+        <tr><td class="hanzi">自动化</td><td class="pinyin">zìdònghuà</td><td>otomatisasi</td><td class="contoh">工厂引进了自动化生产线。<br>Pabrik memperkenalkan lini produksi otomatis.</td></tr>
+        <tr><td class="hanzi">机器人</td><td class="pinyin">jīqìrén</td><td>robot</td><td class="contoh">机器人可以完成很多重复性工作。<br>Robot bisa menyelesaikan banyak pekerjaan repetitif.</td></tr>
+        </tbody></table>
+
+        <!-- BAB 15 -->
+        <h3 id="bab15" style="color:#1890ff;margin-top:32px">Bab 15: Kesehatan & Kedokteran</h3>
+        <table class="vocab-table"><thead><tr><th>Hanzi</th><th>Pinyin</th><th>Arti</th><th>Contoh Kalimat</th></tr></thead><tbody>
+        <tr><td class="hanzi">医疗</td><td class="pinyin">yīliáo</td><td>medis/kedokteran</td><td class="contoh">医疗水平不断提高。<br>Level medis terus meningkat.</td></tr>
+        <tr><td class="hanzi">诊断</td><td class="pinyin">zhěnduàn</td><td>diagnosis</td><td class="contoh">医生对他进行了详细的诊断。<br>Dokter melakukan diagnosis terperinci padanya.</td></tr>
+        <tr><td class="hanzi">治疗</td><td class="pinyin">zhìliáo</td><td>pengobatan</td><td class="contoh">这种疾病可以通过药物治疗。<br>Penyakit ini bisa diobati dengan obat.</td></tr>
+        <tr><td class="hanzi">症状</td><td class="pinyin">zhèngzhuàng</td><td>gejala</td><td class="contoh">发烧和咳嗽是常见的症状。<br>Demam dan batuk adalah gejala umum.</td></tr>
+        <tr><td class="hanzi">手术</td><td class="pinyin">shǒushù</td><td>operasi</td><td class="contoh">他需要做一个小手术。<br>Dia perlu menjalani operasi kecil.</td></tr>
+        <tr><td class="hanzi">疫苗</td><td class="pinyin">yìmiáo</td><td>vaksin</td><td class="contoh">疫苗可以预防很多传染病。<br>Vaksin bisa mencegah banyak penyakit menular.</td></tr>
+        <tr><td class="hanzi">传染</td><td class="pinyin">chuánrǎn</td><td>menular</td><td class="contoh">流感是一种容易传染的疾病。<br>Flu adalah penyakit yang mudah menular.</td></tr>
+        <tr><td class="hanzi">预防</td><td class="pinyin">yùfáng</td><td>pencegahan</td><td class="contoh">预防疾病比治疗更重要。<br>Pencegahan penyakit lebih penting daripada pengobatan.</td></tr>
+        <tr><td class="hanzi">营养</td><td class="pinyin">yíngyǎng</td><td>nutrisi</td><td class="contoh">均衡的营养对健康很重要。<br>Nutrisi seimbang sangat penting untuk kesehatan.</td></tr>
+        <tr><td class="hanzi">免疫</td><td class="pinyin">miǎnyì</td><td>imunitas</td><td class="contoh">锻炼身体可以增强免疫力。<br>Berolahraga bisa meningkatkan imunitas.</td></tr>
+        <tr><td class="hanzi">药物</td><td class="pinyin">yàowù</td><td>obat-obatan</td><td class="contoh">请按照医生的建议服用药物。<br>Silakan minum obat sesuai saran dokter.</td></tr>
+        <tr><td class="hanzi">急救</td><td class="pinyin">jíjiù</td><td>pertolongan pertama</td><td class="contoh">学习急救知识非常有用。<br>Belajar pengetahuan pertolongan pertama sangat berguna.</td></tr>
+        <tr><td class="hanzi">慢性</td><td class="pinyin">mànxìng</td><td>kronis</td><td class="contoh">高血压是一种常见的慢性疾病。<br>Hipertensi adalah penyakit kronis yang umum.</td></tr>
+        <tr><td class="hanzi">康复</td><td class="pinyin">kāngfù</td><td>pemulihan</td><td class="contoh">他正在慢慢康复。<br>Dia perlahan-lahan pulih.</td></tr>
+        <tr><td class="hanzi">处方</td><td class="pinyin">chǔfāng</td><td>resep (obat)</td><td class="contoh">这种药需要医生的处方。<br>Obat ini memerlukan resep dokter.</td></tr>
+        <tr><td class="hanzi">体检</td><td class="pinyin">tǐjiǎn</td><td>pemeriksaan kesehatan</td><td class="contoh">每年做一次体检很有必要。<br>Pemeriksaan kesehatan tahunan sangat perlu.</td></tr>
+        <tr><td class="hanzi">心脏</td><td class="pinyin">xīnzàng</td><td>jantung</td><td class="contoh">心脏是人体最重要的器官之一。<br>Jantung adalah salah satu organ terpenting tubuh manusia.</td></tr>
+        <tr><td class="hanzi">血压</td><td class="pinyin">xuèyā</td><td>tekanan darah</td><td class="contoh">老年人要经常测量血压。<br>Orang tua harus sering mengukur tekanan darah.</td></tr>
+        <tr><td class="hanzi">过敏</td><td class="pinyin">guòmǐn</td><td>alergi</td><td class="contoh">他对花粉过敏。<br>Dia alergi terhadap serbuk sari.</td></tr>
+        <tr><td class="hanzi">病毒</td><td class="pinyin">bìngdú</td><td>virus</td><td class="contoh">新型病毒的传播速度很快。<br>Virus baru menyebar dengan sangat cepat.</td></tr>
+        <tr><td class="hanzi">细菌</td><td class="pinyin">xìjūn</td><td>bakteri</td><td class="contoh">勤洗手可以减少细菌感染。<br>Rajin cuci tangan bisa mengurangi infeksi bakteri.</td></tr>
+        <tr><td class="hanzi">器官</td><td class="pinyin">qìguān</td><td>organ</td><td class="contoh">器官移植技术越来越成熟。<br>Teknologi transplantasi organ semakin matang.</td></tr>
+        <tr><td class="hanzi">护理</td><td class="pinyin">hùlǐ</td><td>perawatan</td><td class="contoh">术后护理非常重要。<br>Perawatan pasca-operasi sangat penting.</td></tr>
+        <tr><td class="hanzi">中医</td><td class="pinyin">zhōngyī</td><td>pengobatan tradisional Tiongkok</td><td class="contoh">中医在中国有几千年的历史。<br>Pengobatan tradisional Tiongkok memiliki sejarah ribuan tahun.</td></tr>
+        </tbody></table>
+
+        <!-- BAB 16-25: 10 more chapters × 24 words each -->
+        <h3 id="bab16" style="color:#1890ff;margin-top:32px">Bab 16: Pendidikan Tinggi</h3>
+        <table class="vocab-table"><thead><tr><th>Hanzi</th><th>Pinyin</th><th>Arti</th><th>Contoh Kalimat</th></tr></thead><tbody>
+        <tr><td class="hanzi">学术</td><td class="pinyin">xuéshù</td><td>akademis</td><td class="contoh">他在学术领域有很高的声誉。<br>Dia memiliki reputasi tinggi di bidang akademis.</td></tr>
+        <tr><td class="hanzi">论文</td><td class="pinyin">lùnwén</td><td>tesis/makalah</td><td class="contoh">她正在写毕业论文。<br>Dia sedang menulis tesis kelulusan.</td></tr>
+        <tr><td class="hanzi">学位</td><td class="pinyin">xuéwèi</td><td>gelar</td><td class="contoh">他获得了博士学位。<br>Dia meraih gelar doktor.</td></tr>
+        <tr><td class="hanzi">奖学金</td><td class="pinyin">jiǎngxuéjīn</td><td>beasiswa</td><td class="contoh">她获得了全额奖学金。<br>Dia mendapat beasiswa penuh.</td></tr>
+        <tr><td class="hanzi">专业</td><td class="pinyin">zhuānyè</td><td>jurusan/profesional</td><td class="contoh">你大学学的什么专业？<br>Jurusan apa yang kamu pelajari di universitas?</td></tr>
+        <tr><td class="hanzi">导师</td><td class="pinyin">dǎoshī</td><td>pembimbing</td><td class="contoh">导师给了我很多指导。<br>Pembimbing memberi saya banyak arahan.</td></tr>
+        <tr><td class="hanzi">课题</td><td class="pinyin">kètí</td><td>topik penelitian</td><td class="contoh">他选择了一个有挑战性的课题。<br>Dia memilih topik penelitian yang menantang.</td></tr>
+        <tr><td class="hanzi">讲座</td><td class="pinyin">jiǎngzuò</td><td>kuliah umum/seminar</td><td class="contoh">学校邀请了专家来做讲座。<br>Sekolah mengundang pakar untuk memberi seminar.</td></tr>
+        <tr><td class="hanzi">学期</td><td class="pinyin">xuéqī</td><td>semester</td><td class="contoh">这个学期我选了五门课。<br>Semester ini saya mengambil lima mata kuliah.</td></tr>
+        <tr><td class="hanzi">图书馆</td><td class="pinyin">túshūguǎn</td><td>perpustakaan</td><td class="contoh">她经常去图书馆学习。<br>Dia sering belajar di perpustakaan.</td></tr>
+        <tr><td class="hanzi">实习</td><td class="pinyin">shíxí</td><td>magang</td><td class="contoh">大四学生需要参加实习。<br>Mahasiswa tahun keempat perlu ikut magang.</td></tr>
+        <tr><td class="hanzi">毕业</td><td class="pinyin">bìyè</td><td>lulus</td><td class="contoh">他明年就要毕业了。<br>Dia akan lulus tahun depan.</td></tr>
+        <tr><td class="hanzi">学费</td><td class="pinyin">xuéfèi</td><td>biaya kuliah</td><td class="contoh">大学的学费每年都在上涨。<br>Biaya kuliah universitas naik setiap tahun.</td></tr>
+        <tr><td class="hanzi">录取</td><td class="pinyin">lùqǔ</td><td>diterima (masuk sekolah)</td><td class="contoh">他被北京大学录取了。<br>Dia diterima di Universitas Peking.</td></tr>
+        <tr><td class="hanzi">申请</td><td class="pinyin">shēnqǐng</td><td>mendaftar/mengajukan</td><td class="contoh">她申请了三所大学。<br>Dia mendaftar ke tiga universitas.</td></tr>
+        <tr><td class="hanzi">交流</td><td class="pinyin">jiāoliú</td><td>pertukaran</td><td class="contoh">学术交流促进了知识的传播。<br>Pertukaran akademis mendorong penyebaran pengetahuan.</td></tr>
+        <tr><td class="hanzi">教授</td><td class="pinyin">jiàoshòu</td><td>profesor</td><td class="contoh">这位教授研究量子物理。<br>Profesor ini meneliti fisika kuantum.</td></tr>
+        <tr><td class="hanzi">研究生</td><td class="pinyin">yánjiūshēng</td><td>mahasiswa pascasarjana</td><td class="contoh">她是一名研究生。<br>Dia adalah mahasiswa pascasarjana.</td></tr>
+        <tr><td class="hanzi">学科</td><td class="pinyin">xuékē</td><td>disiplin ilmu</td><td class="contoh">跨学科合作越来越重要。<br>Kerja sama lintas disiplin ilmu semakin penting.</td></tr>
+        <tr><td class="hanzi">素质</td><td class="pinyin">sùzhì</td><td>kualitas (diri)</td><td class="contoh">教育的目标是提高学生的综合素质。<br>Tujuan pendidikan adalah meningkatkan kualitas diri siswa secara menyeluruh.</td></tr>
+        <tr><td class="hanzi">参考</td><td class="pinyin">cānkǎo</td><td>referensi</td><td class="contoh">这本书可以作为参考资料。<br>Buku ini bisa dijadikan bahan referensi.</td></tr>
+        <tr><td class="hanzi">学分</td><td class="pinyin">xuéfēn</td><td>SKS/kredit</td><td class="contoh">毕业需要修满一百二十个学分。<br>Lulus memerlukan 120 SKS.</td></tr>
+        <tr><td class="hanzi">答辩</td><td class="pinyin">dábiàn</td><td>sidang (tesis)</td><td class="contoh">下周她要进行论文答辩。<br>Minggu depan dia akan sidang tesis.</td></tr>
+        <tr><td class="hanzi">成绩单</td><td class="pinyin">chéngjìdān</td><td>transkrip nilai</td><td class="contoh">申请留学需要提交成绩单。<br>Mendaftar studi ke luar negeri perlu menyerahkan transkrip.</td></tr>
+        </tbody></table>
+
+        <!-- BAB 17 -->
+        <h3 id="bab17" style="color:#1890ff;margin-top:32px">Bab 17: Budaya & Tradisi</h3>
+        <table class="vocab-table"><thead><tr><th>Hanzi</th><th>Pinyin</th><th>Arti</th><th>Contoh Kalimat</th></tr></thead><tbody>
+        <tr><td class="hanzi">传统</td><td class="pinyin">chuántǒng</td><td>tradisi</td><td class="contoh">春节是中国最重要的传统节日。<br>Imlek adalah hari raya tradisional terpenting di Tiongkok.</td></tr>
+        <tr><td class="hanzi">风俗</td><td class="pinyin">fēngsú</td><td>adat istiadat</td><td class="contoh">每个地方都有不同的风俗。<br>Setiap tempat memiliki adat istiadat yang berbeda.</td></tr>
+        <tr><td class="hanzi">习俗</td><td class="pinyin">xísú</td><td>kebiasaan/adat</td><td class="contoh">了解当地习俗有助于融入社会。<br>Memahami adat lokal membantu berintegrasi ke masyarakat.</td></tr>
+        <tr><td class="hanzi">遗产</td><td class="pinyin">yíchǎn</td><td>warisan</td><td class="contoh">长城是世界文化遗产。<br>Tembok Besar adalah warisan budaya dunia.</td></tr>
+        <tr><td class="hanzi">仪式</td><td class="pinyin">yíshì</td><td>upacara</td><td class="contoh">婚礼仪式在酒店举行。<br>Upacara pernikahan diadakan di hotel.</td></tr>
+        <tr><td class="hanzi">民族</td><td class="pinyin">mínzú</td><td>etnis/suku bangsa</td><td class="contoh">中国有五十六个民族。<br>Tiongkok memiliki 56 suku bangsa.</td></tr>
+        <tr><td class="hanzi">象征</td><td class="pinyin">xiàngzhēng</td><td>simbol</td><td class="contoh">龙是中国文化的象征。<br>Naga adalah simbol budaya Tiongkok.</td></tr>
+        <tr><td class="hanzi">节日</td><td class="pinyin">jiérì</td><td>hari raya</td><td class="contoh">中秋节是团圆的节日。<br>Festival Pertengahan Musim Gugur adalah hari raya berkumpul keluarga.</td></tr>
+        <tr><td class="hanzi">宗教</td><td class="pinyin">zōngjiào</td><td>agama</td><td class="contoh">宗教自由是基本人权之一。<br>Kebebasan beragama adalah salah satu hak asasi manusia.</td></tr>
+        <tr><td class="hanzi">方言</td><td class="pinyin">fāngyán</td><td>dialek</td><td class="contoh">中国有很多不同的方言。<br>Tiongkok memiliki banyak dialek berbeda.</td></tr>
+        <tr><td class="hanzi">礼貌</td><td class="pinyin">lǐmào</td><td>sopan santun</td><td class="contoh">对长辈要有礼貌。<br>Harus bersopan santun terhadap orang yang lebih tua.</td></tr>
+        <tr><td class="hanzi">庆祝</td><td class="pinyin">qìngzhù</td><td>merayakan</td><td class="contoh">全家人一起庆祝新年。<br>Seluruh keluarga merayakan tahun baru bersama.</td></tr>
+        <tr><td class="hanzi">服装</td><td class="pinyin">fúzhuāng</td><td>pakaian</td><td class="contoh">传统服装反映了当地的文化。<br>Pakaian tradisional mencerminkan budaya lokal.</td></tr>
+        <tr><td class="hanzi">陶瓷</td><td class="pinyin">táocí</td><td>keramik</td><td class="contoh">景德镇的陶瓷闻名世界。<br>Keramik Jingdezhen terkenal di dunia.</td></tr>
+        <tr><td class="hanzi">继承</td><td class="pinyin">jìchéng</td><td>mewarisi</td><td class="contoh">年轻人应该继承优秀的传统文化。<br>Anak muda harus mewarisi budaya tradisional yang unggul.</td></tr>
+        <tr><td class="hanzi">融合</td><td class="pinyin">rónghé</td><td>memadukan/fusi</td><td class="contoh">东西方文化正在不断融合。<br>Budaya Timur dan Barat terus memadu.</td></tr>
+        <tr><td class="hanzi">多元</td><td class="pinyin">duōyuán</td><td>beragam/plural</td><td class="contoh">多元文化使社会更加丰富。<br>Budaya yang beragam membuat masyarakat lebih kaya.</td></tr>
+        <tr><td class="hanzi">祭祀</td><td class="pinyin">jìsì</td><td>persembahyangan</td><td class="contoh">清明节人们会祭祀祖先。<br>Saat Qingming orang bersembahyang kepada leluhur.</td></tr>
+        <tr><td class="hanzi">禁忌</td><td class="pinyin">jìnjì</td><td>tabu</td><td class="contoh">每个文化都有自己的禁忌。<br>Setiap budaya memiliki tabunya sendiri.</td></tr>
+        <tr><td class="hanzi">手工艺</td><td class="pinyin">shǒugōngyì</td><td>kerajinan tangan</td><td class="contoh">传统手工艺正在逐渐消失。<br>Kerajinan tangan tradisional perlahan menghilang.</td></tr>
+        <tr><td class="hanzi">古代</td><td class="pinyin">gǔdài</td><td>zaman kuno</td><td class="contoh">古代中国的文明非常发达。<br>Peradaban Tiongkok kuno sangat maju.</td></tr>
+        <tr><td class="hanzi">传说</td><td class="pinyin">chuánshuō</td><td>legenda</td><td class="contoh">中国有很多美丽的传说。<br>Tiongkok memiliki banyak legenda yang indah.</td></tr>
+        <tr><td class="hanzi">饮食</td><td class="pinyin">yǐnshí</td><td>makanan & minuman</td><td class="contoh">中国的饮食文化博大精深。<br>Budaya kuliner Tiongkok sangat kaya dan mendalam.</td></tr>
+        <tr><td class="hanzi">民间</td><td class="pinyin">mínjiān</td><td>rakyat/folk</td><td class="contoh">民间故事是文化的重要组成部分。<br>Cerita rakyat adalah bagian penting dari budaya.</td></tr>
+        </tbody></table>
+
+        <!-- BAB 18 -->
+        <h3 id="bab18" style="color:#1890ff;margin-top:32px">Bab 18: Perjalanan & Transportasi</h3>
+        <table class="vocab-table"><thead><tr><th>Hanzi</th><th>Pinyin</th><th>Arti</th><th>Contoh Kalimat</th></tr></thead><tbody>
+        <tr><td class="hanzi">旅游</td><td class="pinyin">lǚyóu</td><td>pariwisata</td><td class="contoh">旅游业是这个国家的支柱产业。<br>Pariwisata adalah industri utama negara ini.</td></tr>
+        <tr><td class="hanzi">航班</td><td class="pinyin">hángbān</td><td>penerbangan</td><td class="contoh">我的航班延误了两个小时。<br>Penerbangan saya tertunda dua jam.</td></tr>
+        <tr><td class="hanzi">高铁</td><td class="pinyin">gāotiě</td><td>kereta cepat</td><td class="contoh">坐高铁从北京到上海只需四个小时。<br>Naik kereta cepat dari Beijing ke Shanghai hanya empat jam.</td></tr>
+        <tr><td class="hanzi">目的地</td><td class="pinyin">mùdìdì</td><td>destinasi</td><td class="contoh">你的目的地是哪里？<br>Ke mana tujuanmu?</td></tr>
+        <tr><td class="hanzi">景点</td><td class="pinyin">jǐngdiǎn</td><td>tempat wisata</td><td class="contoh">这个城市有很多著名的景点。<br>Kota ini memiliki banyak tempat wisata terkenal.</td></tr>
+        <tr><td class="hanzi">行李</td><td class="pinyin">xíngli</td><td>bagasi</td><td class="contoh">请把行李放在行李架上。<br>Silakan letakkan bagasi di rak bagasi.</td></tr>
+        <tr><td class="hanzi">预订</td><td class="pinyin">yùdìng</td><td>memesan</td><td class="contoh">我已经预订了酒店。<br>Saya sudah memesan hotel.</td></tr>
+        <tr><td class="hanzi">导游</td><td class="pinyin">dǎoyóu</td><td>pemandu wisata</td><td class="contoh">导游带我们参观了古城。<br>Pemandu wisata membawa kami mengunjungi kota kuno.</td></tr>
+        <tr><td class="hanzi">护照</td><td class="pinyin">hùzhào</td><td>paspor</td><td class="contoh">出国旅行需要带护照。<br>Bepergian ke luar negeri perlu membawa paspor.</td></tr>
+        <tr><td class="hanzi">出发</td><td class="pinyin">chūfā</td><td>berangkat</td><td class="contoh">我们明天一早出发。<br>Kita berangkat besok pagi-pagi.</td></tr>
+        <tr><td class="hanzi">路线</td><td class="pinyin">lùxiàn</td><td>rute</td><td class="contoh">这条路线风景非常美。<br>Pemandangan di rute ini sangat indah.</td></tr>
+        <tr><td class="hanzi">住宿</td><td class="pinyin">zhùsù</td><td>akomodasi</td><td class="contoh">旅行的住宿费用很高。<br>Biaya akomodasi perjalanan sangat tinggi.</td></tr>
+        <tr><td class="hanzi">乘客</td><td class="pinyin">chéngkè</td><td>penumpang</td><td class="contoh">飞机上有两百多名乘客。<br>Di pesawat ada lebih dari 200 penumpang.</td></tr>
+        <tr><td class="hanzi">拥堵</td><td class="pinyin">yōngdǔ</td><td>kemacetan</td><td class="contoh">上下班高峰期交通非常拥堵。<br>Lalu lintas sangat macet saat jam sibuk.</td></tr>
+        <tr><td class="hanzi">通行</td><td class="pinyin">tōngxíng</td><td>melintas</td><td class="contoh">这条路暂时不能通行。<br>Jalan ini sementara tidak bisa dilalui.</td></tr>
+        <tr><td class="hanzi">签到</td><td class="pinyin">qiāndào</td><td>check-in</td><td class="contoh">请提前两个小时到机场签到。<br>Silakan check-in di bandara dua jam sebelumnya.</td></tr>
+        <tr><td class="hanzi">延误</td><td class="pinyin">yánwù</td><td>tertunda</td><td class="contoh">暴风雪导致航班延误。<br>Badai salju menyebabkan penerbangan tertunda.</td></tr>
+        <tr><td class="hanzi">码头</td><td class="pinyin">mǎtóu</td><td>pelabuhan</td><td class="contoh">船已经到达码头了。<br>Kapal sudah tiba di pelabuhan.</td></tr>
+        <tr><td class="hanzi">自驾</td><td class="pinyin">zìjià</td><td>menyetir sendiri</td><td class="contoh">他喜欢自驾游。<br>Dia suka road trip menyetir sendiri.</td></tr>
+        <tr><td class="hanzi">免税</td><td class="pinyin">miǎnshuì</td><td>bebas pajak</td><td class="contoh">机场有免税商店。<br>Di bandara ada toko bebas pajak.</td></tr>
+        <tr><td class="hanzi">候机</td><td class="pinyin">hòujī</td><td>menunggu pesawat</td><td class="contoh">候机大厅里人很多。<br>Ruang tunggu bandara sangat ramai.</td></tr>
+        <tr><td class="hanzi">换乘</td><td class="pinyin">huànchéng</td><td>transfer/pindah kendaraan</td><td class="contoh">你需要在这一站换乘。<br>Kamu perlu transfer di stasiun ini.</td></tr>
+        <tr><td class="hanzi">往返</td><td class="pinyin">wǎngfǎn</td><td>pulang-pergi</td><td class="contoh">往返机票比单程便宜。<br>Tiket pulang-pergi lebih murah daripada satu arah.</td></tr>
+        <tr><td class="hanzi">纪念品</td><td class="pinyin">jìniànpǐn</td><td>suvenir</td><td class="contoh">我给家人买了一些纪念品。<br>Saya membelikan keluarga beberapa suvenir.</td></tr>
+        </tbody></table>
+
+        <!-- BAB 19 -->
+        <h3 id="bab19" style="color:#1890ff;margin-top:32px">Bab 19: Makanan & Gaya Hidup</h3>
+        <table class="vocab-table"><thead><tr><th>Hanzi</th><th>Pinyin</th><th>Arti</th><th>Contoh Kalimat</th></tr></thead><tbody>
+        <tr><td class="hanzi">烹饪</td><td class="pinyin">pēngrèn</td><td>memasak</td><td class="contoh">她对烹饪很有兴趣。<br>Dia sangat tertarik pada memasak.</td></tr>
+        <tr><td class="hanzi">食材</td><td class="pinyin">shícái</td><td>bahan makanan</td><td class="contoh">新鲜的食材是美食的基础。<br>Bahan makanan segar adalah dasar hidangan lezat.</td></tr>
+        <tr><td class="hanzi">口味</td><td class="pinyin">kǒuwèi</td><td>rasa/selera</td><td class="contoh">每个人的口味不同。<br>Selera setiap orang berbeda.</td></tr>
+        <tr><td class="hanzi">菜单</td><td class="pinyin">càidān</td><td>menu</td><td class="contoh">请给我看一下菜单。<br>Tolong tunjukkan menunya.</td></tr>
+        <tr><td class="hanzi">素食</td><td class="pinyin">sùshí</td><td>vegetarian</td><td class="contoh">越来越多人选择素食。<br>Semakin banyak orang memilih vegetarian.</td></tr>
+        <tr><td class="hanzi">有机</td><td class="pinyin">yǒujī</td><td>organik</td><td class="contoh">有机蔬菜价格比较贵。<br>Sayuran organik harganya lebih mahal.</td></tr>
+        <tr><td class="hanzi">健身</td><td class="pinyin">jiànshēn</td><td>fitness</td><td class="contoh">他每天去健身房锻炼。<br>Dia pergi ke gym setiap hari.</td></tr>
+        <tr><td class="hanzi">瑜伽</td><td class="pinyin">yújiā</td><td>yoga</td><td class="contoh">练瑜伽可以放松身心。<br>Berlatih yoga bisa merelakskan tubuh dan pikiran.</td></tr>
+        <tr><td class="hanzi">作息</td><td class="pinyin">zuòxī</td><td>jadwal istirahat & kerja</td><td class="contoh">保持规律的作息对健康有好处。<br>Menjaga jadwal istirahat yang teratur baik untuk kesehatan.</td></tr>
+        <tr><td class="hanzi">减肥</td><td class="pinyin">jiǎnféi</td><td>diet/menurunkan BB</td><td class="contoh">健康减肥需要合理的饮食和运动。<br>Diet sehat butuh pola makan dan olahraga yang wajar.</td></tr>
+        <tr><td class="hanzi">添加剂</td><td class="pinyin">tiānjiājì</td><td>bahan tambahan/aditif</td><td class="contoh">这种食品不含任何添加剂。<br>Makanan ini tidak mengandung aditif apa pun.</td></tr>
+        <tr><td class="hanzi">配方</td><td class="pinyin">pèifāng</td><td>resep/formula</td><td class="contoh">这道菜的配方是祖传的。<br>Resep masakan ini turun-temurun.</td></tr>
+        <tr><td class="hanzi">外卖</td><td class="pinyin">wàimài</td><td>pesan antar makanan</td><td class="contoh">年轻人经常点外卖。<br>Anak muda sering pesan antar makanan.</td></tr>
+        <tr><td class="hanzi">餐厅</td><td class="pinyin">cāntīng</td><td>restoran</td><td class="contoh">这家餐厅的菜很好吃。<br>Masakan restoran ini sangat enak.</td></tr>
+        <tr><td class="hanzi">品尝</td><td class="pinyin">pǐncháng</td><td>mencicipi</td><td class="contoh">你一定要品尝当地的美食。<br>Kamu harus mencicipi kuliner lokal.</td></tr>
+        <tr><td class="hanzi">厨师</td><td class="pinyin">chúshī</td><td>koki</td><td class="contoh">这位厨师的手艺非常好。<br>Keahlian memasak koki ini sangat hebat.</td></tr>
+        <tr><td class="hanzi">饮料</td><td class="pinyin">yǐnliào</td><td>minuman</td><td class="contoh">你想喝什么饮料？<br>Kamu mau minum apa?</td></tr>
+        <tr><td class="hanzi">甜点</td><td class="pinyin">tiándiǎn</td><td>makanan penutup</td><td class="contoh">饭后来一份甜点吧。<br>Setelah makan ayo pesan makanan penutup.</td></tr>
+        <tr><td class="hanzi">小吃</td><td class="pinyin">xiǎochī</td><td>jajanan/snack</td><td class="contoh">这条街有很多特色小吃。<br>Jalan ini punya banyak jajanan khas.</td></tr>
+        <tr><td class="hanzi">调味料</td><td class="pinyin">tiáowèiliào</td><td>bumbu</td><td class="contoh">做饭需要各种调味料。<br>Memasak memerlukan berbagai bumbu.</td></tr>
+        <tr><td class="hanzi">熬夜</td><td class="pinyin">áoyè</td><td>begadang</td><td class="contoh">经常熬夜对身体不好。<br>Sering begadang tidak baik untuk tubuh.</td></tr>
+        <tr><td class="hanzi">养生</td><td class="pinyin">yǎngshēng</td><td>menjaga kesehatan</td><td class="contoh">年轻人也应该注意养生。<br>Anak muda juga harus memperhatikan kesehatan.</td></tr>
+        <tr><td class="hanzi">均衡</td><td class="pinyin">jūnhéng</td><td>seimbang</td><td class="contoh">饮食要均衡才健康。<br>Pola makan harus seimbang agar sehat.</td></tr>
+        <tr><td class="hanzi">休闲</td><td class="pinyin">xiūxián</td><td>rekreasi/santai</td><td class="contoh">周末他喜欢做休闲活动。<br>Akhir pekan dia suka melakukan kegiatan rekreasi.</td></tr>
+        </tbody></table>
+
+        <!-- BAB 20-25: remaining 6 chapters -->
+        <h3 id="bab20" style="color:#1890ff;margin-top:32px">Bab 20: Komunikasi & Bahasa</h3>
+        <table class="vocab-table"><thead><tr><th>Hanzi</th><th>Pinyin</th><th>Arti</th><th>Contoh Kalimat</th></tr></thead><tbody>
+        <tr><td class="hanzi">沟通</td><td class="pinyin">gōutōng</td><td>komunikasi</td><td class="contoh">有效的沟通可以避免误解。<br>Komunikasi efektif bisa menghindari kesalahpahaman.</td></tr>
+        <tr><td class="hanzi">表达</td><td class="pinyin">biǎodá</td><td>mengekspresikan</td><td class="contoh">他很善于表达自己的想法。<br>Dia sangat pandai mengekspresikan pikirannya.</td></tr>
+        <tr><td class="hanzi">翻译</td><td class="pinyin">fānyì</td><td>menerjemahkan</td><td class="contoh">这本书已经被翻译成了二十种语言。<br>Buku ini sudah diterjemahkan ke 20 bahasa.</td></tr>
+        <tr><td class="hanzi">母语</td><td class="pinyin">mǔyǔ</td><td>bahasa ibu</td><td class="contoh">他的母语是中文。<br>Bahasa ibunya adalah Mandarin.</td></tr>
+        <tr><td class="hanzi">语法</td><td class="pinyin">yǔfǎ</td><td>tata bahasa</td><td class="contoh">中文的语法和英文很不一样。<br>Tata bahasa Mandarin dan Inggris sangat berbeda.</td></tr>
+        <tr><td class="hanzi">词汇</td><td class="pinyin">cíhuì</td><td>kosakata</td><td class="contoh">学习语言需要积累大量词汇。<br>Belajar bahasa perlu mengumpulkan banyak kosakata.</td></tr>
+        <tr><td class="hanzi">发音</td><td class="pinyin">fāyīn</td><td>pelafalan</td><td class="contoh">他的中文发音很标准。<br>Pelafalan Mandarinnya sangat standar.</td></tr>
+        <tr><td class="hanzi">流利</td><td class="pinyin">liúlì</td><td>lancar</td><td class="contoh">她说英语非常流利。<br>Dia berbicara bahasa Inggris sangat lancar.</td></tr>
+        <tr><td class="hanzi">口语</td><td class="pinyin">kǒuyǔ</td><td>bahasa lisan</td><td class="contoh">提高口语水平需要多练习。<br>Meningkatkan kemampuan lisan perlu banyak latihan.</td></tr>
+        <tr><td class="hanzi">书面</td><td class="pinyin">shūmiàn</td><td>tertulis</td><td class="contoh">书面语和口语有很大的区别。<br>Bahasa tertulis dan lisan sangat berbeda.</td></tr>
+        <tr><td class="hanzi">误解</td><td class="pinyin">wùjiě</td><td>kesalahpahaman</td><td class="contoh">文化差异容易造成误解。<br>Perbedaan budaya mudah menimbulkan kesalahpahaman.</td></tr>
+        <tr><td class="hanzi">暗示</td><td class="pinyin">ànshì</td><td>menyiratkan</td><td class="contoh">他的话暗示了另一种意思。<br>Perkataannya menyiratkan makna lain.</td></tr>
+        <tr><td class="hanzi">比喻</td><td class="pinyin">bǐyù</td><td>perumpamaan/metafora</td><td class="contoh">他用一个比喻来解释这个道理。<br>Dia menggunakan perumpamaan untuk menjelaskan prinsip ini.</td></tr>
+        <tr><td class="hanzi">成语</td><td class="pinyin">chéngyǔ</td><td>idiom (4 karakter)</td><td class="contoh">中文里有很多有趣的成语。<br>Dalam Mandarin ada banyak idiom yang menarik.</td></tr>
+        <tr><td class="hanzi">语气</td><td class="pinyin">yǔqì</td><td>nada/intonasi</td><td class="contoh">他说话的语气很温和。<br>Nada bicaranya sangat lembut.</td></tr>
+        <tr><td class="hanzi">谚语</td><td class="pinyin">yànyǔ</td><td>peribahasa</td><td class="contoh">中国谚语包含着很多智慧。<br>Peribahasa Tiongkok mengandung banyak kebijaksanaan.</td></tr>
+        <tr><td class="hanzi">对话</td><td class="pinyin">duìhuà</td><td>dialog</td><td class="contoh">通过对话可以解决很多问题。<br>Melalui dialog bisa menyelesaikan banyak masalah.</td></tr>
+        <tr><td class="hanzi">讨论</td><td class="pinyin">tǎolùn</td><td>diskusi</td><td class="contoh">让我们一起讨论这个话题。<br>Mari kita diskusikan topik ini bersama.</td></tr>
+        <tr><td class="hanzi">争论</td><td class="pinyin">zhēnglùn</td><td>berdebat</td><td class="contoh">他们为了一件小事争论了半天。<br>Mereka berdebat setengah hari karena hal sepele.</td></tr>
+        <tr><td class="hanzi">说服</td><td class="pinyin">shuōfú</td><td>membujuk</td><td class="contoh">他终于说服了父母同意他出国。<br>Dia akhirnya membujuk orang tuanya setuju dia ke luar negeri.</td></tr>
+        <tr><td class="hanzi">倾听</td><td class="pinyin">qīngtīng</td><td>mendengarkan</td><td class="contoh">好的沟通从倾听开始。<br>Komunikasi yang baik dimulai dari mendengarkan.</td></tr>
+        <tr><td class="hanzi">含义</td><td class="pinyin">hányì</td><td>makna</td><td class="contoh">这个词有多种含义。<br>Kata ini memiliki banyak makna.</td></tr>
+        <tr><td class="hanzi">简洁</td><td class="pinyin">jiǎnjié</td><td>ringkas</td><td class="contoh">写作要做到简洁明了。<br>Menulis harus ringkas dan jelas.</td></tr>
+        <tr><td class="hanzi">演讲</td><td class="pinyin">yǎnjiǎng</td><td>pidato</td><td class="contoh">她在大会上做了一场精彩的演讲。<br>Dia menyampaikan pidato yang luar biasa di konferensi.</td></tr>
+        </tbody></table>
+
+        <!-- BAB 21 -->
+        <h3 id="bab21" style="color:#1890ff;margin-top:32px">Bab 21: Sejarah & Peradaban</h3>
+        <table class="vocab-table"><thead><tr><th>Hanzi</th><th>Pinyin</th><th>Arti</th><th>Contoh Kalimat</th></tr></thead><tbody>
+        <tr><td class="hanzi">历史</td><td class="pinyin">lìshǐ</td><td>sejarah</td><td class="contoh">了解历史可以帮助我们理解现在。<br>Memahami sejarah bisa membantu kita memahami masa kini.</td></tr>
+        <tr><td class="hanzi">朝代</td><td class="pinyin">cháodài</td><td>dinasti</td><td class="contoh">中国经历了很多朝代的更替。<br>Tiongkok mengalami pergantian banyak dinasti.</td></tr>
+        <tr><td class="hanzi">文明</td><td class="pinyin">wénmíng</td><td>peradaban</td><td class="contoh">中华文明是世界上最古老的文明之一。<br>Peradaban Tiongkok adalah salah satu yang tertua di dunia.</td></tr>
+        <tr><td class="hanzi">皇帝</td><td class="pinyin">huángdì</td><td>kaisar</td><td class="contoh">秦始皇是中国第一位皇帝。<br>Qin Shi Huang adalah kaisar pertama Tiongkok.</td></tr>
+        <tr><td class="hanzi">革命</td><td class="pinyin">gémìng</td><td>revolusi</td><td class="contoh">辛亥革命结束了中国的帝制。<br>Revolusi Xinhai mengakhiri kekaisaran Tiongkok.</td></tr>
+        <tr><td class="hanzi">殖民</td><td class="pinyin">zhímín</td><td>kolonial</td><td class="contoh">许多亚洲国家有殖民历史。<br>Banyak negara Asia memiliki sejarah kolonial.</td></tr>
+        <tr><td class="hanzi">独立</td><td class="pinyin">dúlì</td><td>kemerdekaan</td><td class="contoh">印度尼西亚于1945年宣布独立。<br>Indonesia memproklamasikan kemerdekaan pada 1945.</td></tr>
+        <tr><td class="hanzi">战争</td><td class="pinyin">zhànzhēng</td><td>perang</td><td class="contoh">战争给人民带来了巨大的苦难。<br>Perang membawa penderitaan besar bagi rakyat.</td></tr>
+        <tr><td class="hanzi">统一</td><td class="pinyin">tǒngyī</td><td>penyatuan</td><td class="contoh">秦朝统一了中国。<br>Dinasti Qin menyatukan Tiongkok.</td></tr>
+        <tr><td class="hanzi">考古</td><td class="pinyin">kǎogǔ</td><td>arkeologi</td><td class="contoh">考古学家发现了一座古墓。<br>Arkeolog menemukan sebuah makam kuno.</td></tr>
+        <tr><td class="hanzi">遗址</td><td class="pinyin">yízhǐ</td><td>situs peninggalan</td><td class="contoh">这个遗址有三千多年的历史。<br>Situs ini berusia lebih dari 3000 tahun.</td></tr>
+        <tr><td class="hanzi">帝国</td><td class="pinyin">dìguó</td><td>kerajaan/kekaisaran</td><td class="contoh">罗马帝国曾经统治了欧洲大部分地区。<br>Kekaisaran Romawi pernah menguasai sebagian besar Eropa.</td></tr>
+        <tr><td class="hanzi">丝绸之路</td><td class="pinyin">Sīchóu zhī Lù</td><td>Jalur Sutra</td><td class="contoh">丝绸之路促进了东西方的交流。<br>Jalur Sutra mendorong pertukaran antara Timur dan Barat.</td></tr>
+        <tr><td class="hanzi">遗迹</td><td class="pinyin">yíjì</td><td>peninggalan</td><td class="contoh">这座城市保留了很多古代遗迹。<br>Kota ini menyimpan banyak peninggalan kuno.</td></tr>
+        <tr><td class="hanzi">纪元</td><td class="pinyin">jìyuán</td><td>era</td><td class="contoh">公元前三世纪是一个重要的历史时期。<br>Abad ke-3 SM adalah periode sejarah yang penting.</td></tr>
+        <tr><td class="hanzi">起源</td><td class="pinyin">qǐyuán</td><td>asal-usul</td><td class="contoh">科学家正在研究人类的起源。<br>Ilmuwan sedang meneliti asal-usul manusia.</td></tr>
+        <tr><td class="hanzi">演变</td><td class="pinyin">yǎnbiàn</td><td>evolusi/perubahan</td><td class="contoh">语言随着时间不断演变。<br>Bahasa terus berevolusi seiring waktu.</td></tr>
+        <tr><td class="hanzi">繁荣</td><td class="pinyin">fánróng</td><td>kemakmuran</td><td class="contoh">唐朝是中国历史上最繁荣的时期之一。<br>Dinasti Tang adalah salah satu periode paling makmur dalam sejarah Tiongkok.</td></tr>
+        <tr><td class="hanzi">衰落</td><td class="pinyin">shuāiluò</td><td>kemunduran</td><td class="contoh">帝国的衰落有很多原因。<br>Kemunduran kekaisaran memiliki banyak sebab.</td></tr>
+        <tr><td class="hanzi">侵略</td><td class="pinyin">qīnlüè</td><td>invasi</td><td class="contoh">任何国家都反对外来侵略。<br>Negara mana pun menentang invasi asing.</td></tr>
+        <tr><td class="hanzi">英雄</td><td class="pinyin">yīngxióng</td><td>pahlawan</td><td class="contoh">每个民族都有自己的英雄。<br>Setiap bangsa memiliki pahlawannya sendiri.</td></tr>
+        <tr><td class="hanzi">记载</td><td class="pinyin">jìzǎi</td><td>catatan sejarah</td><td class="contoh">这件事在古书中有记载。<br>Peristiwa ini tercatat dalam buku kuno.</td></tr>
+        <tr><td class="hanzi">传承</td><td class="pinyin">chuánchéng</td><td>pewarisan</td><td class="contoh">文化传承需要年轻一代的参与。<br>Pewarisan budaya membutuhkan partisipasi generasi muda.</td></tr>
+        <tr><td class="hanzi">纪念</td><td class="pinyin">jìniàn</td><td>memperingati</td><td class="contoh">人们举行活动纪念这个历史事件。<br>Orang mengadakan kegiatan memperingati peristiwa sejarah ini.</td></tr>
+        </tbody></table>
+
+        <!-- BAB 22-25 shorter entries to complete 600 words -->
+        <h3 id="bab22" style="color:#1890ff;margin-top:32px">Bab 22: Emosi & Hubungan Sosial</h3>
+        <table class="vocab-table"><thead><tr><th>Hanzi</th><th>Pinyin</th><th>Arti</th><th>Contoh Kalimat</th></tr></thead><tbody>
+        <tr><td class="hanzi">友谊</td><td class="pinyin">yǒuyì</td><td>persahabatan</td><td class="contoh">真正的友谊经得起时间的考验。<br>Persahabatan sejati tahan uji waktu.</td></tr>
+        <tr><td class="hanzi">信任</td><td class="pinyin">xìnrèn</td><td>kepercayaan</td><td class="contoh">信任是关系的基础。<br>Kepercayaan adalah dasar sebuah hubungan.</td></tr>
+        <tr><td class="hanzi">尊重</td><td class="pinyin">zūnzhòng</td><td>menghormati</td><td class="contoh">我们应该尊重每个人的想法。<br>Kita harus menghormati pemikiran setiap orang.</td></tr>
+        <tr><td class="hanzi">宽容</td><td class="pinyin">kuānróng</td><td>toleransi</td><td class="contoh">宽容使人与人之间更加和谐。<br>Toleransi membuat hubungan antar manusia lebih harmonis.</td></tr>
+        <tr><td class="hanzi">误会</td><td class="pinyin">wùhuì</td><td>kesalahpahaman</td><td class="contoh">及时沟通可以消除误会。<br>Komunikasi tepat waktu bisa menghilangkan kesalahpahaman.</td></tr>
+        <tr><td class="hanzi">陪伴</td><td class="pinyin">péibàn</td><td>menemani</td><td class="contoh">最好的礼物是陪伴。<br>Hadiah terbaik adalah menemani.</td></tr>
+        <tr><td class="hanzi">分手</td><td class="pinyin">fēnshǒu</td><td>putus (hubungan)</td><td class="contoh">他们和平分手了。<br>Mereka putus secara damai.</td></tr>
+        <tr><td class="hanzi">和解</td><td class="pinyin">héjiě</td><td>berdamai</td><td class="contoh">两个朋友终于和解了。<br>Dua teman itu akhirnya berdamai.</td></tr>
+        <tr><td class="hanzi">依赖</td><td class="pinyin">yīlài</td><td>bergantung</td><td class="contoh">不要过度依赖别人。<br>Jangan terlalu bergantung pada orang lain.</td></tr>
+        <tr><td class="hanzi">忠诚</td><td class="pinyin">zhōngchéng</td><td>setia/loyal</td><td class="contoh">忠诚是友谊中最重要的品质。<br>Kesetiaan adalah kualitas terpenting dalam persahabatan.</td></tr>
+        <tr><td class="hanzi">背叛</td><td class="pinyin">bèipàn</td><td>mengkhianati</td><td class="contoh">背叛朋友的信任是不可原谅的。<br>Mengkhianati kepercayaan teman tidak bisa dimaafkan.</td></tr>
+        <tr><td class="hanzi">关怀</td><td class="pinyin">guānhuái</td><td>kepedulian</td><td class="contoh">朋友之间需要相互关怀。<br>Teman harus saling peduli satu sama lain.</td></tr>
+        <tr><td class="hanzi">孝顺</td><td class="pinyin">xiàoshùn</td><td>berbakti</td><td class="contoh">孝顺父母是中国传统美德。<br>Berbakti pada orang tua adalah kebajikan tradisional Tiongkok.</td></tr>
+        <tr><td class="hanzi">体谅</td><td class="pinyin">tǐliàng</td><td>memahami/berempati</td><td class="contoh">朋友之间要互相体谅。<br>Teman harus saling memahami.</td></tr>
+        <tr><td class="hanzi">偏见</td><td class="pinyin">piānjiàn</td><td>prasangka</td><td class="contoh">我们应该消除对他人的偏见。<br>Kita harus menghilangkan prasangka terhadap orang lain.</td></tr>
+        <tr><td class="hanzi">社交</td><td class="pinyin">shèjiāo</td><td>pergaulan/sosial</td><td class="contoh">良好的社交能力很重要。<br>Kemampuan sosial yang baik sangat penting.</td></tr>
+        <tr><td class="hanzi">隔阂</td><td class="pinyin">géhé</td><td>jurang/kesenjangan</td><td class="contoh">代沟造成了两代人之间的隔阂。<br>Jurang generasi menimbulkan kesenjangan antar dua generasi.</td></tr>
+        <tr><td class="hanzi">亲密</td><td class="pinyin">qīnmì</td><td>akrab/intim</td><td class="contoh">他们是非常亲密的朋友。<br>Mereka adalah teman yang sangat akrab.</td></tr>
+        <tr><td class="hanzi">冷漠</td><td class="pinyin">lěngmò</td><td>acuh/dingin</td><td class="contoh">对别人冷漠会让人伤心。<br>Bersikap acuh pada orang lain akan menyakiti hati.</td></tr>
+        <tr><td class="hanzi">默契</td><td class="pinyin">mòqì</td><td>kecocokan/chemistry</td><td class="contoh">他们之间配合得很默契。<br>Kerja sama mereka sangat kompak.</td></tr>
+        <tr><td class="hanzi">鼓励</td><td class="pinyin">gǔlì</td><td>menyemangati</td><td class="contoh">老师经常鼓励学生大胆尝试。<br>Guru sering menyemangati siswa untuk berani mencoba.</td></tr>
+        <tr><td class="hanzi">批评</td><td class="pinyin">pīpíng</td><td>mengkritik</td><td class="contoh">批评要有建设性才有意义。<br>Kritik harus konstruktif agar bermakna.</td></tr>
+        <tr><td class="hanzi">道歉</td><td class="pinyin">dàoqiàn</td><td>meminta maaf</td><td class="contoh">他真诚地向她道歉了。<br>Dia dengan tulus meminta maaf padanya.</td></tr>
+        <tr><td class="hanzi">感恩</td><td class="pinyin">gǎn'ēn</td><td>rasa syukur</td><td class="contoh">我们要学会感恩。<br>Kita harus belajar bersyukur.</td></tr>
+        </tbody></table>
+
+        <!-- BAB 23 -->
+        <h3 id="bab23" style="color:#1890ff;margin-top:32px">Bab 23: Karier & Pekerjaan</h3>
+        <table class="vocab-table"><thead><tr><th>Hanzi</th><th>Pinyin</th><th>Arti</th><th>Contoh Kalimat</th></tr></thead><tbody>
+        <tr><td class="hanzi">职业</td><td class="pinyin">zhíyè</td><td>profesi</td><td class="contoh">选择适合自己的职业很重要。<br>Memilih profesi yang cocok untuk diri sendiri sangat penting.</td></tr>
+        <tr><td class="hanzi">简历</td><td class="pinyin">jiǎnlì</td><td>CV/resume</td><td class="contoh">请把你的简历发给我。<br>Tolong kirimkan CV kamu.</td></tr>
+        <tr><td class="hanzi">面试</td><td class="pinyin">miànshì</td><td>wawancara kerja</td><td class="contoh">明天我有一个面试。<br>Besok saya ada wawancara kerja.</td></tr>
+        <tr><td class="hanzi">薪水</td><td class="pinyin">xīnshuǐ</td><td>gaji</td><td class="contoh">他对目前的薪水很满意。<br>Dia puas dengan gajinya saat ini.</td></tr>
+        <tr><td class="hanzi">晋升</td><td class="pinyin">jìnshēng</td><td>promosi</td><td class="contoh">她今年获得了晋升。<br>Dia mendapat promosi tahun ini.</td></tr>
+        <tr><td class="hanzi">辞职</td><td class="pinyin">cízhí</td><td>mengundurkan diri</td><td class="contoh">他决定辞职去创业。<br>Dia memutuskan resign untuk berbisnis.</td></tr>
+        <tr><td class="hanzi">招聘</td><td class="pinyin">zhāopìn</td><td>rekrutmen</td><td class="contoh">公司正在招聘新员工。<br>Perusahaan sedang merekrut karyawan baru.</td></tr>
+        <tr><td class="hanzi">创业</td><td class="pinyin">chuàngyè</td><td>berwirausaha</td><td class="contoh">越来越多年轻人选择创业。<br>Semakin banyak anak muda memilih berwirausaha.</td></tr>
+        <tr><td class="hanzi">同事</td><td class="pinyin">tóngshì</td><td>rekan kerja</td><td class="contoh">他和同事们关系很好。<br>Hubungannya dengan rekan kerja sangat baik.</td></tr>
+        <tr><td class="hanzi">加班</td><td class="pinyin">jiābān</td><td>lembur</td><td class="contoh">最近他经常加班到很晚。<br>Belakangan ini dia sering lembur sampai larut.</td></tr>
+        <tr><td class="hanzi">合作</td><td class="pinyin">hézuò</td><td>kerja sama</td><td class="contoh">团队合作是成功的关键。<br>Kerja sama tim adalah kunci kesuksesan.</td></tr>
+        <tr><td class="hanzi">效率</td><td class="pinyin">xiàolǜ</td><td>efisiensi</td><td class="contoh">提高工作效率很重要。<br>Meningkatkan efisiensi kerja sangat penting.</td></tr>
+        <tr><td class="hanzi">业绩</td><td class="pinyin">yèjì</td><td>kinerja</td><td class="contoh">他的业绩在公司名列前茅。<br>Kinerjanya termasuk yang terbaik di perusahaan.</td></tr>
+        <tr><td class="hanzi">转行</td><td class="pinyin">zhuǎnháng</td><td>pindah profesi</td><td class="contoh">她从律师转行做了老师。<br>Dia pindah profesi dari pengacara menjadi guru.</td></tr>
+        <tr><td class="hanzi">福利</td><td class="pinyin">fúlì</td><td>tunjangan</td><td class="contoh">这家公司的员工福利很好。<br>Tunjangan karyawan perusahaan ini sangat baik.</td></tr>
+        <tr><td class="hanzi">退休</td><td class="pinyin">tuìxiū</td><td>pensiun</td><td class="contoh">他明年就要退休了。<br>Dia akan pensiun tahun depan.</td></tr>
+        <tr><td class="hanzi">失业</td><td class="pinyin">shīyè</td><td>pengangguran</td><td class="contoh">经济衰退导致失业率上升。<br>Resesi ekonomi menyebabkan tingkat pengangguran naik.</td></tr>
+        <tr><td class="hanzi">人才</td><td class="pinyin">réncái</td><td>SDM/talenta</td><td class="contoh">公司需要吸引更多优秀人才。<br>Perusahaan perlu menarik lebih banyak talenta unggul.</td></tr>
+        <tr><td class="hanzi">经验</td><td class="pinyin">jīngyàn</td><td>pengalaman</td><td class="contoh">他有丰富的工作经验。<br>Dia punya pengalaman kerja yang kaya.</td></tr>
+        <tr><td class="hanzi">技能</td><td class="pinyin">jìnéng</td><td>keterampilan</td><td class="contoh">掌握多种技能可以增加竞争力。<br>Menguasai beragam keterampilan bisa meningkatkan daya saing.</td></tr>
+        <tr><td class="hanzi">目标</td><td class="pinyin">mùbiāo</td><td>tujuan</td><td class="contoh">设定明确的目标有助于成功。<br>Menetapkan tujuan yang jelas membantu meraih sukses.</td></tr>
+        <tr><td class="hanzi">压力</td><td class="pinyin">yālì</td><td>tekanan</td><td class="contoh">工作压力太大会影响健康。<br>Tekanan kerja terlalu besar akan memengaruhi kesehatan.</td></tr>
+        <tr><td class="hanzi">成就</td><td class="pinyin">chéngjiù</td><td>pencapaian</td><td class="contoh">他在事业上取得了巨大的成就。<br>Dia meraih pencapaian besar dalam kariernya.</td></tr>
+        <tr><td class="hanzi">兼职</td><td class="pinyin">jiānzhí</td><td>kerja paruh waktu</td><td class="contoh">大学生可以做一些兼职工作。<br>Mahasiswa bisa melakukan pekerjaan paruh waktu.</td></tr>
+        </tbody></table>
+
+        <!-- BAB 24 -->
+        <h3 id="bab24" style="color:#1890ff;margin-top:32px">Bab 24: Alam & Geografi</h3>
+        <table class="vocab-table"><thead><tr><th>Hanzi</th><th>Pinyin</th><th>Arti</th><th>Contoh Kalimat</th></tr></thead><tbody>
+        <tr><td class="hanzi">山脉</td><td class="pinyin">shānmài</td><td>pegunungan</td><td class="contoh">喜马拉雅山脉是世界上最高的山脉。<br>Himalaya adalah pegunungan tertinggi di dunia.</td></tr>
+        <tr><td class="hanzi">河流</td><td class="pinyin">héliú</td><td>sungai</td><td class="contoh">长江是中国最长的河流。<br>Sungai Yangtze adalah sungai terpanjang di Tiongkok.</td></tr>
+        <tr><td class="hanzi">湖泊</td><td class="pinyin">húpō</td><td>danau</td><td class="contoh">这个湖泊的水非常清澈。<br>Air danau ini sangat jernih.</td></tr>
+        <tr><td class="hanzi">平原</td><td class="pinyin">píngyuán</td><td>dataran</td><td class="contoh">华北平原是重要的农业区。<br>Dataran Tiongkok Utara adalah daerah pertanian penting.</td></tr>
+        <tr><td class="hanzi">火山</td><td class="pinyin">huǒshān</td><td>gunung berapi</td><td class="contoh">印度尼西亚有很多活火山。<br>Indonesia memiliki banyak gunung berapi aktif.</td></tr>
+        <tr><td class="hanzi">地震</td><td class="pinyin">dìzhèn</td><td>gempa bumi</td><td class="contoh">日本经常发生地震。<br>Jepang sering terjadi gempa bumi.</td></tr>
+        <tr><td class="hanzi">大陆</td><td class="pinyin">dàlù</td><td>benua</td><td class="contoh">亚洲是世界上最大的大陆。<br>Asia adalah benua terbesar di dunia.</td></tr>
+        <tr><td class="hanzi">岛屿</td><td class="pinyin">dǎoyǔ</td><td>pulau</td><td class="contoh">印度尼西亚是世界上最大的岛屿国家。<br>Indonesia adalah negara kepulauan terbesar di dunia.</td></tr>
+        <tr><td class="hanzi">热带</td><td class="pinyin">rèdài</td><td>tropis</td><td class="contoh">热带地区全年气温较高。<br>Daerah tropis memiliki suhu tinggi sepanjang tahun.</td></tr>
+        <tr><td class="hanzi">温带</td><td class="pinyin">wēndài</td><td>subtropis</td><td class="contoh">温带地区四季分明。<br>Daerah subtropis memiliki empat musim yang jelas.</td></tr>
+        <tr><td class="hanzi">冰川</td><td class="pinyin">bīngchuān</td><td>gletser</td><td class="contoh">全球变暖导致冰川融化。<br>Pemanasan global menyebabkan gletser mencair.</td></tr>
+        <tr><td class="hanzi">瀑布</td><td class="pinyin">pùbù</td><td>air terjun</td><td class="contoh">这个瀑布的景色非常壮观。<br>Pemandangan air terjun ini sangat spektakuler.</td></tr>
+        <tr><td class="hanzi">峡谷</td><td class="pinyin">xiágǔ</td><td>lembah/ngarai</td><td class="contoh">大峡谷是美国著名的景点。<br>Grand Canyon adalah tempat wisata terkenal di Amerika.</td></tr>
+        <tr><td class="hanzi">草原</td><td class="pinyin">cǎoyuán</td><td>padang rumput</td><td class="contoh">内蒙古的草原一望无际。<br>Padang rumput Mongolia Dalam terbentang tanpa batas.</td></tr>
+        <tr><td class="hanzi">赤道</td><td class="pinyin">chìdào</td><td>khatulistiwa</td><td class="contoh">印度尼西亚位于赤道附近。<br>Indonesia terletak di dekat khatulistiwa.</td></tr>
+        <tr><td class="hanzi">海拔</td><td class="pinyin">hǎibá</td><td>ketinggian (mdpl)</td><td class="contoh">这座山的海拔超过了五千米。<br>Ketinggian gunung ini melebihi 5000 meter.</td></tr>
+        <tr><td class="hanzi">季风</td><td class="pinyin">jìfēng</td><td>angin muson</td><td class="contoh">季风气候影响了亚洲的农业。<br>Iklim muson memengaruhi pertanian di Asia.</td></tr>
+        <tr><td class="hanzi">台风</td><td class="pinyin">táifēng</td><td>topan</td><td class="contoh">台风季节要注意安全。<br>Saat musim topan harus memperhatikan keselamatan.</td></tr>
+        <tr><td class="hanzi">降雨</td><td class="pinyin">jiàngyǔ</td><td>curah hujan</td><td class="contoh">今年的降雨量比去年多。<br>Curah hujan tahun ini lebih banyak dari tahun lalu.</td></tr>
+        <tr><td class="hanzi">湿度</td><td class="pinyin">shīdù</td><td>kelembapan</td><td class="contoh">热带地区的湿度通常很高。<br>Kelembapan di daerah tropis biasanya sangat tinggi.</td></tr>
+        <tr><td class="hanzi">矿产</td><td class="pinyin">kuàngchǎn</td><td>mineral/tambang</td><td class="contoh">这个地区矿产资源丰富。<br>Daerah ini kaya sumber daya mineral.</td></tr>
+        <tr><td class="hanzi">地形</td><td class="pinyin">dìxíng</td><td>topografi</td><td class="contoh">中国的地形非常多样。<br>Topografi Tiongkok sangat beragam.</td></tr>
+        <tr><td class="hanzi">地理</td><td class="pinyin">dìlǐ</td><td>geografi</td><td class="contoh">地理位置影响了这个国家的发展。<br>Posisi geografis memengaruhi perkembangan negara ini.</td></tr>
+        <tr><td class="hanzi">生物</td><td class="pinyin">shēngwù</td><td>makhluk hidup</td><td class="contoh">海洋中有很多未知的生物。<br>Di lautan ada banyak makhluk hidup yang belum diketahui.</td></tr>
+        </tbody></table>
+
+        <!-- BAB 25 -->
+        <h3 id="bab25" style="color:#1890ff;margin-top:32px">Bab 25: Nilai & Karakter</h3>
+        <table class="vocab-table"><thead><tr><th>Hanzi</th><th>Pinyin</th><th>Arti</th><th>Contoh Kalimat</th></tr></thead><tbody>
+        <tr><td class="hanzi">诚实</td><td class="pinyin">chéngshí</td><td>jujur</td><td class="contoh">诚实是做人的基本品质。<br>Kejujuran adalah kualitas dasar seorang manusia.</td></tr>
+        <tr><td class="hanzi">勇敢</td><td class="pinyin">yǒnggǎn</td><td>berani</td><td class="contoh">面对困难要勇敢。<br>Menghadapi kesulitan harus berani.</td></tr>
+        <tr><td class="hanzi">谦虚</td><td class="pinyin">qiānxū</td><td>rendah hati</td><td class="contoh">谦虚使人进步。<br>Rendah hati membuat orang maju.</td></tr>
+        <tr><td class="hanzi">坚持</td><td class="pinyin">jiānchí</td><td>bertahan/konsisten</td><td class="contoh">成功需要坚持不懈。<br>Sukses butuh konsistensi.</td></tr>
+        <tr><td class="hanzi">善良</td><td class="pinyin">shànliáng</td><td>baik hati</td><td class="contoh">她是一个善良的人。<br>Dia adalah orang yang baik hati.</td></tr>
+        <tr><td class="hanzi">正直</td><td class="pinyin">zhèngzhí</td><td>integritas/lurus</td><td class="contoh">他是一个正直的人。<br>Dia adalah orang yang berintegritas.</td></tr>
+        <tr><td class="hanzi">勤奋</td><td class="pinyin">qínfèn</td><td>rajin</td><td class="contoh">勤奋是成功的基础。<br>Ketekunan adalah dasar kesuksesan.</td></tr>
+        <tr><td class="hanzi">耐心</td><td class="pinyin">nàixīn</td><td>sabar</td><td class="contoh">教育孩子需要很大的耐心。<br>Mendidik anak butuh kesabaran besar.</td></tr>
+        <tr><td class="hanzi">责任感</td><td class="pinyin">zérèngǎn</td><td>rasa tanggung jawab</td><td class="contoh">他是一个有责任感的人。<br>Dia adalah orang yang bertanggung jawab.</td></tr>
+        <tr><td class="hanzi">自律</td><td class="pinyin">zìlǜ</td><td>disiplin diri</td><td class="contoh">自律的人更容易成功。<br>Orang yang disiplin lebih mudah sukses.</td></tr>
+        <tr><td class="hanzi">包容</td><td class="pinyin">bāoróng</td><td>toleran/inklusif</td><td class="contoh">社会需要更多的包容。<br>Masyarakat membutuhkan lebih banyak toleransi.</td></tr>
+        <tr><td class="hanzi">奉献</td><td class="pinyin">fèngxiàn</td><td>pengabdian</td><td class="contoh">志愿者的奉献精神值得敬佩。<br>Semangat pengabdian relawan layak dikagumi.</td></tr>
+        <tr><td class="hanzi">感恩</td><td class="pinyin">gǎn'ēn</td><td>bersyukur</td><td class="contoh">常怀感恩之心会更快乐。<br>Selalu bersyukur akan lebih bahagia.</td></tr>
+        <tr><td class="hanzi">诚信</td><td class="pinyin">chéngxìn</td><td>integritas/kejujuran</td><td class="contoh">诚信是经商的根本。<br>Integritas adalah dasar berbisnis.</td></tr>
+        <tr><td class="hanzi">毅力</td><td class="pinyin">yìlì</td><td>kegigihan</td><td class="contoh">完成马拉松需要很强的毅力。<br>Menyelesaikan maraton butuh kegigihan yang kuat.</td></tr>
+        <tr><td class="hanzi">理想</td><td class="pinyin">lǐxiǎng</td><td>cita-cita/ideal</td><td class="contoh">每个人都应该有自己的理想。<br>Setiap orang harus punya cita-citanya sendiri.</td></tr>
+        <tr><td class="hanzi">追求</td><td class="pinyin">zhuīqiú</td><td>mengejar/aspirasi</td><td class="contoh">追求卓越是一种生活态度。<br>Mengejar keunggulan adalah sikap hidup.</td></tr>
+        <tr><td class="hanzi">奋斗</td><td class="pinyin">fèndòu</td><td>berjuang</td><td class="contoh">年轻人应该为梦想奋斗。<br>Anak muda harus berjuang untuk mimpi.</td></tr>
+        <tr><td class="hanzi">品德</td><td class="pinyin">pǐndé</td><td>moral/budi pekerti</td><td class="contoh">品德高尚的人受人尊敬。<br>Orang bermoral tinggi dihormati orang lain.</td></tr>
+        <tr><td class="hanzi">担当</td><td class="pinyin">dāndāng</td><td>bertanggung jawab/menanggung</td><td class="contoh">年轻人要有担当精神。<br>Anak muda harus punya semangat tanggung jawab.</td></tr>
+        <tr><td class="hanzi">坚强</td><td class="pinyin">jiānqiáng</td><td>kuat/tegar</td><td class="contoh">困难面前要坚强。<br>Di depan kesulitan harus tegar.</td></tr>
+        <tr><td class="hanzi">乐于助人</td><td class="pinyin">lè yú zhùrén</td><td>suka menolong</td><td class="contoh">她是一个乐于助人的人。<br>Dia adalah orang yang suka menolong.</td></tr>
+        <tr><td class="hanzi">感悟</td><td class="pinyin">gǎnwù</td><td>pemahaman mendalam</td><td class="contoh">旅行给了他很多人生感悟。<br>Perjalanan memberinya banyak pemahaman tentang hidup.</td></tr>
+        <tr><td class="hanzi">境界</td><td class="pinyin">jìngjiè</td><td>tingkat/level</td><td class="contoh">做人的最高境界是利他。<br>Tingkat tertinggi dalam berperilaku adalah mengutamakan orang lain.</td></tr>
+        </tbody></table>
+
+
+        <!-- ==================== TATA BAHASA ==================== -->
+        <h2 class="section-title" id="grammar">📐 Tata Bahasa HSK 4 (25 Poin)</h2>
+
+        <div class="grammar-card">
+            <h3>1. 不但...而且... (bùdàn...érqiě...) — Tidak hanya... tetapi juga...</h3>
+            <p>Digunakan untuk menyatakan penambahan informasi. Klausa kedua menambahkan sesuatu yang lebih kuat dari klausa pertama.</p>
+            <div class="pattern">不但 + Klausa 1, 而且 + Klausa 2</div>
+            <div class="example"><div class="zh">他不但会说中文，而且说得非常流利。</div><div class="py">Tā bùdàn huì shuō zhōngwén, érqiě shuō de fēicháng liúlì.</div><div class="id">Dia tidak hanya bisa berbicara Mandarin, tetapi juga sangat lancar.</div></div>
+        </div>
+
+        <div class="grammar-card">
+            <h3>2. 无论...都... (wúlùn...dōu...) — Tidak peduli... pasti...</h3>
+            <p>Menyatakan bahwa apapun kondisinya, hasilnya tetap sama.</p>
+            <div class="pattern">无论 + Kondisi, 都 + Hasil</div>
+            <div class="example"><div class="zh">无论多么困难，我们都不会放弃。</div><div class="py">Wúlùn duōme kùnnán, wǒmen dōu bú huì fàngqì.</div><div class="id">Tidak peduli seberapa sulit, kami pasti tidak akan menyerah.</div></div>
+        </div>
+
+        <div class="grammar-card">
+            <h3>3. 既然...就... (jìrán...jiù...) — Karena sudah... maka...</h3>
+            <p>Menyatakan bahwa karena suatu kondisi sudah terjadi, maka sebaiknya melakukan tindakan tertentu.</p>
+            <div class="pattern">既然 + Fakta/Kondisi, 就 + Tindakan</div>
+            <div class="example"><div class="zh">既然你已经决定了，就不要后悔。</div><div class="py">Jìrán nǐ yǐjīng juédìng le, jiù bú yào hòuhuǐ.</div><div class="id">Karena kamu sudah memutuskan, maka jangan menyesal.</div></div>
+        </div>
+
+        <div class="grammar-card">
+            <h3>4. 即使...也... (jíshǐ...yě...) — Meskipun... tetap...</h3>
+            <p>Menyatakan konsesi: walau kondisinya begitu, hasilnya tidak berubah.</p>
+            <div class="pattern">即使 + Kondisi (hipotesis), 也 + Hasil</div>
+            <div class="example"><div class="zh">即使下雨，我也会去跑步。</div><div class="py">Jíshǐ xià yǔ, wǒ yě huì qù pǎobù.</div><div class="id">Meskipun hujan, saya tetap akan pergi lari.</div></div>
+        </div>
+
+        <div class="grammar-card">
+            <h3>5. 不是...而是... (búshì...érshì...) — Bukan... melainkan...</h3>
+            <p>Digunakan untuk mengoreksi atau mengklarifikasi — menegaskan yang benar dengan menyangkal yang salah.</p>
+            <div class="pattern">不是 + A, 而是 + B</div>
+            <div class="example"><div class="zh">问题不是钱，而是时间。</div><div class="py">Wèntí búshì qián, érshì shíjiān.</div><div class="id">Masalahnya bukan uang, melainkan waktu.</div></div>
+        </div>
+
+        <div class="grammar-card">
+            <h3>6. 越...越... (yuè...yuè...) — Semakin... semakin...</h3>
+            <p>Menunjukkan dua hal yang berubah secara proporsional.</p>
+            <div class="pattern">越 + A, 越 + B</div>
+            <div class="example"><div class="zh">中文越学越有意思。</div><div class="py">Zhōngwén yuè xué yuè yǒu yìsi.</div><div class="id">Mandarin semakin dipelajari semakin menarik.</div></div>
+        </div>
+
+        <div class="grammar-card">
+            <h3>7. 被字句 (bèi zì jù) — Kalimat Pasif</h3>
+            <p>Struktur pasif: subjek menerima aksi dari orang/hal lain.</p>
+            <div class="pattern">Subjek + 被 + (Pelaku) + Kata Kerja + Komplemen</div>
+            <div class="example"><div class="zh">我的手机被弟弟摔坏了。</div><div class="py">Wǒ de shǒujī bèi dìdi shuāi huài le.</div><div class="id">HP saya dijatuhkan adik sampai rusak.</div></div>
+        </div>
+
+        <div class="grammar-card">
+            <h3>8. 把字句 (bǎ zì jù) — Kalimat dengan 把</h3>
+            <p>Menunjukkan bahwa subjek melakukan tindakan terhadap objek tertentu, mengubah keadaannya.</p>
+            <div class="pattern">Subjek + 把 + Objek + Kata Kerja + Komplemen/Hasil</div>
+            <div class="example"><div class="zh">请把窗户关上。</div><div class="py">Qǐng bǎ chuānghù guānshang.</div><div class="id">Tolong tutup jendelanya.</div></div>
+        </div>
+
+        <div class="grammar-card">
+            <h3>9. 使/让/叫 (shǐ/ràng/jiào) — Membuat (kausatif)</h3>
+            <p>Kata kerja kausatif: seseorang/sesuatu menyebabkan orang lain melakukan/merasakan sesuatu.</p>
+            <div class="pattern">A + 使/让/叫 + B + Kata Kerja/Kata Sifat</div>
+            <div class="example"><div class="zh">这件事让我非常感动。</div><div class="py">Zhè jiàn shì ràng wǒ fēicháng gǎndòng.</div><div class="id">Hal ini membuat saya sangat tersentuh.</div></div>
+        </div>
+
+        <div class="grammar-card">
+            <h3>10. 一...就... (yī...jiù...) — Begitu... langsung...</h3>
+            <p>Menyatakan bahwa dua kejadian terjadi secara berurutan sangat cepat.</p>
+            <div class="pattern">一 + Aksi 1, 就 + Aksi 2</div>
+            <div class="example"><div class="zh">他一到家就开始做饭。</div><div class="py">Tā yī dào jiā jiù kāishǐ zuòfàn.</div><div class="id">Begitu sampai rumah dia langsung mulai memasak.</div></div>
+        </div>
+
+        <div class="grammar-card">
+            <h3>11. 连...都/也... (lián...dōu/yě...) — Bahkan... pun...</h3>
+            <p>Menekankan sesuatu yang mengejutkan atau ekstrem.</p>
+            <div class="pattern">连 + Objek Ekstrem + 都/也 + Kata Kerja</div>
+            <div class="example"><div class="zh">他连自己的名字都不会写。</div><div class="py">Tā lián zìjǐ de míngzì dōu bú huì xiě.</div><div class="id">Dia bahkan namanya sendiri pun tidak bisa ditulis.</div></div>
+        </div>
+
+        <div class="grammar-card">
+            <h3>12. 不管...都... (bùguǎn...dōu...) — Tak peduli... tetap...</h3>
+            <p>Mirip dengan 无论, lebih kasual. Menyatakan hasil yang sama apapun kondisinya.</p>
+            <div class="pattern">不管 + Kondisi, 都 + Hasil</div>
+            <div class="example"><div class="zh">不管你同不同意，我都要去。</div><div class="py">Bùguǎn nǐ tóng bù tóngyì, wǒ dōu yào qù.</div><div class="id">Tak peduli kamu setuju atau tidak, saya tetap akan pergi.</div></div>
+        </div>
+
+        <div class="grammar-card">
+            <h3>13. 对...来说 (duì...lái shuō) — Bagi...</h3>
+            <p>Menunjukkan perspektif atau sudut pandang seseorang.</p>
+            <div class="pattern">对 + Orang + 来说, + Kalimat</div>
+            <div class="example"><div class="zh">对我来说，健康比什么都重要。</div><div class="py">Duì wǒ lái shuō, jiànkāng bǐ shénme dōu zhòngyào.</div><div class="id">Bagi saya, kesehatan lebih penting daripada apapun.</div></div>
+        </div>
+
+        <div class="grammar-card">
+            <h3>14. 关于 (guānyú) — Mengenai/Tentang</h3>
+            <p>Digunakan di awal kalimat untuk memperkenalkan topik.</p>
+            <div class="pattern">关于 + Topik, + Kalimat</div>
+            <div class="example"><div class="zh">关于这个问题，我想听听你的看法。</div><div class="py">Guānyú zhège wèntí, wǒ xiǎng tīngtīng nǐ de kànfǎ.</div><div class="id">Mengenai masalah ini, saya ingin mendengar pendapatmu.</div></div>
+        </div>
+
+        <div class="grammar-card">
+            <h3>15. 之所以...是因为... (zhī suǒyǐ...shì yīnwèi...) — Alasan mengapa... adalah karena...</h3>
+            <p>Struktur sebab-akibat yang dimulai dari akibat lalu menjelaskan sebabnya.</p>
+            <div class="pattern">之所以 + Akibat, 是因为 + Sebab</div>
+            <div class="example"><div class="zh">他之所以成功，是因为他非常努力。</div><div class="py">Tā zhī suǒyǐ chénggōng, shì yīnwèi tā fēicháng nǔlì.</div><div class="id">Alasan mengapa dia sukses adalah karena dia sangat berusaha.</div></div>
+        </div>
+
+        <div class="grammar-card">
+            <h3>16. 否则 (fǒuzé) — Jika tidak/kalau tidak</h3>
+            <p>Menyatakan konsekuensi jika sesuatu tidak dilakukan.</p>
+            <div class="pattern">Kalimat 1, 否则 + Konsekuensi</div>
+            <div class="example"><div class="zh">你要早点儿出发，否则会迟到。</div><div class="py">Nǐ yào zǎo diǎnr chūfā, fǒuzé huì chídào.</div><div class="id">Kamu harus berangkat lebih awal, kalau tidak akan terlambat.</div></div>
+        </div>
+
+        <div class="grammar-card">
+            <h3>17. 尽管...但是... (jǐnguǎn...dànshì...) — Meskipun... tapi...</h3>
+            <p>Menyatakan konsesi dengan hasil yang bertentangan.</p>
+            <div class="pattern">尽管 + Konsesi, 但是 + Kenyataan</div>
+            <div class="example"><div class="zh">尽管很累，但是他还是坚持跑完了。</div><div class="py">Jǐnguǎn hěn lèi, dànshì tā háishi jiānchí pǎo wán le.</div><div class="id">Meskipun sangat lelah, tapi dia tetap bertahan berlari sampai selesai.</div></div>
+        </div>
+
+        <div class="grammar-card">
+            <h3>18. 结果补语 (jiéguǒ bǔyǔ) — Komplemen Hasil</h3>
+            <p>Kata kerja + komplemen yang menunjukkan hasil dari tindakan tersebut.</p>
+            <div class="pattern">Kata Kerja + Komplemen Hasil (好/完/到/见/懂/清楚 dll.)</div>
+            <div class="example"><div class="zh">这本书我已经看完了。</div><div class="py">Zhè běn shū wǒ yǐjīng kàn wán le.</div><div class="id">Buku ini sudah saya baca habis.</div></div>
+        </div>
+
+        <div class="grammar-card">
+            <h3>19. 可能补语 (kěnéng bǔyǔ) — Komplemen Kemungkinan</h3>
+            <p>Menyatakan kemampuan/kemungkinan untuk menyelesaikan suatu tindakan.</p>
+            <div class="pattern">Kata Kerja + 得/不 + Komplemen</div>
+            <div class="example"><div class="zh">这么多菜，我们吃得完吗？</div><div class="py">Zhème duō cài, wǒmen chī de wán ma?</div><div class="id">Sebanyak ini masakan, kita bisa habiskan?</div></div>
+        </div>
+
+        <div class="grammar-card">
+            <h3>20. 趋向补语 (qūxiàng bǔyǔ) — Komplemen Arah</h3>
+            <p>Menunjukkan arah gerakan setelah kata kerja.</p>
+            <div class="pattern">Kata Kerja + 上来/下去/出来/进去/回来/过去 dll.</div>
+            <div class="example"><div class="zh">他从楼上跑下来了。</div><div class="py">Tā cóng lóu shàng pǎo xiàlái le.</div><div class="id">Dia berlari turun dari lantai atas.</div></div>
+        </div>
+
+        <div class="grammar-card">
+            <h3>21. 于是 (yúshì) — Maka/Lalu</h3>
+            <p>Kata penghubung yang menunjukkan hasil dari kejadian sebelumnya (narasi).</p>
+            <div class="pattern">Kalimat 1, 于是 + Kalimat 2</div>
+            <div class="example"><div class="zh">下雨了，于是我们决定留在家里。</div><div class="py">Xià yǔ le, yúshì wǒmen juédìng liú zài jiālǐ.</div><div class="id">Hujan turun, maka kami memutuskan tinggal di rumah.</div></div>
+        </div>
+
+        <div class="grammar-card">
+            <h3>22. 竟然 (jìngrán) — Ternyata/Tidak disangka</h3>
+            <p>Menyatakan keterkejutan — sesuatu yang terjadi di luar dugaan.</p>
+            <div class="pattern">Subjek + 竟然 + Kata Kerja/Kata Sifat</div>
+            <div class="example"><div class="zh">他竟然通过了最难的考试！</div><div class="py">Tā jìngrán tōngguò le zuì nán de kǎoshì!</div><div class="id">Dia ternyata lulus ujian yang paling sulit!</div></div>
+        </div>
+
+        <div class="grammar-card">
+            <h3>23. 反而 (fǎn'ér) — Justru/Malah</h3>
+            <p>Menunjukkan hasil yang berlawanan dari apa yang diharapkan.</p>
+            <div class="pattern">Bukan A terjadi, 反而 + B (berlawanan) terjadi</div>
+            <div class="example"><div class="zh">吃了药以后，他的病反而更严重了。</div><div class="py">Chī le yào yǐhòu, tā de bìng fǎn'ér gèng yánzhòng le.</div><div class="id">Setelah minum obat, penyakitnya justru semakin parah.</div></div>
+        </div>
+
+        <div class="grammar-card">
+            <h3>24. 只要...就... (zhǐyào...jiù...) — Asalkan... maka...</h3>
+            <p>Menyatakan syarat yang cukup untuk mendapatkan hasil.</p>
+            <div class="pattern">只要 + Syarat, 就 + Hasil</div>
+            <div class="example"><div class="zh">只要努力，就一定能成功。</div><div class="py">Zhǐyào nǔlì, jiù yīdìng néng chénggōng.</div><div class="id">Asalkan berusaha, pasti bisa berhasil.</div></div>
+        </div>
+
+        <div class="grammar-card">
+            <h3>25. 宁可...也不... (nìngkě...yě bù...) — Lebih baik... daripada...</h3>
+            <p>Menyatakan pilihan: memilih opsi yang kurang ideal demi menghindari opsi lain.</p>
+            <div class="pattern">宁可 + Pilihan A, 也不 + Pilihan B</div>
+            <div class="example"><div class="zh">他宁可走路，也不坐公交车。</div><div class="py">Tā nìngkě zǒulù, yě bù zuò gōngjiāochē.</div><div class="id">Dia lebih baik jalan kaki daripada naik bus.</div></div>
+        </div>
+
+    </div><!-- end materi-container -->
+
+    <button class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+    <script>
+        // Password check
+        if(sessionStorage.getItem('hskPassword')!=='hsk2026mandarin'){window.location.href='index.html';}
+
+        // Search
+        document.getElementById('searchBox').addEventListener('input',function(){
+            const q=this.value.toLowerCase();
+            document.querySelectorAll('.vocab-table tbody tr').forEach(tr=>{
+                tr.style.display=tr.textContent.toLowerCase().includes(q)?'':'none';
+            });
+        });
+
+        // Back to top
+        window.addEventListener('scroll',function(){
+            document.getElementById('backTop').style.display=window.scrollY>400?'block':'none';
+        });
+    </script>
+</body>
+</html>

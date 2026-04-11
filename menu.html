@@ -6,102 +6,109 @@
     <title>Menu Modul — Modul HSK Mandarin</title>
     <link rel="stylesheet" href="style.css">
     <style>
-        .menu-container {
-            max-width: 900px;
-            margin: 40px auto;
-            padding: 20px;
-        }
-        .menu-title {
-            text-align: center;
-            font-size: 2rem;
-            margin-bottom: 10px;
-        }
-        .menu-subtitle {
-            text-align: center;
-            color: #666;
-            margin-bottom: 40px;
-        }
-        .hsk-grid {
+        .module-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 24px;
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px;
         }
-        .hsk-card {
-            border: 2px solid #e0e0e0;
-            border-radius: 16px;
-            padding: 28px 24px;
+        .module-card {
             background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 2px 16px rgba(0,0,0,0.07);
+            padding: 32px 24px;
+            text-align: center;
             transition: transform 0.2s, box-shadow 0.2s;
             position: relative;
             overflow: hidden;
         }
-        .hsk-card:hover {
+        .module-card:hover {
             transform: translateY(-4px);
-            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.12);
         }
-        .hsk-card.locked {
-            opacity: 0.55;
-            pointer-events: none;
-        }
-        .card-badge {
+        .module-card .badge {
             position: absolute;
-            top: 14px;
-            right: 14px;
-            font-size: 0.8rem;
-            padding: 3px 10px;
+            top: 16px;
+            right: 16px;
+            font-size: 13px;
+            padding: 4px 12px;
             border-radius: 20px;
             font-weight: 600;
         }
-        .badge-done { background: #d4edda; color: #155724; }
-        .badge-new { background: #fff3cd; color: #856404; }
-        .badge-soon { background: #e2e3e5; color: #6c757d; }
-        .card-level {
-            font-size: 1.6rem;
-            font-weight: 700;
-            margin-bottom: 6px;
+        .badge-new {
+            background: #ff4d4f;
+            color: #fff;
         }
-        .card-desc {
+        .badge-available {
+            background: #52c41a;
+            color: #fff;
+        }
+        .badge-done {
+            background: #d9d9d9;
             color: #555;
-            font-size: 0.95rem;
-            margin-bottom: 16px;
-            line-height: 1.5;
         }
-        .card-stats {
-            font-size: 0.85rem;
-            color: #888;
-            margin-bottom: 18px;
+        .module-card h2 {
+            font-size: 2rem;
+            margin: 0 0 8px;
         }
-        .card-links {
+        .module-card h3 {
+            margin: 0 0 12px;
+            color: #333;
+        }
+        .module-card p {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+        .module-links {
             display: flex;
             gap: 10px;
+            justify-content: center;
             flex-wrap: wrap;
         }
-        .card-links a {
+        .module-links a {
             display: inline-block;
-            padding: 8px 18px;
+            padding: 10px 20px;
             border-radius: 8px;
             text-decoration: none;
-            font-size: 0.9rem;
             font-weight: 600;
+            font-size: 14px;
             transition: background 0.2s;
         }
         .btn-materi {
-            background: #e63946;
+            background: #1890ff;
             color: #fff;
         }
-        .btn-materi:hover { background: #c1121f; }
+        .btn-materi:hover {
+            background: #096dd9;
+        }
         .btn-soal {
-            background: #457b9d;
+            background: #faad14;
             color: #fff;
         }
-        .btn-soal:hover { background: #1d3557; }
+        .btn-soal:hover {
+            background: #d48806;
+        }
+        .page-title {
+            text-align: center;
+            margin-top: 40px;
+        }
+        .page-title h1 {
+            font-size: 2rem;
+            color: #222;
+        }
+        .page-title p {
+            color: #666;
+            font-size: 15px;
+        }
     </style>
 </head>
 <body>
-    <!-- Navbar -->
     <nav class="navbar">
         <div class="nav-brand">
-            <span class="logo-hanzi">汉</span>
+            <span class="logo-han">汉</span>
             <span>Modul HSK</span>
         </div>
         <div class="nav-links">
@@ -110,62 +117,59 @@
         </div>
     </nav>
 
-    <div class="menu-container">
-        <h1 class="menu-title">📚 Pilih Level HSK</h1>
-        <p class="menu-subtitle">Pilih modul yang ingin kamu pelajari</p>
+    <div class="page-title">
+        <h1>Pilih Modul HSK</h1>
+        <p>Belajar Mandarin dari dasar hingga mahir — HSK 1 sampai HSK 4</p>
+    </div>
 
-        <div class="hsk-grid">
-            <!-- HSK 1 -->
-            <div class="hsk-card">
-                <span class="card-badge badge-done">✅ Tersedia</span>
-                <div class="card-level">HSK 1</div>
-                <p class="card-desc">Dasar-dasar Mandarin. Kosakata sehari-hari, salam, angka, waktu, dan kalimat sederhana.</p>
-                <div class="card-stats">📖 150 kata &nbsp;|&nbsp; 📝 10 bab soal</div>
-                <div class="card-links">
-                    <a href="hsk1-materi.html" class="btn-materi">📖 Materi</a>
-                    <a href="hsk1-soal.html" class="btn-soal">📝 Latihan Soal</a>
-                </div>
+    <div class="module-grid">
+        <!-- HSK 1 -->
+        <div class="module-card">
+            <span class="badge badge-done">✅ Tersedia</span>
+            <h2>HSK 1</h2>
+            <h3>Pemula</h3>
+            <p>150 kosakata dasar, salam, angka, waktu, keluarga, dan percakapan sehari-hari.</p>
+            <div class="module-links">
+                <a href="hsk1-materi.html" class="btn-materi">📖 Materi</a>
+                <a href="hsk1-soal.html" class="btn-soal">✍️ Latihan</a>
             </div>
-
-            <!-- HSK 2 -->
-            <div class="hsk-card">
-                <span class="card-badge badge-done">✅ Tersedia</span>
-                <div class="card-level">HSK 2</div>
-                <p class="card-desc">Percakapan lanjutan. Belanja, transportasi, cuaca, hobi, dan ekspresi lebih kompleks.</p>
-                <div class="card-stats">📖 150 kata &nbsp;|&nbsp; 📝 15 bab soal</div>
-                <div class="card-links">
-                    <a href="hsk2-materi.html" class="btn-materi">📖 Materi</a>
-                    <a href="hsk2-soal.html" class="btn-soal">📝 Latihan Soal</a>
-                </div>
+        </div>
+        <!-- HSK 2 -->
+        <div class="module-card">
+            <span class="badge badge-done">✅ Tersedia</span>
+            <h2>HSK 2</h2>
+            <h3>Dasar</h3>
+            <p>150 kosakata tambahan, kalimat lebih kompleks, dan tata bahasa dasar lanjutan.</p>
+            <div class="module-links">
+                <a href="hsk2-materi.html" class="btn-materi">📖 Materi</a>
+                <a href="hsk2-soal.html" class="btn-soal">✍️ Latihan</a>
             </div>
-
-            <!-- HSK 3 -->
-            <div class="hsk-card" style="border-color: #e63946;">
-                <span class="card-badge badge-new">🔥 Baru!</span>
-                <div class="card-level">HSK 3</div>
-                <p class="card-desc">Menengah. Lingkungan, pendidikan, teknologi, budaya, hubungan sosial, kesehatan, dan topik luas lainnya.</p>
-                <div class="card-stats">📖 300 kata &nbsp;|&nbsp; 🗂 20 poin grammar &nbsp;|&nbsp; 📝 20 bab soal</div>
-                <div class="card-links">
-                    <a href="hsk3-materi.html" class="btn-materi">📖 Materi</a>
-                    <a href="hsk3-soal.html" class="btn-soal">📝 Latihan Soal</a>
-                </div>
+        </div>
+        <!-- HSK 3 -->
+        <div class="module-card">
+            <span class="badge badge-available">✅ Tersedia</span>
+            <h2>HSK 3</h2>
+            <h3>Menengah Awal</h3>
+            <p>300 kosakata baru, percakapan panjang, dan tata bahasa menengah.</p>
+            <div class="module-links">
+                <a href="hsk3-materi.html" class="btn-materi">📖 Materi</a>
+                <a href="hsk3-soal.html" class="btn-soal">✍️ Latihan</a>
             </div>
-
-            <!-- HSK 4 (locked) -->
-            <div class="hsk-card locked">
-                <span class="card-badge badge-soon">🔒 Segera</span>
-                <div class="card-level">HSK 4</div>
-                <p class="card-desc">Mahir. Diskusi mendalam, opini, argumen, berita, dan topik akademis.</p>
-                <div class="card-stats">📖 600 kata &nbsp;|&nbsp; 📝 Segera hadir</div>
-                <div class="card-links">
-                    <span style="color:#aaa;font-size:0.9rem;">Modul sedang disiapkan...</span>
-                </div>
+        </div>
+        <!-- HSK 4 -->
+        <div class="module-card" style="border: 2px solid #ff4d4f;">
+            <span class="badge badge-new">🔥 Baru!</span>
+            <h2>HSK 4</h2>
+            <h3>Menengah</h3>
+            <p>600 kosakata baru, diskusi topik kompleks, dan tata bahasa tingkat menengah-lanjut.</p>
+            <div class="module-links">
+                <a href="hsk4-materi.html" class="btn-materi">📖 Materi</a>
+                <a href="hsk4-soal.html" class="btn-soal">✍️ Latihan</a>
             </div>
         </div>
     </div>
 
     <script>
-        // Auth check
         if (sessionStorage.getItem('hskPassword') !== 'hsk2026mandarin') {
             window.location.href = 'index.html';
         }
