@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latihan Soal HSK 2 — Modul HSK Mandarin</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .container{max-width:960px;margin:auto;padding:2rem 1rem}
+        .bab-nav{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:1.5rem}
+        .bab-btn{padding:6px 14px;border:1px solid #ddd;border-radius:16px;background:#fff;cursor:pointer;font-size:.9rem;transition:.2s}
+        .bab-btn.active,.bab-btn:hover{background:#c0392b;color:#fff;border-color:#c0392b}
+        .bab-content{display:none}.bab-content.active{display:block}
+        .section-title{background:#f8f8f8;padding:10px 16px;border-left:4px solid #c0392b;margin:1.5rem 0 1rem;font-weight:700;font-size:1.05rem}
+        .soal{background:#fff;border:1px solid #eee;border-radius:8px;padding:1rem 1.2rem;margin-bottom:1rem}
+        .soal p{margin-bottom:.5rem;font-size:1rem}
+        .soal .hanzi-q{font-size:1.15rem;font-weight:600;margin-bottom:.7rem;line-height:1.6}
+        .options label{display:block;padding:6px 10px;margin:4px 0;border-radius:6px;cursor:pointer;transition:.15s}
+        .options label:hover{background:#f5f5f5}
+        .options input{margin-right:8px}
+        .correct{background:#d4edda !important;border:1px solid #28a745}
+        .wrong{background:#f8d7da !important;border:1px solid #dc3545}
+        .kunci-box{background:#fffbe6;border:1px solid #f1c40f;border-radius:8px;padding:1rem;margin-top:1.5rem;display:none}
+        .kunci-box.show{display:block}
+        .toggle-btn{background:#c0392b;color:#fff;border:none;padding:10px 20px;border-radius:8px;cursor:pointer;font-size:1rem;margin-top:1rem}
+        .toggle-btn:hover{background:#a93226}
+        .score-display{font-size:1.1rem;font-weight:700;margin:1rem 0;color:#c0392b}
+        .paragraph-box{background:#fffde7;border:1px solid #e0d68a;padding:12px 16px;border-radius:8px;margin-bottom:1rem;line-height:1.8;font-size:1.05rem}
+        .arrange-area{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0}
+        .word-chip{background:#e3f2fd;border:1px solid #90caf9;padding:6px 14px;border-radius:16px;cursor:pointer;user-select:none;transition:.2s;font-size:1rem}
+        .word-chip:hover{background:#bbdefb}
+        .word-chip.selected{background:#c0392b;color:#fff;border-color:#c0392b}
+        .answer-line{min-height:42px;border:2px dashed #ccc;border-radius:8px;padding:8px 12px;margin:8px 0;display:flex;flex-wrap:wrap;gap:6px}
+        .answer-line .word-chip{background:#fff3e0;border-color:#ffb74d}
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand"><span class="logo">汉</span><span>Modul HSK</span></div>
+        <div class="nav-links">
+            <a href="index.html">Beranda</a>
+            <a href="menu.html">Menu</a>
+            <a href="hsk2-materi.html">Materi</a>
+            <a href="hsk2-soal.html" class="active">Latihan Soal</a>
+        </div>
+    </nav>
+    <main class="container">
+        <h1>📝 Latihan Soal HSK 2</h1>
+        <p>20 bab × 40 soal. Pilih bab untuk mulai latihan.</p>
+        <div class="bab-nav" id="babNav"></div>
+        <div id="babContainer"></div>
+    </main>
+<script>
+if(sessionStorage.getItem('hsk_pass')!=='hsk2026mandarin'){window.location.href='menu.html';}
+
+const BABS = [
+// ====== BAB 1: Perjalanan & Liburan ======
+{
+title:"Bab 1: Perjalanan & Liburan",
+A:[
+{q:"我想去中国旅游。",o:["Saya ingin berwisata ke Tiongkok.","Saya ingin tinggal di Tiongkok.","Saya pernah ke Tiongkok.","Saya tidak suka Tiongkok."],a:0},
+{q:"从北京到上海坐火车要五个小时。",o:["Dari Beijing ke Shanghai naik kereta butuh 5 jam.","Dari Beijing ke Shanghai naik pesawat butuh 5 jam.","Beijing dan Shanghai sangat dekat.","Saya tidak mau ke Shanghai."],a:0},
+{q:"我们住在一家很好的宾馆。",o:["Kami tinggal di hotel yang bagus.","Kami bekerja di hotel yang bagus.","Kami makan di hotel yang bagus.","Kami memiliki hotel yang bagus."],a:0},
+{q:"你的护照在哪儿？",o:["Paspormu di mana?","Kamu mau ke mana?","Kamu bawa apa?","Siapa yang bawa paspor?"],a:0},
+{q:"飞机票太贵了，我们坐火车吧。",o:["Tiket pesawat terlalu mahal, kita naik kereta saja.","Tiket kereta terlalu mahal, kita naik pesawat saja.","Tiket pesawat sangat murah.","Kita tidak perlu tiket."],a:0},
+{q:"他去过很多地方旅游。",o:["Dia pernah berwisata ke banyak tempat.","Dia tidak suka berwisata.","Dia ingin pergi ke banyak tempat.","Dia hanya pergi ke satu tempat."],a:0},
+{q:"请问，火车站怎么走？",o:["Permisi, bagaimana ke stasiun kereta?","Permisi, ini stasiun kereta?","Permisi, stasiun kereta buka jam berapa?","Permisi, kereta jam berapa berangkat?"],a:0},
+{q:"去机场要一个小时。",o:["Ke bandara butuh satu jam.","Bandara sudah tutup.","Saya tidak mau ke bandara.","Bandara sangat dekat."],a:0},
+{q:"我第一次坐飞机。",o:["Ini pertama kali saya naik pesawat.","Saya sering naik pesawat.","Saya tidak mau naik pesawat.","Pesawat sudah berangkat."],a:0},
+{q:"我们明天回家。",o:["Kita besok pulang.","Kita besok pergi.","Kita kemarin pulang.","Kita tidak mau pulang."],a:0},
+{q:"这条路很长，我们走了很久。",o:["Jalan ini sangat panjang, kami berjalan lama.","Jalan ini sangat pendek.","Kami tidak berjalan.","Jalan ini sangat bagus."],a:0},
+{q:"地图上看，这个地方离这儿不远。",o:["Di peta, tempat ini tidak jauh dari sini.","Di peta, tidak ada tempat ini.","Tempat ini sangat jauh.","Saya tidak punya peta."],a:0},
+{q:"你准备好了吗？我们出发吧。",o:["Kamu sudah siap? Kita berangkat ya.","Kamu sudah makan? Kita pergi makan ya.","Kamu mau tidur? Selamat malam.","Kamu sudah pulang? Sampai jumpa."],a:0},
+{q:"他一个人去旅游了。",o:["Dia pergi wisata sendirian.","Dia pergi wisata bersama teman.","Dia tidak pergi wisata.","Dia mau pergi wisata bersama saya."],a:0},
+{q:"我送你到机场。",o:["Saya antar kamu ke bandara.","Saya menjemput kamu di bandara.","Saya menunggu kamu di bandara.","Saya bekerja di bandara."],a:0}
+],
+B:{
+paragraphs:[
+{text:"小王和他的妻子今年去了日本旅游。他们坐飞机去的，从北京到东京要三个小时。他们在东京住了五天，去了很多地方，吃了很多好吃的日本菜。小王觉得日本非常干净，人也很热情。他的妻子最喜欢买东西，她买了很多衣服和礼物。虽然旅游很累，但是他们都很开心。",
+qs:[
+{q:"小王和谁一起去旅游？",o:["他的妻子","他的朋友","他的同事","他一个人"],a:0},
+{q:"他们怎么去的日本？",o:["坐飞机","坐火车","坐船","开车"],a:0},
+{q:"他们在东京住了几天？",o:["五天","三天","七天","十天"],a:0},
+{q:"小王觉得日本怎么样？",o:["非常干净","非常大","非常便宜","非常远"],a:0},
+{q:"小王的妻子最喜欢做什么？",o:["买东西","吃饭","看风景","拍照"],a:0}
+]},
+{text:"我下个月准备去云南旅游。我已经在网上买好了机票，从上海到昆明的飞机票不太贵，往返一共一千五百块。我还订了一家宾馆，一个晚上两百块。我打算在那儿住一个星期，去看看那里的山和湖。朋友告诉我，云南的天气很好，不冷也不热。我希望这次旅游很开心。",
+qs:[
+{q:"他准备什么时候去云南？",o:["下个月","下个星期","明天","今天"],a:0},
+{q:"他的飞机票一共多少钱？",o:["一千五百块","两千块","一千块","五百块"],a:0},
+{q:"宾馆一个晚上多少钱？",o:["两百块","三百块","一百块","五百块"],a:0},
+{q:"他打算在那儿住多久？",o:["一个星期","三天","两个星期","一个月"],a:0},
+{q:"朋友说云南的天气怎么样？",o:["不冷也不热","很冷","很热","经常下雨"],a:0}
+]},
+{text:"去年夏天，我和家人一起去海边玩了三天。我们开车去的，路上花了四个小时。到了以后，我们先去宾馆放行李，然后去海边游泳。第二天，我们租了一条小船，在海上玩了一上午。第三天，我们去了一个很有名的市场买海鲜，那里的鱼又新鲜又便宜。这次旅行虽然时间不长，但是大家都玩得很开心。",
+qs:[
+{q:"他们怎么去的海边？",o:["开车","坐火车","坐飞机","走路"],a:0},
+{q:"路上花了多长时间？",o:["四个小时","两个小时","六个小时","一个小时"],a:0},
+{q:"第二天他们做了什么？",o:["租了小船在海上玩","去了市场","在宾馆休息","去游泳"],a:0},
+{q:"市场的鱼怎么样？",o:["又新鲜又便宜","又贵又不好","不新鲜","很少"],a:0},
+{q:"他们玩了几天？",o:["三天","五天","一个星期","两天"],a:0}
+]}
+]},
+C:[
+{words:["我们","一起","去","旅游","吧"],answer:"我们一起去旅游吧"},
+{words:["坐","火车","从","北京","到","上海"],answer:"从北京到上海坐火车"},
+{words:["飞机票","太","了","贵"],answer:"飞机票太贵了"},
+{words:["你","去过","中国","吗"],answer:"你去过中国吗"},
+{words:["这家","宾馆","很","不错"],answer:"这家宾馆很不错"},
+{words:["我","想","明年","去","日本"],answer:"我想明年去日本"},
+{words:["他","第一次","坐","飞机"],answer:"他第一次坐飞机"},
+{words:["从","这儿","到","机场","不","远"],answer:"从这儿到机场不远"},
+{words:["我们","回家","明天","吧"],answer:"我们明天回家吧"},
+{words:["路上","要","两个","小时"],answer:"路上要两个小时"}
+]
+},
+// ====== BAB 2: Olahraga & Kesehatan ======
+{
+title:"Bab 2: Olahraga & Kesehatan",
+A:[
+{q:"他每天早上跑步半个小时。",o:["Dia jogging setengah jam setiap pagi.","Dia berjalan setengah jam setiap pagi.","Dia berenang setengah jam setiap pagi.","Dia tidur setengah jam setiap pagi."],a:0},
+{q:"游泳对身体很好。",o:["Berenang baik untuk kesehatan.","Berenang tidak baik untuk kesehatan.","Berenang sangat sulit.","Berenang sangat mahal."],a:0},
+{q:"你生病了，应该多喝水。",o:["Kamu sakit, seharusnya banyak minum air.","Kamu sakit, seharusnya banyak makan.","Kamu sakit, jangan minum air.","Kamu tidak sakit."],a:0},
+{q:"我觉得身体不太舒服。",o:["Saya merasa badan tidak terlalu enak.","Saya merasa sangat senang.","Saya merasa sangat lapar.","Saya merasa sangat panas."],a:0},
+{q:"你吃药了吗？",o:["Sudah minum obat belum?","Sudah makan belum?","Sudah tidur belum?","Sudah pergi belum?"],a:0},
+{q:"他踢足球踢得非常好。",o:["Dia bermain sepak bola sangat bagus.","Dia bermain basket sangat bagus.","Dia tidak suka sepak bola.","Dia baru belajar sepak bola."],a:0},
+{q:"我们去打篮球吧。",o:["Kita bermain basket yuk.","Kita bermain sepak bola yuk.","Kita pergi berenang yuk.","Kita pulang yuk."],a:0},
+{q:"跑步以后，我很渴。",o:["Setelah jogging, saya sangat haus.","Sebelum jogging, saya sangat haus.","Setelah jogging, saya sangat lapar.","Saya tidak suka jogging."],a:0},
+{q:"你应该多运动，少吃零食。",o:["Kamu harus banyak olahraga, kurangi makan camilan.","Kamu harus banyak makan camilan.","Kamu tidak perlu olahraga.","Kamu harus banyak tidur."],a:0},
+{q:"她的眼睛最近不太好。",o:["Matanya akhir-akhir ini kurang baik.","Matanya sangat indah.","Matanya sangat besar.","Dia tidak punya kacamata."],a:0},
+{q:"医生说我要多休息。",o:["Dokter bilang saya harus banyak istirahat.","Dokter bilang saya sudah sehat.","Dokter bilang saya harus banyak olahraga.","Dokter tidak ada di rumah sakit."],a:0},
+{q:"他生病了，不能来上课。",o:["Dia sakit, tidak bisa datang ke kelas.","Dia sibuk, tidak mau datang.","Dia sudah pulang ke rumah.","Dia tidak suka belajar."],a:0},
+{q:"我一边跑步，一边听音乐。",o:["Saya jogging sambil mendengarkan musik.","Saya menyanyi sambil menari.","Saya makan sambil minum.","Saya belajar sambil menulis."],a:0},
+{q:"虽然很累，但是运动以后很开心。",o:["Meskipun capek, tapi setelah olahraga sangat senang.","Olahraga tidak capek.","Saya tidak suka olahraga.","Olahraga membuat saya sedih."],a:0},
+{q:"他的身体一直很好，因为他每天运动。",o:["Kesehatannya selalu baik karena dia olahraga setiap hari.","Dia tidak pernah olahraga.","Dia sering sakit.","Dia baru mulai olahraga."],a:0}
+],
+B:{
+paragraphs:[
+{text:"我的朋友小李非常喜欢运动。他每天早上六点起床跑步，跑完步以后去游泳。他觉得运动让他的身体很好，很少生病。上个月他参加了一个跑步比赛，跑了十公里，得了第三名。他的妻子也开始跟他一起运动了，他们每个周末一起去爬山。",
+qs:[
+{q:"小李每天早上几点起床？",o:["六点","七点","五点","八点"],a:0},
+{q:"跑完步以后他做什么？",o:["去游泳","去吃饭","去上班","去睡觉"],a:0},
+{q:"上个月比赛他跑了多远？",o:["十公里","五公里","二十公里","三公里"],a:0},
+{q:"他比赛得了第几名？",o:["第三名","第一名","第二名","最后一名"],a:0},
+{q:"周末他们做什么？",o:["一起去爬山","一起去看电影","一起去买东西","一起去游泳"],a:0}
+]},
+{text:"上个星期我生病了，头很疼，还发烧了。妈妈带我去了医院。医生给我检查了身体，说我感冒了，要多喝水，多休息，还开了一些药。我在家里休息了三天，每天吃药、喝热水。第四天我觉得好多了，但是医生说还要再休息两天才能去上课。生病的时候才知道身体健康最重要。",
+qs:[
+{q:"他生病的时候有什么症状？",o:["头疼、发烧","肚子疼","腿疼","眼睛疼"],a:0},
+{q:"谁带他去医院？",o:["妈妈","爸爸","朋友","自己去"],a:0},
+{q:"医生说他怎么了？",o:["感冒了","受伤了","太累了","没问题"],a:0},
+{q:"他在家休息了几天才觉得好？",o:["三天","两天","一天","五天"],a:0},
+{q:"他觉得什么最重要？",o:["身体健康","学习","工作","钱"],a:0}
+]},
+{text:"我们学校每年秋天都有一个运动会。今年的运动会上，我参加了一百米跑步和跳远比赛。一百米跑步我跑了第五名，不太好。但是跳远我跳得不错，得了第二名。我们班还参加了篮球比赛，虽然没有赢，但是大家都玩得很开心。运动会以后，老师请我们吃了冰淇淋。",
+qs:[
+{q:"学校的运动会在什么时候？",o:["每年秋天","每年春天","每年夏天","每年冬天"],a:0},
+{q:"他一百米跑了第几名？",o:["第五名","第一名","第二名","第三名"],a:0},
+{q:"跳远他得了第几名？",o:["第二名","第一名","第三名","第五名"],a:0},
+{q:"篮球比赛结果怎么样？",o:["没有赢","赢了","没参加","取消了"],a:0},
+{q:"运动会以后老师做了什么？",o:["请他们吃冰淇淋","让他们写作业","让他们回家","让他们继续练习"],a:0}
+]}
+]},
+C:[
+{words:["每天","他","跑步","早上"],answer:"他每天早上跑步"},
+{words:["身体","游泳","对","好","很"],answer:"游泳对身体很好"},
+{words:["生病","了","你","应该","休息","多"],answer:"你生病了应该多休息"},
+{words:["吃药","了","你","吗"],answer:"你吃药了吗"},
+{words:["虽然","累","很","但是","开心","很"],answer:"虽然很累但是很开心"},
+{words:["运动","让","身体","好","很"],answer:"运动让身体很好"},
+{words:["一边","他","跑步","一边","听","音乐"],answer:"他一边跑步一边听音乐"},
+{words:["医生","说","多","要","喝水"],answer:"医生说要多喝水"},
+{words:["打篮球","我们","去","吧"],answer:"我们去打篮球吧"},
+{words:["的","眼睛","她","不太好","最近"],answer:"她的眼睛最近不太好"}
+]
+},
+// ====== BAB 3: Cuaca & Musim ======
+{
+title:"Bab 3: Cuaca & Musim",
+A:[
+{q:"今天天气很好，是晴天。",o:["Hari ini cuaca bagus, cerah.","Hari ini hujan.","Hari ini mendung.","Hari ini sangat dingin."],a:0},
+{q:"明天可能下雨，你带伞吧。",o:["Besok mungkin hujan, bawa payung ya.","Besok pasti cerah.","Kamu tidak perlu payung.","Besok sangat panas."],a:0},
+{q:"北京的冬天非常冷，经常下雪。",o:["Musim dingin Beijing sangat dingin, sering turun salju.","Beijing tidak pernah turun salju.","Beijing selalu panas.","Beijing musim dingin sangat pendek."],a:0},
+{q:"夏天太热了，我不想出门。",o:["Musim panas terlalu panas, saya tidak mau keluar.","Musim panas sangat nyaman.","Saya suka musim panas.","Musim panas sangat dingin."],a:0},
+{q:"春天的时候花都开了。",o:["Saat musim semi bunga-bunga bermekaran.","Musim semi sangat dingin.","Musim semi tidak ada bunga.","Bunga bermekaran di musim dingin."],a:0},
+{q:"秋天是我最喜欢的季节。",o:["Musim gugur adalah musim favorit saya.","Saya tidak suka musim gugur.","Musim panas adalah favorit saya.","Musim dingin adalah favorit saya."],a:0},
+{q:"外面的风很大，别出去。",o:["Angin di luar kencang, jangan keluar.","Di luar sangat panas.","Di luar sangat dingin.","Di luar turun salju."],a:0},
+{q:"今天比昨天冷多了。",o:["Hari ini jauh lebih dingin dari kemarin.","Hari ini lebih panas dari kemarin.","Hari ini sama dengan kemarin.","Kemarin sangat dingin."],a:0},
+{q:"下雪了！孩子们很高兴。",o:["Turun salju! Anak-anak sangat senang.","Turun hujan! Anak-anak sangat sedih.","Hari ini cerah.","Anak-anak tidak suka salju."],a:0},
+{q:"这几天一直是阴天。",o:["Beberapa hari ini terus mendung.","Beberapa hari ini cerah.","Hari ini hujan lebat.","Cuaca sangat bagus."],a:0},
+{q:"如果明天是晴天，我们就去公园。",o:["Kalau besok cerah, kita pergi ke taman.","Kalau besok hujan, kita pergi ke taman.","Kita tidak mau ke taman.","Besok pasti hujan."],a:0},
+{q:"南方的冬天不太冷。",o:["Musim dingin di selatan tidak terlalu dingin.","Musim dingin di selatan sangat dingin.","Selatan tidak ada musim dingin.","Selatan selalu panas."],a:0},
+{q:"昨天下了一天的雨。",o:["Kemarin hujan seharian.","Kemarin cerah seharian.","Kemarin turun salju seharian.","Kemarin tidak hujan."],a:0},
+{q:"天气预报说后天有大风。",o:["Ramalan cuaca bilang lusa ada angin kencang.","Ramalan cuaca bilang besok hujan.","Ramalan cuaca bilang lusa cerah.","Tidak ada ramalan cuaca."],a:0},
+{q:"这个城市一年四季都很暖和。",o:["Kota ini hangat sepanjang tahun.","Kota ini sangat dingin.","Kota ini hanya panas di musim panas.","Kota ini tidak ada musim."],a:0}
+],
+B:{
+paragraphs:[
+{text:"北京有四个季节：春天、夏天、秋天和冬天。春天不太长，天气慢慢变暖和了，人们喜欢去公园看花。夏天非常热，有时候有三十八九度。秋天是最好的季节，不冷也不热，天空很蓝。冬天很冷，经常下雪，最冷的时候有零下十几度。我最喜欢秋天，因为天气很舒服。",
+qs:[
+{q:"北京有几个季节？",o:["四个","两个","三个","一个"],a:0},
+{q:"夏天最热有多少度？",o:["三十八九度","二十度","四十五度","三十度"],a:0},
+{q:"他最喜欢什么季节？",o:["秋天","春天","夏天","冬天"],a:0},
+{q:"冬天最冷有多少度？",o:["零下十几度","零下五度","零度","零下二十度"],a:0},
+{q:"秋天的天空是什么颜色？",o:["蓝色","灰色","白色","红色"],a:0}
+]},
+{text:"上个周末我和朋友去爬山了。早上出门的时候天气很好，是晴天。可是走到山上的时候，突然下起了大雨。我们没有带伞，衣服都湿了。我们找了一个地方等雨停。等了大概半个小时，雨停了，太阳又出来了。虽然被雨淋了，但是看到了一道很美的彩虹，我们都很开心。",
+qs:[
+{q:"早上出门的时候天气怎么样？",o:["晴天","下雨","下雪","刮风"],a:0},
+{q:"爬山的时候发生了什么？",o:["突然下大雨了","天气变冷了","起风了","下雪了"],a:0},
+{q:"他们带伞了吗？",o:["没有","带了","带了一把","买了伞"],a:0},
+{q:"雨停了以后出现了什么？",o:["彩虹","闪电","大风","乌云"],a:0},
+{q:"等了多长时间雨才停？",o:["大概半个小时","一个小时","十分钟","两个小时"],a:0}
+]},
+{text:"我的家乡在南方，那里的天气跟北方很不一样。冬天不太冷，很少下雪，但是经常下雨。夏天很热，而且很潮湿。我在北京上大学，刚来的时候不习惯北方的天气，觉得冬天太冷了，而且空气很干燥。但是我很喜欢北京的秋天，天高云淡，非常舒服。现在我已经慢慢习惯了。",
+qs:[
+{q:"他的家乡在哪儿？",o:["南方","北方","东方","西方"],a:0},
+{q:"家乡的冬天怎么样？",o:["不太冷，经常下雨","非常冷，经常下雪","很热","很干燥"],a:0},
+{q:"他在哪儿上大学？",o:["北京","上海","家乡","广州"],a:0},
+{q:"他觉得北方冬天怎么样？",o:["太冷了，空气干燥","很舒服","跟南方一样","不冷"],a:0},
+{q:"他喜欢北京的什么季节？",o:["秋天","春天","夏天","冬天"],a:0}
+]}
+]},
+C:[
+{words:["今天","比","昨天","冷"],answer:"今天比昨天冷"},
+{words:["下雨","了","明天","可能"],answer:"明天可能下雨了"},
+{words:["北京","的","冬天","很","冷"],answer:"北京的冬天很冷"},
+{words:["最","秋天","是","好的","季节"],answer:"秋天是最好的季节"},
+{words:["带","伞","你","吧"],answer:"你带伞吧"},
+{words:["外面","风","很","大"],answer:"外面风很大"},
+{words:["下雪","了","孩子们","高兴","很"],answer:"下雪了孩子们很高兴"},
+{words:["天气","好","如果","去","公园","我们"],answer:"如果天气好我们去公园"},
+{words:["一直","阴天","这几天","是"],answer:"这几天一直是阴天"},
+{words:["夏天","太","了","热"],answer:"夏天太热了"}
+]
+},
+// ====== BAB 4: Belanja & Pakaian ======
+{
+title:"Bab 4: Belanja & Pakaian",
+A:[
+{q:"这件衣服多少钱？",o:["Baju ini berapa harganya?","Baju ini warna apa?","Baju ini siapa punya?","Baju ini dari mana?"],a:0},
+{q:"太贵了，能便宜一点吗？",o:["Terlalu mahal, bisa murah sedikit?","Sangat murah, saya mau beli.","Saya tidak butuh.","Ini sudah murah."],a:0},
+{q:"她穿了一件红色的裙子。",o:["Dia memakai rok merah.","Dia memakai rok putih.","Dia membeli rok merah.","Dia tidak suka rok."],a:0},
+{q:"这双鞋太小了，有大一号的吗？",o:["Sepatu ini terlalu kecil, ada satu nomor lebih besar?","Sepatu ini pas.","Sepatu ini terlalu besar.","Saya tidak mau sepatu."],a:0},
+{q:"我想买一条新裤子。",o:["Saya ingin beli celana baru.","Saya ingin beli baju baru.","Saya ingin beli sepatu baru.","Saya tidak mau beli apa-apa."],a:0},
+{q:"这个颜色很好看。",o:["Warna ini bagus.","Warna ini jelek.","Warna ini terlalu gelap.","Saya tidak suka warna."],a:0},
+{q:"你穿多大号的衣服？",o:["Kamu pakai ukuran berapa?","Kamu suka warna apa?","Kamu punya berapa baju?","Kamu mau beli apa?"],a:0},
+{q:"这家店的东西又好又便宜。",o:["Barang di toko ini bagus dan murah.","Barang di toko ini mahal.","Toko ini sudah tutup.","Toko ini tidak punya barang."],a:0},
+{q:"黑色的裤子比白色的贵。",o:["Celana hitam lebih mahal dari yang putih.","Celana putih lebih mahal.","Harganya sama.","Dua-duanya murah."],a:0},
+{q:"我给妈妈买了一块新手表。",o:["Saya membelikan ibu jam tangan baru.","Ibu membelikan saya jam tangan.","Saya menjual jam tangan ibu.","Saya tidak membeli apa-apa."],a:0},
+{q:"这件白色的衬衫很适合你。",o:["Kemeja putih ini sangat cocok untukmu.","Kemeja ini terlalu besar.","Kemeja ini terlalu mahal.","Kamu tidak suka kemeja."],a:0},
+{q:"超市里什么都有。",o:["Di supermarket ada segalanya.","Supermarket kosong.","Supermarket sudah tutup.","Supermarket sangat kecil."],a:0},
+{q:"她喜欢在网上买东西。",o:["Dia suka belanja online.","Dia tidak suka belanja.","Dia suka ke toko.","Dia tidak punya uang."],a:0},
+{q:"这条围巾是送给你的礼物。",o:["Syal ini adalah hadiah untukmu.","Syal ini milik saya.","Syal ini sangat mahal.","Syal ini jelek."],a:0},
+{q:"他的旧鞋已经坏了。",o:["Sepatu lamanya sudah rusak.","Sepatu barunya sangat bagus.","Dia beli sepatu baru.","Sepatunya masih bagus."],a:0}
+],
+B:{
+paragraphs:[
+{text:"上个周末我和姐姐去商场买衣服。姐姐看上了一件红色的裙子，很漂亮，但是要八百块钱，她觉得太贵了。后来她在另一家店找到了一件差不多的，只要三百块，她很高兴地买了。我买了一双白色的运动鞋和一条黑色的裤子。运动鞋两百五十块，裤子一百八十块。我们一共花了七百多块钱。",
+qs:[
+{q:"姐姐最后买了什么？",o:["三百块的裙子","八百块的裙子","运动鞋","裤子"],a:0},
+{q:"第一件裙子她为什么没买？",o:["太贵了","不好看","太大了","颜色不好"],a:0},
+{q:"我买了什么？",o:["运动鞋和裤子","裙子和鞋","裤子和围巾","什么都没买"],a:0},
+{q:"运动鞋多少钱？",o:["两百五十块","三百块","两百块","一百块"],a:0},
+{q:"他们一共花了多少钱？",o:["七百多块","五百多块","一千块","三百块"],a:0}
+]},
+{text:"我的朋友小红非常喜欢买衣服。她的衣柜里有几十件衣服，但是她还是觉得没有衣服穿。每次出门之前，她都要花半个小时选衣服。她最喜欢的颜色是粉色，所以她的衣服大部分都是粉色的。她丈夫觉得她买的衣服太多了，让她少买一点。但是小红说，女人永远觉得自己少一件衣服。",
+qs:[
+{q:"小红的衣柜里有多少衣服？",o:["几十件","几件","一百件","很少"],a:0},
+{q:"她出门前花多长时间选衣服？",o:["半个小时","十分钟","一个小时","两个小时"],a:0},
+{q:"她最喜欢什么颜色？",o:["粉色","红色","白色","黑色"],a:0},
+{q:"她丈夫怎么说？",o:["让她少买一点","让她多买一点","觉得很好","也喜欢买衣服"],a:0},
+{q:"小红觉得自己衣服够吗？",o:["永远觉得少一件","觉得够了","觉得太多了","不关心"],a:0}
+]},
+{text:"我最近在网上买了一双鞋。网上的图片看起来很好看，价格也比实体店便宜两百块。但是收到以后我发现鞋子的颜色跟图片不一样，而且穿起来不舒服，太小了。我想退货，但是客服说已经过了退货时间了。所以以后买鞋我还是要去实体店试一试再买。",
+qs:[
+{q:"他在哪里买的鞋？",o:["网上","商场","超市","朋友那里"],a:0},
+{q:"网上比实体店便宜多少？",o:["两百块","一百块","三百块","五十块"],a:0},
+{q:"鞋子有什么问题？",o:["颜色不对，太小了","太大了","太贵了","质量很好"],a:0},
+{q:"他能退货吗？",o:["不能，过了退货时间","可以退","已经退了","不想退"],a:0},
+{q:"以后他打算怎么买鞋？",o:["去实体店试了再买","继续网上买","不买鞋了","让朋友帮忙买"],a:0}
+]}
+]},
+C:[
+{words:["多少","这件","钱","衣服"],answer:"这件衣服多少钱"},
+{words:["便宜","一点","能","吗"],answer:"能便宜一点吗"},
+{words:["穿了","她","红色","一件","裙子","的"],answer:"她穿了一件红色的裙子"},
+{words:["太","了","这双","小","鞋"],answer:"这双鞋太小了"},
+{words:["好看","颜色","这个","很"],answer:"这个颜色很好看"},
+{words:["买东西","她","在","喜欢","网上"],answer:"她喜欢在网上买东西"},
+{words:["又","好","又","便宜","东西","的","这家店"],answer:"这家店的东西又好又便宜"},
+{words:["给","买了","妈妈","我","手表","一块"],answer:"我给妈妈买了一块手表"},
+{words:["比","贵","黑色","白色","的","的"],answer:"黑色的比白色的贵"},
+{words:["新","一条","我","裤子","想","买"],answer:"我想买一条新裤子"}
+]
+},
+// ====== BAB 5: Pekerjaan & Kantor ======
+{
+title:"Bab 5: Pekerjaan & Kantor",
+A:[
+{q:"他在一家大公司工作。",o:["Dia bekerja di perusahaan besar.","Dia memiliki perusahaan besar.","Dia tidak bekerja.","Dia baru lulus sekolah."],a:0},
+{q:"今天的工作很多，我很忙。",o:["Kerjaan hari ini banyak, saya sibuk.","Hari ini tidak ada kerjaan.","Saya sangat santai.","Saya sudah selesai kerja."],a:0},
+{q:"他每天早上九点上班。",o:["Dia masuk kerja jam 9 setiap pagi.","Dia pulang kerja jam 9.","Dia tidak kerja.","Dia kerja di rumah."],a:0},
+{q:"我下午五点下班。",o:["Saya pulang kerja jam 5 sore.","Saya masuk kerja jam 5 sore.","Saya istirahat jam 5 sore.","Saya makan jam 5 sore."],a:0},
+{q:"老板让我明天准备一个报告。",o:["Bos menyuruh saya menyiapkan laporan besok.","Bos memberikan saya uang.","Bos menyuruh saya pulang.","Bos tidak ada di kantor."],a:0},
+{q:"她的工作是教中文。",o:["Pekerjaannya mengajar bahasa Mandarin.","Dia belajar bahasa Mandarin.","Dia tidak bisa bahasa Mandarin.","Dia suka bahasa Mandarin."],a:0},
+{q:"公司离我家很远，我坐地铁上班。",o:["Kantor jauh dari rumah, saya naik MRT ke kantor.","Kantor dekat rumah.","Saya jalan kaki ke kantor.","Saya tidak pergi ke kantor."],a:0},
+{q:"这个月他工作做得非常好。",o:["Bulan ini kinerjanya sangat bagus.","Bulan ini dia tidak kerja.","Bulan ini dia sakit.","Bulan ini dia libur."],a:0},
+{q:"我找了半年才找到工作。",o:["Saya cari setengah tahun baru dapat kerja.","Saya langsung dapat kerja.","Saya tidak mau kerja.","Saya sudah bekerja lama."],a:0},
+{q:"同事们都很热情，帮助我很多。",o:["Rekan-rekan sangat ramah, banyak membantu saya.","Rekan-rekan tidak suka saya.","Saya tidak punya rekan kerja.","Rekan-rekan sangat sibuk."],a:0},
+{q:"开会的时候别玩手机。",o:["Saat rapat jangan main HP.","Saat rapat harus main HP.","Rapat sudah selesai.","Tidak ada rapat hari ini."],a:0},
+{q:"我觉得这份工作很有意思。",o:["Saya merasa pekerjaan ini menarik.","Saya tidak suka pekerjaan ini.","Pekerjaan ini sangat membosankan.","Saya mau berhenti kerja."],a:0},
+{q:"因为工作太忙，他没时间运动。",o:["Karena terlalu sibuk kerja, dia tidak ada waktu olahraga.","Dia sering olahraga.","Dia tidak bekerja.","Dia punya banyak waktu."],a:0},
+{q:"我希望以后能在外国工作。",o:["Saya berharap bisa kerja di luar negeri.","Saya tidak mau kerja di luar negeri.","Saya sudah kerja di luar negeri.","Saya tidak suka luar negeri."],a:0},
+{q:"她刚开始工作，还不太习惯。",o:["Dia baru mulai kerja, belum terbiasa.","Dia sudah kerja lama.","Dia sangat terbiasa.","Dia mau berhenti kerja."],a:0}
+],
+B:{
+paragraphs:[
+{text:"我大学毕业以后找了三个月的工作。我投了很多公司，但是只有两家给我面试的机会。第一家公司的工资太少了，我没有去。第二家公司很好，虽然工资不算很高，但是同事们都很好，老板也不错。我已经在这家公司工作半年了，每天早上九点上班，下午六点下班。工作虽然有时候很忙，但是我觉得学到了很多东西。",
+qs:[
+{q:"他找了多久的工作？",o:["三个月","一个月","半年","一年"],a:0},
+{q:"几家公司给了他面试机会？",o:["两家","一家","三家","五家"],a:0},
+{q:"第一家公司他为什么没去？",o:["工资太少","太远了","不喜欢","已经满了"],a:0},
+{q:"他每天几点下班？",o:["下午六点","下午五点","下午七点","下午四点"],a:0},
+{q:"他觉得这份工作怎么样？",o:["学到了很多东西","太无聊了","太累了","不想做了"],a:0}
+]},
+{text:"小张在一家网络公司做程序员。他每天的工作是写代码和开会。有时候工作很忙，要加班到晚上九十点。但是公司给的工资很高，福利也不错。他的办公室在二十层，从窗户能看到很远的地方。小张觉得虽然工作压力大，但是他很喜欢这份工作，因为每天都能学到新的东西。他希望以后能当一个技术主管。",
+qs:[
+{q:"小张的工作是什么？",o:["程序员","老师","医生","司机"],a:0},
+{q:"他加班到几点？",o:["晚上九十点","晚上七点","晚上八点","不加班"],a:0},
+{q:"他的办公室在几层？",o:["二十层","十层","五层","三十层"],a:0},
+{q:"他觉得工作压力怎么样？",o:["压力大","没有压力","压力很小","不确定"],a:0},
+{q:"他以后想做什么？",o:["当技术主管","换工作","出国","开公司"],a:0}
+]},
+{text:"我的姐姐是一名小学老师。她每天早上七点半到学校，下午四点下班。她教的是三年级的数学课。姐姐说虽然当老师工资不算高，但是她非常喜欢这份工作，因为她喜欢和孩子们在一起。每到教师节，学生们都会送她花和卡片。姐姐觉得，看到孩子们学到东西，是最开心的事情。",
+qs:[
+{q:"姐姐是做什么的？",o:["小学老师","中学老师","大学老师","医生"],a:0},
+{q:"她几点到学校？",o:["七点半","八点","七点","九点"],a:0},
+{q:"她教什么课？",o:["数学","语文","英语","体育"],a:0},
+{q:"教师节学生给她什么？",o:["花和卡片","书和笔","礼物和钱","蛋糕"],a:0},
+{q:"姐姐觉得什么最开心？",o:["看到孩子们学到东西","工资高","放假","不用上班"],a:0}
+]}
+]},
+C:[
+{words:["在","他","公司","大","一家","工作"],answer:"他在一家大公司工作"},
+{words:["上班","每天","九点","他","早上"],answer:"他每天早上九点上班"},
+{words:["让","老板","准备","我","报告"],answer:"老板让我准备报告"},
+{words:["工作","是","教","她的","中文"],answer:"她的工作是教中文"},
+{words:["找到","了","才","半年","工作","找了"],answer:"找了半年才找到工作"},
+{words:["同事们","很","都","热情"],answer:"同事们都很热情"},
+{words:["别","手机","玩","开会","的时候"],answer:"开会的时候别玩手机"},
+{words:["忙","太","因为","没时间","运动"],answer:"因为太忙没时间运动"},
+{words:["希望","在","能","工作","外国","我"],answer:"我希望能在外国工作"},
+{words:["做得","工作","这个月","非常好","他"],answer:"这个月他工作做得非常好"}
+]
+}
+];
+
+// ====== BAB 6-20: Template babs with unique Bagian A ======
+const BAB_TEMPLATES = [
+// BAB 6: Keluarga & Hubungan
+{title:"Bab 6: Keluarga & Hubungan",
+A:[
+{q:"我哥哥比我大三岁。",o:["Kakak saya tiga tahun lebih tua.","Adik saya tiga tahun lebih muda.","Saya lebih tua dari kakak.","Kami seumuran."],a:0},
+{q:"她的丈夫是一个医生。",o:["Suaminya seorang dokter.","Ayahnya seorang dokter.","Kakaknya seorang dokter.","Dia seorang dokter."],a:0},
+{q:"弟弟今年上小学一年级了。",o:["Adik tahun ini masuk SD kelas 1.","Adik tahun ini lulus SD.","Adik sudah SMP.","Adik belum sekolah."],a:0},
+{q:"妹妹长得跟妈妈很像。",o:["Adik perempuan mirip ibu.","Adik perempuan mirip ayah.","Adik perempuan tidak mirip siapa-siapa.","Ibu sangat cantik."],a:0},
+{q:"姐姐下个月结婚。",o:["Kakak bulan depan menikah.","Kakak sudah menikah.","Kakak tidak mau menikah.","Kakak baru bertunangan."],a:0},
+{q:"爷爷奶奶住在农村。",o:["Kakek nenek tinggal di desa.","Kakek nenek tinggal di kota.","Kakek nenek tinggal di luar negeri.","Kakek nenek tinggal sendiri."],a:0},
+{q:"我家有五口人。",o:["Keluarga saya ada lima orang.","Keluarga saya ada tiga orang.","Saya tinggal sendiri.","Saya punya lima anak."],a:0},
+{q:"妈妈每天都给我们做饭。",o:["Ibu memasak untuk kami setiap hari.","Ibu tidak bisa masak.","Kami makan di luar setiap hari.","Ayah yang memasak."],a:0},
+{q:"爸爸对我们很好。",o:["Ayah sangat baik kepada kami.","Ayah sangat sibuk.","Ayah jarang di rumah.","Ayah tidak peduli."],a:0},
+{q:"他的孩子已经上大学了。",o:["Anaknya sudah kuliah.","Anaknya masih SD.","Anaknya belum sekolah.","Dia tidak punya anak."],a:0},
+{q:"我们一家人经常一起吃晚饭。",o:["Kami sekeluarga sering makan malam bersama.","Kami jarang makan bersama.","Kami tidak pernah makan malam.","Kami masing-masing makan sendiri."],a:0},
+{q:"祝你生日快乐！",o:["Selamat ulang tahun!","Selamat tahun baru!","Selamat makan!","Selamat tidur!"],a:0},
+{q:"孩子们正在外面玩。",o:["Anak-anak sedang bermain di luar.","Anak-anak sedang tidur.","Anak-anak sedang belajar.","Anak-anak sedang makan."],a:0},
+{q:"她让孩子九点睡觉。",o:["Dia menyuruh anak tidur jam 9.","Anak tidur jam 10.","Anak tidak mau tidur.","Dia tidur jam 9."],a:0},
+{q:"我给妈妈打了一个电话。",o:["Saya menelepon ibu.","Ibu menelepon saya.","Saya mengirim pesan ke ibu.","Saya bertemu ibu."],a:0}
+]},
+// BAB 7: Makan & Minum
+{title:"Bab 7: Makan & Minum",
+A:[
+{q:"这个菜非常好吃。",o:["Masakan ini sangat enak.","Masakan ini sangat mahal.","Masakan ini tidak bagus.","Masakan ini sangat banyak."],a:0},
+{q:"我每天早上喝一杯牛奶。",o:["Saya minum segelas susu setiap pagi.","Saya minum kopi setiap pagi.","Saya tidak sarapan.","Saya makan roti setiap pagi."],a:0},
+{q:"你要几个鸡蛋？",o:["Kamu mau berapa telur?","Kamu suka telur tidak?","Kamu bisa masak telur?","Telurnya di mana?"],a:0},
+{q:"夏天吃西瓜很舒服。",o:["Musim panas makan semangka enak.","Musim dingin makan semangka enak.","Semangka sangat mahal.","Saya tidak suka semangka."],a:0},
+{q:"我觉得中国菜比日本菜好吃。",o:["Saya rasa masakan Cina lebih enak dari Jepang.","Masakan Jepang lebih enak.","Dua-duanya sama.","Saya tidak suka masakan Asia."],a:0},
+{q:"服务员，请给我一碗米饭。",o:["Pelayan, tolong beri saya semangkuk nasi.","Pelayan, saya mau pulang.","Pelayan, berapa harganya?","Pelayan, di mana toiletnya?"],a:0},
+{q:"这条鱼是今天早上买的，很新鲜。",o:["Ikan ini dibeli tadi pagi, sangat segar.","Ikan ini sudah lama.","Ikan ini dari kemarin.","Ikan ini tidak enak."],a:0},
+{q:"你喝茶还是咖啡？",o:["Kamu minum teh atau kopi?","Kamu mau makan apa?","Kamu suka teh?","Kamu punya kopi?"],a:0},
+{q:"别吃太多零食，对身体不好。",o:["Jangan terlalu banyak makan camilan, tidak baik buat tubuh.","Camilan sangat sehat.","Kamu harus banyak makan camilan.","Camilan sangat mahal."],a:0},
+{q:"妈妈做的菜最好吃。",o:["Masakan ibu paling enak.","Masakan restoran paling enak.","Ibu tidak bisa masak.","Saya tidak suka masakan ibu."],a:0},
+{q:"我们点了三个菜一个汤。",o:["Kami pesan tiga lauk satu sup.","Kami hanya pesan minuman.","Kami tidak pesan apa-apa.","Kami pesan lima lauk."],a:0},
+{q:"他不吃肉，只吃蔬菜。",o:["Dia tidak makan daging, hanya sayur.","Dia suka daging.","Dia makan semuanya.","Dia tidak suka sayur."],a:0},
+{q:"这家饭店的面条很有名。",o:["Mie di restoran ini terkenal.","Restoran ini sudah tutup.","Mienya tidak enak.","Restoran ini baru buka."],a:0},
+{q:"吃完饭以后我们去散步吧。",o:["Setelah makan kita jalan-jalan ya.","Sebelum makan kita jalan-jalan.","Kita tidak perlu jalan-jalan.","Kita makan di luar."],a:0},
+{q:"我已经吃饱了，谢谢。",o:["Saya sudah kenyang, terima kasih.","Saya masih lapar.","Saya mau makan lagi.","Saya belum makan."],a:0}
+]},
+// BAB 8: Sekolah & Belajar
+{title:"Bab 8: Sekolah & Belajar",
+A:[
+{q:"教室里有三十个学生。",o:["Di kelas ada 30 murid.","Di kelas ada 20 murid.","Kelas kosong.","Di kelas ada 10 murid."],a:0},
+{q:"这道题我不会做。",o:["Soal ini saya tidak bisa kerjakan.","Soal ini sangat mudah.","Saya sudah selesai.","Soal ini tidak penting."],a:0},
+{q:"下个星期有考试，我要好好准备。",o:["Minggu depan ada ujian, saya harus siap-siap.","Ujian sudah selesai.","Tidak ada ujian.","Saya tidak perlu belajar."],a:0},
+{q:"老师说得太快了，我听不懂。",o:["Guru bicara terlalu cepat, saya tidak paham.","Guru bicara pelan.","Saya sudah mengerti.","Guru tidak bicara."],a:0},
+{q:"他的中文说得越来越好了。",o:["Bahasa Mandarinnya semakin bagus.","Mandarinnya semakin jelek.","Dia tidak belajar Mandarin.","Dia baru mulai belajar."],a:0},
+{q:"我觉得数学比语文难。",o:["Saya rasa matematika lebih sulit dari bahasa.","Bahasa lebih sulit.","Dua-duanya mudah.","Saya suka matematika."],a:0},
+{q:"请把作业交给老师。",o:["Tolong kumpulkan PR ke guru.","Tolong bawa buku.","Guru tidak ada.","PR belum selesai."],a:0},
+{q:"我们班有一个新同学。",o:["Kelas kami ada murid baru.","Kelas kami sangat kecil.","Tidak ada murid baru.","Semua murid sudah lama."],a:0},
+{q:"图书馆里不能说话。",o:["Di perpustakaan tidak boleh bicara.","Di perpustakaan harus bicara.","Perpustakaan sudah tutup.","Perpustakaan sangat bising."],a:0},
+{q:"他正在写作业。",o:["Dia sedang mengerjakan PR.","Dia sudah selesai PR.","Dia tidak punya PR.","Dia sedang main game."],a:0},
+{q:"考试的时候别看别人的。",o:["Saat ujian jangan mencontek.","Saat ujian boleh mencontek.","Ujian sudah selesai.","Tidak ada ujian."],a:0},
+{q:"我希望这次考试能考一百分。",o:["Saya berharap ujian ini bisa dapat 100.","Saya tidak peduli nilai.","Ujian tidak penting.","Saya pasti gagal."],a:0},
+{q:"学中文最重要的是多说多练。",o:["Belajar Mandarin yang penting banyak bicara dan latihan.","Tidak perlu latihan.","Hanya perlu baca buku.","Belajar Mandarin mudah."],a:0},
+{q:"她是我们班学习最好的学生。",o:["Dia murid terpandai di kelas kami.","Dia murid paling nakal.","Dia baru masuk kelas.","Dia tidak suka belajar."],a:0},
+{q:"放学以后我去图书馆看书。",o:["Setelah pulang sekolah saya ke perpustakaan.","Sebelum sekolah saya ke perpustakaan.","Saya langsung pulang.","Saya pergi main."],a:0}
+]},
+// BAB 9: Waktu & Jadwal
+{title:"Bab 9: Waktu & Jadwal",
+A:[
+{q:"现在几点了？已经十二点了。",o:["Sekarang jam berapa? Sudah jam 12.","Sekarang jam 10.","Masih jam 8.","Jam rusak."],a:0},
+{q:"我每天七点起床。",o:["Saya bangun jam 7 setiap hari.","Saya tidur jam 7.","Saya bangun jam 9.","Saya tidak bangun pagi."],a:0},
+{q:"他总是迟到。",o:["Dia selalu terlambat.","Dia selalu tepat waktu.","Dia selalu datang awal.","Dia tidak pernah datang."],a:0},
+{q:"星期六和星期天是周末。",o:["Sabtu dan Minggu adalah akhir pekan.","Senin dan Selasa adalah akhir pekan.","Jumat adalah akhir pekan.","Setiap hari adalah akhir pekan."],a:0},
+{q:"我打算下午两点去看电影。",o:["Saya berencana nonton film jam 2 siang.","Saya nonton film pagi.","Saya tidak mau nonton.","Film sudah mulai."],a:0},
+{q:"时间过得真快啊！",o:["Waktu berlalu sangat cepat!","Waktu sangat lambat.","Masih sangat pagi.","Saya punya banyak waktu."],a:0},
+{q:"你什么时候有空？",o:["Kamu kapan ada waktu luang?","Kamu di mana?","Kamu mau apa?","Kamu siapa?"],a:0},
+{q:"我们约好了明天上午十点见面。",o:["Kami sudah janjian besok jam 10 pagi.","Kami bertemu hari ini.","Kami tidak jadi bertemu.","Kami bertemu jam 10 malam."],a:0},
+{q:"从早上到晚上，他都在学习。",o:["Dari pagi sampai malam, dia belajar terus.","Dia hanya belajar pagi.","Dia tidak belajar.","Dia hanya belajar malam."],a:0},
+{q:"电影三点半开始，我们快走吧。",o:["Film mulai jam 3.30, kita cepat pergi.","Film sudah selesai.","Film jam 5.","Kita tidak perlu buru-buru."],a:0},
+{q:"去年我去了三次上海。",o:["Tahun lalu saya ke Shanghai 3 kali.","Saya belum pernah ke Shanghai.","Saya tinggal di Shanghai.","Saya hanya sekali ke Shanghai."],a:0},
+{q:"他六点就起床了。",o:["Dia sudah bangun jam 6 (cepat sekali).","Dia bangun jam 10.","Dia tidur jam 6.","Dia tidak bangun."],a:0},
+{q:"我们等了他一个小时。",o:["Kami menunggu dia satu jam.","Dia datang cepat.","Kami tidak menunggu.","Dia sudah di sini."],a:0},
+{q:"还有五分钟就上课了。",o:["Lima menit lagi mulai kelas.","Kelas sudah selesai.","Kelas dibatalkan.","Masih lama."],a:0},
+{q:"我每个月回家一次。",o:["Saya pulang sekali sebulan.","Saya tidak pernah pulang.","Saya pulang setiap hari.","Saya pulang setahun sekali."],a:0}
+]},
+// BAB 10: Transportasi
+{title:"Bab 10: Transportasi",
+A:[
+{q:"坐地铁去最方便。",o:["Naik MRT paling praktis.","Naik taksi paling praktis.","Jalan kaki paling praktis.","Naik bus paling praktis."],a:0},
+{q:"我每天骑自行车上学。",o:["Saya naik sepeda ke sekolah tiap hari.","Saya naik bus ke sekolah.","Saya jalan kaki ke sekolah.","Saya naik motor ke sekolah."],a:0},
+{q:"这趟公共汽车到火车站吗？",o:["Apakah bus ini ke stasiun kereta?","Bus ini ke mana?","Stasiun kereta di mana?","Bus ini berapa harganya?"],a:0},
+{q:"请问，去医院怎么走？",o:["Permisi, bagaimana ke rumah sakit?","Rumah sakit sudah tutup.","Saya tidak sakit.","Dokter tidak ada."],a:0},
+{q:"你向左走，到路口再向右拐。",o:["Belok kiri, sampai persimpangan belok kanan.","Terus lurus saja.","Belok kanan lalu kiri.","Kembali ke belakang."],a:0},
+{q:"从这儿坐出租车要多少钱？",o:["Dari sini naik taksi berapa?","Taksi di mana?","Saya tidak mau naik taksi.","Taksi gratis."],a:0},
+{q:"路上堵车了，我可能会迟到。",o:["Jalanan macet, saya mungkin terlambat.","Jalanan lancar.","Saya datang awal.","Saya sudah sampai."],a:0},
+{q:"飞机比火车快得多。",o:["Pesawat jauh lebih cepat dari kereta.","Kereta lebih cepat.","Sama cepatnya.","Pesawat lebih lambat."],a:0},
+{q:"我们走路去吧，不远。",o:["Kita jalan kaki saja, tidak jauh.","Kita naik taksi saja.","Terlalu jauh untuk jalan kaki.","Kita tidak usah pergi."],a:0},
+{q:"下一班地铁几点来？",o:["MRT berikutnya jam berapa?","MRT sudah habis.","MRT tidak berhenti di sini.","Saya tidak naik MRT."],a:0},
+{q:"他开车开得很慢。",o:["Dia mengemudi sangat lambat.","Dia mengemudi sangat cepat.","Dia tidak bisa mengemudi.","Dia suka mengemudi."],a:0},
+{q:"请在前面路口停车。",o:["Tolong berhenti di persimpangan depan.","Tolong jangan berhenti.","Tolong belok kiri.","Tolong lebih cepat."],a:0},
+{q:"坐船过去要两个小时。",o:["Naik kapal butuh dua jam.","Naik kapal sangat cepat.","Naik kapal gratis.","Tidak ada kapal."],a:0},
+{q:"这个城市的交通很方便。",o:["Transportasi di kota ini sangat praktis.","Transportasi sangat buruk.","Tidak ada transportasi umum.","Kota ini sangat kecil."],a:0},
+{q:"我打车去机场。",o:["Saya naik taksi ke bandara.","Saya jalan kaki ke bandara.","Saya naik bus ke bandara.","Saya tidak ke bandara."],a:0}
+]},
+// BAB 11: Rumah & Tempat Tinggal
+{title:"Bab 11: Rumah & Tempat Tinggal",
+A:[
+{q:"我的房间在三层。",o:["Kamar saya di lantai tiga.","Kamar saya di lantai satu.","Saya tidak punya kamar.","Kamar saya sangat besar."],a:0},
+{q:"请关门，外面很冷。",o:["Tolong tutup pintu, di luar dingin.","Tolong buka pintu.","Di luar panas.","Pintu sudah rusak."],a:0},
+{q:"我们家的客厅很大。",o:["Ruang tamu kami sangat besar.","Rumah kami kecil.","Kami tidak punya ruang tamu.","Ruang tamu sangat gelap."],a:0},
+{q:"洗手间在哪儿？",o:["Kamar mandi di mana?","Kamar tidur di mana?","Dapur di mana?","Pintu keluar di mana?"],a:0},
+{q:"他刚搬到新家。",o:["Dia baru pindah ke rumah baru.","Dia sudah lama tinggal di sini.","Dia mau pindah.","Rumah barunya belum selesai."],a:0},
+{q:"窗户开着，风很大。",o:["Jendela terbuka, anginnya kencang.","Jendela tertutup.","Tidak ada angin.","Jendela rusak."],a:0},
+{q:"这个小区很安静。",o:["Perumahan ini sangat tenang.","Perumahan ini sangat bising.","Perumahan ini sangat jauh.","Perumahan ini sangat mahal."],a:0},
+{q:"房子虽然小，但是很舒服。",o:["Rumah kecil tapi nyaman.","Rumah besar dan nyaman.","Rumah kecil dan tidak nyaman.","Rumah sangat besar."],a:0},
+{q:"我在找一个便宜一点的房子。",o:["Saya mencari rumah yang agak murah.","Saya mau beli rumah mahal.","Saya sudah punya rumah.","Saya tidak perlu rumah."],a:0},
+{q:"隔壁住着一个老奶奶。",o:["Sebelah tinggal seorang nenek.","Sebelah tidak ada orang.","Sebelah ada sekolah.","Sebelah ada toko."],a:0},
+{q:"我每天晚上洗完澡就睡觉。",o:["Setiap malam setelah mandi saya tidur.","Saya tidak mandi malam.","Saya tidur sebelum mandi.","Saya tidak tidur malam."],a:0},
+{q:"厨房里有很多好吃的东西。",o:["Di dapur ada banyak makanan enak.","Dapur kosong.","Dapur sangat kotor.","Kami tidak punya dapur."],a:0},
+{q:"阳台上种了很多花。",o:["Di balkon ditanami banyak bunga.","Balkon kosong.","Kami tidak punya balkon.","Balkon sangat kecil."],a:0},
+{q:"这个房子一个月租金三千块。",o:["Sewa rumah ini 3000 yuan sebulan.","Rumah ini gratis.","Rumah ini dijual.","Sewa sangat murah."],a:0},
+{q:"楼下有一个超市，买东西很方便。",o:["Di bawah ada supermarket, belanja praktis.","Tidak ada toko di dekat sini.","Supermarket sangat jauh.","Supermarket sudah tutup."],a:0}
+]},
+// BAB 12: Hobi & Hiburan
+{title:"Bab 12: Hobi & Hiburan",
+A:[
+{q:"我喜欢看电影和听音乐。",o:["Saya suka nonton film dan dengar musik.","Saya tidak suka hiburan.","Saya suka olahraga.","Saya suka membaca."],a:0},
+{q:"他唱歌唱得很好听。",o:["Dia menyanyi dengan bagus.","Dia tidak bisa menyanyi.","Dia baru belajar menyanyi.","Dia tidak suka musik."],a:0},
+{q:"我们周末去看电影吧。",o:["Kita akhir pekan nonton film ya.","Kita hari ini nonton film.","Kita tidak nonton film.","Film sudah habis."],a:0},
+{q:"她不太会跳舞。",o:["Dia tidak terlalu bisa menari.","Dia sangat pandai menari.","Dia suka menari.","Dia guru dansa."],a:0},
+{q:"我弟弟喜欢玩电子游戏。",o:["Adik saya suka main video game.","Adik saya suka membaca.","Adik saya suka olahraga.","Adik saya tidak suka bermain."],a:0},
+{q:"这本书很有意思，你看看吧。",o:["Buku ini menarik, coba baca.","Buku ini membosankan.","Jangan baca buku ini.","Buku ini sangat mahal."],a:0},
+{q:"她喜欢画画，画得很好。",o:["Dia suka menggambar, gambarnya bagus.","Dia tidak suka seni.","Dia baru belajar menggambar.","Gambarannya jelek."],a:0},
+{q:"你有什么爱好？",o:["Kamu punya hobi apa?","Kamu mau apa?","Kamu siapa?","Kamu dari mana?"],a:0},
+{q:"我一边看电视一边吃零食。",o:["Saya nonton TV sambil makan camilan.","Saya hanya nonton TV.","Saya tidak nonton TV.","Saya makan di meja makan."],a:0},
+{q:"昨天的演唱会非常精彩。",o:["Konser kemarin sangat luar biasa.","Konser dibatalkan.","Konser sangat membosankan.","Saya tidak pergi ke konser."],a:0},
+{q:"他最近在学弹吉他。",o:["Dia baru-baru ini belajar main gitar.","Dia sudah bisa gitar.","Dia tidak suka musik.","Dia belajar piano."],a:0},
+{q:"下棋很有趣，你会吗？",o:["Main catur menarik, kamu bisa?","Catur sangat membosankan.","Saya tidak suka permainan.","Catur terlalu sulit."],a:0},
+{q:"这部电影我看了两次了。",o:["Film ini sudah saya tonton dua kali.","Saya belum nonton film ini.","Film ini tidak bagus.","Saya hanya nonton sekali."],a:0},
+{q:"周末在家做什么？看书还是看电影？",o:["Akhir pekan di rumah ngapain? Baca buku atau nonton?","Akhir pekan kamu pergi.","Kamu tidak di rumah.","Kamu kerja akhir pekan."],a:0},
+{q:"我小时候学过钢琴。",o:["Waktu kecil saya pernah belajar piano.","Saya tidak suka musik.","Saya baru belajar piano.","Saya main piano setiap hari."],a:0}
+]},
+// BAB 13: Perasaan & Emosi
+{title:"Bab 13: Perasaan & Emosi",
+A:[
+{q:"他今天很高兴。",o:["Dia hari ini sangat senang.","Dia hari ini sedih.","Dia hari ini marah.","Dia hari ini capek."],a:0},
+{q:"别哭了，没事的。",o:["Jangan menangis, tidak apa-apa.","Teruslah menangis.","Kamu harus sedih.","Ini masalah besar."],a:0},
+{q:"大家都在笑，因为这个笑话很有趣。",o:["Semua tertawa karena leluconnya lucu.","Semua menangis.","Tidak ada yang tertawa.","Leluconnya tidak lucu."],a:0},
+{q:"我觉得有点儿紧张。",o:["Saya merasa sedikit gugup.","Saya sangat santai.","Saya sangat senang.","Saya tidak merasa apa-apa."],a:0},
+{q:"她因为考试没考好，很不高兴。",o:["Dia tidak senang karena ujian nilainya jelek.","Dia senang dengan hasil ujian.","Ujiannya bagus.","Dia tidak peduli ujian."],a:0},
+{q:"这件事让我很生气。",o:["Hal ini membuat saya sangat marah.","Hal ini membuat saya senang.","Saya tidak peduli.","Hal ini biasa saja."],a:0},
+{q:"他对自己的工作很满意。",o:["Dia puas dengan pekerjaannya.","Dia tidak suka pekerjaannya.","Dia mau berhenti.","Dia sangat kecewa."],a:0},
+{q:"我真的很想家。",o:["Saya benar-benar rindu rumah.","Saya tidak mau pulang.","Saya suka di sini.","Saya tidak peduli rumah."],a:0},
+{q:"别担心，一切都会好的。",o:["Jangan khawatir, semua akan baik.","Kamu harus khawatir.","Masalahnya sangat besar.","Tidak ada harapan."],a:0},
+{q:"看到好朋友，我很开心。",o:["Bertemu sahabat, saya senang.","Saya tidak punya teman.","Saya tidak mau bertemu teman.","Teman saya pergi."],a:0},
+{q:"他伤心得哭了。",o:["Dia sedih sampai menangis.","Dia tertawa.","Dia tidak merasa apa-apa.","Dia sangat senang."],a:0},
+{q:"你为什么不高兴？",o:["Kenapa kamu tidak senang?","Kamu senang ya?","Kamu mau apa?","Kamu di mana?"],a:0},
+{q:"我希望你每天都快乐。",o:["Saya harap kamu bahagia setiap hari.","Saya harap kamu belajar giat.","Saya harap kamu kerja keras.","Saya harap kamu bisa tidur."],a:0},
+{q:"他又紧张又兴奋。",o:["Dia gugup sekaligus bersemangat.","Dia sangat santai.","Dia sangat sedih.","Dia tidak merasa apa-apa."],a:0},
+{q:"这个消息让所有人都很惊讶。",o:["Kabar ini membuat semua orang terkejut.","Semua orang sudah tahu.","Kabar ini biasa saja.","Tidak ada kabar."],a:0}
+]},
+// BAB 14: Telepon & Komunikasi
+{title:"Bab 14: Telepon & Komunikasi",
+A:[
+{q:"我的手机没电了。",o:["Ponsel saya kehabisan baterai.","Ponsel saya baru.","Ponsel saya hilang.","Ponsel saya sangat mahal."],a:0},
+{q:"请告诉他明天开会。",o:["Tolong beritahu dia besok rapat.","Dia sudah tahu.","Rapat dibatalkan.","Dia tidak perlu datang."],a:0},
+{q:"我给你发一条短信。",o:["Saya kirim pesan singkat ke kamu.","Saya telepon kamu.","Saya email kamu.","Saya tidak menghubungi kamu."],a:0},
+{q:"他正在打电话，请等一下。",o:["Dia sedang telepon, tolong tunggu.","Dia sudah selesai.","Dia tidak mau telepon.","Teleponnya rusak."],a:0},
+{q:"你的电话号码是多少？",o:["Nomor teleponmu berapa?","Kamu punya HP baru?","HP kamu merek apa?","Kamu beli HP di mana?"],a:0},
+{q:"我没听清楚，请再说一次。",o:["Saya tidak dengar jelas, tolong ulangi.","Saya sudah mengerti.","Jangan bilang lagi.","Saya tidak mau dengar."],a:0},
+{q:"她给我打了三个电话，但是我没接。",o:["Dia menelepon saya 3 kali tapi tidak saya angkat.","Saya menelepon dia.","Dia kirim pesan.","Kami bertemu langsung."],a:0},
+{q:"你收到我的邮件了吗？",o:["Kamu sudah terima email saya?","Kamu kirim email?","Email rusak.","Saya tidak kirim email."],a:0},
+{q:"他说话说得很清楚。",o:["Dia bicara sangat jelas.","Dia bicara tidak jelas.","Dia tidak mau bicara.","Dia bicara terlalu cepat."],a:0},
+{q:"我们加个微信吧。",o:["Kita tambah WeChat ya.","Kita tidak perlu kontak.","Saya tidak punya HP.","Saya sudah punya kontakmu."],a:0},
+{q:"请问你是哪位？",o:["Permisi, Anda siapa?","Kamu di mana?","Kamu mau apa?","Kamu baik-baik saja?"],a:0},
+{q:"他回了我一条消息。",o:["Dia membalas pesan saya.","Dia tidak membalas.","Saya tidak kirim pesan.","Dia menelepon saya."],a:0},
+{q:"我现在不方便接电话。",o:["Saya sekarang tidak bisa angkat telepon.","Saya selalu angkat telepon.","Telepon saya rusak.","Saya suka ditelepon."],a:0},
+{q:"请帮我转告一下。",o:["Tolong sampaikan untuk saya.","Jangan bilang siapa-siapa.","Saya mau bicara sendiri.","Tidak perlu disampaikan."],a:0},
+{q:"手机响了，可能是妈妈的电话。",o:["HP berbunyi, mungkin telepon dari ibu.","HP mati.","Bukan telepon ibu.","Saya tidak punya HP."],a:0}
+]},
+// BAB 15: Arah & Lokasi
+{title:"Bab 15: Arah & Lokasi",
+A:[
+{q:"超市在学校的旁边。",o:["Supermarket di sebelah sekolah.","Supermarket jauh dari sekolah.","Tidak ada supermarket.","Supermarket di belakang sekolah."],a:0},
+{q:"向前走一百米就到了。",o:["Jalan lurus 100 meter sampai.","Belok kiri.","Belok kanan.","Kembali ke belakang."],a:0},
+{q:"银行在邮局对面。",o:["Bank di seberang kantor pos.","Bank di belakang kantor pos.","Bank sangat jauh.","Tidak ada bank."],a:0},
+{q:"你知道最近的地铁站在哪儿吗？",o:["Kamu tahu stasiun MRT terdekat di mana?","Kamu mau naik MRT?","MRT sudah tutup.","Kota ini tidak ada MRT."],a:0},
+{q:"我家在学校的北边。",o:["Rumah saya di utara sekolah.","Rumah saya di selatan.","Rumah saya di barat.","Rumah saya di timur."],a:0},
+{q:"请问，这附近有饭店吗？",o:["Permisi, dekat sini ada restoran?","Saya tidak lapar.","Restoran sudah tutup.","Saya mau masak sendiri."],a:0},
+{q:"到了路口向右拐。",o:["Sampai persimpangan belok kanan.","Terus lurus.","Belok kiri.","Kembali."],a:0},
+{q:"图书馆在教学楼的后面。",o:["Perpustakaan di belakang gedung kuliah.","Perpustakaan di depan.","Tidak ada perpustakaan.","Perpustakaan sangat jauh."],a:0},
+{q:"从这儿向左走五分钟。",o:["Dari sini belok kiri jalan 5 menit.","Belok kanan.","Jalan lurus.","Sangat jauh."],a:0},
+{q:"公园就在我们学校前面。",o:["Taman tepat di depan sekolah kami.","Taman sangat jauh.","Tidak ada taman.","Taman di belakang."],a:0},
+{q:"这个地方不好找。",o:["Tempat ini susah dicari.","Tempat ini sangat terkenal.","Semua orang tahu tempat ini.","Tempat ini dekat."],a:0},
+{q:"你走错路了。",o:["Kamu salah jalan.","Kamu sudah sampai.","Jalannya benar.","Terus saja."],a:0},
+{q:"医院在这条路的尽头。",o:["Rumah sakit di ujung jalan ini.","Rumah sakit di awal jalan.","Tidak ada rumah sakit.","Rumah sakit sangat jauh."],a:0},
+{q:"我们在哪儿见面？",o:["Kita ketemuan di mana?","Kita kapan ketemuan?","Kita tidak usah ketemu.","Kamu di mana?"],a:0},
+{q:"出了地铁站就能看到那个大楼。",o:["Keluar stasiun MRT bisa lihat gedung itu.","Gedung itu sangat jauh.","Tidak ada gedung.","Gedungnya di bawah tanah."],a:0}
+]}
+];
+
+// BAB 16-20 share same unique A patterns
+const MORE_BABS = [
+{title:"Bab 16: Angka & Harga",A:[
+{q:"这本书三十五块钱。",o:["Buku ini 35 yuan.","Buku ini 53 yuan.","Buku ini gratis.","Buku ini 350 yuan."],a:0},
+{q:"一共两千五百块。",o:["Total 2500 yuan.","Total 250 yuan.","Total 25000 yuan.","Total 25 yuan."],a:0},
+{q:"他今年二十三岁。",o:["Dia tahun ini 23 tahun.","Dia 32 tahun.","Dia 20 tahun.","Dia 13 tahun."],a:0},
+{q:"我们班一共有四十二个学生。",o:["Kelas kami total 42 murid.","Kelas kami 24 murid.","Kelas kami 12 murid.","Kelas kami 40 murid."],a:0},
+{q:"这件衣服打八折。",o:["Baju ini diskon 20%.","Baju ini diskon 80%.","Baju ini tidak ada diskon.","Baju ini gratis."],a:0},
+{q:"请给我找零钱。",o:["Tolong berikan kembalian.","Tolong beri saya uang.","Saya mau bayar.","Saya tidak punya uang."],a:0},
+{q:"你有多少钱？",o:["Kamu punya berapa uang?","Kamu mau berapa?","Kamu dari mana?","Kamu siapa?"],a:0},
+{q:"这个比那个贵一百块。",o:["Yang ini 100 yuan lebih mahal dari itu.","Yang itu lebih mahal.","Harganya sama.","Dua-duanya murah."],a:0},
+{q:"我每个月工资五千块。",o:["Gaji saya 5000 yuan sebulan.","Gaji saya 500 yuan.","Saya tidak bekerja.","Gaji saya 50000 yuan."],a:0},
+{q:"一斤苹果三块五。",o:["Setengah kilo apel 3,5 yuan.","Apel sangat mahal.","Apel habis.","Saya tidak suka apel."],a:0},
+{q:"你算一下一共多少钱。",o:["Tolong hitung totalnya berapa.","Saya tidak mau bayar.","Tidak perlu hitung.","Gratis."],a:0},
+{q:"今天的温度是二十八度。",o:["Suhu hari ini 28 derajat.","Suhu hari ini 18 derajat.","Hari ini sangat dingin.","Suhu 38 derajat."],a:0},
+{q:"他的电话号码是138开头的。",o:["Nomor teleponnya berawalan 138.","Nomor teleponnya 138.","Dia tidak punya HP.","Nomornya salah."],a:0},
+{q:"九加六等于十五。",o:["9 tambah 6 sama dengan 15.","9 tambah 6 sama dengan 16.","9 tambah 6 sama dengan 14.","9 tambah 6 sama dengan 13."],a:0},
+{q:"第一百零三页。",o:["Halaman 103.","Halaman 130.","Halaman 13.","Halaman 301."],a:0}
+]},
+{title:"Bab 17: Alam & Lingkungan",A:[
+{q:"这座山很高很美。",o:["Gunung ini tinggi dan indah.","Gunung ini kecil.","Gunung ini jelek.","Tidak ada gunung."],a:0},
+{q:"湖里的水很清。",o:["Air di danau sangat jernih.","Danau ini kotor.","Tidak ada danau.","Danaunya kering."],a:0},
+{q:"我家旁边有一棵大树。",o:["Di samping rumah saya ada pohon besar.","Tidak ada pohon.","Pohon sudah ditebang.","Pohonnya kecil."],a:0},
+{q:"春天来了，花都开了。",o:["Musim semi tiba, bunga bermekaran.","Musim dingin tiba.","Bunga belum mekar.","Tidak ada bunga."],a:0},
+{q:"天上有很多白云。",o:["Di langit banyak awan putih.","Langit mendung.","Langit gelap.","Tidak ada awan."],a:0},
+{q:"河里有很多鱼。",o:["Di sungai banyak ikan.","Sungainya kering.","Tidak ada ikan.","Ikan sudah mati."],a:0},
+{q:"今天晚上的月亮很圆。",o:["Malam ini bulan sangat bulat.","Tidak ada bulan.","Bulan sabit.","Langit mendung."],a:0},
+{q:"我们应该保护环境。",o:["Kita harus melindungi lingkungan.","Lingkungan tidak penting.","Lingkungan sudah bagus.","Tidak perlu peduli."],a:0},
+{q:"外面在下大雨。",o:["Di luar hujan deras.","Di luar cerah.","Di luar turun salju.","Di luar angin kencang."],a:0},
+{q:"海边的风景非常美。",o:["Pemandangan pantai sangat indah.","Pantai jelek.","Tidak ada pantai.","Pantai kotor."],a:0},
+{q:"这个公园里种了很多树。",o:["Taman ini ditanami banyak pohon.","Taman kosong.","Taman sangat kecil.","Tidak ada taman."],a:0},
+{q:"星星在天上闪闪发光。",o:["Bintang berkelip di langit.","Tidak ada bintang.","Langit mendung.","Bulan sangat terang."],a:0},
+{q:"空气很新鲜，让人很舒服。",o:["Udara segar, bikin nyaman.","Udara kotor.","Udara sangat panas.","Udara tidak bagus."],a:0},
+{q:"那座桥下面是一条小河。",o:["Di bawah jembatan itu ada sungai kecil.","Tidak ada jembatan.","Sungai sangat besar.","Jembatan rusak."],a:0},
+{q:"夏天的草地绿绿的。",o:["Padang rumput musim panas hijau.","Rumput kering.","Rumput kuning.","Tidak ada rumput."],a:0}
+]},
+{title:"Bab 18: Keseharian",A:[
+{q:"我每天七点起床，洗脸刷牙。",o:["Saya bangun jam 7, cuci muka sikat gigi.","Saya bangun jam 10.","Saya tidak sikat gigi.","Saya tidur jam 7."],a:0},
+{q:"吃完早饭我就去上班了。",o:["Setelah sarapan saya pergi kerja.","Sebelum sarapan saya kerja.","Saya tidak sarapan.","Saya tidak kerja."],a:0},
+{q:"晚上我先洗衣服，再看电视。",o:["Malam saya cuci baju dulu, baru nonton TV.","Saya nonton TV dulu.","Saya tidak cuci baju.","Saya langsung tidur."],a:0},
+{q:"周末我经常打扫房间。",o:["Akhir pekan saya sering bersih-bersih kamar.","Saya tidak pernah bersih-bersih.","Kamar saya selalu bersih.","Saya bersih-bersih setiap hari."],a:0},
+{q:"他每天都要喝三杯咖啡。",o:["Dia minum 3 cangkir kopi setiap hari.","Dia tidak suka kopi.","Dia minum 1 cangkir.","Dia minum teh."],a:0},
+{q:"我晚上十一点才睡觉。",o:["Saya baru tidur jam 11 malam.","Saya tidur jam 9.","Saya tidur sangat awal.","Saya tidak tidur."],a:0},
+{q:"她每天都化妆才出门。",o:["Dia berdandan dulu sebelum keluar rumah tiap hari.","Dia tidak pernah berdandan.","Dia jarang keluar rumah.","Dia cepat keluar rumah."],a:0},
+{q:"我正在做晚饭呢。",o:["Saya sedang memasak makan malam.","Saya sudah makan.","Saya tidak masak.","Saya makan di luar."],a:0},
+{q:"他回家以后先换衣服。",o:["Setelah pulang dia ganti baju dulu.","Dia tidak ganti baju.","Dia langsung tidur.","Dia langsung makan."],a:0},
+{q:"我每天坐地铁上班，大概半个小时。",o:["Saya naik MRT ke kantor, sekitar setengah jam.","Saya jalan kaki.","Saya naik motor.","Kantor sangat dekat."],a:0},
+{q:"睡觉之前我喜欢看一会儿书。",o:["Sebelum tidur saya suka baca buku sebentar.","Saya langsung tidur.","Saya main HP.","Saya nonton TV."],a:0},
+{q:"她把碗洗干净了。",o:["Dia mencuci piringnya sampai bersih.","Piringnya masih kotor.","Dia tidak cuci piring.","Piring rusak."],a:0},
+{q:"我今天起得很早。",o:["Hari ini saya bangun sangat pagi.","Saya bangun siang.","Saya tidak bangun.","Saya terlambat."],a:0},
+{q:"快要吃午饭了。",o:["Sebentar lagi makan siang.","Sudah selesai makan siang.","Belum waktunya makan.","Saya tidak lapar."],a:0},
+{q:"他忘了带钥匙。",o:["Dia lupa bawa kunci.","Dia bawa kunci.","Dia bawa dompet.","Dia lupa bawa HP."],a:0}
+]},
+{title:"Bab 19: Rencana & Masa Depan",A:[
+{q:"我打算明年出国留学。",o:["Saya berencana kuliah di luar negeri tahun depan.","Saya tidak mau kuliah.","Saya sudah lulus.","Saya mau kerja."],a:0},
+{q:"如果有时间，我想学做菜。",o:["Kalau ada waktu, saya ingin belajar masak.","Saya sudah bisa masak.","Saya tidak suka masak.","Saya tidak punya waktu."],a:0},
+{q:"他希望以后能当老师。",o:["Dia berharap bisa jadi guru kelak.","Dia sudah jadi guru.","Dia tidak suka mengajar.","Dia mau jadi dokter."],a:0},
+{q:"我们下个星期去旅游吧。",o:["Kita minggu depan pergi wisata ya.","Kita kemarin pergi wisata.","Kita tidak pergi wisata.","Wisata dibatalkan."],a:0},
+{q:"今年我想学会游泳。",o:["Tahun ini saya ingin bisa berenang.","Saya sudah bisa berenang.","Saya tidak suka berenang.","Saya mau belajar tenis."],a:0},
+{q:"她决定辞职了。",o:["Dia memutuskan untuk resign.","Dia mau kerja lebih rajin.","Dia baru dapat kerja.","Dia tidak bekerja."],a:0},
+{q:"毕业以后你打算做什么？",o:["Setelah lulus kamu mau ngapain?","Kamu sudah lulus.","Kamu di mana?","Kamu siapa?"],a:0},
+{q:"我要准备下个月的考试。",o:["Saya harus persiapkan ujian bulan depan.","Ujian sudah selesai.","Tidak ada ujian.","Saya tidak perlu belajar."],a:0},
+{q:"如果明天不下雨，我们就去爬山。",o:["Kalau besok tidak hujan, kita mendaki.","Kita mendaki saat hujan.","Kita tidak mendaki.","Besok pasti hujan."],a:0},
+{q:"他计划暑假去实习。",o:["Dia berencana magang saat liburan musim panas.","Dia mau liburan saja.","Dia sudah bekerja.","Dia tidak punya rencana."],a:0},
+{q:"我想买一辆新车。",o:["Saya ingin beli mobil baru.","Saya sudah punya mobil.","Saya tidak suka mobil.","Mobil terlalu mahal."],a:0},
+{q:"将来我要开一家自己的公司。",o:["Kelak saya mau buka perusahaan sendiri.","Saya sudah punya perusahaan.","Saya tidak mau bekerja.","Saya mau jadi karyawan."],a:0},
+{q:"我们应该早点出发。",o:["Kita harus berangkat lebih awal.","Kita tidak perlu buru-buru.","Kita berangkat nanti saja.","Kita tidak pergi."],a:0},
+{q:"他可能明年回国。",o:["Dia mungkin pulang ke negara asal tahun depan.","Dia pasti pulang.","Dia tidak mau pulang.","Dia baru datang."],a:0},
+{q:"等我学好中文，我要去中国工作。",o:["Setelah Mandarin saya bagus, saya mau kerja di Tiongkok.","Saya sudah di Tiongkok.","Saya tidak mau ke Tiongkok.","Saya sudah bisa Mandarin."],a:0}
+]},
+{title:"Bab 20: Budaya & Tradisi",A:[
+{q:"中国人过年的时候吃饺子。",o:["Orang Tiongkok makan jiaozi saat tahun baru.","Mereka makan nasi.","Mereka tidak merayakan tahun baru.","Jiaozi adalah minuman."],a:0},
+{q:"红色在中国是幸运的颜色。",o:["Merah adalah warna keberuntungan di Tiongkok.","Hitam adalah warna keberuntungan.","Merah tidak penting.","Putih adalah warna keberuntungan."],a:0},
+{q:"中秋节的时候大家吃月饼。",o:["Saat Festival Pertengahan Musim Gugur makan kue bulan.","Mereka makan nasi.","Mereka makan jiaozi.","Tidak ada makanan khusus."],a:0},
+{q:"他用筷子吃饭。",o:["Dia makan pakai sumpit.","Dia makan pakai sendok.","Dia makan pakai tangan.","Dia tidak makan."],a:0},
+{q:"中国的茶文化历史很长。",o:["Budaya teh Tiongkok sejarahnya panjang.","Tiongkok tidak punya budaya teh.","Teh baru ada.","Kopi lebih terkenal."],a:0},
+{q:"过年的时候小孩子会收到红包。",o:["Saat tahun baru anak-anak dapat angpao.","Anak-anak memberi angpao.","Tidak ada angpao.","Angpao hanya untuk dewasa."],a:0},
+{q:"他对中国文化很感兴趣。",o:["Dia sangat tertarik budaya Tiongkok.","Dia tidak suka budaya Tiongkok.","Dia tidak tahu Tiongkok.","Dia tidak peduli."],a:0},
+{q:"我学了一年的书法。",o:["Saya belajar kaligrafi satu tahun.","Saya tidak suka kaligrafi.","Saya baru mulai.","Saya sudah ahli."],a:0},
+{q:"春节是中国最重要的节日。",o:["Imlek adalah hari raya terpenting di Tiongkok.","Natal paling penting.","Tidak ada hari raya penting.","Imlek tidak penting."],a:0},
+{q:"她会做中国菜。",o:["Dia bisa masak masakan Tiongkok.","Dia tidak bisa masak.","Dia hanya makan makanan barat.","Dia suka masakan Jepang."],a:0},
+{q:"我们去看了一场京剧。",o:["Kami nonton pertunjukan opera Peking.","Kami nonton film.","Kami nonton konser.","Kami tidak nonton apa-apa."],a:0},
+{q:"中国人见面的时候说"你好"。",o:["Orang Tiongkok saat bertemu bilang 'ni hao'.","Mereka bilang 'hello'.","Mereka tidak menyapa.","Mereka bilang 'sayonara'."],a:0},
+{q:"端午节要吃粽子。",o:["Saat Festival Perahu Naga makan zongzi.","Mereka makan kue bulan.","Tidak makan apa-apa.","Mereka makan jiaozi."],a:0},
+{q:"功夫是中国的传统运动。",o:["Kungfu adalah olahraga tradisional Tiongkok.","Kungfu dari Jepang.","Kungfu bukan olahraga.","Kungfu baru ada."],a:0},
+{q:"很多外国人来中国学习中文。",o:["Banyak orang asing datang ke Tiongkok belajar Mandarin.","Tidak ada yang belajar Mandarin.","Mandarin tidak populer.","Orang asing tidak boleh ke Tiongkok."],a:0}
+]}
+];
+
+// Merge all babs
+const templateBParas = [
+{text:"昨天我的朋友来我家做客。我给他准备了几个菜和一些水果。他觉得我做的菜非常好吃，特别是那条鱼。我们一边吃一边聊天，聊了很多有趣的事情。他告诉我他准备下个月去旅游，问我要不要一起去。我说如果我有时间就去。他在我家待到晚上九点才走。",
+qs:[
+{q:"朋友来做什么？",o:["来做客","来工作","来借东西","来还东西"],a:0},
+{q:"朋友觉得哪个菜最好吃？",o:["鱼","肉","蔬菜","汤"],a:0},
+{q:"他们一边吃一边做什么？",o:["聊天","看电视","玩手机","听音乐"],a:0},
+{q:"朋友准备什么时候去旅游？",o:["下个月","下个星期","明天","今天"],a:0},
+{q:"朋友几点走的？",o:["晚上九点","晚上八点","晚上十点","晚上七点"],a:0}
+]},
+{text:"我和同学一起去超市买东西。超市里人很多，东西也很多。我买了一些水果、牛奶和鸡蛋。我同学买了一些零食和饮料。结账的时候排了很长的队，等了十分钟。出来以后我们发现外面下雨了，但是我们没有带伞。我们等了一会儿，雨小了，我们就跑回家了。",
+qs:[
+{q:"超市里怎么样？",o:["人多东西多","人少东西少","关门了","很安静"],a:0},
+{q:"我买了什么？",o:["水果、牛奶、鸡蛋","零食和饮料","衣服","书"],a:0},
+{q:"结账等了多久？",o:["十分钟","五分钟","二十分钟","半个小时"],a:0},
+{q:"出来以后发生了什么？",o:["下雨了","下雪了","出太阳了","刮大风了"],a:0},
+{q:"最后他们怎么回家的？",o:["跑回家","打车","等雨停走回去","坐公交车"],a:0}
+]},
+{text:"小明今年二十岁，在大学学习计算机。他每天的生活很有规律：早上七点起床，八点上课，中午在食堂吃饭，下午继续上课或者去图书馆看书。晚上他经常在宿舍写作业或者跟同学一起玩游戏。周末他有时候去打篮球，有时候去看电影。他觉得大学的生活既忙碌又充实。",
+qs:[
+{q:"小明今年多大？",o:["二十岁","十八岁","二十二岁","十九岁"],a:0},
+{q:"他学什么专业？",o:["计算机","英语","数学","医学"],a:0},
+{q:"中午他在哪儿吃饭？",o:["食堂","饭店","家里","宿舍"],a:0},
+{q:"晚上他经常做什么？",o:["写作业或玩游戏","看电视","出去玩","睡觉"],a:0},
+{q:"他觉得大学生活怎么样？",o:["忙碌又充实","很无聊","太轻松","太难了"],a:0}
+]}
+];
+
+const templateC = [
+{words:["应该","你","多","休息"],answer:"你应该多休息"},
+{words:["已经","我","了","吃饭"],answer:"我已经吃饭了"},
+{words:["一起","我们","去","吧"],answer:"我们一起去吧"},
+{words:["说","请","慢","一点"],answer:"请说慢一点"},
+{words:["非常","好吃","这个","菜"],answer:"这个菜非常好吃"},
+{words:["觉得","我","很","有意思"],answer:"我觉得很有意思"},
+{words:["正在","他","看","书"],answer:"他正在看书"},
+{words:["别","手机","玩","上课","的时候"],answer:"上课的时候别玩手机"},
+{words:["知道","我","不","他","住在","哪儿"],answer:"我不知道他住在哪儿"},
+{words:["给","我","你","介绍","一下"],answer:"我给你介绍一下"}
+];
+
+// Build babs 6-20
+for(let i=0;i<BAB_TEMPLATES.length;i++){
+    const b = BAB_TEMPLATES[i];
+    b.B = {paragraphs: [templateBParas[0], templateBParas[1], templateBParas[2]]};
+    b.C = templateC;
+    BABS.push(b);
+}
+for(let i=0;i<MORE_BABS.length;i++){
+    const b = MORE_BABS[i];
+    b.B = {paragraphs: [templateBParas[0], templateBParas[1], templateBParas[2]]};
+    b.C = templateC;
+    BABS.push(b);
+}
+
+// Render
+const babNav = document.getElementById('babNav');
+const babCont = document.getElementById('babContainer');
+
+BABS.forEach((bab,bi)=>{
+    // nav button
+    const btn = document.createElement('button');
+    btn.className = 'bab-btn' + (bi===0?' active':'');
+    btn.textContent = 'Bab '+(bi+1);
+    btn.onclick = ()=>{
+        document.querySelectorAll('.bab-btn').forEach(b=>b.classList.remove('active'));
+        document.querySelectorAll('.bab-content').forEach(c=>c.classList.remove('active'));
+        btn.classList.add('active');
+        document.getElementById('bab'+bi).classList.add('active');
+    };
+    babNav.appendChild(btn);
+
+    // content
+    const div = document.createElement('div');
+    div.id = 'bab'+bi;
+    div.className = 'bab-content'+(bi===0?' active':'');
+
+    let html = '<h2>'+bab.title+'</h2>';
+
+    // Bagian A
+    html += '<div class="section-title">Bagian A: Pilih Arti yang Benar (15 soal)</div>';
+    bab.A.forEach((s,si)=>{
+        const name = 'b'+bi+'a'+si;
+        html += '<div class="soal" data-answer="'+s.a+'" data-name="'+name+'"><p><strong>'+(si+1)+'.</strong></p><p class="hanzi-q">'+s.q+'</p><div class="options">';
+        s.o.forEach((opt,oi)=>{
+            html += '<label><input type="radio" name="'+name+'" value="'+oi+'"> '+String.fromCharCode(65+oi)+'. '+opt+'</label>';
+        });
+        html += '</div></div>';
+    });
+
+    // Bagian B
+    html += '<div class="section-title">Bagian B: Baca Paragraf + Pilihan Ganda (15 soal)</div>';
+    let bqi = 0;
+    bab.B.paragraphs.forEach((p,pi)=>{
+        html += '<div class="paragraph-box">'+p.text+'</div>';
+        p.qs.forEach((q,qi)=>{
+            const name = 'b'+bi+'b'+bqi;
+            html += '<div class="soal" data-answer="'+q.a+'" data-name="'+name+'"><p><strong>'+(16+bqi)+'.</strong> '+q.q+'</p><div class="options">';
+            q.o.forEach((opt,oi)=>{
+                html += '<label><input type="radio" name="'+name+'" value="'+oi+'"> '+String.fromCharCode(65+oi)+'. '+opt+'</label>';
+            });
+            html += '</div></div>';
+            bqi++;
+        });
+    });
+
+    // Bagian C
+    html += '<div class="section-title">Bagian C: Susun Kalimat (10 soal)</div>';
+    bab.C.forEach((c,ci)=>{
+        const cid = 'b'+bi+'c'+ci;
+        const shuffled = [...c.words].sort(()=>Math.random()-0.5);
+        html += '<div class="soal" data-canswer="'+c.answer+'" id="'+cid+'"><p><strong>'+(31+ci)+'.</strong> Susun kata-kata berikut menjadi kalimat yang benar:</p>';
+        html += '<div class="answer-line" id="'+cid+'line"></div>';
+        html += '<div class="arrange-area" id="'+cid+'area">';
+        shuffled.forEach(w=>{
+            html += '<span class="word-chip" onclick="toggleChip(this,\''+cid+'\')">'+w+'</span>';
+        });
+        html += '</div></div>';
+    });
+
+    // Score & answer key
+    html += '<button class="toggle-btn" onclick="checkBab('+bi+')">✅ Cek Jawaban</button>';
+    html += '<div class="score-display" id="score'+bi+'"></div>';
+    html += '<button class="toggle-btn" style="background:#2c3e50" onclick="toggleKunci('+bi+')">🔑 Lihat Kunci Jawaban</button>';
+    html += '<div class="kunci-box" id="kunci'+bi+'">';
+    html += '<h4>Kunci Jawaban '+bab.title+'</h4>';
+    html += '<p><strong>Bagian A:</strong> ';
+    bab.A.forEach((s,si)=>{html+=(si+1)+'.'+String.fromCharCode(65+s.a)+' ';});
+    html += '</p><p><strong>Bagian B:</strong> ';
+    let bk=0;
+    bab.B.paragraphs.forEach(p=>{p.qs.forEach(q=>{html+=(16+bk)+'.'+String.fromCharCode(65+q.a)+' ';bk++;});});
+    html += '</p><p><strong>Bagian C:</strong><br>';
+    bab.C.forEach((c,ci)=>{html+=(31+ci)+'. '+c.answer+'<br>';});
+    html += '</p></div>';
+
+    div.innerHTML = html;
+    babCont.appendChild(div);
+});
+
+function toggleChip(el, cid){
+    const line = document.getElementById(cid+'line');
+    if(el.classList.contains('selected')){
+        el.classList.remove('selected');
+        // remove from line
+        const inLine = line.querySelector('[data-text="'+el.textContent+'"]');
+        if(inLine) inLine.remove();
+    } else {
+        el.classList.add('selected');
+        const chip = document.createElement('span');
+        chip.className='word-chip';
+        chip.textContent=el.textContent;
+        chip.dataset.text=el.textContent;
+        chip.onclick=function(){
+            this.remove();
+            el.classList.remove('selected');
+        };
+        line.appendChild(chip);
+    }
+}
+
+function checkBab(bi){
+    let correct=0, total=40;
+    const bab = document.getElementById('bab'+bi);
+
+    // Check A & B (radio)
+    bab.querySelectorAll('.soal[data-answer]').forEach(s=>{
+        const ans = parseInt(s.dataset.answer);
+        const sel = s.querySelector('input:checked');
+        if(sel){
+            const v = parseInt(sel.value);
+            if(v===ans){correct++;sel.closest('label').classList.add('correct');}
+            else{sel.closest('label').classList.add('wrong');
+                s.querySelectorAll('label')[ans].classList.add('correct');}
+        } else {
+            s.querySelectorAll('label')[ans].classList.add('correct');
+        }
+    });
+
+    // Check C
+    bab.querySelectorAll('.soal[data-canswer]').forEach(s=>{
+        const expected = s.dataset.canswer;
+        const line = s.querySelector('.answer-line');
+        const chips = line.querySelectorAll('.word-chip');
+        const userAns = Array.from(chips).map(c=>c.textContent).join('');
+        if(userAns===expected){correct++;line.style.border='2px solid #28a745';line.style.background='#d4edda';}
+        else{line.style.border='2px solid #dc3545';line.style.background='#f8d7da';}
+    });
+
+    document.getElementById('score'+bi).textContent='Skor: '+correct+'/'+total+' ('+Math.round(correct/total*100)+'%)';
+}
+
+function toggleKunci(bi){
+    document.getElementById('kunci'+bi).classList.toggle('show');
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Materi HSK 3 — Modul HSK Mandarin</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .materi-container { max-width: 960px; margin: 30px auto; padding: 20px; }
+        .materi-title { text-align: center; font-size: 2rem; margin-bottom: 6px; }
+        .materi-sub { text-align: center; color: #666; margin-bottom: 30px; }
+        .tab-bar { display: flex; gap: 8px; margin-bottom: 24px; flex-wrap: wrap; justify-content: center; }
+        .tab-btn { padding: 8px 18px; border: 2px solid #e63946; border-radius: 20px; background: #fff; color: #e63946; cursor: pointer; font-weight: 600; font-size: 0.9rem; transition: all 0.2s; }
+        .tab-btn.active, .tab-btn:hover { background: #e63946; color: #fff; }
+        .section { display: none; }
+        .section.active { display: block; }
+        .cat-title { font-size: 1.3rem; font-weight: 700; margin: 28px 0 14px; padding-bottom: 6px; border-bottom: 2px solid #e63946; color: #1d3557; }
+        .vocab-table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
+        .vocab-table th { background: #1d3557; color: #fff; padding: 10px; text-align: left; font-size: 0.85rem; }
+        .vocab-table td { padding: 10px; border-bottom: 1px solid #eee; font-size: 0.92rem; vertical-align: top; }
+        .vocab-table tr:hover { background: #f8f9fa; }
+        .hz { font-size: 1.2rem; font-weight: 700; }
+        .py { color: #e63946; font-size: 0.85rem; }
+        .ex { color: #555; font-size: 0.85rem; line-height: 1.5; }
+        .grammar-card { background: #f8f9fa; border-left: 4px solid #e63946; border-radius: 8px; padding: 20px; margin-bottom: 20px; }
+        .grammar-card h3 { margin: 0 0 8px; color: #1d3557; }
+        .grammar-card .pattern { background: #fff; display: inline-block; padding: 4px 12px; border-radius: 6px; font-weight: 700; color: #e63946; margin-bottom: 10px; font-size: 1.05rem; }
+        .grammar-card .g-ex { background: #fff; padding: 10px 14px; border-radius: 6px; margin-top: 8px; line-height: 1.6; }
+        .search-box { display: block; width: 100%; max-width: 400px; margin: 0 auto 20px; padding: 10px 16px; border: 2px solid #ddd; border-radius: 10px; font-size: 1rem; }
+        .search-box:focus { border-color: #e63946; outline: none; }
+        .hidden-row { display: none; }
+        @media(max-width:600px) {
+            .vocab-table td, .vocab-table th { padding: 6px; font-size: 0.82rem; }
+            .hz { font-size: 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand"><span class="logo-hanzi">汉</span><span>Modul HSK</span></div>
+        <div class="nav-links">
+            <a href="index.html">Beranda</a>
+            <a href="menu.html">Menu</a>
+            <a href="hsk3-materi.html" class="active">Materi</a>
+            <a href="hsk3-soal.html">Latihan Soal</a>
+        </div>
+    </nav>
+
+    <div class="materi-container">
+        <h1 class="materi-title">📖 Materi HSK 3</h1>
+        <p class="materi-sub">~300 kosakata baru + 20 poin grammar</p>
+
+        <div class="tab-bar">
+            <button class="tab-btn active" onclick="showSection('vocab')">📖 Kosakata</button>
+            <button class="tab-btn" onclick="showSection('grammar')">📝 Grammar</button>
+        </div>
+
+        <!-- ============ KOSAKATA ============ -->
+        <div id="vocab" class="section active">
+            <input type="text" class="search-box" placeholder="🔍 Cari hanzi, pinyin, atau arti..." oninput="filterVocab(this.value)">
+
+            <!-- Kategori 1: Lingkungan & Alam -->
+            <h2 class="cat-title">🌿 1. Lingkungan & Alam</h2>
+            <table class="vocab-table"><thead><tr><th>Hanzi</th><th>Pinyin</th><th>Arti</th><th>Contoh Kalimat</th></tr></thead><tbody>
+            <tr><td class="hz">环境</td><td class="py">huánjìng</td><td>lingkungan</td><td class="ex">我们要保护环境。<br><i>Kita harus melindungi lingkungan.</i></td></tr>
+            <tr><td class="hz">自然</td><td class="py">zìrán</td><td>alam; alami</td><td class="ex">这里的自然风景很美。<br><i>Pemandangan alam di sini sangat indah.</i></td></tr>
+            <tr><td class="hz">空气</td><td class="py">kōngqì</td><td>udara</td><td class="ex">今天的空气质量不太好。<br><i>Kualitas udara hari ini kurang baik.</i></td></tr>
+            <tr><td class="hz">河</td><td class="py">hé</td><td>sungai</td><td class="ex">这条河很长。<br><i>Sungai ini sangat panjang.</i></td></tr>
+            <tr><td class="hz">树</td><td class="py">shù</td><td>pohon</td><td class="ex">公园里有很多树。<br><i>Di taman ada banyak pohon.</i></td></tr>
+            <tr><td class="hz">花</td><td class="py">huā</td><td>bunga</td><td class="ex">春天的花开得很漂亮。<br><i>Bunga di musim semi mekar dengan indah.</i></td></tr>
+            <tr><td class="hz">草</td><td class="py">cǎo</td><td>rumput</td><td class="ex">请不要踩草地。<br><i>Tolong jangan injak rumput.</i></td></tr>
+            <tr><td class="hz">山</td><td class="py">shān</td><td>gunung</td><td class="ex">周末我们去爬山吧。<br><i>Akhir pekan kita pergi mendaki gunung ya.</i></td></tr>
+            <tr><td class="hz">森林</td><td class="py">sēnlín</td><td>hutan</td><td class="ex">森林里住着很多动物。<br><i>Di hutan tinggal banyak hewan.</i></td></tr>
+            <tr><td class="hz">海</td><td class="py">hǎi</td><td>laut</td><td class="ex">我小时候常去海边玩。<br><i>Waktu kecil saya sering bermain di tepi laut.</i></td></tr>
+            <tr><td class="hz">太阳</td><td class="py">tàiyáng</td><td>matahari</td><td class="ex">太阳出来了，天气变暖了。<br><i>Matahari muncul, cuaca menjadi hangat.</i></td></tr>
+            <tr><td class="hz">月亮</td><td class="py">yuèliang</td><td>bulan</td><td class="ex">今晚的月亮又大又圆。<br><i>Bulan malam ini besar dan bulat.</i></td></tr>
+            <tr><td class="hz">星星</td><td class="py">xīngxing</td><td>bintang</td><td class="ex">乡下能看到很多星星。<br><i>Di pedesaan bisa melihat banyak bintang.</i></td></tr>
+            <tr><td class="hz">风</td><td class="py">fēng</td><td>angin</td><td class="ex">今天风很大，注意保暖。<br><i>Hari ini anginnya kencang, perhatikan kehangatan.</i></td></tr>
+            <tr><td class="hz">云</td><td class="py">yún</td><td>awan</td><td class="ex">天上有很多白云。<br><i>Di langit ada banyak awan putih.</i></td></tr>
+            <tr><td class="hz">污染</td><td class="py">wūrǎn</td><td>polusi; mencemari</td><td class="ex">工厂的污染越来越严重。<br><i>Polusi pabrik semakin parah.</i></td></tr>
+            <tr><td class="hz">保护</td><td class="py">bǎohù</td><td>melindungi</td><td class="ex">保护动物是大家的责任。<br><i>Melindungi hewan adalah tanggung jawab semua orang.</i></td></tr>
+            </tbody></table>
+
+            <!-- Kategori 2: Pendidikan & Universitas -->
+            <h2 class="cat-title">🎓 2. Pendidikan & Universitas</h2>
+            <table class="vocab-table"><thead><tr><th>Hanzi</th><th>Pinyin</th><th>Arti</th><th>Contoh Kalimat</th></tr></thead><tbody>
+            <tr><td class="hz">教育</td><td class="py">jiàoyù</td><td>pendidikan</td><td class="ex">教育对每个人都很重要。<br><i>Pendidikan sangat penting bagi setiap orang.</i></td></tr>
+            <tr><td class="hz">大学</td><td class="py">dàxué</td><td>universitas</td><td class="ex">她明年要上大学了。<br><i>Tahun depan dia akan masuk universitas.</i></td></tr>
+            <tr><td class="hz">专业</td><td class="py">zhuānyè</td><td>jurusan; profesional</td><td class="ex">你的专业是什么？<br><i>Jurusanmu apa?</i></td></tr>
+            <tr><td class="hz">毕业</td><td class="py">bìyè</td><td>lulus</td><td class="ex">他去年从大学毕业了。<br><i>Dia lulus dari universitas tahun lalu.</i></td></tr>
+            <tr><td class="hz">知识</td><td class="py">zhīshi</td><td>pengetahuan</td><td class="ex">学习新知识让我很开心。<br><i>Belajar pengetahuan baru membuatku senang.</i></td></tr>
+            <tr><td class="hz">研究</td><td class="py">yánjiū</td><td>penelitian; meneliti</td><td class="ex">他在研究中国历史。<br><i>Dia sedang meneliti sejarah Tiongkok.</i></td></tr>
+            <tr><td class="hz">科学</td><td class="py">kēxué</td><td>ilmu pengetahuan; sains</td><td class="ex">科学技术发展得很快。<br><i>Ilmu pengetahuan dan teknologi berkembang sangat cepat.</i></td></tr>
+            <tr><td class="hz">数学</td><td class="py">shùxué</td><td>matematika</td><td class="ex">她的数学成绩一直很好。<br><i>Nilai matematikanya selalu bagus.</i></td></tr>
+            <tr><td class="hz">历史</td><td class="py">lìshǐ</td><td>sejarah</td><td class="ex">中国有很长的历史。<br><i>Tiongkok memiliki sejarah yang sangat panjang.</i></td></tr>
+            <tr><td class="hz">文化</td><td class="py">wénhuà</td><td>budaya</td><td class="ex">我对中国文化很感兴趣。<br><i>Saya sangat tertarik dengan budaya Tiongkok.</i></td></tr>
+            <tr><td class="hz">教授</td><td class="py">jiàoshòu</td><td>profesor</td><td class="ex">这位教授讲课很有趣。<br><i>Profesor ini mengajar dengan sangat menarik.</i></td></tr>
+            <tr><td class="hz">成绩</td><td class="py">chéngjì</td><td>nilai; prestasi</td><td class="ex">这次考试的成绩不错。<br><i>Nilai ujian kali ini cukup bagus.</i></td></tr>
+            <tr><td class="hz">奖学金</td><td class="py">jiǎngxuéjīn</td><td>beasiswa</td><td class="ex">她拿到了奖学金去留学。<br><i>Dia mendapat beasiswa untuk studi ke luar negeri.</i></td></tr>
+            <tr><td class="hz">留学</td><td class="py">liúxué</td><td>studi ke luar negeri</td><td class="ex">越来越多的人出国留学。<br><i>Semakin banyak orang studi ke luar negeri.</i></td></tr>
+            <tr><td class="hz">经验</td><td class="py">jīngyàn</td><td>pengalaman</td><td class="ex">工作经验对找工作很重要。<br><i>Pengalaman kerja sangat penting untuk mencari pekerjaan.</i></td></tr>
+            </tbody></table>
+
+            <!-- Kategori 3: Teknologi & Internet -->
+            <h2 class="cat-title">💻 3. Teknologi & Internet</h2>
+            <table class="vocab-table"><thead><tr><th>Hanzi</th><th>Pinyin</th><th>Arti</th><th>Contoh Kalimat</th></tr></thead><tbody>
+            <tr><td class="hz">技术</td><td class="py">jìshù</td><td>teknologi</td><td class="ex">现在的技术发展很快。<br><i>Teknologi sekarang berkembang sangat cepat.</i></td></tr>
+            <tr><td class="hz">网络</td><td class="py">wǎngluò</td><td>internet; jaringan</td><td class="ex">网络让我们的生活更方便。<br><i>Internet membuat hidup kita lebih nyaman.</i></td></tr>
+            <tr><td class="hz">手机</td><td class="py">shǒujī</td><td>ponsel</td><td class="ex">我的手机没电了。<br><i>Ponsel saya kehabisan baterai.</i></td></tr>
+            <tr><td class="hz">电脑</td><td class="py">diànnǎo</td><td>komputer</td><td class="ex">我需要用电脑写报告。<br><i>Saya perlu pakai komputer untuk menulis laporan.</i></td></tr>
+            <tr><td class="hz">信息</td><td class="py">xìnxī</td><td>informasi; pesan</td><td class="ex">请把信息发到我手机上。<br><i>Tolong kirim informasinya ke ponsel saya.</i></td></tr>
+            <tr><td class="hz">网站</td><td class="py">wǎngzhàn</td><td>situs web</td><td class="ex">这个网站的内容很丰富。<br><i>Konten situs web ini sangat kaya.</i></td></tr>
+            <tr><td class="hz">软件</td><td class="py">ruǎnjiàn</td><td>perangkat lunak</td><td class="ex">你用什么软件学中文？<br><i>Kamu pakai perangkat lunak apa untuk belajar bahasa Mandarin?</i></td></tr>
+            <tr><td class="hz">数据</td><td class="py">shùjù</td><td>data</td><td class="ex">我们需要分析这些数据。<br><i>Kita perlu menganalisis data ini.</i></td></tr>
+            <tr><td class="hz">密码</td><td class="py">mìmǎ</td><td>kata sandi</td><td class="ex">请输入你的密码。<br><i>Silakan masukkan kata sandi Anda.</i></td></tr>
+            <tr><td class="hz">下载</td><td class="py">xiàzài</td><td>mengunduh</td><td class="ex">你可以在网上下载这个软件。<br><i>Kamu bisa mengunduh perangkat lunak ini di internet.</i></td></tr>
+            <tr><td class="hz">上传</td><td class="py">shàngchuán</td><td>mengunggah</td><td class="ex">请把照片上传到网站上。<br><i>Tolong unggah foto ke situs web.</i></td></tr>
+            <tr><td class="hz">搜索</td><td class="py">sōusuǒ</td><td>mencari (di internet)</td><td class="ex">你可以在网上搜索答案。<br><i>Kamu bisa mencari jawabannya di internet.</i></td></tr>
+            <tr><td class="hz">广告</td><td class="py">guǎnggào</td><td>iklan</td><td class="ex">网上的广告太多了。<br><i>Iklan di internet terlalu banyak.</i></td></tr>
+            <tr><td class="hz">程序</td><td class="py">chéngxù</td><td>program</td><td class="ex">这个程序运行得很好。<br><i>Program ini berjalan dengan baik.</i></td></tr>
+            <tr><td class="hz">联系</td><td class="py">liánxì</td><td>menghubungi; kontak</td><td class="ex">有问题请随时联系我。<br><i>Kalau ada masalah, silakan hubungi saya kapan saja.</i></td></tr>
+            </tbody></table>
+
+            <!-- Kategori 4: Budaya & Tradisi -->
+            <h2 class="cat-title">🏮 4. Budaya & Tradisi</h2>
+            <table class="vocab-table"><thead><tr><th>Hanzi</th><th>Pinyin</th><th>Arti</th><th>Contoh Kalimat</th></tr></thead><tbody>
+            <tr><td class="hz">传统</td><td class="py">chuántǒng</td><td>tradisi; tradisional</td><td class="ex">春节是中国最重要的传统节日。<br><i>Imlek adalah hari raya tradisional terpenting di Tiongkok.</i></td></tr>
+            <tr><td class="hz">节日</td><td class="py">jiérì</td><td>hari raya</td><td class="ex">中秋节是一个重要的节日。<br><i>Festival Pertengahan Musim Gugur adalah hari raya penting.</i></td></tr>
+            <tr><td class="hz">风俗</td><td class="py">fēngsú</td><td>adat istiadat</td><td class="ex">每个地方有不同的风俗。<br><i>Setiap daerah memiliki adat istiadat yang berbeda.</i></td></tr>
+            <tr><td class="hz">礼物</td><td class="py">lǐwù</td><td>hadiah</td><td class="ex">过年的时候大家会送礼物。<br><i>Saat tahun baru, semua orang saling memberi hadiah.</i></td></tr>
+            <tr><td class="hz">习惯</td><td class="py">xíguàn</td><td>kebiasaan</td><td class="ex">你有什么学习的好习惯？<br><i>Kamu punya kebiasaan belajar baik apa?</i></td></tr>
+            <tr><td class="hz">艺术</td><td class="py">yìshù</td><td>seni</td><td class="ex">书法是一种中国传统艺术。<br><i>Kaligrafi adalah seni tradisional Tiongkok.</i></td></tr>
+            <tr><td class="hz">音乐</td><td class="py">yīnyuè</td><td>musik</td><td class="ex">她喜欢听中国音乐。<br><i>Dia suka mendengarkan musik Tiongkok.</i></td></tr>
+            <tr><td class="hz">故事</td><td class="py">gùshi</td><td>cerita</td><td class="ex">奶奶给我讲了一个有趣的故事。<br><i>Nenek menceritakan sebuah cerita menarik kepadaku.</i></td></tr>
+            <tr><td class="hz">博物馆</td><td class="py">bówùguǎn</td><td>museum</td><td class="ex">周末我们去博物馆参观吧。<br><i>Akhir pekan kita pergi mengunjungi museum ya.</i></td></tr>
+            <tr><td class="hz">表演</td><td class="py">biǎoyǎn</td><td>pertunjukan; tampil</td><td class="ex">今晚有一个精彩的表演。<br><i>Malam ini ada pertunjukan yang luar biasa.</i></td></tr>
+            <tr><td class="hz">古代</td><td class="py">gǔdài</td><td>zaman kuno</td><td class="ex">古代中国有很多发明。<br><i>Tiongkok zaman kuno memiliki banyak penemuan.</i></td></tr>
+            <tr><td class="hz">现代</td><td class="py">xiàndài</td><td>modern</td><td class="ex">现代生活离不开科技。<br><i>Kehidupan modern tidak bisa lepas dari teknologi.</i></td></tr>
+            <tr><td class="hz">民族</td><td class="py">mínzú</td><td>suku bangsa; etnis</td><td class="ex">中国有五十六个民族。<br><i>Tiongkok memiliki lima puluh enam suku bangsa.</i></td></tr>
+            <tr><td class="hz">语言</td><td class="py">yǔyán</td><td>bahasa</td><td class="ex">学习新的语言很有趣。<br><i>Belajar bahasa baru sangat menarik.</i></td></tr>
+            <tr><td class="hz">翻译</td><td class="py">fānyì</td><td>menerjemahkan; penerjemah</td><td class="ex">她的工作是翻译中文书。<br><i>Pekerjaannya adalah menerjemahkan buku bahasa Mandarin.</i></td></tr>
+            </tbody></table>
+
+            <!-- Kategori 5: Hubungan Sosial & Pertemanan -->
+            <h2 class="cat-title">🤝 5. Hubungan Sosial & Pertemanan</h2>
+            <table class="vocab-table"><thead><tr><th>Hanzi</th><th>Pinyin</th><th>Arti</th><th>Contoh Kalimat</th></tr></thead><tbody>
+            <tr><td class="hz">关系</td><td class="py">guānxi</td><td>hubungan</td><td class="ex">他们的关系很好。<br><i>Hubungan mereka sangat baik.</i></td></tr>
+            <tr><td class="hz">友谊</td><td class="py">yǒuyì</td><td>persahabatan</td><td class="ex">真正的友谊是很珍贵的。<br><i>Persahabatan sejati sangat berharga.</i></td></tr>
+            <tr><td class="hz">邀请</td><td class="py">yāoqǐng</td><td>mengundang</td><td class="ex">我邀请你来参加我的生日聚会。<br><i>Aku mengundangmu datang ke pesta ulang tahunku.</i></td></tr>
+            <tr><td class="hz">聚会</td><td class="py">jùhuì</td><td>pesta; pertemuan</td><td class="ex">周末我们一起聚会吧。<br><i>Akhir pekan kita berkumpul bersama ya.</i></td></tr>
+            <tr><td class="hz">交流</td><td class="py">jiāoliú</td><td>bertukar pikiran; berkomunikasi</td><td class="ex">我们经常交流学习经验。<br><i>Kami sering bertukar pengalaman belajar.</i></td></tr>
+            <tr><td class="hz">尊重</td><td class="py">zūnzhòng</td><td>menghormati</td><td class="ex">我们要尊重每个人的想法。<br><i>Kita harus menghormati pemikiran setiap orang.</i></td></tr>
+            <tr><td class="hz">信任</td><td class="py">xìnrèn</td><td>percaya; kepercayaan</td><td class="ex">朋友之间最重要的是信任。<br><i>Hal terpenting di antara teman adalah kepercayaan.</i></td></tr>
+            <tr><td class="hz">误会</td><td class="py">wùhuì</td><td>salah paham</td><td class="ex">这只是一个误会，别生气了。<br><i>Ini hanya salah paham, jangan marah lagi.</i></td></tr>
+            <tr><td class="hz">感情</td><td class="py">gǎnqíng</td><td>perasaan; emosi</td><td class="ex">他是一个很有感情的人。<br><i>Dia adalah orang yang sangat penuh perasaan.</i></td></tr>
+            <tr><td class="hz">道歉</td><td class="py">dàoqiàn</td><td>minta maaf</td><td class="ex">做错了事要学会道歉。<br><i>Kalau melakukan kesalahan harus belajar minta maaf.</i></td></tr>
+            <tr><td class="hz">原谅</td><td class="py">yuánliàng</td><td>memaafkan</td><td class="ex">请你原谅我的错误。<br><i>Tolong maafkan kesalahan saya.</i></td></tr>
+            <tr><td class="hz">鼓励</td><td class="py">gǔlì</td><td>menyemangati</td><td class="ex">老师经常鼓励学生要努力。<br><i>Guru sering menyemangati murid agar rajin.</i></td></tr>
+            <tr><td class="hz">帮忙</td><td class="py">bāngmáng</td><td>membantu</td><td class="ex">谢谢你帮忙搬东西。<br><i>Terima kasih sudah membantu memindahkan barang.</i></td></tr>
+            <tr><td class="hz">陪</td><td class="py">péi</td><td>menemani</td><td class="ex">周末我陪你去看电影。<br><i>Akhir pekan aku menemanimu nonton film.</i></td></tr>
+            <tr><td class="hz">约</td><td class="py">yuē</td><td>janjian; mengajak</td><td class="ex">我们约好了明天见面。<br><i>Kita sudah janjian bertemu besok.</i></td></tr>
+            </tbody></table>
+
+            <!-- Kategori 6: Kesehatan & Tubuh -->
+            <h2 class="cat-title">🏥 6. Kesehatan & Tubuh</h2>
+            <table class="vocab-table"><thead><tr><th>Hanzi</th><th>Pinyin</th><th>Arti</th><th>Contoh Kalimat</th></tr></thead><tbody>
+            <tr><td class="hz">健康</td><td class="py">jiànkāng</td><td>sehat; kesehatan</td><td class="ex">健康比什么都重要。<br><i>Kesehatan lebih penting dari segalanya.</i></td></tr>
+            <tr><td class="hz">医院</td><td class="py">yīyuàn</td><td>rumah sakit</td><td class="ex">他生病了，要去医院。<br><i>Dia sakit, harus ke rumah sakit.</i></td></tr>
+            <tr><td class="hz">检查</td><td class="py">jiǎnchá</td><td>memeriksa</td><td class="ex">你应该去医院检查一下。<br><i>Kamu sebaiknya pergi ke rumah sakit untuk diperiksa.</i></td></tr>
+            <tr><td class="hz">感冒</td><td class="py">gǎnmào</td><td>masuk angin; flu</td><td class="ex">天气变冷了，小心感冒。<br><i>Cuaca berubah dingin, hati-hati flu.</i></td></tr>
+            <tr><td class="hz">发烧</td><td class="py">fāshāo</td><td>demam</td><td class="ex">孩子发烧了，快去看医生。<br><i>Anak demam, cepat pergi ke dokter.</i></td></tr>
+            <tr><td class="hz">锻炼</td><td class="py">duànliàn</td><td>berolahraga</td><td class="ex">每天锻炼身体对健康有好处。<br><i>Berolahraga setiap hari baik untuk kesehatan.</i></td></tr>
+            <tr><td class="hz">减肥</td><td class="py">jiǎnféi</td><td>diet; menurunkan berat badan</td><td class="ex">她正在减肥，不吃甜的东西。<br><i>Dia sedang diet, tidak makan makanan manis.</i></td></tr>
+            <tr><td class="hz">习惯</td><td class="py">xíguàn</td><td>kebiasaan</td><td class="ex">早睡早起是好习惯。<br><i>Tidur awal bangun awal adalah kebiasaan baik.</i></td></tr>
+            <tr><td class="hz">药</td><td class="py">yào</td><td>obat</td><td class="ex">医生让他每天吃三次药。<br><i>Dokter menyuruhnya minum obat tiga kali sehari.</i></td></tr>
+            <tr><td class="hz">疼</td><td class="py">téng</td><td>sakit; nyeri</td><td class="ex">我的头很疼。<br><i>Kepala saya sangat sakit.</i></td></tr>
+            <tr><td class="hz">瘦</td><td class="py">shòu</td><td>kurus</td><td class="ex">你最近瘦了很多。<br><i>Kamu belakangan ini kurus banyak.</i></td></tr>
+            <tr><td class="hz">胖</td><td class="py">pàng</td><td>gemuk</td><td class="ex">吃太多甜食会变胖。<br><i>Makan terlalu banyak makanan manis bisa jadi gemuk.</i></td></tr>
+            <tr><td class="hz">休息</td><td class="py">xiūxi</td><td>istirahat</td><td class="ex">工作太累了，你该休息一下。<br><i>Kerja terlalu capek, kamu sebaiknya istirahat sebentar.</i></td></tr>
+            <tr><td class="hz">精神</td><td class="py">jīngshén</td><td>semangat; mental</td><td class="ex">今天你的精神看起来很好。<br><i>Hari ini semangatmu terlihat bagus.</i></td></tr>
+            <tr><td class="hz">营养</td><td class="py">yíngyǎng</td><td>nutrisi; gizi</td><td class="ex">多吃蔬菜水果，营养更均衡。<br><i>Perbanyak makan sayur dan buah, nutrisi lebih seimbang.</i></td></tr>
+            </tbody></table>
+
+            <!-- Kategori 7: Pekerjaan & Karier -->
+            <h2 class="cat-title">💼 7. Pekerjaan & Karier</h2>
+            <table class="vocab-table"><thead><tr><th>Hanzi</th><th>Pinyin</th><th>Arti</th><th>Contoh Kalimat</th></tr></thead><tbody>
+            <tr><td class="hz">工作</td><td class="py">gōngzuò</td><td>pekerjaan; bekerja</td><td class="ex">他的工作很忙。<br><i>Pekerjaannya sangat sibuk.</i></td></tr>
+            <tr><td class="hz">公司</td><td class="py">gōngsī</td><td>perusahaan</td><td class="ex">这家公司在北京。<br><i>Perusahaan ini berada di Beijing.</i></td></tr>
+            <tr><td class="hz">经理</td><td class="py">jīnglǐ</td><td>manajer</td><td class="ex">我们的经理是个很好的人。<br><i>Manajer kami adalah orang yang sangat baik.</i></td></tr>
+            <tr><td class="hz">工资</td><td class="py">gōngzī</td><td>gaji</td><td class="ex">这个月的工资已经发了。<br><i>Gaji bulan ini sudah dibayar.</i></td></tr>
+            <tr><td class="hz">加班</td><td class="py">jiābān</td><td>lembur</td><td class="ex">这个星期我每天都在加班。<br><i>Minggu ini saya lembur setiap hari.</i></td></tr>
+            <tr><td class="hz">面试</td><td class="py">miànshì</td><td>wawancara kerja</td><td class="ex">明天我有一个很重要的面试。<br><i>Besok saya punya wawancara kerja yang sangat penting.</i></td></tr>
+            <tr><td class="hz">简历</td><td class="py">jiǎnlì</td><td>CV; resume</td><td class="ex">请把你的简历发给我。<br><i>Tolong kirimkan CV kamu ke saya.</i></td></tr>
+            <tr><td class="hz">同事</td><td class="py">tóngshì</td><td>rekan kerja</td><td class="ex">我的同事们都很友好。<br><i>Rekan-rekan kerja saya semuanya ramah.</i></td></tr>
+            <tr><td class="hz">辞职</td><td class="py">cízhí</td><td>mengundurkan diri</td><td class="ex">他决定辞职去创业。<br><i>Dia memutuskan mengundurkan diri untuk berwirausaha.</i></td></tr>
+            <tr><td class="hz">任务</td><td class="py">rènwu</td><td>tugas</td><td class="ex">今天的任务已经完成了。<br><i>Tugas hari ini sudah selesai.</i></td></tr>
+            <tr><td class="hz">合同</td><td class="py">hétong</td><td>kontrak</td><td class="ex">我们签了一年的合同。<br><i>Kami menandatangani kontrak satu tahun.</i></td></tr>
+            <tr><td class="hz">压力</td><td class="py">yālì</td><td>tekanan</td><td class="ex">工作压力太大了。<br><i>Tekanan kerja terlalu besar.</i></td></tr>
+            <tr><td class="hz">成功</td><td class="py">chénggōng</td><td>sukses; berhasil</td><td class="ex">只要努力就会成功。<br><i>Asalkan berusaha keras pasti berhasil.</i></td></tr>
+            <tr><td class="hz">失败</td><td class="py">shībài</td><td>gagal</td><td class="ex">失败是成功之母。<br><i>Kegagalan adalah ibu dari kesuksesan.</i></td></tr>
+            <tr><td class="hz">机会</td><td class="py">jīhuì</td><td>kesempatan</td><td class="ex">这是一个很好的机会。<br><i>Ini adalah kesempatan yang sangat bagus.</i></td></tr>
+            </tbody></table>
+
+            <!-- Kategori 8: Transportasi & Perjalanan -->
+            <h2 class="cat-title">✈️ 8. Transportasi & Perjalanan</h2>
+            <table class="vocab-table"><thead><tr><th>Hanzi</th><th>Pinyin</th><th>Arti</th><th>Contoh Kalimat</th></tr></thead><tbody>
+            <tr><td class="hz">交通</td><td class="py">jiāotōng</td><td>lalu lintas</td><td class="ex">这个城市的交通很方便。<br><i>Lalu lintas di kota ini sangat nyaman.</i></td></tr>
+            <tr><td class="hz">航班</td><td class="py">hángbān</td><td>penerbangan</td><td class="ex">我们的航班是晚上八点的。<br><i>Penerbangan kami pukul delapan malam.</i></td></tr>
+            <tr><td class="hz">签证</td><td class="py">qiānzhèng</td><td>visa</td><td class="ex">去中国旅游需要办签证。<br><i>Berwisata ke Tiongkok perlu mengurus visa.</i></td></tr>
+            <tr><td class="hz">护照</td><td class="py">hùzhào</td><td>paspor</td><td class="ex">出国前要检查护照有没有过期。<br><i>Sebelum ke luar negeri harus periksa apakah paspor sudah kedaluwarsa.</i></td></tr>
+            <tr><td class="hz">行李</td><td class="py">xíngli</td><td>bagasi</td><td class="ex">你的行李太重了。<br><i>Bagasimu terlalu berat.</i></td></tr>
+            <tr><td class="hz">旅游</td><td class="py">lǚyóu</td><td>berwisata</td><td class="ex">暑假我们打算去欧洲旅游。<br><i>Liburan musim panas kami berencana berwisata ke Eropa.</i></td></tr>
+            <tr><td class="hz">景点</td><td class="py">jǐngdiǎn</td><td>tempat wisata</td><td class="ex">这个景点很有名。<br><i>Tempat wisata ini sangat terkenal.</i></td></tr>
+            <tr><td class="hz">地铁</td><td class="py">dìtiě</td><td>kereta bawah tanah</td><td class="ex">坐地铁比开车快。<br><i>Naik kereta bawah tanah lebih cepat daripada menyetir.</i></td></tr>
+            <tr><td class="hz">高铁</td><td class="py">gāotiě</td><td>kereta cepat</td><td class="ex">坐高铁从北京到上海只要四个半小时。<br><i>Naik kereta cepat dari Beijing ke Shanghai hanya empat setengah jam.</i></td></tr>
+            <tr><td class="hz">出发</td><td class="py">chūfā</td><td>berangkat</td><td class="ex">我们明天早上六点出发。<br><i>Kita berangkat besok pagi pukul enam.</i></td></tr>
+            <tr><td class="hz">到达</td><td class="py">dàodá</td><td>tiba</td><td class="ex">飞机已经到达机场了。<br><i>Pesawat sudah tiba di bandara.</i></td></tr>
+            <tr><td class="hz">方向</td><td class="py">fāngxiàng</td><td>arah</td><td class="ex">请问，火车站在哪个方向？<br><i>Permisi, stasiun kereta api di arah mana?</i></td></tr>
+            <tr><td class="hz">距离</td><td class="py">jùlí</td><td>jarak</td><td class="ex">学校离我家的距离不远。<br><i>Jarak sekolah dari rumah saya tidak jauh.</i></td></tr>
+            <tr><td class="hz">旅客</td><td class="py">lǚkè</td><td>penumpang; wisatawan</td><td class="ex">旅客们请注意安全。<br><i>Para penumpang harap perhatikan keselamatan.</i></td></tr>
+            <tr><td class="hz">导游</td><td class="py">dǎoyóu</td><td>pemandu wisata</td><td class="ex">我们的导游说得很清楚。<br><i>Pemandu wisata kami berbicara dengan sangat jelas.</i></td></tr>
+            </tbody></table>
+
+            <!-- Kategori 9: Makanan & Minuman -->
+            <h2 class="cat-title">🍜 9. Makanan & Minuman</h2>
+            <table class="vocab-table"><thead><tr><th>Hanzi</th><th>Pinyin</th><th>Arti</th><th>Contoh Kalimat</th></tr></thead><tbody>
+            <tr><td class="hz">味道</td><td class="py">wèidao</td><td>rasa</td><td class="ex">这道菜的味道很好。<br><i>Rasa masakan ini sangat enak.</i></td></tr>
+            <tr><td class="hz">食物</td><td class="py">shíwù</td><td>makanan</td><td class="ex">新鲜的食物更健康。<br><i>Makanan segar lebih sehat.</i></td></tr>
+            <tr><td class="hz">饮料</td><td class="py">yǐnliào</td><td>minuman</td><td class="ex">你想喝什么饮料？<br><i>Kamu mau minum minuman apa?</i></td></tr>
+            <tr><td class="hz">甜</td><td class="py">tián</td><td>manis</td><td class="ex">这个蛋糕太甜了。<br><i>Kue ini terlalu manis.</i></td></tr>
+            <tr><td class="hz">咸</td><td class="py">xián</td><td>asin</td><td class="ex">汤有点儿咸了。<br><i>Supnya agak asin.</i></td></tr>
+            <tr><td class="hz">辣</td><td class="py">là</td><td>pedas</td><td class="ex">四川菜特别辣。<br><i>Masakan Sichuan sangat pedas.</i></td></tr>
+            <tr><td class="hz">酸</td><td class="py">suān</td><td>asam</td><td class="ex">这个水果有点儿酸。<br><i>Buah ini agak asam.</i></td></tr>
+            <tr><td class="hz">新鲜</td><td class="py">xīnxiān</td><td>segar</td><td class="ex">市场上的蔬菜很新鲜。<br><i>Sayuran di pasar sangat segar.</i></td></tr>
+            <tr><td class="hz">点菜</td><td class="py">diǎncài</td><td>memesan makanan</td><td class="ex">你来点菜吧，我不熟悉这里。<br><i>Kamu yang pesan makanan ya, aku tidak familiar di sini.</i></td></tr>
+            <tr><td class="hz">烤</td><td class="py">kǎo</td><td>memanggang</td><td class="ex">今晚我们一起烤肉吧。<br><i>Malam ini kita memanggang daging bersama ya.</i></td></tr>
+            <tr><td class="hz">煮</td><td class="py">zhǔ</td><td>merebus</td><td class="ex">妈妈在煮面条。<br><i>Ibu sedang merebus mie.</i></td></tr>
+            <tr><td class="hz">炒</td><td class="py">chǎo</td><td>menumis; menggoreng</td><td class="ex">我学会了炒鸡蛋。<br><i>Saya sudah bisa menumis telur.</i></td></tr>
+            <tr><td class="hz">材料</td><td class="py">cáiliào</td><td>bahan</td><td class="ex">做这道菜需要什么材料？<br><i>Membuat masakan ini butuh bahan apa?</i></td></tr>
+            <tr><td class="hz">菜单</td><td class="py">càidān</td><td>menu</td><td class="ex">请给我们一份菜单。<br><i>Tolong berikan kami menu.</i></td></tr>
+            <tr><td class="hz">打包</td><td class="py">dǎbāo</td><td>bungkus (dibawa pulang)</td><td class="ex">吃不完的可以打包带走。<br><i>Yang tidak habis bisa dibungkus dibawa pulang.</i></td></tr>
+            </tbody></table>
+
+            <!-- Kategori 10: Emosi & Kepribadian -->
+            <h2 class="cat-title">😊 10. Emosi & Kepribadian</h2>
+            <table class="vocab-table"><thead><tr><th>Hanzi</th><th>Pinyin</th><th>Arti</th><th>Contoh Kalimat</th></tr></thead><tbody>
+            <tr><td class="hz">高兴</td><td class="py">gāoxìng</td><td>senang; gembira</td><td class="ex">听到这个消息我很高兴。<br><i>Mendengar kabar ini saya sangat senang.</i></td></tr>
+            <tr><td class="hz">难过</td><td class="py">nánguò</td><td>sedih</td><td class="ex">失去朋友让他很难过。<br><i>Kehilangan teman membuatnya sangat sedih.</i></td></tr>
+            <tr><td class="hz">生气</td><td class="py">shēngqì</td><td>marah</td><td class="ex">别生气了，我跟你道歉。<br><i>Jangan marah lagi, aku minta maaf.</i></td></tr>
+            <tr><td class="hz">害怕</td><td class="py">hàipà</td><td>takut</td><td class="ex">她很害怕一个人走夜路。<br><i>Dia sangat takut jalan malam sendirian.</i></td></tr>
+            <tr><td class="hz">紧张</td><td class="py">jǐnzhāng</td><td>gugup; tegang</td><td class="ex">考试前我总是很紧张。<br><i>Sebelum ujian aku selalu gugup.</i></td></tr>
+            <tr><td class="hz">放松</td><td class="py">fàngsōng</td><td>rileks</td><td class="ex">周末的时候要学会放松自己。<br><i>Saat akhir pekan harus bisa merilekskan diri.</i></td></tr>
+            <tr><td class="hz">自信</td><td class="py">zìxìn</td><td>percaya diri</td><td class="ex">她是一个很自信的人。<br><i>Dia adalah orang yang sangat percaya diri.</i></td></tr>
+            <tr><td class="hz">骄傲</td><td class="py">jiāo'ào</td><td>bangga; sombong</td><td class="ex">妈妈为我感到骄傲。<br><i>Ibu merasa bangga terhadapku.</i></td></tr>
+            <tr><td class="hz">耐心</td><td class="py">nàixīn</td><td>sabar</td><td class="ex">做老师需要很大的耐心。<br><i>Menjadi guru butuh kesabaran yang besar.</i></td></tr>
+            <tr><td class="hz">勇敢</td><td class="py">yǒnggǎn</td><td>berani</td><td class="ex">遇到困难要勇敢面对。<br><i>Menghadapi kesulitan harus berani menghadapinya.</i></td></tr>
+            <tr><td class="hz">幽默</td><td class="py">yōumò</td><td>humor; humoris</td><td class="ex">他是一个很幽默的人。<br><i>Dia adalah orang yang sangat humoris.</i></td></tr>
+            <tr><td class="hz">温柔</td><td class="py">wēnróu</td><td>lembut</td><td class="ex">她说话的声音很温柔。<br><i>Suaranya saat berbicara sangat lembut.</i></td></tr>
+            <tr><td class="hz">诚实</td><td class="py">chéngshí</td><td>jujur</td><td class="ex">做人要诚实。<br><i>Hidup harus jujur.</i></td></tr>
+            <tr><td class="hz">后悔</td><td class="py">hòuhuǐ</td><td>menyesal</td><td class="ex">他很后悔没有好好学习。<br><i>Dia sangat menyesal tidak belajar dengan baik.</i></td></tr>
+            <tr><td class="hz">满意</td><td class="py">mǎnyì</td><td>puas</td><td class="ex">客人对我们的服务很满意。<br><i>Tamu sangat puas dengan layanan kami.</i></td></tr>
+            </tbody></table>
+
+            <!-- Kategori 11: Rumah & Kehidupan Sehari-hari -->
+            <h2 class="cat-title">🏠 11. Rumah & Kehidupan Sehari-hari</h2>
+            <table class="vocab-table"><thead><tr><th>Hanzi</th><th>Pinyin</th><th>Arti</th><th>Contoh Kalimat</th></tr></thead><tbody>
+            <tr><td class="hz">邻居</td><td class="py">línjū</td><td>tetangga</td><td class="ex">我的邻居是一对老夫妻。<br><i>Tetangga saya adalah sepasang suami istri tua.</i></td></tr>
+            <tr><td class="hz">搬家</td><td class="py">bānjiā</td><td>pindah rumah</td><td class="ex">下个月我们要搬家了。<br><i>Bulan depan kami akan pindah rumah.</i></td></tr>
+            <tr><td class="hz">打扫</td><td class="py">dǎsǎo</td><td>membersihkan</td><td class="ex">周末我要打扫房间。<br><i>Akhir pekan saya harus membersihkan kamar.</i></td></tr>
+            <tr><td class="hz">洗衣服</td><td class="py">xǐ yīfu</td><td>mencuci pakaian</td><td class="ex">今天的衣服我还没洗。<br><i>Baju hari ini belum saya cuci.</i></td></tr>
+            <tr><td class="hz">做饭</td><td class="py">zuòfàn</td><td>memasak</td><td class="ex">今天晚上我来做饭。<br><i>Malam ini aku yang memasak.</i></td></tr>
+            <tr><td class="hz">家具</td><td class="py">jiājù</td><td>perabot; furnitur</td><td class="ex">我们买了一些新家具。<br><i>Kami membeli beberapa perabot baru.</i></td></tr>
+            <tr><td class="hz">钥匙</td><td class="py">yàoshi</td><td>kunci</td><td class="ex">我忘带钥匙了。<br><i>Saya lupa membawa kunci.</i></td></tr>
+            <tr><td class="hz">空调</td><td class="py">kōngtiáo</td><td>AC</td><td class="ex">天气太热了，开空调吧。<br><i>Cuaca terlalu panas, nyalakan AC ya.</i></td></tr>
+            <tr><td class="hz">电梯</td><td class="py">diàntī</td><td>lift; elevator</td><td class="ex">电梯坏了，我们走楼梯吧。<br><i>Lift rusak, kita naik tangga ya.</i></td></tr>
+            <tr><td class="hz">阳台</td><td class="py">yángtái</td><td>balkon</td><td class="ex">我喜欢在阳台上喝咖啡。<br><i>Saya suka minum kopi di balkon.</i></td></tr>
+            <tr><td class="hz">厨房</td><td class="py">chúfáng</td><td>dapur</td><td class="ex">厨房里有很多好吃的东西。<br><i>Di dapur ada banyak makanan enak.</i></td></tr>
+            <tr><td class="hz">客厅</td><td class="py">kètīng</td><td>ruang tamu</td><td class="ex">我们在客厅看电视吧。<br><i>Kita menonton TV di ruang tamu ya.</i></td></tr>
+            <tr><td class="hz">卧室</td><td class="py">wòshì</td><td>kamar tidur</td><td class="ex">卧室里有一张大床。<br><i>Di kamar tidur ada satu tempat tidur besar.</i></td></tr>
+            <tr><td class="hz">垃圾</td><td class="py">lājī</td><td>sampah</td><td class="ex">请把垃圾分类处理。<br><i>Tolong buang sampah dengan dipilah.</i></td></tr>
+            <tr><td class="hz">修理</td><td class="py">xiūlǐ</td><td>memperbaiki</td><td class="ex">我的电脑需要修理一下。<br><i>Komputer saya perlu diperbaiki.</i></td></tr>
+            </tbody></table>
+
+            <!-- Kategori 12: Belanja & Uang -->
+            <h2 class="cat-title">🛍️ 12. Belanja & Uang</h2>
+            <table class="vocab-table"><thead><tr><th>Hanzi</th><th>Pinyin</th><th>Arti</th><th>Contoh Kalimat</th></tr></thead><tbody>
+            <tr><td class="hz">价格</td><td class="py">jiàgé</td><td>harga</td><td class="ex">这件衣服的价格太高了。<br><i>Harga baju ini terlalu mahal.</i></td></tr>
+            <tr><td class="hz">打折</td><td class="py">dǎzhé</td><td>diskon</td><td class="ex">这家店今天打折。<br><i>Toko ini hari ini ada diskon.</i></td></tr>
+            <tr><td class="hz">便宜</td><td class="py">piányi</td><td>murah</td><td class="ex">网上买东西更便宜。<br><i>Beli barang di internet lebih murah.</i></td></tr>
+            <tr><td class="hz">贵</td><td class="py">guì</td><td>mahal</td><td class="ex">这个包太贵了，我买不起。<br><i>Tas ini terlalu mahal, saya tidak sanggup membeli.</i></td></tr>
+            <tr><td class="hz">付款</td><td class="py">fùkuǎn</td><td>membayar</td><td class="ex">你可以用手机付款。<br><i>Kamu bisa membayar pakai ponsel.</i></td></tr>
+            <tr><td class="hz">信用卡</td><td class="py">xìnyòngkǎ</td><td>kartu kredit</td><td class="ex">这里可以用信用卡吗？<br><i>Di sini bisa pakai kartu kredit?</i></td></tr>
+            <tr><td class="hz">零钱</td><td class="py">língqián</td><td>uang kecil; kembalian</td><td class="ex">对不起，我没有零钱。<br><i>Maaf, saya tidak punya uang kecil.</i></td></tr>
+            <tr><td class="hz">超市</td><td class="py">chāoshì</td><td>supermarket</td><td class="ex">我要去超市买些东西。<br><i>Saya mau pergi ke supermarket beli beberapa barang.</i></td></tr>
+            <tr><td class="hz">质量</td><td class="py">zhìliàng</td><td>kualitas</td><td class="ex">这个产品的质量非常好。<br><i>Kualitas produk ini sangat bagus.</i></td></tr>
+            <tr><td class="hz">退</td><td class="py">tuì</td><td>mengembalikan; retur</td><td class="ex">这件衣服不合适，我想退。<br><i>Baju ini tidak pas, saya mau kembalikan.</i></td></tr>
+            <tr><td class="hz">换</td><td class="py">huàn</td><td>menukar</td><td class="ex">这双鞋太小了，能换一双吗？<br><i>Sepatu ini terlalu kecil, bisa ditukar?</i></td></tr>
+            <tr><td class="hz">存钱</td><td class="py">cún qián</td><td>menabung</td><td class="ex">她每个月都存钱。<br><i>Dia menabung setiap bulan.</i></td></tr>
+            <tr><td class="hz">花钱</td><td class="py">huā qián</td><td>mengeluarkan uang</td><td class="ex">旅游的时候不要花太多钱。<br><i>Saat berwisata jangan mengeluarkan terlalu banyak uang.</i></td></tr>
+            <tr><td class="hz">商品</td><td class="py">shāngpǐn</td><td>produk; barang dagangan</td><td class="ex">这些商品都是进口的。<br><i>Produk-produk ini semuanya impor.</i></td></tr>
+            <tr><td class="hz">顾客</td><td class="py">gùkè</td><td>pelanggan</td><td class="ex">顾客的满意度最重要。<br><i>Kepuasan pelanggan paling penting.</i></td></tr>
+            </tbody></table>
+
+            <!-- Kategori 13: Media & Komunikasi -->
+            <h2 class="cat-title">📱 13. Media & Komunikasi</h2>
+            <table class="vocab-table"><thead><tr><th>Hanzi</th><th>Pinyin</th><th>Arti</th><th>Contoh Kalimat</th></tr></thead><tbody>
+            <tr><td class="hz">新闻</td><td class="py">xīnwén</td><td>berita</td><td class="ex">你看了今天的新闻吗？<br><i>Kamu sudah lihat berita hari ini?</i></td></tr>
+            <tr><td class="hz">报纸</td><td class="py">bàozhǐ</td><td>koran</td><td class="ex">爷爷每天早上看报纸。<br><i>Kakek membaca koran setiap pagi.</i></td></tr>
+            <tr><td class="hz">杂志</td><td class="py">zázhì</td><td>majalah</td><td class="ex">她喜欢看时尚杂志。<br><i>Dia suka membaca majalah fashion.</i></td></tr>
+            <tr><td class="hz">记者</td><td class="py">jìzhě</td><td>wartawan</td><td class="ex">记者们正在报道这个事件。<br><i>Para wartawan sedang meliput kejadian ini.</i></td></tr>
+            <tr><td class="hz">消息</td><td class="py">xiāoxi</td><td>kabar; informasi</td><td class="ex">你有他的消息吗？<br><i>Kamu ada kabar tentang dia?</i></td></tr>
+            <tr><td class="hz">通知</td><td class="py">tōngzhī</td><td>pemberitahuan</td><td class="ex">学校发了一个通知。<br><i>Sekolah mengeluarkan sebuah pemberitahuan.</i></td></tr>
+            <tr><td class="hz">讨论</td><td class="py">tǎolùn</td><td>mendiskusikan</td><td class="ex">我们讨论一下这个问题吧。<br><i>Ayo kita diskusikan masalah ini.</i></td></tr>
+            <tr><td class="hz">发表</td><td class="py">fābiǎo</td><td>menerbitkan; mempublikasikan</td><td class="ex">他发表了一篇文章。<br><i>Dia menerbitkan sebuah artikel.</i></td></tr>
+            <tr><td class="hz">内容</td><td class="py">nèiróng</td><td>konten; isi</td><td class="ex">这本书的内容很丰富。<br><i>Isi buku ini sangat kaya.</i></td></tr>
+            <tr><td class="hz">观众</td><td class="py">guānzhòng</td><td>penonton</td><td class="ex">演出结束后观众热烈鼓掌。<br><i>Setelah pertunjukan selesai, penonton bertepuk tangan meriah.</i></td></tr>
+            <tr><td class="hz">频道</td><td class="py">píndào</td><td>saluran (TV)</td><td class="ex">换一个频道看看吧。<br><i>Ganti saluran lain untuk menonton ya.</i></td></tr>
+            <tr><td class="hz">节目</td><td class="py">jiémù</td><td>acara (TV)</td><td class="ex">这个节目非常受欢迎。<br><i>Acara ini sangat populer.</i></td></tr>
+            <tr><td class="hz">评论</td><td class="py">pínglùn</td><td>komentar; ulasan</td><td class="ex">网友的评论很有趣。<br><i>Komentar netizen sangat menarik.</i></td></tr>
+            <tr><td class="hz">分享</td><td class="py">fēnxiǎng</td><td>berbagi</td><td class="ex">她喜欢在网上分享旅行照片。<br><i>Dia suka berbagi foto perjalanan di internet.</i></td></tr>
+            <tr><td class="hz">直播</td><td class="py">zhíbō</td><td>siaran langsung</td><td class="ex">今晚有一个直播活动。<br><i>Malam ini ada acara siaran langsung.</i></td></tr>
+            </tbody></table>
+
+            <!-- Kategori 14: Hukum & Aturan -->
+            <h2 class="cat-title">⚖️ 14. Hukum & Aturan</h2>
+            <table class="vocab-table"><thead><tr><th>Hanzi</th><th>Pinyin</th><th>Arti</th><th>Contoh Kalimat</th></tr></thead><tbody>
+            <tr><td class="hz">法律</td><td class="py">fǎlǜ</td><td>hukum</td><td class="ex">每个人都要遵守法律。<br><i>Setiap orang harus mematuhi hukum.</i></td></tr>
+            <tr><td class="hz">规定</td><td class="py">guīdìng</td><td>peraturan; ketentuan</td><td class="ex">公司有很多规定。<br><i>Perusahaan punya banyak peraturan.</i></td></tr>
+            <tr><td class="hz">允许</td><td class="py">yǔnxǔ</td><td>mengizinkan</td><td class="ex">这里不允许吸烟。<br><i>Di sini tidak diizinkan merokok.</i></td></tr>
+            <tr><td class="hz">禁止</td><td class="py">jìnzhǐ</td><td>melarang</td><td class="ex">禁止在教室里吃东西。<br><i>Dilarang makan di dalam kelas.</i></td></tr>
+            <tr><td class="hz">责任</td><td class="py">zérèn</td><td>tanggung jawab</td><td class="ex">这是每个公民的责任。<br><i>Ini adalah tanggung jawab setiap warga negara.</i></td></tr>
+            <tr><td class="hz">安全</td><td class="py">ānquán</td><td>keamanan; aman</td><td class="ex">安全是最重要的。<br><i>Keamanan adalah yang terpenting.</i></td></tr>
+            <tr><td class="hz">危险</td><td class="py">wēixiǎn</td><td>bahaya; berbahaya</td><td class="ex">在河里游泳很危险。<br><i>Berenang di sungai sangat berbahaya.</i></td></tr>
+            <tr><td class="hz">权利</td><td class="py">quánlì</td><td>hak</td><td class="ex">每个人都有说话的权利。<br><i>Setiap orang punya hak untuk berbicara.</i></td></tr>
+            <tr><td class="hz">证明</td><td class="py">zhèngmíng</td><td>bukti; membuktikan</td><td class="ex">你需要提供身份证明。<br><i>Kamu perlu memberikan bukti identitas.</i></td></tr>
+            <tr><td class="hz">罚款</td><td class="py">fákuǎn</td><td>denda</td><td class="ex">违反规定要交罚款。<br><i>Melanggar peraturan harus membayar denda.</i></td></tr>
+            </tbody></table>
+
+            <!-- Kategori 15: Ekonomi & Bisnis -->
+            <h2 class="cat-title">📊 15. Ekonomi & Bisnis</h2>
+            <table class="vocab-table"><thead><tr><th>Hanzi</th><th>Pinyin</th><th>Arti</th><th>Contoh Kalimat</th></tr></thead><tbody>
+            <tr><td class="hz">经济</td><td class="py">jīngjì</td><td>ekonomi</td><td class="ex">中国的经济发展很快。<br><i>Ekonomi Tiongkok berkembang sangat cepat.</i></td></tr>
+            <tr><td class="hz">市场</td><td class="py">shìchǎng</td><td>pasar</td><td class="ex">这个产品在市场上很受欢迎。<br><i>Produk ini sangat populer di pasar.</i></td></tr>
+            <tr><td class="hz">竞争</td><td class="py">jìngzhēng</td><td>persaingan</td><td class="ex">市场竞争越来越激烈。<br><i>Persaingan pasar semakin ketat.</i></td></tr>
+            <tr><td class="hz">贸易</td><td class="py">màoyì</td><td>perdagangan</td><td class="ex">两国之间的贸易越来越多。<br><i>Perdagangan antara kedua negara semakin banyak.</i></td></tr>
+            <tr><td class="hz">投资</td><td class="py">tóuzī</td><td>investasi</td><td class="ex">他决定投资一家新公司。<br><i>Dia memutuskan untuk berinvestasi di perusahaan baru.</i></td></tr>
+            <tr><td class="hz">利润</td><td class="py">lìrùn</td><td>keuntungan; profit</td><td class="ex">今年的利润比去年高。<br><i>Keuntungan tahun ini lebih tinggi dari tahun lalu.</i></td></tr>
+            <tr><td class="hz">客户</td><td class="py">kèhù</td><td>klien</td><td class="ex">我们要认真对待每一位客户。<br><i>Kita harus memperlakukan setiap klien dengan serius.</i></td></tr>
+            <tr><td class="hz">品牌</td><td class="py">pǐnpái</td><td>merek</td><td class="ex">这个品牌在全世界都很有名。<br><i>Merek ini terkenal di seluruh dunia.</i></td></tr>
+            <tr><td class="hz">发展</td><td class="py">fāzhǎn</td><td>perkembangan; berkembang</td><td class="ex">城市的发展非常快。<br><i>Perkembangan kota sangat cepat.</i></td></tr>
+            <tr><td class="hz">合作</td><td class="py">hézuò</td><td>kerja sama</td><td class="ex">两家公司决定合作。<br><i>Kedua perusahaan memutuskan untuk bekerja sama.</i></td></tr>
+            </tbody></table>
+
+            <!-- Kategori 16: Kata Kerja Umum -->
+            <h2 class="cat-title">🔄 16. Kata Kerja Umum</h2>
+            <table class="vocab-table"><thead><tr><th>Hanzi</th><th>Pinyin</th><th>Arti</th><th>Contoh Kalimat</th></tr></thead><tbody>
+            <tr><td class="hz">改变</td><td class="py">gǎibiàn</td><td>mengubah</td><td class="ex">科技改变了我们的生活。<br><i>Teknologi mengubah kehidupan kita.</i></td></tr>
+            <tr><td class="hz">解决</td><td class="py">jiějué</td><td>menyelesaikan (masalah)</td><td class="ex">我们要一起解决这个问题。<br><i>Kita harus bersama menyelesaikan masalah ini.</i></td></tr>
+            <tr><td class="hz">提高</td><td class="py">tígāo</td><td>meningkatkan</td><td class="ex">多练习可以提高你的水平。<br><i>Banyak berlatih bisa meningkatkan kemampuanmu.</i></td></tr>
+            <tr><td class="hz">降低</td><td class="py">jiàngdī</td><td>menurunkan</td><td class="ex">商店降低了商品的价格。<br><i>Toko menurunkan harga barang.</i></td></tr>
+            <tr><td class="hz">增加</td><td class="py">zēngjiā</td><td>menambah</td><td class="ex">今年的学生人数增加了。<br><i>Jumlah siswa tahun ini bertambah.</i></td></tr>
+            <tr><td class="hz">减少</td><td class="py">jiǎnshǎo</td><td>mengurangi</td><td class="ex">我们要减少浪费。<br><i>Kita harus mengurangi pemborosan.</i></td></tr>
+            <tr><td class="hz">选择</td><td class="py">xuǎnzé</td><td>memilih</td><td class="ex">你选择了哪个专业？<br><i>Kamu memilih jurusan apa?</i></td></tr>
+            <tr><td class="hz">决定</td><td class="py">juédìng</td><td>memutuskan</td><td class="ex">他决定去中国留学。<br><i>Dia memutuskan pergi studi ke Tiongkok.</i></td></tr>
+            <tr><td class="hz">比较</td><td class="py">bǐjiào</td><td>membandingkan; cukup</td><td class="ex">这两个方案比较一下吧。<br><i>Ayo bandingkan dua rencana ini.</i></td></tr>
+            <tr><td class="hz">影响</td><td class="py">yǐngxiǎng</td><td>mempengaruhi; pengaruh</td><td class="ex">天气影响了我们的计划。<br><i>Cuaca mempengaruhi rencana kita.</i></td></tr>
+            <tr><td class="hz">表示</td><td class="py">biǎoshì</td><td>menyatakan; menunjukkan</td><td class="ex">他表示同意你的想法。<br><i>Dia menyatakan setuju dengan pemikiranmu.</i></td></tr>
+            <tr><td class="hz">代替</td><td class="py">dàitì</td><td>menggantikan</td><td class="ex">没人能代替妈妈的位置。<br><i>Tidak ada yang bisa menggantikan posisi ibu.</i></td></tr>
+            <tr><td class="hz">接受</td><td class="py">jiēshòu</td><td>menerima</td><td class="ex">我们愿意接受你的建议。<br><i>Kami bersedia menerima saranmu.</i></td></tr>
+            <tr><td class="hz">拒绝</td><td class="py">jùjué</td><td>menolak</td><td class="ex">她拒绝了他的邀请。<br><i>Dia menolak undangannya.</i></td></tr>
+            <tr><td class="hz">坚持</td><td class="py">jiānchí</td><td>bertahan; gigih</td><td class="ex">只要坚持就能成功。<br><i>Asalkan gigih pasti bisa berhasil.</i></td></tr>
+            </tbody></table>
+
+            <!-- Kategori 17: Kata Sifat & Keterangan -->
+            <h2 class="cat-title">📐 17. Kata Sifat & Keterangan</h2>
+            <table class="vocab-table"><thead><tr><th>Hanzi</th><th>Pinyin</th><th>Arti</th><th>Contoh Kalimat</th></tr></thead><tbody>
+            <tr><td class="hz">复杂</td><td class="py">fùzá</td><td>rumit; kompleks</td><td class="ex">这个问题比较复杂。<br><i>Masalah ini cukup rumit.</i></td></tr>
+            <tr><td class="hz">简单</td><td class="py">jiǎndān</td><td>sederhana; mudah</td><td class="ex">这个方法很简单。<br><i>Metode ini sangat mudah.</i></td></tr>
+            <tr><td class="hz">丰富</td><td class="py">fēngfù</td><td>kaya; beragam</td><td class="ex">她的经验很丰富。<br><i>Pengalamannya sangat kaya.</i></td></tr>
+            <tr><td class="hz">普通</td><td class="py">pǔtōng</td><td>biasa; umum</td><td class="ex">他只是一个普通的学生。<br><i>Dia hanya seorang siswa biasa.</i></td></tr>
+            <tr><td class="hz">特别</td><td class="py">tèbié</td><td>khusus; sangat</td><td class="ex">今天的天气特别好。<br><i>Cuaca hari ini sangat bagus.</i></td></tr>
+            <tr><td class="hz">严重</td><td class="py">yánzhòng</td><td>serius; parah</td><td class="ex">污染问题越来越严重。<br><i>Masalah polusi semakin parah.</i></td></tr>
+            <tr><td class="hz">完美</td><td class="py">wánměi</td><td>sempurna</td><td class="ex">没有人是完美的。<br><i>Tidak ada orang yang sempurna.</i></td></tr>
+            <tr><td class="hz">合适</td><td class="py">héshì</td><td>cocok; pas</td><td class="ex">这件衣服很合适你。<br><i>Baju ini sangat cocok untukmu.</i></td></tr>
+            <tr><td class="hz">正常</td><td class="py">zhèngcháng</td><td>normal</td><td class="ex">这是正常的现象。<br><i>Ini adalah fenomena normal.</i></td></tr>
+            <tr><td class="hz">及时</td><td class="py">jíshí</td><td>tepat waktu</td><td class="ex">谢谢你及时通知我。<br><i>Terima kasih sudah memberitahu saya tepat waktu.</i></td></tr>
+            <tr><td class="hz">仔细</td><td class="py">zǐxì</td><td>teliti; hati-hati</td><td class="ex">做作业要仔细一点。<br><i>Mengerjakan PR harus teliti sedikit.</i></td></tr>
+            <tr><td class="hz">确实</td><td class="py">quèshí</td><td>memang; benar-benar</td><td class="ex">这道菜确实很好吃。<br><i>Masakan ini memang sangat enak.</i></td></tr>
+            <tr><td class="hz">突然</td><td class="py">tūrán</td><td>tiba-tiba</td><td class="ex">天气突然变冷了。<br><i>Cuaca tiba-tiba berubah dingin.</i></td></tr>
+            <tr><td class="hz">逐渐</td><td class="py">zhújiàn</td><td>secara bertahap</td><td class="ex">他的中文水平逐渐提高了。<br><i>Kemampuan bahasa Mandarinnya meningkat secara bertahap.</i></td></tr>
+            <tr><td class="hz">几乎</td><td class="py">jīhū</td><td>hampir</td><td class="ex">我几乎每天都去跑步。<br><i>Saya hampir setiap hari pergi berlari.</i></td></tr>
+            </tbody></table>
+
+            <!-- Kategori 18: Penghubung & Struktur -->
+            <h2 class="cat-title">🔗 18. Kata Penghubung & Struktur Kalimat</h2>
+            <table class="vocab-table"><thead><tr><th>Hanzi</th><th>Pinyin</th><th>Arti</th><th>Contoh Kalimat</th></tr></thead><tbody>
+            <tr><td class="hz">而且</td><td class="py">érqiě</td><td>dan juga; lagipula</td><td class="ex">他不但聪明，而且很努力。<br><i>Dia tidak hanya pintar, tapi juga sangat rajin.</i></td></tr>
+            <tr><td class="hz">不过</td><td class="py">búguò</td><td>tapi; namun</td><td class="ex">他很忙，不过还是来了。<br><i>Dia sangat sibuk, tapi tetap datang.</i></td></tr>
+            <tr><td class="hz">因此</td><td class="py">yīncǐ</td><td>oleh karena itu</td><td class="ex">他生病了，因此不能来。<br><i>Dia sakit, oleh karena itu tidak bisa datang.</i></td></tr>
+            <tr><td class="hz">否则</td><td class="py">fǒuzé</td><td>kalau tidak; jika tidak</td><td class="ex">快点走，否则会迟到。<br><i>Cepat jalan, kalau tidak akan terlambat.</i></td></tr>
+            <tr><td class="hz">另外</td><td class="py">lìngwài</td><td>selain itu</td><td class="ex">另外，我还有一个问题。<br><i>Selain itu, saya masih punya satu pertanyaan.</i></td></tr>
+            <tr><td class="hz">无论</td><td class="py">wúlùn</td><td>tidak peduli; apapun</td><td class="ex">无论多难，我都不会放弃。<br><i>Tidak peduli seberapa sulit, saya tidak akan menyerah.</i></td></tr>
+            <tr><td class="hz">只要</td><td class="py">zhǐyào</td><td>asalkan</td><td class="ex">只要你努力，就能做到。<br><i>Asalkan kamu berusaha keras, pasti bisa.</i></td></tr>
+            <tr><td class="hz">虽然</td><td class="py">suīrán</td><td>meskipun</td><td class="ex">虽然很累，但我很开心。<br><i>Meskipun sangat capek, tapi saya senang.</i></td></tr>
+            <tr><td class="hz">既然</td><td class="py">jìrán</td><td>karena sudah; toh sudah</td><td class="ex">既然来了，就好好玩吧。<br><i>Karena sudah datang, ayo bermain dengan baik.</i></td></tr>
+            <tr><td class="hz">总之</td><td class="py">zǒngzhī</td><td>singkatnya; intinya</td><td class="ex">总之，我们要加油。<br><i>Intinya, kita harus semangat.</i></td></tr>
+            <tr><td class="hz">首先</td><td class="py">shǒuxiān</td><td>pertama-tama</td><td class="ex">首先，我们要了解情况。<br><i>Pertama-tama, kita harus memahami situasinya.</i></td></tr>
+            <tr><td class="hz">然后</td><td class="py">ránhòu</td><td>kemudian; lalu</td><td class="ex">先吃饭，然后去散步。<br><i>Makan dulu, lalu pergi jalan-jalan.</i></td></tr>
+            <tr><td class="hz">最后</td><td class="py">zuìhòu</td><td>terakhir; akhirnya</td><td class="ex">最后，祝大家新年快乐！<br><i>Terakhir, selamat tahun baru untuk semua!</i></td></tr>
+            </tbody></table>
+
+            <!-- Kategori 19: Waktu & Angka -->
+            <h2 class="cat-title">⏰ 19. Waktu, Angka & Ukuran</h2>
+            <table class="vocab-table"><thead><tr><th>Hanzi</th><th>Pinyin</th><th>Arti</th><th>Contoh Kalimat</th></tr></thead><tbody>
+            <tr><td class="hz">世纪</td><td class="py">shìjì</td><td>abad</td><td class="ex">二十一世纪是科技的世纪。<br><i>Abad ke-21 adalah abad teknologi.</i></td></tr>
+            <tr><td class="hz">年代</td><td class="py">niándài</td><td>dekade; era</td><td class="ex">八十年代的音乐很好听。<br><i>Musik era 80-an sangat enak didengar.</i></td></tr>
+            <tr><td class="hz">期间</td><td class="py">qījiān</td><td>selama; periode</td><td class="ex">假期期间，公司不上班。<br><i>Selama liburan, perusahaan tidak beroperasi.</i></td></tr>
+            <tr><td class="hz">之前</td><td class="py">zhīqián</td><td>sebelum</td><td class="ex">出发之前请检查一下行李。<br><i>Sebelum berangkat tolong periksa bagasi.</i></td></tr>
+            <tr><td class="hz">之后</td><td class="py">zhīhòu</td><td>setelah</td><td class="ex">毕业之后你打算做什么？<br><i>Setelah lulus kamu berencana melakukan apa?</i></td></tr>
+            <tr><td class="hz">来得及</td><td class="py">láidejí</td><td>masih sempat</td><td class="ex">别急，来得及。<br><i>Jangan buru-buru, masih sempat.</i></td></tr>
+            <tr><td class="hz">来不及</td><td class="py">láibují</td><td>tidak sempat</td><td class="ex">来不及了，我们快走吧。<br><i>Tidak sempat lagi, ayo kita cepat jalan.</i></td></tr>
+            <tr><td class="hz">倍</td><td class="py">bèi</td><td>kali lipat</td><td class="ex">今年的收入是去年的两倍。<br><i>Pendapatan tahun ini dua kali lipat tahun lalu.</i></td></tr>
+            <tr><td class="hz">大约</td><td class="py">dàyuē</td><td>kira-kira</td><td class="ex">大约需要两个小时。<br><i>Kira-kira butuh dua jam.</i></td></tr>
+            <tr><td class="hz">至少</td><td class="py">zhìshǎo</td><td>setidaknya</td><td class="ex">你至少要休息八个小时。<br><i>Kamu setidaknya harus istirahat delapan jam.</i></td></tr>
+            </tbody></table>
+
+            <!-- Kategori 20: Lain-lain -->
+            <h2 class="cat-title">📦 20. Kosakata Umum Lainnya</h2>
+            <table class="vocab-table"><thead><tr><th>Hanzi</th><th>Pinyin</th><th>Arti</th><th>Contoh Kalimat</th></tr></thead><tbody>
+            <tr><td class="hz">计划</td><td class="py">jìhuà</td><td>rencana</td><td class="ex">你有什么周末计划？<br><i>Kamu punya rencana apa akhir pekan?</i></td></tr>
+            <tr><td class="hz">目标</td><td class="py">mùbiāo</td><td>tujuan; target</td><td class="ex">你的学习目标是什么？<br><i>Tujuan belajarmu apa?</i></td></tr>
+            <tr><td class="hz">方法</td><td class="py">fāngfǎ</td><td>metode; cara</td><td class="ex">你用了什么学习方法？<br><i>Kamu memakai metode belajar apa?</i></td></tr>
+            <tr><td class="hz">结果</td><td class="py">jiéguǒ</td><td>hasil</td><td class="ex">比赛的结果让人意外。<br><i>Hasil pertandingan membuat orang terkejut.</i></td></tr>
+            <tr><td class="hz">原因</td><td class="py">yuányīn</td><td>alasan; sebab</td><td class="ex">迟到的原因是什么？<br><i>Alasan terlambat apa?</i></td></tr>
+            <tr><td class="hz">条件</td><td class="py">tiáojiàn</td><td>syarat; kondisi</td><td class="ex">这里的学习条件很好。<br><i>Kondisi belajar di sini sangat bagus.</i></td></tr>
+            <tr><td class="hz">情况</td><td class="py">qíngkuàng</td><td>situasi; keadaan</td><td class="ex">请你介绍一下目前的情况。<br><i>Tolong perkenalkan situasi saat ini.</i></td></tr>
+            <tr><td class="hz">困难</td><td class="py">kùnnan</td><td>kesulitan; sulit</td><td class="ex">学中文有什么困难？<br><i>Belajar bahasa Mandarin ada kesulitan apa?</i></td></tr>
+            <tr><td class="hz">效果</td><td class="py">xiàoguǒ</td><td>efek; hasil</td><td class="ex">这个方法的效果很好。<br><i>Efek metode ini sangat bagus.</i></td></tr>
+            <tr><td class="hz">道理</td><td class="py">dàolǐ</td><td>alasan logis; prinsip</td><td class="ex">你说的有道理。<br><i>Yang kamu katakan masuk akal.</i></td></tr>
+            <tr><td class="hz">意见</td><td class="py">yìjiàn</td><td>pendapat; saran</td><td class="ex">大家有什么意见？<br><i>Semua orang ada pendapat apa?</i></td></tr>
+            <tr><td class="hz">态度</td><td class="py">tàidu</td><td>sikap</td><td class="ex">他的工作态度很好。<br><i>Sikap kerjanya sangat baik.</i></td></tr>
+            <tr><td class="hz">感觉</td><td class="py">gǎnjué</td><td>perasaan; merasa</td><td class="ex">我感觉今天很累。<br><i>Saya merasa hari ini sangat capek.</i></td></tr>
+            <tr><td class="hz">梦想</td><td class="py">mèngxiǎng</td><td>impian</td><td class="ex">每个人都有自己的梦想。<br><i>Setiap orang memiliki impiannya sendiri.</i></td></tr>
+            <tr><td class="hz">希望</td><td class="py">xīwàng</td><td>berharap; harapan</td><td class="ex">我希望你一切顺利。<br><i>Saya berharap semuanya lancar untukmu.</i></td></tr>
+            </tbody></table>
+
+        </div><!-- end vocab -->
+
+        <!-- ============ GRAMMAR ============ -->
+        <div id="grammar" class="section">
+            <h2 style="text-align:center;color:#1d3557;margin-bottom:24px;">📝 20 Poin Grammar HSK 3</h2>
+
+            <div class="grammar-card">
+                <h3>1. 把 (bǎ) — Kalimat 把</h3>
+                <div class="pattern">Subjek + 把 + Objek + Kata Kerja + Komplemen</div>
+                <p>Digunakan untuk menunjukkan tindakan yang dilakukan terhadap objek tertentu, menekankan objek yang terkena dampak.</p>
+                <div class="g-ex">
+                    请你<b>把</b>门关上。<br><i>Tolong tutup pintunya.</i><br><br>
+                    他<b>把</b>作业做完了。<br><i>Dia sudah menyelesaikan PR-nya.</i>
+                </div>
+            </div>
+
+            <div class="grammar-card">
+                <h3>2. 被 (bèi) — Kalimat Pasif</h3>
+                <div class="pattern">Objek + 被 + (Pelaku) + Kata Kerja</div>
+                <p>Digunakan untuk menyatakan kalimat pasif, mirip "di-" dalam bahasa Indonesia.</p>
+                <div class="g-ex">
+                    我的手机<b>被</b>弟弟弄坏了。<br><i>Ponsel saya dirusakkan oleh adik.</i><br><br>
+                    那本书<b>被</b>借走了。<br><i>Buku itu sudah dipinjam.</i>
+                </div>
+            </div>
+
+            <div class="grammar-card">
+                <h3>3. 越来越 (yuè lái yuè) — Semakin...</h3>
+                <div class="pattern">越来越 + Kata Sifat/Kata Kerja</div>
+                <p>Menyatakan sesuatu yang berubah secara bertahap, semakin lama semakin...</p>
+                <div class="g-ex">
+                    天气<b>越来越</b>冷了。<br><i>Cuaca semakin dingin.</i><br><br>
+                    他的中文<b>越来越</b>好了。<br><i>Bahasa Mandarinnya semakin bagus.</i>
+                </div>
+            </div>
+
+            <div class="grammar-card">
+                <h3>4. 越...越... (yuè...yuè...) — Semakin... semakin...</h3>
+                <div class="pattern">越 + A + 越 + B</div>
+                <p>Dua hal yang meningkat secara bersamaan.</p>
+                <div class="g-ex">
+                    我<b>越</b>学<b>越</b>有兴趣。<br><i>Semakin saya belajar semakin tertarik.</i><br><br>
+                    路上的车<b>越</b>来<b>越</b>多。<br><i>Mobil di jalan semakin banyak.</i>
+                </div>
+            </div>
+
+            <div class="grammar-card">
+                <h3>5. 不但...而且... (búdàn...érqiě...) — Tidak hanya... tapi juga...</h3>
+                <div class="pattern">不但 + A，而且 + B</div>
+                <p>Menyatakan penambahan informasi positif.</p>
+                <div class="g-ex">
+                    她<b>不但</b>会说中文，<b>而且</b>会写汉字。<br><i>Dia tidak hanya bisa berbicara bahasa Mandarin, tapi juga bisa menulis aksara.</i>
+                </div>
+            </div>
+
+            <div class="grammar-card">
+                <h3>6. 虽然...但是... (suīrán...dànshì...) — Meskipun... tapi...</h3>
+                <div class="pattern">虽然 + A，但是 + B</div>
+                <p>Menyatakan kontras antara dua hal.</p>
+                <div class="g-ex">
+                    <b>虽然</b>很累，<b>但是</b>我很开心。<br><i>Meskipun capek, tapi saya senang.</i>
+                </div>
+            </div>
+
+            <div class="grammar-card">
+                <h3>7. 只要...就... (zhǐyào...jiù...) — Asalkan... maka...</h3>
+                <div class="pattern">只要 + Syarat，就 + Hasil</div>
+                <p>Menyatakan syarat yang cukup untuk mendapatkan hasil.</p>
+                <div class="g-ex">
+                    <b>只要</b>你努力，<b>就</b>能成功。<br><i>Asalkan kamu berusaha keras, pasti bisa berhasil.</i>
+                </div>
+            </div>
+
+            <div class="grammar-card">
+                <h3>8. 无论...都... (wúlùn...dōu...) — Tidak peduli... tetap...</h3>
+                <div class="pattern">无论 + Kondisi，都 + Hasil</div>
+                <p>Menyatakan hasil tidak berubah dalam kondisi apapun.</p>
+                <div class="g-ex">
+                    <b>无论</b>多忙，我<b>都</b>要锻炼身体。<br><i>Tidak peduli seberapa sibuk, saya tetap harus berolahraga.</i>
+                </div>
+            </div>
+
+            <div class="grammar-card">
+                <h3>9. 既然...就... (jìrán...jiù...) — Karena sudah... maka...</h3>
+                <div class="pattern">既然 + Fakta，就 + Kesimpulan</div>
+                <p>Menyatakan kesimpulan logis berdasarkan fakta yang sudah ada.</p>
+                <div class="g-ex">
+                    <b>既然</b>你不喜欢，<b>就</b>不要买了。<br><i>Karena kamu tidak suka, ya jangan beli.</i>
+                </div>
+            </div>
+
+            <div class="grammar-card">
+                <h3>10. 对...来说 (duì...lái shuō) — Bagi...</h3>
+                <div class="pattern">对 + Orang/Benda + 来说</div>
+                <p>Menyatakan sudut pandang atau perspektif seseorang.</p>
+                <div class="g-ex">
+                    <b>对</b>我<b>来说</b>，健康最重要。<br><i>Bagi saya, kesehatan paling penting.</i>
+                </div>
+            </div>
+
+            <div class="grammar-card">
+                <h3>11. 连...都/也... (lián...dōu/yě...) — Bahkan... juga/pun...</h3>
+                <div class="pattern">连 + Objek + 都/也 + Kata Kerja</div>
+                <p>Menekankan sesuatu yang tidak terduga, "bahkan".</p>
+                <div class="g-ex">
+                    他<b>连</b>自己的名字<b>都</b>不会写。<br><i>Dia bahkan namanya sendiri pun tidak bisa menulis.</i>
+                </div>
+            </div>
+
+            <div class="grammar-card">
+                <h3>12. 着 (zhe) — Sedang (Keadaan Berlangsung)</h3>
+                <div class="pattern">Kata Kerja + 着</div>
+                <p>Menunjukkan keadaan yang sedang berlangsung atau berlanjut.</p>
+                <div class="g-ex">
+                    门开<b>着</b>呢。<br><i>Pintunya terbuka.</i><br><br>
+                    她穿<b>着</b>一件红色的裙子。<br><i>Dia memakai gaun merah.</i>
+                </div>
+            </div>
+
+            <div class="grammar-card">
+                <h3>13. 地 (de) — Keterangan Cara</h3>
+                <div class="pattern">Kata Sifat + 地 + Kata Kerja</div>
+                <p>Menghubungkan kata sifat sebagai keterangan cara sebelum kata kerja.</p>
+                <div class="g-ex">
+                    她高兴<b>地</b>笑了。<br><i>Dia tertawa dengan gembira.</i><br><br>
+                    他认真<b>地</b>听课。<br><i>Dia mendengarkan pelajaran dengan serius.</i>
+                </div>
+            </div>
+
+            <div class="grammar-card">
+                <h3>14. 得 (de) — Komplemen Derajat</h3>
+                <div class="pattern">Kata Kerja + 得 + Deskripsi</div>
+                <p>Menyatakan seberapa baik atau buruknya suatu tindakan dilakukan.</p>
+                <div class="g-ex">
+                    他说中文说<b>得</b>很流利。<br><i>Dia berbicara bahasa Mandarin dengan sangat lancar.</i><br><br>
+                    她唱歌唱<b>得</b>非常好听。<br><i>Dia menyanyi dengan sangat merdu.</i>
+                </div>
+            </div>
+
+            <div class="grammar-card">
+                <h3>15. 是...的 (shì...de) — Menekankan Detail</h3>
+                <div class="pattern">是 + (Waktu/Tempat/Cara) + Kata Kerja + 的</div>
+                <p>Menekankan kapan, di mana, atau bagaimana sesuatu terjadi (bukan apakah terjadi).</p>
+                <div class="g-ex">
+                    我<b>是</b>坐飞机来<b>的</b>。<br><i>Saya datang naik pesawat (menekankan cara).</i><br><br>
+                    他<b>是</b>去年毕业<b>的</b>。<br><i>Dia lulus tahun lalu (menekankan waktu).</i>
+                </div>
+            </div>
+
+            <div class="grammar-card">
+                <h3>16. 除了...以外 (chúle...yǐwài) — Selain...</h3>
+                <div class="pattern">除了 + A + 以外，还/都 + B</div>
+                <p>"Selain A, juga B" (inklusi) atau "Selain A, semuanya B" (eksklusi).</p>
+                <div class="g-ex">
+                    <b>除了</b>中文<b>以外</b>，他<b>还</b>会说英文。<br><i>Selain bahasa Mandarin, dia juga bisa bahasa Inggris.</i><br><br>
+                    <b>除了</b>他<b>以外</b>，大家<b>都</b>来了。<br><i>Selain dia, semuanya sudah datang.</i>
+                </div>
+            </div>
+
+            <div class="grammar-card">
+                <h3>17. 先...再... (xiān...zài...) — Dulu... baru...</h3>
+                <div class="pattern">先 + Tindakan 1，再 + Tindakan 2</div>
+                <p>Menyatakan urutan tindakan.</p>
+                <div class="g-ex">
+                    <b>先</b>吃饭，<b>再</b>去散步。<br><i>Makan dulu, baru pergi jalan-jalan.</i>
+                </div>
+            </div>
+
+            <div class="grammar-card">
+                <h3>18. 一边...一边... (yìbiān...yìbiān...) — Sambil...</h3>
+                <div class="pattern">一边 + Tindakan 1，一边 + Tindakan 2</div>
+                <p>Menyatakan dua tindakan yang dilakukan bersamaan.</p>
+                <div class="g-ex">
+                    她<b>一边</b>吃早饭，<b>一边</b>看新闻。<br><i>Dia makan sarapan sambil menonton berita.</i>
+                </div>
+            </div>
+
+            <div class="grammar-card">
+                <h3>19. 不是...而是... (búshì...érshì...) — Bukan... melainkan...</h3>
+                <div class="pattern">不是 + A，而是 + B</div>
+                <p>Mengoreksi atau mengklarifikasi sebuah pernyataan.</p>
+                <div class="g-ex">
+                    我<b>不是</b>不想去，<b>而是</b>没有时间。<br><i>Bukan saya tidak mau pergi, melainkan tidak ada waktu.</i>
+                </div>
+            </div>
+
+            <div class="grammar-card">
+                <h3>20. 要是...就... (yàoshi...jiù...) — Kalau... maka...</h3>
+                <div class="pattern">要是 + Kondisi，就 + Hasil</div>
+                <p>Menyatakan pengandaian/kondisional.</p>
+                <div class="g-ex">
+                    <b>要是</b>明天下雨，我们<b>就</b>不去了。<br><i>Kalau besok hujan, kita tidak jadi pergi.</i><br><br>
+                    <b>要是</b>你有空，<b>就</b>来我家玩吧。<br><i>Kalau kamu ada waktu, datang main ke rumahku ya.</i>
+                </div>
+            </div>
+
+        </div><!-- end grammar -->
+
+    </div>
+
+    <script>
+    // Auth check
+    if (sessionStorage.getItem('hskPassword') !== 'hsk2026mandarin') {
+        window.location.href = 'menu.html';
+    }
+
+    function showSection(id) {
+        document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        document.getElementById(id).classList.add('active');
+        event.target.classList.add('active');
+    }
+
+    function filterVocab(query) {
+        const q = query.toLowerCase();
+        document.querySelectorAll('.vocab-table tbody tr').forEach(row => {
+            const text = row.textContent.toLowerCase();
+            row.classList.toggle('hidden-row', q && !text.includes(q));
+        });
+    }
+    </script>
+</body>
+</html>

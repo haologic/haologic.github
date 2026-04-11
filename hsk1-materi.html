@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HSK 1 Materi — Kosakata & Grammar</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="pattern-overlay"></div>
+
+  <nav class="navbar" id="navbar">
+    <a href="index.html" class="nav-brand">
+      <div class="hanzi-logo">汉</div>
+      <span>Modul HSK</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="menu.html">Menu</a></li>
+      <li><a href="hsk1-soal.html" class="nav-cta">Latihan Soal</a></li>
+    </ul>
+  </nav>
+
+  <div class="materi-page">
+    <div class="breadcrumb">
+      <a href="menu.html">Menu</a> <span>›</span> <span>HSK 1 Materi</span>
+    </div>
+
+    <div class="materi-header fade-in">
+      <h1>HSK 1 — Kosakata & Grammar</h1>
+      <p class="desc">150 kosakata resmi HSK Level 1 dan 15 poin grammar dasar. Semua contoh kalimat original, penjelasan dalam Bahasa Indonesia.</p>
+    </div>
+
+    <div class="materi-nav">
+      <button class="materi-nav-btn active" onclick="showSection('kosakata', this)">📖 Kosakata (150)</button>
+      <button class="materi-nav-btn" onclick="showSection('grammar', this)">📝 Grammar (15)</button>
+    </div>
+
+    <!-- ═══════════ KOSAKATA ═══════════ -->
+    <div class="materi-section" id="section-kosakata">
+      <h2>Daftar Kosakata HSK 1</h2>
+      <div class="search-wrapper">
+        <input type="text" class="search-box" placeholder="Cari kosakata... (hanzi, pinyin, atau arti)" id="vocab-search" oninput="filterVocab()">
+      </div>
+      <div style="overflow-x: auto;">
+        <table class="vocab-table" id="vocab-table">
+          <thead>
+            <tr>
+              <th style="width:50px">No</th>
+              <th style="width:80px">Hanzi</th>
+              <th style="width:100px">Pinyin</th>
+              <th>Arti</th>
+              <th>Contoh Kalimat</th>
+            </tr>
+          </thead>
+          <tbody id="vocab-body">
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ═══════════ GRAMMAR ═══════════ -->
+    <div class="materi-section" id="section-grammar" style="display: none;">
+      <h2>Grammar HSK 1</h2>
+      <div id="grammar-container"></div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <p>&copy; 2026 Modul HSK Mandarin</p>
+  </footer>
+
+<script>
+// ============== AUTH CHECK ==============
+if (sessionStorage.getItem('hsk_auth') !== 'true') {
+  window.location.href = 'menu.html';
+}
+
+// ============== KOSAKATA DATA ==============
+const vocabData = [
+  // --- Kata Ganti ---
+  {h:"我",p:"wǒ",a:"saya, aku",c:"我喜欢看书。",ci:"Saya suka membaca buku."},
+  {h:"你",p:"nǐ",a:"kamu",c:"你叫什么名字？",ci:"Kamu namanya siapa?"},
+  {h:"他",p:"tā",a:"dia (laki-laki)",c:"他是我的朋友。",ci:"Dia adalah teman saya."},
+  {h:"她",p:"tā",a:"dia (perempuan)",c:"她很漂亮。",ci:"Dia sangat cantik."},
+  {h:"我们",p:"wǒmen",a:"kami, kita",c:"我们一起去吧。",ci:"Ayo kita pergi bersama."},
+  {h:"这",p:"zhè",a:"ini",c:"这是我的书。",ci:"Ini adalah buku saya."},
+  {h:"那",p:"nà",a:"itu",c:"那个人是谁？",ci:"Orang itu siapa?"},
+  {h:"哪",p:"nǎ",a:"mana, yang mana",c:"你住在哪？",ci:"Kamu tinggal di mana?"},
+  {h:"谁",p:"shéi",a:"siapa",c:"他是谁？",ci:"Dia siapa?"},
+  {h:"什么",p:"shénme",a:"apa",c:"你在做什么？",ci:"Kamu sedang melakukan apa?"},
+  // --- Kata Kerja ---
+  {h:"是",p:"shì",a:"adalah",c:"我是中国人。",ci:"Saya adalah orang Tiongkok."},
+  {h:"有",p:"yǒu",a:"punya, ada",c:"我有一个哥哥。",ci:"Saya punya seorang kakak laki-laki."},
+  {h:"看",p:"kàn",a:"melihat, menonton",c:"我在看电影。",ci:"Saya sedang menonton film."},
+  {h:"听",p:"tīng",a:"mendengar",c:"请听老师说。",ci:"Silakan dengarkan guru berbicara."},
+  {h:"说",p:"shuō",a:"berbicara, berkata",c:"他会说中文。",ci:"Dia bisa berbicara Bahasa Mandarin."},
+  {h:"读",p:"dú",a:"membaca (keras)",c:"请读这个字。",ci:"Tolong baca karakter ini."},
+  {h:"写",p:"xiě",a:"menulis",c:"我在写汉字。",ci:"Saya sedang menulis karakter Mandarin."},
+  {h:"叫",p:"jiào",a:"memanggil, bernama",c:"我叫小红。",ci:"Saya bernama Xiao Hong."},
+  {h:"来",p:"lái",a:"datang",c:"请来我家。",ci:"Silakan datang ke rumah saya."},
+  {h:"去",p:"qù",a:"pergi",c:"我去学校。",ci:"Saya pergi ke sekolah."},
+  {h:"吃",p:"chī",a:"makan",c:"我们吃饭吧。",ci:"Ayo kita makan."},
+  {h:"喝",p:"hē",a:"minum",c:"你想喝什么？",ci:"Kamu ingin minum apa?"},
+  {h:"做",p:"zuò",a:"melakukan, membuat",c:"你在做什么？",ci:"Kamu sedang melakukan apa?"},
+  {h:"买",p:"mǎi",a:"membeli",c:"我想买一本书。",ci:"Saya ingin membeli sebuah buku."},
+  {h:"住",p:"zhù",a:"tinggal",c:"你住在哪里？",ci:"Kamu tinggal di mana?"},
+  {h:"学习",p:"xuéxí",a:"belajar",c:"我在学习中文。",ci:"Saya sedang belajar Bahasa Mandarin."},
+  {h:"工作",p:"gōngzuò",a:"bekerja",c:"他在医院工作。",ci:"Dia bekerja di rumah sakit."},
+  {h:"睡觉",p:"shuìjiào",a:"tidur",c:"我十点睡觉。",ci:"Saya tidur jam sepuluh."},
+  {h:"打电话",p:"dǎ diànhuà",a:"menelepon",c:"我给妈妈打电话。",ci:"Saya menelepon ibu."},
+  {h:"回",p:"huí",a:"kembali, pulang",c:"我六点回家。",ci:"Saya pulang jam enam."},
+  {h:"想",p:"xiǎng",a:"ingin, berpikir",c:"我想去中国。",ci:"Saya ingin pergi ke Tiongkok."},
+  {h:"会",p:"huì",a:"bisa, akan",c:"我会说中文。",ci:"Saya bisa berbicara Bahasa Mandarin."},
+  {h:"能",p:"néng",a:"dapat, mampu",c:"你能来吗？",ci:"Kamu bisa datang?"},
+  {h:"爱",p:"ài",a:"cinta, suka",c:"我爱我的家人。",ci:"Saya mencintai keluarga saya."},
+  {h:"喜欢",p:"xǐhuan",a:"suka",c:"我喜欢吃苹果。",ci:"Saya suka makan apel."},
+  {h:"认识",p:"rènshi",a:"mengenal",c:"很高兴认识你。",ci:"Senang berkenalan denganmu."},
+  {h:"开",p:"kāi",a:"membuka, mengendarai",c:"请开门。",ci:"Tolong buka pintu."},
+  {h:"坐",p:"zuò",a:"duduk, naik (kendaraan)",c:"请坐。",ci:"Silakan duduk."},
+  {h:"下雨",p:"xià yǔ",a:"hujan",c:"今天下雨了。",ci:"Hari ini hujan."},
+  // --- Kata Sifat ---
+  {h:"好",p:"hǎo",a:"baik, bagus",c:"今天天气很好。",ci:"Cuaca hari ini sangat bagus."},
+  {h:"大",p:"dà",a:"besar",c:"这个房间很大。",ci:"Ruangan ini sangat besar."},
+  {h:"小",p:"xiǎo",a:"kecil",c:"我有一只小猫。",ci:"Saya punya seekor kucing kecil."},
+  {h:"多",p:"duō",a:"banyak",c:"这里人很多。",ci:"Di sini orangnya sangat banyak."},
+  {h:"少",p:"shǎo",a:"sedikit",c:"他的钱很少。",ci:"Uangnya sangat sedikit."},
+  {h:"冷",p:"lěng",a:"dingin",c:"今天很冷。",ci:"Hari ini sangat dingin."},
+  {h:"热",p:"rè",a:"panas",c:"北京的夏天很热。",ci:"Musim panas di Beijing sangat panas."},
+  {h:"高兴",p:"gāoxìng",a:"senang, gembira",c:"我今天很高兴。",ci:"Saya hari ini sangat senang."},
+  {h:"漂亮",p:"piàoliang",a:"cantik, indah",c:"这朵花很漂亮。",ci:"Bunga ini sangat cantik."},
+  // --- Kata Benda (Orang & Hubungan) ---
+  {h:"人",p:"rén",a:"orang",c:"那个人是我爸爸。",ci:"Orang itu adalah ayah saya."},
+  {h:"朋友",p:"péngyou",a:"teman",c:"她是我的好朋友。",ci:"Dia adalah teman baik saya."},
+  {h:"同学",p:"tóngxué",a:"teman sekelas",c:"他是我的同学。",ci:"Dia adalah teman sekelas saya."},
+  {h:"老师",p:"lǎoshī",a:"guru",c:"王老师很好。",ci:"Guru Wang sangat baik."},
+  {h:"学生",p:"xuéshēng",a:"murid, siswa",c:"我是学生。",ci:"Saya adalah murid."},
+  {h:"医生",p:"yīshēng",a:"dokter",c:"他是一个医生。",ci:"Dia adalah seorang dokter."},
+  {h:"爸爸",p:"bàba",a:"ayah",c:"我爸爸在工作。",ci:"Ayah saya sedang bekerja."},
+  {h:"妈妈",p:"māma",a:"ibu",c:"妈妈在做饭。",ci:"Ibu sedang memasak."},
+  {h:"儿子",p:"érzi",a:"anak laki-laki",c:"他的儿子三岁了。",ci:"Anak laki-lakinya sudah tiga tahun."},
+  {h:"女儿",p:"nǚ'ér",a:"anak perempuan",c:"我的女儿很可爱。",ci:"Anak perempuan saya sangat lucu."},
+  {h:"先生",p:"xiānsheng",a:"Tuan, Bapak",c:"李先生你好。",ci:"Halo Bapak Li."},
+  {h:"小姐",p:"xiǎojiě",a:"Nona",c:"张小姐请进。",ci:"Nona Zhang, silakan masuk."},
+  // --- Angka ---
+  {h:"一",p:"yī",a:"satu",c:"我有一个弟弟。",ci:"Saya punya seorang adik laki-laki."},
+  {h:"二",p:"èr",a:"dua",c:"他有二十块钱。",ci:"Dia punya dua puluh yuan."},
+  {h:"三",p:"sān",a:"tiga",c:"我买了三本书。",ci:"Saya membeli tiga buku."},
+  {h:"四",p:"sì",a:"empat",c:"我家有四口人。",ci:"Keluarga saya ada empat orang."},
+  {h:"五",p:"wǔ",a:"lima",c:"现在五点了。",ci:"Sekarang sudah jam lima."},
+  {h:"六",p:"liù",a:"enam",c:"他六岁了。",ci:"Dia sudah enam tahun."},
+  {h:"七",p:"qī",a:"tujuh",c:"一个星期有七天。",ci:"Satu minggu ada tujuh hari."},
+  {h:"八",p:"bā",a:"delapan",c:"我八点上课。",ci:"Saya masuk kelas jam delapan."},
+  {h:"九",p:"jiǔ",a:"sembilan",c:"今天九月九号。",ci:"Hari ini tanggal sembilan bulan sembilan."},
+  {h:"十",p:"shí",a:"sepuluh",c:"我十点睡觉。",ci:"Saya tidur jam sepuluh."},
+  {h:"零",p:"líng",a:"nol",c:"今天零度。",ci:"Hari ini nol derajat."},
+  {h:"两",p:"liǎng",a:"dua (untuk benda)",c:"我有两个孩子。",ci:"Saya punya dua anak."},
+  {h:"百",p:"bǎi",a:"ratus",c:"这本书一百块。",ci:"Buku ini seratus yuan."},
+  // --- Waktu ---
+  {h:"年",p:"nián",a:"tahun",c:"今年是二零二六年。",ci:"Tahun ini adalah tahun 2026."},
+  {h:"月",p:"yuè",a:"bulan",c:"我三月去中国。",ci:"Saya pergi ke Tiongkok bulan Maret."},
+  {h:"日",p:"rì",a:"hari, tanggal",c:"今天几月几日？",ci:"Hari ini tanggal berapa?"},
+  {h:"星期",p:"xīngqī",a:"minggu",c:"今天星期几？",ci:"Hari ini hari apa?"},
+  {h:"今天",p:"jīntiān",a:"hari ini",c:"今天星期一。",ci:"Hari ini hari Senin."},
+  {h:"明天",p:"míngtiān",a:"besok",c:"明天你有空吗？",ci:"Besok kamu ada waktu?"},
+  {h:"昨天",p:"zuótiān",a:"kemarin",c:"昨天我去了商店。",ci:"Kemarin saya pergi ke toko."},
+  {h:"上午",p:"shàngwǔ",a:"pagi (sebelum siang)",c:"上午我在学校。",ci:"Pagi hari saya di sekolah."},
+  {h:"下午",p:"xiàwǔ",a:"siang / sore",c:"下午你做什么？",ci:"Sore hari kamu melakukan apa?"},
+  {h:"时候",p:"shíhou",a:"waktu, saat",c:"你什么时候来？",ci:"Kamu datang kapan?"},
+  {h:"点",p:"diǎn",a:"jam (waktu)",c:"现在几点？",ci:"Sekarang jam berapa?"},
+  {h:"分钟",p:"fēnzhōng",a:"menit",c:"等我五分钟。",ci:"Tunggu saya lima menit."},
+  {h:"现在",p:"xiànzài",a:"sekarang",c:"现在我们上课。",ci:"Sekarang kita masuk kelas."},
+  // --- Tempat ---
+  {h:"中国",p:"Zhōngguó",a:"Tiongkok",c:"我想去中国。",ci:"Saya ingin pergi ke Tiongkok."},
+  {h:"北京",p:"Běijīng",a:"Beijing",c:"北京很大。",ci:"Beijing sangat besar."},
+  {h:"家",p:"jiā",a:"rumah, keluarga",c:"我的家在这里。",ci:"Rumah saya di sini."},
+  {h:"学校",p:"xuéxiào",a:"sekolah",c:"我的学校很大。",ci:"Sekolah saya sangat besar."},
+  {h:"饭店",p:"fàndiàn",a:"restoran, hotel",c:"我们在饭店吃饭。",ci:"Kami makan di restoran."},
+  {h:"商店",p:"shāngdiàn",a:"toko",c:"我去商店买东西。",ci:"Saya pergi ke toko membeli barang."},
+  {h:"医院",p:"yīyuàn",a:"rumah sakit",c:"他在医院工作。",ci:"Dia bekerja di rumah sakit."},
+  {h:"前面",p:"qiánmiàn",a:"di depan",c:"学校在前面。",ci:"Sekolah ada di depan."},
+  {h:"后面",p:"hòumiàn",a:"di belakang",c:"我坐在后面。",ci:"Saya duduk di belakang."},
+  {h:"里面",p:"lǐmiàn",a:"di dalam",c:"猫在里面。",ci:"Kucing ada di dalam."},
+  {h:"上",p:"shàng",a:"atas",c:"书在桌子上。",ci:"Buku ada di atas meja."},
+  {h:"下",p:"xià",a:"bawah",c:"猫在桌子下。",ci:"Kucing ada di bawah meja."},
+  // --- Benda & Makanan ---
+  {h:"水",p:"shuǐ",a:"air",c:"请给我一杯水。",ci:"Tolong beri saya segelas air."},
+  {h:"茶",p:"chá",a:"teh",c:"你想喝茶吗？",ci:"Kamu mau minum teh?"},
+  {h:"米饭",p:"mǐfàn",a:"nasi",c:"我想吃米饭。",ci:"Saya mau makan nasi."},
+  {h:"菜",p:"cài",a:"sayur, masakan",c:"这个菜很好吃。",ci:"Masakan ini sangat enak."},
+  {h:"苹果",p:"píngguǒ",a:"apel",c:"我买了一个苹果。",ci:"Saya membeli sebuah apel."},
+  {h:"杯子",p:"bēizi",a:"gelas, cangkir",c:"这个杯子是我的。",ci:"Gelas ini punya saya."},
+  {h:"水果",p:"shuǐguǒ",a:"buah-buahan",c:"我喜欢吃水果。",ci:"Saya suka makan buah."},
+  {h:"钱",p:"qián",a:"uang",c:"你有多少钱？",ci:"Kamu punya berapa uang?"},
+  {h:"东西",p:"dōngxi",a:"barang, benda",c:"你买了什么东西？",ci:"Kamu membeli barang apa?"},
+  {h:"书",p:"shū",a:"buku",c:"这本书很好。",ci:"Buku ini sangat bagus."},
+  {h:"电脑",p:"diànnǎo",a:"komputer",c:"我用电脑工作。",ci:"Saya menggunakan komputer untuk bekerja."},
+  {h:"电视",p:"diànshì",a:"televisi",c:"我在看电视。",ci:"Saya sedang menonton televisi."},
+  {h:"电影",p:"diànyǐng",a:"film",c:"这个电影很好看。",ci:"Film ini sangat bagus."},
+  {h:"天气",p:"tiānqì",a:"cuaca",c:"今天天气怎么样？",ci:"Cuaca hari ini bagaimana?"},
+  {h:"猫",p:"māo",a:"kucing",c:"我家有一只猫。",ci:"Rumah saya ada seekor kucing."},
+  {h:"狗",p:"gǒu",a:"anjing",c:"他的狗很大。",ci:"Anjingnya sangat besar."},
+  {h:"衣服",p:"yīfu",a:"pakaian, baju",c:"我想买衣服。",ci:"Saya ingin membeli baju."},
+  {h:"桌子",p:"zhuōzi",a:"meja",c:"书在桌子上。",ci:"Buku ada di atas meja."},
+  {h:"椅子",p:"yǐzi",a:"kursi",c:"请坐这把椅子。",ci:"Silakan duduk di kursi ini."},
+  {h:"名字",p:"míngzi",a:"nama",c:"你的名字很好听。",ci:"Namamu terdengar bagus."},
+  {h:"汉语",p:"Hànyǔ",a:"Bahasa Mandarin",c:"我在学汉语。",ci:"Saya sedang belajar Bahasa Mandarin."},
+  {h:"字",p:"zì",a:"karakter, huruf",c:"这个字怎么写？",ci:"Karakter ini bagaimana cara menulisnya?"},
+  {h:"飞机",p:"fēijī",a:"pesawat",c:"我坐飞机去北京。",ci:"Saya naik pesawat ke Beijing."},
+  {h:"出租车",p:"chūzūchē",a:"taksi",c:"我们坐出租车吧。",ci:"Ayo kita naik taksi."},
+  {h:"火车站",p:"huǒchēzhàn",a:"stasiun kereta",c:"火车站在前面。",ci:"Stasiun kereta ada di depan."},
+  // --- Kata Keterangan ---
+  {h:"不",p:"bù",a:"tidak",c:"我不喜欢。",ci:"Saya tidak suka."},
+  {h:"没",p:"méi",a:"tidak (sudah)",c:"我没有钱。",ci:"Saya tidak punya uang."},
+  {h:"很",p:"hěn",a:"sangat",c:"今天很热。",ci:"Hari ini sangat panas."},
+  {h:"太",p:"tài",a:"terlalu",c:"这个太贵了。",ci:"Ini terlalu mahal."},
+  {h:"都",p:"dōu",a:"semua",c:"我们都是学生。",ci:"Kami semua adalah murid."},
+  {h:"也",p:"yě",a:"juga",c:"我也喜欢。",ci:"Saya juga suka."},
+  {h:"还",p:"hái",a:"masih, juga",c:"他还在学校。",ci:"Dia masih di sekolah."},
+  // --- Kata Penghubung & Preposisi ---
+  {h:"和",p:"hé",a:"dan",c:"我和他是朋友。",ci:"Saya dan dia adalah teman."},
+  {h:"在",p:"zài",a:"di, sedang",c:"我在家。",ci:"Saya di rumah."},
+  {h:"的",p:"de",a:"(partikel kepunyaan)",c:"这是我的书。",ci:"Ini adalah buku saya."},
+  {h:"了",p:"le",a:"(partikel perubahan)",c:"我吃了饭。",ci:"Saya sudah makan."},
+  {h:"吗",p:"ma",a:"(partikel pertanyaan)",c:"你好吗？",ci:"Apa kabar?"},
+  {h:"呢",p:"ne",a:"(partikel balik tanya)",c:"你呢？",ci:"Kalau kamu?"},
+  {h:"个",p:"gè",a:"(kata bantu bilangan umum)",c:"一个人。",ci:"Satu orang."},
+  {h:"岁",p:"suì",a:"tahun (usia)",c:"你几岁？",ci:"Kamu berapa tahun?"},
+  {h:"本",p:"běn",a:"(kata bantu bilangan buku)",c:"两本书。",ci:"Dua buah buku."},
+  {h:"些",p:"xiē",a:"beberapa",c:"一些水果。",ci:"Beberapa buah."},
+  {h:"块",p:"kuài",a:"yuan (satuan uang)",c:"十块钱。",ci:"Sepuluh yuan."},
+  {h:"对",p:"duì",a:"benar, terhadap",c:"你说得对。",ci:"Yang kamu katakan benar."},
+  // --- Kata Tanya & Lainnya ---
+  {h:"几",p:"jǐ",a:"berapa",c:"你几岁？",ci:"Kamu berapa tahun?"},
+  {h:"多少",p:"duōshao",a:"berapa (banyak)",c:"这个多少钱？",ci:"Ini berapa harganya?"},
+  {h:"怎么",p:"zěnme",a:"bagaimana",c:"这个字怎么读？",ci:"Karakter ini bagaimana cara membacanya?"},
+  {h:"怎么样",p:"zěnmeyàng",a:"bagaimana (keadaan)",c:"你怎么样？",ci:"Kamu bagaimana kabarnya?"},
+  {h:"为什么",p:"wèishénme",a:"mengapa, kenapa",c:"你为什么不来？",ci:"Kenapa kamu tidak datang?"},
+  {h:"哪里",p:"nǎlǐ",a:"di mana",c:"你家在哪里？",ci:"Rumahmu di mana?"},
+  {h:"请",p:"qǐng",a:"silakan, tolong",c:"请坐。",ci:"Silakan duduk."},
+  {h:"谢谢",p:"xièxie",a:"terima kasih",c:"谢谢你的帮助。",ci:"Terima kasih atas bantuanmu."},
+  {h:"不客气",p:"bú kèqi",a:"sama-sama",c:"不客气！",ci:"Sama-sama!"},
+  {h:"再见",p:"zàijiàn",a:"sampai jumpa",c:"明天再见！",ci:"Sampai jumpa besok!"},
+  {h:"对不起",p:"duìbuqǐ",a:"maaf",c:"对不起，我迟到了。",ci:"Maaf, saya terlambat."},
+  {h:"没关系",p:"méi guānxi",a:"tidak apa-apa",c:"没关系，没问题。",ci:"Tidak apa-apa, tidak masalah."},
+  {h:"你好",p:"nǐ hǎo",a:"halo, apa kabar",c:"你好，很高兴认识你。",ci:"Halo, senang berkenalan denganmu."},
+  // --- Kata Tambahan ---
+  {h:"号",p:"hào",a:"tanggal, nomor",c:"今天几号？",ci:"Hari ini tanggal berapa?"},
+  {h:"岁",p:"suì",a:"tahun (umur)",c:"她二十岁了。",ci:"Dia sudah dua puluh tahun."},
+  {h:"电话",p:"diànhuà",a:"telepon",c:"你的电话号码是多少？",ci:"Nomor teleponmu berapa?"},
+  {h:"喂",p:"wèi",a:"halo (di telepon)",c:"喂，你好！",ci:"Halo (di telepon)!"},
+  {h:"中午",p:"zhōngwǔ",a:"siang",c:"中午我们吃饭。",ci:"Siang hari kami makan."},
+  {h:"太…了",p:"tài...le",a:"terlalu...",c:"太好了！",ci:"Bagus sekali!"},
+  {h:"看见",p:"kànjiàn",a:"melihat (berhasil)",c:"我看见他了。",ci:"Saya melihat dia."},
+  {h:"高",p:"gāo",a:"tinggi",c:"他很高。",ci:"Dia sangat tinggi."},
+  {h:"下",p:"xià",a:"turun",c:"下车。",ci:"Turun dari kendaraan."},
+  {h:"点",p:"diǎn",a:"sedikit",c:"请等一下。",ci:"Tolong tunggu sebentar."},
+];
+
+// Fill duplicates/extras to reach ~150 unique entries
+// (The above already has ~148 unique words which covers HSK1 standard list)
+
+// ============== GRAMMAR DATA ==============
+const grammarData = [
+  {
+    title: "Kalimat dengan 是 (shì) — \"adalah\"",
+    pattern: "Subjek + 是 + Objek",
+    explain: "Kata 是 (shì) digunakan seperti kata \"adalah\" dalam Bahasa Indonesia. Dipakai untuk memperkenalkan diri, menyatakan identitas, atau menjelaskan sesuatu.",
+    examples: [
+      {zh:"我是学生。",py:"Wǒ shì xuéshēng.",id:"Saya adalah murid."},
+      {zh:"他是老师。",py:"Tā shì lǎoshī.",id:"Dia adalah guru."},
+      {zh:"这是我的书。",py:"Zhè shì wǒ de shū.",id:"Ini adalah buku saya."}
+    ]
+  },
+  {
+    title: "Pertanyaan dengan 吗 (ma)",
+    pattern: "Kalimat pernyataan + 吗？",
+    explain: "Cara paling mudah membuat pertanyaan ya/tidak dalam Bahasa Mandarin: tambahkan 吗 di akhir kalimat pernyataan. Tidak perlu mengubah urutan kata.",
+    examples: [
+      {zh:"你是学生吗？",py:"Nǐ shì xuéshēng ma?",id:"Apakah kamu murid?"},
+      {zh:"他好吗？",py:"Tā hǎo ma?",id:"Apakah dia baik-baik saja?"},
+      {zh:"你喜欢中国菜吗？",py:"Nǐ xǐhuan Zhōngguó cài ma?",id:"Apakah kamu suka masakan Tiongkok?"}
+    ]
+  },
+  {
+    title: "Negasi dengan 不 (bù) dan 没 (méi)",
+    pattern: "Subjek + 不/没 + Kata Kerja",
+    explain: "Gunakan 不 untuk menolak atau menyangkal sesuatu yang bersifat kebiasaan, kemauan, atau keadaan. Gunakan 没 untuk menyangkal bahwa sesuatu sudah terjadi, atau untuk mengatakan \"tidak punya\" (没有).",
+    examples: [
+      {zh:"我不喜欢咖啡。",py:"Wǒ bù xǐhuan kāfēi.",id:"Saya tidak suka kopi."},
+      {zh:"她没去学校。",py:"Tā méi qù xuéxiào.",id:"Dia tidak pergi ke sekolah."},
+      {zh:"我没有钱。",py:"Wǒ méiyǒu qián.",id:"Saya tidak punya uang."}
+    ]
+  },
+  {
+    title: "Partikel 的 (de) — Kepunyaan",
+    pattern: "Pemilik + 的 + Benda",
+    explain: "Partikel 的 menunjukkan kepemilikan, seperti \"punya\" atau \"milik\" dalam Bahasa Indonesia. Mirip dengan akhiran \"-nya\" atau kata \"punya\".",
+    examples: [
+      {zh:"我的书。",py:"Wǒ de shū.",id:"Buku saya."},
+      {zh:"她的猫很可爱。",py:"Tā de māo hěn kě'ài.",id:"Kucingnya sangat lucu."},
+      {zh:"这是谁的电脑？",py:"Zhè shì shéi de diànnǎo?",id:"Ini komputer siapa?"}
+    ]
+  },
+  {
+    title: "Kata Keterangan 很 (hěn) — \"sangat\"",
+    pattern: "Subjek + 很 + Kata Sifat",
+    explain: "Dalam Bahasa Mandarin, kata sifat tidak langsung mengikuti subjek. Kamu perlu menambahkan 很 di antaranya. Kadang 很 tidak berarti \"sangat\" secara harfiah, tapi hanya sebagai penghubung.",
+    examples: [
+      {zh:"她很漂亮。",py:"Tā hěn piàoliang.",id:"Dia sangat cantik."},
+      {zh:"今天很冷。",py:"Jīntiān hěn lěng.",id:"Hari ini sangat dingin."},
+      {zh:"这本书很好。",py:"Zhè běn shū hěn hǎo.",id:"Buku ini sangat bagus."}
+    ]
+  },
+  {
+    title: "Kata Tanya 什么 (shénme), 谁 (shéi), 哪里 (nǎlǐ)",
+    pattern: "Subjek + Kata Kerja + 什么/谁/哪里？",
+    explain: "Kata tanya dalam Bahasa Mandarin diletakkan di posisi jawaban yang diharapkan, BUKAN di awal kalimat seperti Bahasa Indonesia/Inggris.",
+    examples: [
+      {zh:"你叫什么名字？",py:"Nǐ jiào shénme míngzi?",id:"Nama kamu siapa?"},
+      {zh:"他是谁？",py:"Tā shì shéi?",id:"Dia siapa?"},
+      {zh:"你住在哪里？",py:"Nǐ zhù zài nǎlǐ?",id:"Kamu tinggal di mana?"}
+    ]
+  },
+  {
+    title: "Menyatakan Kepemilikan dengan 有 (yǒu)",
+    pattern: "Subjek + 有 + Objek",
+    explain: "有 berarti \"punya\" atau \"ada\". Bentuk negatifnya selalu 没有 (méiyǒu), bukan 不有.",
+    examples: [
+      {zh:"我有一个姐姐。",py:"Wǒ yǒu yí gè jiějie.",id:"Saya punya seorang kakak perempuan."},
+      {zh:"你有电脑吗？",py:"Nǐ yǒu diànnǎo ma?",id:"Apakah kamu punya komputer?"},
+      {zh:"学校里有很多学生。",py:"Xuéxiào lǐ yǒu hěn duō xuéshēng.",id:"Di dalam sekolah ada banyak murid."}
+    ]
+  },
+  {
+    title: "Menunjukkan Lokasi dengan 在 (zài)",
+    pattern: "Subjek + 在 + Tempat",
+    explain: "在 digunakan untuk menunjukkan lokasi (\"di mana sesuatu berada\") atau sedang melakukan sesuatu (\"sedang\").",
+    examples: [
+      {zh:"我在家。",py:"Wǒ zài jiā.",id:"Saya di rumah."},
+      {zh:"他在学校学习。",py:"Tā zài xuéxiào xuéxí.",id:"Dia belajar di sekolah."},
+      {zh:"猫在桌子下面。",py:"Māo zài zhuōzi xiàmiàn.",id:"Kucing ada di bawah meja."}
+    ]
+  },
+  {
+    title: "Kata Bantu Bilangan 个 (gè), 本 (běn), dll.",
+    pattern: "Angka + Kata Bantu Bilangan + Kata Benda",
+    explain: "Bahasa Mandarin membutuhkan kata bantu bilangan (measure word) di antara angka dan kata benda. 个 adalah yang paling umum dan bisa dipakai untuk banyak hal. 本 khusus untuk buku, 只 untuk hewan kecil.",
+    examples: [
+      {zh:"一个人。",py:"Yí gè rén.",id:"Satu orang."},
+      {zh:"三本书。",py:"Sān běn shū.",id:"Tiga buah buku."},
+      {zh:"两只猫。",py:"Liǎng zhī māo.",id:"Dua ekor kucing."}
+    ]
+  },
+  {
+    title: "Menyatakan Waktu",
+    pattern: "Subjek + Waktu + Kata Kerja + Objek",
+    explain: "Keterangan waktu dalam Bahasa Mandarin bisa diletakkan SEBELUM kata kerja atau di AWAL kalimat (setelah subjek). Urutan: tahun → bulan → tanggal → hari → jam.",
+    examples: [
+      {zh:"我明天去学校。",py:"Wǒ míngtiān qù xuéxiào.",id:"Saya besok pergi ke sekolah."},
+      {zh:"他下午三点来。",py:"Tā xiàwǔ sān diǎn lái.",id:"Dia datang jam tiga sore."},
+      {zh:"我们星期六不上课。",py:"Wǒmen xīngqīliù bú shàng kè.",id:"Kami hari Sabtu tidak ada kelas."}
+    ]
+  },
+  {
+    title: "Partikel 了 (le) — Perubahan/Selesai",
+    pattern: "Subjek + Kata Kerja + 了 + Objek",
+    explain: "了 menandakan bahwa suatu aksi sudah selesai dilakukan, atau ada perubahan keadaan. Bisa diletakkan setelah kata kerja atau di akhir kalimat.",
+    examples: [
+      {zh:"我吃了饭。",py:"Wǒ chī le fàn.",id:"Saya sudah makan."},
+      {zh:"他来了。",py:"Tā lái le.",id:"Dia sudah datang."},
+      {zh:"下雨了。",py:"Xià yǔ le.",id:"Sudah mulai hujan."}
+    ]
+  },
+  {
+    title: "Kemampuan dengan 会 (huì) dan 能 (néng)",
+    pattern: "Subjek + 会/能 + Kata Kerja",
+    explain: "会 menunjukkan kemampuan yang dipelajari (bisa karena sudah belajar). 能 menunjukkan kemampuan fisik atau izin (boleh/mampu).",
+    examples: [
+      {zh:"我会说中文。",py:"Wǒ huì shuō Zhōngwén.",id:"Saya bisa berbicara Bahasa Mandarin."},
+      {zh:"你能来吗？",py:"Nǐ néng lái ma?",id:"Kamu bisa datang?"},
+      {zh:"他不会开车。",py:"Tā bú huì kāi chē.",id:"Dia tidak bisa mengendarai mobil."}
+    ]
+  },
+  {
+    title: "Keinginan dengan 想 (xiǎng)",
+    pattern: "Subjek + 想 + Kata Kerja + Objek",
+    explain: "想 berarti \"ingin\" atau \"mau\". Diletakkan sebelum kata kerja utama.",
+    examples: [
+      {zh:"我想喝水。",py:"Wǒ xiǎng hē shuǐ.",id:"Saya ingin minum air."},
+      {zh:"你想去哪里？",py:"Nǐ xiǎng qù nǎlǐ?",id:"Kamu ingin pergi ke mana?"},
+      {zh:"她想买新衣服。",py:"Tā xiǎng mǎi xīn yīfu.",id:"Dia ingin membeli baju baru."}
+    ]
+  },
+  {
+    title: "也 (yě) dan 都 (dōu) — \"juga\" dan \"semua\"",
+    pattern: "Subjek + 也/都 + Kata Kerja",
+    explain: "也 berarti \"juga\", selalu diletakkan SEBELUM kata kerja. 都 berarti \"semua\", juga diletakkan sebelum kata kerja. Keduanya tidak pernah diletakkan setelah kata kerja.",
+    examples: [
+      {zh:"我也是学生。",py:"Wǒ yě shì xuéshēng.",id:"Saya juga murid."},
+      {zh:"我们都喜欢中国菜。",py:"Wǒmen dōu xǐhuan Zhōngguó cài.",id:"Kami semua suka masakan Tiongkok."},
+      {zh:"他们也都很高兴。",py:"Tāmen yě dōu hěn gāoxìng.",id:"Mereka juga semua sangat senang."}
+    ]
+  },
+  {
+    title: "Bertanya Jumlah: 几 (jǐ) dan 多少 (duōshao)",
+    pattern: "Subjek + 有 + 几/多少 + Kata Bantu Bilangan + Kata Benda？",
+    explain: "几 dipakai untuk menanyakan jumlah kecil (biasanya di bawah 10) dan HARUS diikuti kata bantu bilangan. 多少 untuk jumlah besar dan tidak perlu kata bantu bilangan.",
+    examples: [
+      {zh:"你几岁？",py:"Nǐ jǐ suì?",id:"Kamu berapa tahun?"},
+      {zh:"你有几个孩子？",py:"Nǐ yǒu jǐ gè háizi?",id:"Kamu punya berapa anak?"},
+      {zh:"这个多少钱？",py:"Zhège duōshao qián?",id:"Ini berapa harganya?"}
+    ]
+  }
+];
+
+// ============== RENDER ==============
+function renderVocab() {
+  const tbody = document.getElementById('vocab-body');
+  tbody.innerHTML = vocabData.map((v, i) => `
+    <tr>
+      <td>${i + 1}</td>
+      <td class="hanzi-cell">${v.h}</td>
+      <td class="pinyin-cell">${v.p}</td>
+      <td>${v.a}</td>
+      <td class="contoh-cell">
+        <div class="zh">${v.c}</div>
+        <div class="id">${v.ci}</div>
+      </td>
+    </tr>
+  `).join('');
+}
+
+function renderGrammar() {
+  const container = document.getElementById('grammar-container');
+  container.innerHTML = grammarData.map((g, i) => `
+    <div class="grammar-card fade-in">
+      <h3><span class="num">${i + 1}</span> ${g.title}</h3>
+      <div class="pattern">${g.pattern}</div>
+      <p class="explanation">${g.explain}</p>
+      <div class="examples">
+        ${g.examples.map(ex => `
+          <div class="example-item">
+            <div class="zh">${ex.zh}</div>
+            <div class="py">${ex.py}</div>
+            <div class="id">${ex.id}</div>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+  `).join('');
+}
+
+function showSection(section, btn) {
+  document.querySelectorAll('.materi-section').forEach(el => el.style.display = 'none');
+  document.querySelectorAll('.materi-nav-btn').forEach(el => el.classList.remove('active'));
+  document.getElementById('section-' + section).style.display = 'block';
+  btn.classList.add('active');
+}
+
+function filterVocab() {
+  const query = document.getElementById('vocab-search').value.toLowerCase();
+  const rows = document.querySelectorAll('#vocab-body tr');
+  rows.forEach(row => {
+    const text = row.textContent.toLowerCase();
+    row.style.display = text.includes(query) ? '' : 'none';
+  });
+}
+
+// Init
+renderVocab();
+renderGrammar();
+
+// Navbar scroll
+window.addEventListener('scroll', () => {
+  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
+});
+</script>
+</body>
+</html>

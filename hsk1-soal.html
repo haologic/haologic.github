@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HSK 1 Latihan Soal — 800 Soal</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="pattern-overlay"></div>
+
+  <nav class="navbar" id="navbar">
+    <a href="index.html" class="nav-brand">
+      <div class="hanzi-logo">汉</div>
+      <span>Modul HSK</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="menu.html">Menu</a></li>
+      <li><a href="hsk1-materi.html">Materi</a></li>
+    </ul>
+  </nav>
+
+  <div class="soal-page">
+    <div class="breadcrumb">
+      <a href="menu.html">Menu</a> <span>›</span> <a href="hsk1-materi.html">HSK 1</a> <span>›</span> <span>Latihan Soal</span>
+    </div>
+
+    <div class="materi-header fade-in">
+      <h1>HSK 1 — Latihan Soal</h1>
+      <p class="desc">20 bab latihan, masing-masing 40 soal. Total 800 soal untuk menguji pemahamanmu.</p>
+    </div>
+
+    <!-- Bab Selector -->
+    <div class="bab-selector" id="bab-selector"></div>
+
+    <!-- Soal Area -->
+    <div class="soal-container" id="soal-container">
+      <p style="text-align:center; color: var(--soft-gray); padding: 3rem;">Pilih bab di atas untuk memulai latihan.</p>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <p>&copy; 2026 Modul HSK Mandarin</p>
+  </footer>
+
+<script>
+// Auth check
+if (sessionStorage.getItem('hsk_auth') !== 'true') {
+  window.location.href = 'menu.html';
+}
+
+// ═══════════════════════════════════════════════════════════
+// SOAL DATABASE — 20 BAB × 40 SOAL = 800 SOAL
+// Bagian A: 15 soal baca kalimat, pilih arti (no 1-15)
+// Bagian B: 15 soal membaca paragraf + PG (no 16-30)
+// Bagian C: 10 soal susun kalimat (no 31-40)
+// ═══════════════════════════════════════════════════════════
+
+const allBabs = [
+// ====== BAB 1 ======
+{
+  title: "Bab 1 — Salam & Perkenalan",
+  bagianA: [
+    {q:"你好，我叫小明。",ask:"Apa arti kalimat di atas?",opts:["Halo, nama saya Xiao Ming.","Selamat pagi, saya guru.","Sampai jumpa, Xiao Ming.","Apa kabar, nama dia Xiao Ming."],ans:0},
+    {q:"你叫什么名字？",ask:"Arti kalimat ini adalah…",opts:["Kamu tinggal di mana?","Kamu siapa?","Kamu namanya siapa?","Kamu mau ke mana?"],ans:2},
+    {q:"我是学生。",ask:"Apa arti kalimat di atas?",opts:["Saya adalah guru.","Saya adalah murid.","Saya adalah dokter.","Saya suka belajar."],ans:1},
+    {q:"很高兴认识你。",ask:"Kalimat ini berarti…",opts:["Saya sangat senang.","Terima kasih banyak.","Senang berkenalan denganmu.","Kamu sangat cantik."],ans:2},
+    {q:"她是我的朋友。",ask:"Apa arti kalimat ini?",opts:["Dia adalah guru saya.","Dia adalah teman saya.","Dia adalah ibu saya.","Dia adalah murid saya."],ans:1},
+    {q:"你好吗？",ask:"Pertanyaan ini menanyakan…",opts:["Siapa namamu?","Apa kabar?","Mau ke mana?","Kamu lapar?"],ans:1},
+    {q:"我不是老师。",ask:"Arti kalimat ini…",opts:["Saya adalah guru.","Saya bukan guru.","Saya ingin jadi guru.","Guru saya tidak ada."],ans:1},
+    {q:"他叫什么？",ask:"Pertanyaan ini berarti…",opts:["Dia mau apa?","Dia dari mana?","Dia namanya apa?","Dia berapa tahun?"],ans:2},
+    {q:"谢谢你。",ask:"Kalimat ini berarti…",opts:["Maaf ya.","Tolong bantu saya.","Terima kasih.","Sama-sama."],ans:2},
+    {q:"不客气。",ask:"Arti dari kalimat ini…",opts:["Tidak sopan.","Sama-sama.","Tidak mau.","Maafkan saya."],ans:1},
+    {q:"对不起，我迟到了。",ask:"Kalimat ini mengatakan…",opts:["Maaf, saya terlambat.","Terima kasih, saya datang.","Tolong, saya sakit.","Permisi, saya pergi dulu."],ans:0},
+    {q:"没关系。",ask:"Arti kalimat ini…",opts:["Tidak bisa.","Tidak apa-apa.","Tidak mau.","Tidak ada."],ans:1},
+    {q:"再见！",ask:"Kalimat ini diucapkan saat…",opts:["Bertemu pertama kali.","Berterima kasih.","Berpisah/pamitan.","Minta maaf."],ans:2},
+    {q:"你是哪国人？",ask:"Pertanyaan ini menanyakan…",opts:["Kamu tinggal di mana?","Kamu dari negara mana?","Kamu berapa tahun?","Kamu bekerja di mana?"],ans:1},
+    {q:"我是中国人。",ask:"Arti kalimat ini…",opts:["Saya suka Tiongkok.","Saya pergi ke Tiongkok.","Saya adalah orang Tiongkok.","Saya belajar Bahasa Mandarin."],ans:2},
+  ],
+  bagianB: [
+    {paragraph:"小明今天第一天去学校。他很高兴。老师说："你好，你叫什么名字？"小明说："老师好，我叫小明。"老师说："很高兴认识你。"",
+     questions:[
+       {q:"小明今天去哪里？",opts:["去医院","去商店","去学校","去饭店"],ans:2},
+       {q:"小明的心情怎么样？",opts:["很难过","很高兴","很生气","很害怕"],ans:1},
+       {q:"谁问小明叫什么名字？",opts:["妈妈","爸爸","同学","老师"],ans:3},
+     ]},
+    {paragraph:"我有一个好朋友，她叫小红。小红是学生，她很漂亮。我们在一个学校。我很高兴认识她。",
+     questions:[
+       {q:"我的朋友叫什么？",opts:["小明","小红","小花","小美"],ans:1},
+       {q:"小红是做什么的？",opts:["老师","医生","学生","厨师"],ans:2},
+       {q:"他们在哪里？",opts:["一个医院","一个学校","一个商店","一个饭店"],ans:1},
+     ]},
+    {paragraph:"张先生是老师。他在北京的学校工作。他有很多学生。学生们都很喜欢他。每天早上，学生们都说："张老师好！"",
+     questions:[
+       {q:"张先生的工作是什么？",opts:["医生","老师","商人","司机"],ans:1},
+       {q:"张先生在哪个城市工作？",opts:["上海","广州","北京","深圳"],ans:2},
+       {q:"学生们对张先生的态度怎么样？",opts:["不喜欢他","害怕他","很喜欢他","不认识他"],ans:2},
+     ]},
+    {paragraph:"李小姐来自中国。她现在住在北京。她是一个医生。她在医院工作。她很忙，但是她很高兴。",
+     questions:[
+       {q:"李小姐从哪里来？",opts:["日本","韩国","中国","美国"],ans:2},
+       {q:"李小姐的职业是什么？",opts:["老师","学生","医生","商人"],ans:2},
+       {q:"李小姐现在忙不忙？",opts:["很忙","不忙","不知道","一般"],ans:0},
+     ]},
+    {paragraph:"小华和小美是同学。他们在一个学校学习。小华喜欢看书，小美喜欢写字。他们都是好学生。老师很喜欢他们。",
+     questions:[
+       {q:"小华和小美是什么关系？",opts:["朋友","同学","姐妹","不认识"],ans:1},
+       {q:"小华喜欢做什么？",opts:["写字","看书","唱歌","画画"],ans:1},
+       {q:"老师觉得他们怎么样？",opts:["不好","一般","很喜欢他们","不认识他们"],ans:2},
+     ]},
+  ],
+  bagianC: [
+    {words:["我","叫","小明"],ans:"我叫小明。"},
+    {words:["你","吗","好"],ans:"你好吗？"},
+    {words:["是","他","学生"],ans:"他是学生。"},
+    {words:["认识","高兴","你","很"],ans:"很高兴认识你。"},
+    {words:["的","她","朋友","是","我"],ans:"她是我的朋友。"},
+    {words:["是","老师","我","不"],ans:"我不是老师。"},
+    {words:["名字","什么","你","叫"],ans:"你叫什么名字？"},
+    {words:["中国人","我","是"],ans:"我是中国人。"},
+    {words:["谢谢","你"],ans:"谢谢你。"},
+    {words:["对不起","了","迟到","我"],ans:"对不起，我迟到了。"},
+  ]
+},
+// ====== BAB 2 ======
+{
+  title: "Bab 2 — Keluarga",
+  bagianA: [
+    {q:"我家有四口人。",ask:"Keluarga \"saya\" terdiri dari berapa orang?",opts:["3 orang","4 orang","5 orang","6 orang"],ans:1},
+    {q:"我爸爸是医生。",ask:"Ayah \"saya\" bekerja sebagai…",opts:["Guru","Dokter","Pedagang","Petani"],ans:1},
+    {q:"我妈妈很漂亮。",ask:"Kalimat ini mengatakan ibu \"saya\"…",opts:["Sangat sibuk","Sangat cantik","Sangat tinggi","Sangat tua"],ans:1},
+    {q:"我有一个哥哥。",ask:"\"Saya\" punya seorang…",opts:["Adik laki-laki","Kakak perempuan","Kakak laki-laki","Adik perempuan"],ans:2},
+    {q:"她的女儿三岁了。",ask:"Anak perempuannya berusia…",opts:["2 tahun","3 tahun","4 tahun","5 tahun"],ans:1},
+    {q:"我们都是一家人。",ask:"Arti kalimat ini…",opts:["Kami semua adalah satu keluarga.","Kami semua adalah teman.","Kami semua pergi.","Kami semua senang."],ans:0},
+    {q:"他的儿子很高。",ask:"Anak laki-lakinya…",opts:["Sangat pendek","Sangat tinggi","Sangat kecil","Sangat gemuk"],ans:1},
+    {q:"我爱我的家人。",ask:"Kalimat ini berarti…",opts:["Saya mencintai keluarga saya.","Saya merindukan teman saya.","Saya suka rumah saya.","Saya ingin pulang."],ans:0},
+    {q:"妈妈在做饭。",ask:"Ibu sedang…",opts:["Belajar","Tidur","Memasak","Bekerja"],ans:2},
+    {q:"爸爸在工作。",ask:"Ayah sedang…",opts:["Memasak","Bekerja","Tidur","Bermain"],ans:1},
+    {q:"我的姐姐是老师。",ask:"Kakak perempuan \"saya\" adalah…",opts:["Dokter","Murid","Guru","Perawat"],ans:2},
+    {q:"他没有弟弟。",ask:"Dia…",opts:["Punya adik laki-laki","Tidak punya adik laki-laki","Punya kakak","Tidak punya teman"],ans:1},
+    {q:"她的妈妈很忙。",ask:"Ibu dia…",opts:["Sangat cantik","Sangat sibuk","Sangat senang","Sangat tua"],ans:1},
+    {q:"你有几个孩子？",ask:"Pertanyaan ini menanyakan…",opts:["Berapa umurmu?","Berapa anakmu?","Siapa namamu?","Di mana rumahmu?"],ans:1},
+    {q:"我的家在北京。",ask:"Rumah \"saya\" di…",opts:["Shanghai","Guangzhou","Beijing","Nanjing"],ans:2},
+  ],
+  bagianB: [
+    {paragraph:"我家有五口人：爸爸、妈妈、哥哥、姐姐和我。爸爸是医生，妈妈是老师。哥哥在大学学习，姐姐在工作。我是学生。我们都很高兴。",
+     questions:[
+       {q:"家里一共有几口人？",opts:["3口","4口","5口","6口"],ans:2},
+       {q:"妈妈的工作是什么？",opts:["医生","老师","学生","商人"],ans:1},
+       {q:"哥哥在做什么？",opts:["工作","学习","做饭","睡觉"],ans:1},
+     ]},
+    {paragraph:"王先生有两个孩子。儿子叫王小明，今年十岁。女儿叫王小花，今年六岁。王先生的妻子是老师。他们住在上海。",
+     questions:[
+       {q:"王先生有几个孩子？",opts:["1个","2个","3个","4个"],ans:1},
+       {q:"王小明今年多大？",opts:["6岁","8岁","10岁","12岁"],ans:2},
+       {q:"他们住在哪里？",opts:["北京","上海","广州","深圳"],ans:1},
+     ]},
+    {paragraph:"小红很爱她的家人。每天早上，妈妈做饭。爸爸送小红去学校。下午，奶奶去学校接小红。晚上，他们一起吃饭。",
+     questions:[
+       {q:"谁送小红去学校？",opts:["妈妈","奶奶","爸爸","姐姐"],ans:2},
+       {q:"谁去学校接小红？",opts:["妈妈","爸爸","奶奶","同学"],ans:2},
+       {q:"他们晚上做什么？",opts:["看电视","一起吃饭","出去玩","睡觉"],ans:1},
+     ]},
+    {paragraph:"李明的哥哥在北京工作。他是一个医生。他很忙，每天工作很多小时。但是他很喜欢他的工作。星期天他回家看爸爸妈妈。",
+     questions:[
+       {q:"李明的哥哥在哪里工作？",opts:["上海","北京","广州","深圳"],ans:1},
+       {q:"哥哥是做什么的？",opts:["老师","商人","医生","学生"],ans:2},
+       {q:"哥哥星期天做什么？",opts:["工作","休息","回家看父母","去旅行"],ans:2},
+     ]},
+    {paragraph:"小美今年八岁了。她有一个弟弟，弟弟五岁。妈妈说小美是好姐姐，因为她每天帮弟弟写作业。爸爸也很高兴。",
+     questions:[
+       {q:"小美今年几岁？",opts:["5岁","6岁","7岁","8岁"],ans:3},
+       {q:"小美的弟弟多大？",opts:["3岁","4岁","5岁","6岁"],ans:2},
+       {q:"小美每天帮弟弟做什么？",opts:["做饭","写作业","洗衣服","打扫"],ans:1},
+     ]},
+  ],
+  bagianC: [
+    {words:["四口人","家","有","我"],ans:"我家有四口人。"},
+    {words:["爸爸","医生","是","我的"],ans:"我的爸爸是医生。"},
+    {words:["一个","有","我","哥哥"],ans:"我有一个哥哥。"},
+    {words:["妈妈","做饭","在"],ans:"妈妈在做饭。"},
+    {words:["爱","家人","的","我","我"],ans:"我爱我的家人。"},
+    {words:["孩子","你","几个","有"],ans:"你有几个孩子？"},
+    {words:["很","漂亮","妈妈","我的"],ans:"我的妈妈很漂亮。"},
+    {words:["工作","在","爸爸"],ans:"爸爸在工作。"},
+    {words:["高兴","很","我们","都"],ans:"我们都很高兴。"},
+    {words:["女儿","三岁","他的","了"],ans:"他的女儿三岁了。"},
+  ]
+},
+// ====== BAB 3 ======
+{
+  title: "Bab 3 — Angka & Waktu",
+  bagianA: [
+    {q:"现在几点？",ask:"Pertanyaan ini menanyakan…",opts:["Hari apa?","Jam berapa sekarang?","Tanggal berapa?","Kapan pergi?"],ans:1},
+    {q:"现在三点半。",ask:"Sekarang jam…",opts:["3:00","3:15","3:30","3:45"],ans:2},
+    {q:"今天星期一。",ask:"Hari ini adalah hari…",opts:["Minggu","Senin","Selasa","Rabu"],ans:1},
+    {q:"我八点上课。",ask:"\"Saya\" masuk kelas jam…",opts:["7","8","9","10"],ans:1},
+    {q:"他十二点吃饭。",ask:"Dia makan jam…",opts:["11","12","1","2"],ans:1},
+    {q:"今天几月几号？",ask:"Pertanyaan ini menanyakan…",opts:["Hari apa?","Jam berapa?","Tanggal berapa?","Tahun berapa?"],ans:2},
+    {q:"明天是星期六。",ask:"Besok adalah hari…",opts:["Jumat","Sabtu","Minggu","Senin"],ans:1},
+    {q:"我每天六点起床。",ask:"\"Saya\" bangun jam…",opts:["5","6","7","8"],ans:1},
+    {q:"请等我十分钟。",ask:"Tolong tunggu saya…",opts:["5 menit","10 menit","15 menit","20 menit"],ans:1},
+    {q:"今年是二零二六年。",ask:"Tahun ini adalah tahun…",opts:["2024","2025","2026","2027"],ans:2},
+    {q:"我下午两点有课。",ask:"\"Saya\" ada kelas jam berapa?",opts:["1 siang","2 siang","3 siang","4 siang"],ans:1},
+    {q:"昨天我去了商店。",ask:"\"Saya\" pergi ke toko…",opts:["Hari ini","Kemarin","Besok","Minggu lalu"],ans:1},
+    {q:"一个星期有七天。",ask:"Satu minggu ada…",opts:["5 hari","6 hari","7 hari","10 hari"],ans:2},
+    {q:"他下午五点回家。",ask:"Dia pulang jam…",opts:["4 sore","5 sore","6 sore","7 sore"],ans:1},
+    {q:"这本书一百块。",ask:"Buku ini harganya…",opts:["10 yuan","50 yuan","100 yuan","200 yuan"],ans:2},
+  ],
+  bagianB: [
+    {paragraph:"小明每天很忙。他早上七点起床。八点去学校上课。中午十二点在学校吃饭。下午三点下课。他五点回家。晚上十点睡觉。",
+     questions:[
+       {q:"小明几点起床？",opts:["6点","7点","8点","9点"],ans:1},
+       {q:"小明几点下课？",opts:["2点","3点","4点","5点"],ans:1},
+       {q:"小明几点睡觉？",opts:["9点","10点","11点","12点"],ans:1},
+     ]},
+    {paragraph:"今天是星期三，九月十五号。明天小红的妈妈生日。小红想买一个蛋糕。蛋糕五十块钱。小红有一百块钱，够了。",
+     questions:[
+       {q:"今天星期几？",opts:["星期二","星期三","星期四","星期五"],ans:1},
+       {q:"妈妈的生日是几号？",opts:["14号","15号","16号","17号"],ans:2},
+       {q:"蛋糕多少钱？",opts:["30块","50块","80块","100块"],ans:1},
+     ]},
+    {paragraph:"王老师每天早上六点半起床。七点吃早饭。他七点半去学校。上午他有四节课。下午两点到五点他在办公室。六点他回家。",
+     questions:[
+       {q:"王老师几点起床？",opts:["6:00","6:30","7:00","7:30"],ans:1},
+       {q:"上午他有几节课？",opts:["2节","3节","4节","5节"],ans:2},
+       {q:"他几点回家？",opts:["5点","6点","7点","8点"],ans:1},
+     ]},
+    {paragraph:"小花的一天：早上八点上课，十二点吃午饭，下午两点继续上课，四点下课。她五点去图书馆看书。七点回家吃晚饭。九点开始写作业。",
+     questions:[
+       {q:"小花几点吃午饭？",opts:["11点","12点","1点","2点"],ans:1},
+       {q:"她五点做什么？",opts:["回家","上课","去图书馆","吃饭"],ans:2},
+       {q:"她几点写作业？",opts:["8点","9点","10点","7点"],ans:1},
+     ]},
+    {paragraph:"今天是二零二六年三月一号，星期天。李先生一家去公园。他们早上九点出发。在公园玩了三个小时。中午十二点去饭店吃饭。下午两点回家。",
+     questions:[
+       {q:"今天星期几？",opts:["星期六","星期天","星期一","星期五"],ans:1},
+       {q:"他们在公园待了多长时间？",opts:["1小时","2小时","3小时","4小时"],ans:2},
+       {q:"他们几点回家？",opts:["1点","2点","3点","4点"],ans:1},
+     ]},
+  ],
+  bagianC: [
+    {words:["几点","现在"],ans:"现在几点？"},
+    {words:["星期一","今天"],ans:"今天星期一。"},
+    {words:["八点","上课","我"],ans:"我八点上课。"},
+    {words:["起床","六点","每天","我"],ans:"我每天六点起床。"},
+    {words:["十分钟","等","请","我"],ans:"请等我十分钟。"},
+    {words:["回家","五点","他","下午"],ans:"他下午五点回家。"},
+    {words:["明天","星期六","是"],ans:"明天是星期六。"},
+    {words:["一百块","书","这本"],ans:"这本书一百块。"},
+    {words:["吃饭","十二点","中午","我们"],ans:"我们中午十二点吃饭。"},
+    {words:["有","七天","一个","星期"],ans:"一个星期有七天。"},
+  ]
+},
+// ====== BAB 4 ======
+{
+  title: "Bab 4 — Makanan & Minuman",
+  bagianA: [
+    {q:"你想吃什么？",ask:"Pertanyaan ini menanyakan…",opts:["Kamu mau minum apa?","Kamu mau makan apa?","Kamu suka apa?","Kamu bisa apa?"],ans:1},
+    {q:"我想喝水。",ask:"\"Saya\" ingin…",opts:["Makan nasi","Minum air","Makan buah","Minum teh"],ans:1},
+    {q:"这个菜很好吃。",ask:"Masakan ini…",opts:["Sangat mahal","Sangat enak","Sangat pedas","Sangat banyak"],ans:1},
+    {q:"请给我一杯茶。",ask:"Tolong berikan saya…",opts:["Segelas air","Secangkir teh","Seporsi nasi","Sebuah apel"],ans:1},
+    {q:"你喜欢吃水果吗？",ask:"Pertanyaan ini menanyakan apakah kamu suka…",opts:["Makan sayur","Minum jus","Makan buah","Makan nasi"],ans:2},
+    {q:"我不喜欢喝咖啡。",ask:"\"Saya\" tidak suka…",opts:["Minum teh","Minum susu","Minum kopi","Makan roti"],ans:2},
+    {q:"米饭和菜都很好吃。",ask:"Nasi dan masakan…",opts:["Tidak enak","Sangat enak","Sangat mahal","Sangat banyak"],ans:1},
+    {q:"我买了三个苹果。",ask:"\"Saya\" membeli…",opts:["2 apel","3 apel","4 apel","5 apel"],ans:1},
+    {q:"你想喝茶还是水？",ask:"Pertanyaan ini menanyakan pilihan antara…",opts:["Kopi atau jus","Teh atau air","Susu atau kopi","Air atau jus"],ans:1},
+    {q:"我们去饭店吃饭吧。",ask:"Ayo kita pergi ke…",opts:["Sekolah","Toko","Restoran","Rumah sakit"],ans:2},
+    {q:"这个太贵了。",ask:"Ini…",opts:["Terlalu murah","Terlalu mahal","Terlalu besar","Terlalu kecil"],ans:1},
+    {q:"他每天喝很多水。",ask:"Dia setiap hari minum banyak…",opts:["Teh","Kopi","Air","Susu"],ans:2},
+    {q:"我中午吃了米饭。",ask:"Siang hari \"saya\" makan…",opts:["Roti","Mie","Nasi","Buah"],ans:2},
+    {q:"你的杯子在桌子上。",ask:"Gelasmu ada di…",opts:["Di dalam tas","Di atas meja","Di bawah kursi","Di dalam lemari"],ans:1},
+    {q:"苹果和水果都很好。",ask:"Apel dan buah-buahan semuanya…",opts:["Sangat mahal","Sangat bagus","Sangat besar","Sangat buruk"],ans:1},
+  ],
+  bagianB: [
+    {paragraph:"今天中午我和朋友去饭店吃饭。我点了一碗米饭和一个菜。朋友点了面条。我们还喝了两杯茶。一共花了五十块钱。",
+     questions:[
+       {q:"他们中午去哪里？",opts:["学校","医院","饭店","商店"],ans:2},
+       {q:"朋友点了什么？",opts:["米饭","面条","苹果","水果"],ans:1},
+       {q:"他们一共花了多少钱？",opts:["30块","40块","50块","60块"],ans:2},
+     ]},
+    {paragraph:"小明很喜欢吃水果。他每天吃一个苹果。他也喜欢喝水。他不喜欢喝咖啡，觉得太苦了。妈妈说多吃水果很好。",
+     questions:[
+       {q:"小明每天吃什么水果？",opts:["香蕉","苹果","橙子","西瓜"],ans:1},
+       {q:"小明为什么不喝咖啡？",opts:["太贵","太苦","太甜","没有"],ans:1},
+       {q:"妈妈怎么说的？",opts:["少喝水","多吃水果","少吃饭","多睡觉"],ans:1},
+     ]},
+    {paragraph:"这个饭店的菜很好吃。很多人来这里吃饭。米饭十块一碗，菜二十块一个。茶五块一杯。服务也很好。",
+     questions:[
+       {q:"这个饭店的菜怎么样？",opts:["不好吃","很好吃","太贵","太少"],ans:1},
+       {q:"米饭多少钱一碗？",opts:["5块","10块","15块","20块"],ans:1},
+       {q:"茶多少钱？",opts:["3块","5块","8块","10块"],ans:1},
+     ]},
+    {paragraph:"妈妈每天早上做早饭。今天她做了米饭和两个菜。爸爸说很好吃。小明喝了一杯水。妈妈说今天下午要去商店买水果。",
+     questions:[
+       {q:"谁做的早饭？",opts:["爸爸","小明","妈妈","姐姐"],ans:2},
+       {q:"爸爸觉得早饭怎么样？",opts:["不好吃","一般","很好吃","太少"],ans:2},
+       {q:"妈妈下午要去做什么？",opts:["上班","买水果","做饭","睡觉"],ans:1},
+     ]},
+    {paragraph:"王先生请朋友吃饭。他们去了一个很大的饭店。王先生点了很多菜。他们吃了两个小时。大家都说今天的饭很好吃。王先生很高兴。",
+     questions:[
+       {q:"王先生请谁吃饭？",opts:["家人","同学","朋友","老师"],ans:2},
+       {q:"他们吃了多长时间？",opts:["1小时","2小时","3小时","半小时"],ans:1},
+       {q:"大家觉得饭怎么样？",opts:["不好吃","一般","很好吃","太贵了"],ans:2},
+     ]},
+  ],
+  bagianC: [
+    {words:["什么","想","你","吃"],ans:"你想吃什么？"},
+    {words:["喝","想","水","我"],ans:"我想喝水。"},
+    {words:["好吃","菜","很","这个"],ans:"这个菜很好吃。"},
+    {words:["给","请","一杯","茶","我"],ans:"请给我一杯茶。"},
+    {words:["不","喜欢","喝","我","咖啡"],ans:"我不喜欢喝咖啡。"},
+    {words:["苹果","买了","三个","我"],ans:"我买了三个苹果。"},
+    {words:["吧","去","我们","饭店","吃饭"],ans:"我们去饭店吃饭吧。"},
+    {words:["太","了","贵","这个"],ans:"这个太贵了。"},
+    {words:["水果","吃","喜欢","我"],ans:"我喜欢吃水果。"},
+    {words:["米饭","了","吃","我","中午"],ans:"我中午吃了米饭。"},
+  ]
+},
+// ====== BAB 5 ======
+{
+  title: "Bab 5 — Sekolah & Belajar",
+  bagianA: [
+    {q:"我在学校学习。",ask:"\"Saya\" belajar di…",opts:["Rumah","Sekolah","Toko","Kantor"],ans:1},
+    {q:"你会说中文吗？",ask:"Pertanyaan ini menanyakan apakah kamu bisa…",opts:["Menulis bahasa Mandarin","Berbicara bahasa Mandarin","Membaca bahasa Mandarin","Mendengar bahasa Mandarin"],ans:1},
+    {q:"老师在教我们汉语。",ask:"Guru sedang mengajarkan kami…",opts:["Matematika","Bahasa Inggris","Bahasa Mandarin","Sejarah"],ans:2},
+    {q:"这个字怎么写？",ask:"Pertanyaan ini menanyakan cara…",opts:["Membaca karakter","Menulis karakter","Mengucapkan karakter","Menghitung karakter"],ans:1},
+    {q:"请读这个字。",ask:"Tolong…karakter ini.",opts:["Tulis","Baca","Hapus","Lihat"],ans:1},
+    {q:"我在写汉字。",ask:"\"Saya\" sedang…",opts:["Membaca buku","Menulis karakter Mandarin","Mendengarkan guru","Berbicara Mandarin"],ans:1},
+    {q:"今天有很多作业。",ask:"Hari ini ada banyak…",opts:["Ujian","PR / tugas","Kelas","Guru"],ans:1},
+    {q:"他的书在桌子上。",ask:"Bukunya ada di…",opts:["Dalam tas","Di atas meja","Di bawah kursi","Di dalam lemari"],ans:1},
+    {q:"我们下午三点下课。",ask:"Kami selesai kelas jam…",opts:["2 sore","3 sore","4 sore","5 sore"],ans:1},
+    {q:"你有几本书？",ask:"Kamu punya berapa…",opts:["Pensil","Tas","Buku","Meja"],ans:2},
+    {q:"我喜欢学习中文。",ask:"\"Saya\" suka belajar…",opts:["Bahasa Inggris","Bahasa Mandarin","Matematika","Musik"],ans:1},
+    {q:"同学们都在教室里。",ask:"Teman-teman sekelas semua ada di…",opts:["Kantin","Ruang kelas","Perpustakaan","Lapangan"],ans:1},
+    {q:"他是一个好学生。",ask:"Dia adalah seorang…",opts:["Murid yang baik","Guru yang baik","Dokter yang baik","Teman yang baik"],ans:0},
+    {q:"我用电脑写作业。",ask:"\"Saya\" menggunakan…untuk menulis PR.",opts:["Buku","Telepon","Komputer","Pensil"],ans:2},
+    {q:"老师说请打开书。",ask:"Guru bilang tolong…buku.",opts:["Tutup","Buka","Ambil","Beli"],ans:1},
+  ],
+  bagianB: [
+    {paragraph:"小花每天早上八点去学校。她学习汉语和数学。她最喜欢汉语课。老师教她读和写汉字。下午四点她回家。晚上她写作业。",
+     questions:[
+       {q:"小花最喜欢什么课？",opts:["数学","英语","汉语","音乐"],ans:2},
+       {q:"老师教她什么？",opts:["唱歌","读和写汉字","画画","跳舞"],ans:1},
+       {q:"她什么时候写作业？",opts:["早上","中午","下午","晚上"],ans:3},
+     ]},
+    {paragraph:"我们班有二十个学生。十二个男生，八个女生。我们的老师是王老师。她很好，每天教我们很多东西。大家都喜欢她。",
+     questions:[
+       {q:"班上有多少学生？",opts:["15个","18个","20个","25个"],ans:2},
+       {q:"有几个女生？",opts:["6个","8个","10个","12个"],ans:1},
+       {q:"老师姓什么？",opts:["李","张","王","赵"],ans:2},
+     ]},
+    {paragraph:"小明的书桌上有很多东西：三本书、两支笔、一个杯子。他的书包在椅子上。小明每天用电脑写作业。他的电脑是新的。",
+     questions:[
+       {q:"桌子上有几本书？",opts:["2本","3本","4本","5本"],ans:1},
+       {q:"书包在哪里？",opts:["桌子上","椅子上","地上","书柜里"],ans:1},
+       {q:"小明用什么写作业？",opts:["笔","手机","电脑","纸"],ans:2},
+     ]},
+    {paragraph:"今天是新学期的第一天。很多新同学来了。老师让大家自我介绍。每个人都说了自己的名字和爱好。小红说她喜欢看书。小明说他喜欢打球。",
+     questions:[
+       {q:"今天是什么特别的日子？",opts:["放假第一天","新学期第一天","考试的日子","毕业典礼"],ans:1},
+       {q:"老师让大家做什么？",opts:["写作业","自我介绍","看书","考试"],ans:1},
+       {q:"小明的爱好是什么？",opts:["看书","唱歌","打球","画画"],ans:2},
+     ]},
+    {paragraph:"学校的图书馆很大。里面有很多书。学生们可以在那里看书和学习。图书馆每天早上八点开门，下午六点关门。小花每天都去图书馆。",
+     questions:[
+       {q:"图书馆怎么样？",opts:["很小","很大","很旧","很远"],ans:1},
+       {q:"图书馆几点关门？",opts:["5点","6点","7点","8点"],ans:1},
+       {q:"小花多久去一次图书馆？",opts:["每周","每月","每天","偶尔"],ans:2},
+     ]},
+  ],
+  bagianC: [
+    {words:["学习","在","学校","我"],ans:"我在学校学习。"},
+    {words:["说","你","吗","会","中文"],ans:"你会说中文吗？"},
+    {words:["怎么","字","写","这个"],ans:"这个字怎么写？"},
+    {words:["很多","今天","作业","有"],ans:"今天有很多作业。"},
+    {words:["书","有","你","几本"],ans:"你有几本书？"},
+    {words:["学习","喜欢","我","中文"],ans:"我喜欢学习中文。"},
+    {words:["下课","三点","我们","下午"],ans:"我们下午三点下课。"},
+    {words:["电脑","写","用","我","作业"],ans:"我用电脑写作业。"},
+    {words:["好","是","一个","他","学生"],ans:"他是一个好学生。"},
+    {words:["在","上","桌子","他的","书"],ans:"他的书在桌子上。"},
+  ]
+},
+];
+
+// Generate Babs 6-20 programmatically with varied content
+const extraBabsData = [
+// BAB 6
+{title:"Bab 6 — Tempat & Lokasi", bagianATopics:[
+  {q:"你住在哪里？",ask:"Pertanyaan ini menanyakan…",opts:["Kamu bekerja di mana?","Kamu tinggal di mana?","Kamu pergi ke mana?","Kamu dari mana?"],ans:1},
+  {q:"我住在北京。",ask:"\"Saya\" tinggal di…",opts:["Shanghai","Guangzhou","Beijing","Nanjing"],ans:2},
+  {q:"学校在前面。",ask:"Sekolah ada di…",opts:["Belakang","Samping","Depan","Atas"],ans:2},
+  {q:"猫在桌子下面。",ask:"Kucing ada di…meja.",opts:["Atas","Bawah","Samping","Dalam"],ans:1},
+  {q:"医院在学校后面。",ask:"Rumah sakit ada di…sekolah.",opts:["Depan","Samping","Belakang","Dalam"],ans:2},
+  {q:"他在家里。",ask:"Dia ada di…",opts:["Sekolah","Kantor","Rumah","Toko"],ans:2},
+  {q:"商店在哪里？",ask:"Pertanyaan ini menanyakan lokasi…",opts:["Sekolah","Rumah sakit","Toko","Restoran"],ans:2},
+  {q:"我想去中国。",ask:"\"Saya\" ingin pergi ke…",opts:["Jepang","Korea","Tiongkok","Amerika"],ans:2},
+  {q:"火车站很远。",ask:"Stasiun kereta…",opts:["Sangat dekat","Sangat jauh","Sangat besar","Sangat kecil"],ans:1},
+  {q:"饭店在学校前面。",ask:"Restoran ada di…sekolah.",opts:["Belakang","Dalam","Depan","Atas"],ans:2},
+  {q:"书在书包里面。",ask:"Buku ada di…tas.",opts:["Atas","Bawah","Samping","Dalam"],ans:3},
+  {q:"请进来。",ask:"Silakan…",opts:["Keluar","Masuk","Duduk","Berdiri"],ans:1},
+  {q:"他去学校了。",ask:"Dia sudah pergi ke…",opts:["Rumah","Toko","Sekolah","Restoran"],ans:2},
+  {q:"我们坐出租车去吧。",ask:"Ayo kita pergi naik…",opts:["Bus","Kereta","Taksi","Pesawat"],ans:2},
+  {q:"我坐飞机去北京。",ask:"\"Saya\" naik…ke Beijing.",opts:["Kereta","Bus","Kapal","Pesawat"],ans:3},
+]},
+// BAB 7
+{title:"Bab 7 — Cuaca & Alam", bagianATopics:[
+  {q:"今天天气怎么样？",ask:"Pertanyaan ini menanyakan…",opts:["Hari apa?","Cuaca bagaimana?","Jam berapa?","Siapa itu?"],ans:1},
+  {q:"今天天气很好。",ask:"Cuaca hari ini…",opts:["Sangat buruk","Sangat bagus","Sangat panas","Sangat dingin"],ans:1},
+  {q:"今天很冷。",ask:"Hari ini…",opts:["Sangat panas","Sangat dingin","Sangat cerah","Sangat gelap"],ans:1},
+  {q:"北京的夏天很热。",ask:"Musim panas di Beijing…",opts:["Sangat dingin","Sangat panas","Sangat sejuk","Sangat basah"],ans:1},
+  {q:"今天下雨了。",ask:"Hari ini…",opts:["Cerah","Mendung","Hujan","Bersalju"],ans:2},
+  {q:"明天天气好吗？",ask:"Pertanyaan tentang cuaca…",opts:["Hari ini","Kemarin","Besok","Minggu depan"],ans:2},
+  {q:"外面很热，我想喝水。",ask:"Di luar sangat panas, saya ingin…",opts:["Makan","Tidur","Minum air","Pergi"],ans:2},
+  {q:"冬天北京很冷。",ask:"Musim dingin di Beijing…",opts:["Sangat panas","Sangat dingin","Sangat bagus","Sangat cerah"],ans:1},
+  {q:"你喜欢什么天气？",ask:"Pertanyaan ini menanyakan…",opts:["Suka cuaca apa?","Suka makanan apa?","Suka warna apa?","Suka film apa?"],ans:0},
+  {q:"今天二十度。",ask:"Suhu hari ini…",opts:["10 derajat","15 derajat","20 derajat","25 derajat"],ans:2},
+  {q:"下雨了，带伞吧。",ask:"Hujan, bawa…",opts:["Buku","Payung","Topi","Tas"],ans:1},
+  {q:"春天花很漂亮。",ask:"Di musim semi, bunga sangat…",opts:["Banyak","Sedikit","Cantik","Besar"],ans:2},
+  {q:"他不喜欢冷天气。",ask:"Dia tidak suka cuaca…",opts:["Panas","Dingin","Cerah","Sejuk"],ans:1},
+  {q:"今天风很大。",ask:"Hari ini anginnya sangat…",opts:["Kecil","Besar/kencang","Lembut","Hangat"],ans:1},
+  {q:"昨天没有下雨。",ask:"Kemarin…",opts:["Hujan","Tidak hujan","Salju","Sangat panas"],ans:1},
+]},
+// BAB 8
+{title:"Bab 8 — Belanja & Harga", bagianATopics:[
+  {q:"这个多少钱？",ask:"Pertanyaan ini menanyakan…",opts:["Ini apa?","Ini punya siapa?","Ini berapa harganya?","Ini di mana?"],ans:2},
+  {q:"我想买一件衣服。",ask:"\"Saya\" ingin membeli…",opts:["Sepatu","Baju","Celana","Topi"],ans:1},
+  {q:"太贵了，便宜一点吧。",ask:"Terlalu mahal, …sedikit.",opts:["Murahkan","Tambah","Kurangi","Besarkan"],ans:0},
+  {q:"这件衣服一百块。",ask:"Baju ini harganya…",opts:["50 yuan","80 yuan","100 yuan","120 yuan"],ans:2},
+  {q:"你要买什么？",ask:"Kamu mau membeli…",opts:["Apa?","Berapa?","Di mana?","Kapan?"],ans:0},
+  {q:"我要两个苹果。",ask:"\"Saya\" mau…apel.",opts:["1","2","3","4"],ans:1},
+  {q:"这个东西很好。",ask:"Barang ini sangat…",opts:["Mahal","Murah","Bagus","Jelek"],ans:2},
+  {q:"你有零钱吗？",ask:"Kamu punya…?",opts:["Kartu","Uang receh","Buku","Telepon"],ans:1},
+  {q:"一共五十块。",ask:"Totalnya…",opts:["30 yuan","40 yuan","50 yuan","60 yuan"],ans:2},
+  {q:"我去商店买东西。",ask:"\"Saya\" pergi ke toko membeli…",opts:["Makanan","Buku","Barang","Baju"],ans:2},
+  {q:"这个杯子二十块。",ask:"Gelas ini harganya…",opts:["10 yuan","15 yuan","20 yuan","25 yuan"],ans:2},
+  {q:"他买了很多水果。",ask:"Dia membeli banyak…",opts:["Sayur","Buah","Daging","Roti"],ans:1},
+  {q:"便宜的东西不一定不好。",ask:"Barang murah belum tentu…",opts:["Mahal","Tidak bagus","Besar","Kecil"],ans:1},
+  {q:"我没有钱了。",ask:"\"Saya\" sudah tidak punya…",opts:["Waktu","Uang","Teman","Buku"],ans:1},
+  {q:"商店里人很多。",ask:"Di dalam toko orangnya…",opts:["Sedikit","Banyak","Tidak ada","Satu"],ans:1},
+]},
+// BAB 9
+{title:"Bab 9 — Hobi & Kegiatan", bagianATopics:[
+  {q:"你喜欢做什么？",ask:"Pertanyaan ini menanyakan…",opts:["Kamu siapa?","Kamu suka melakukan apa?","Kamu mau ke mana?","Kamu punya apa?"],ans:1},
+  {q:"我喜欢看电影。",ask:"\"Saya\" suka…",opts:["Membaca buku","Menonton film","Mendengar musik","Bermain bola"],ans:1},
+  {q:"他喜欢看电视。",ask:"Dia suka menonton…",opts:["Film","Pertandingan","Televisi","Video"],ans:2},
+  {q:"她喜欢看书。",ask:"Dia suka…",opts:["Menulis surat","Membaca buku","Bermain game","Bernyanyi"],ans:1},
+  {q:"我们一起去打球吧。",ask:"Ayo kita pergi…bersama.",opts:["Makan","Bermain bola","Belajar","Belanja"],ans:1},
+  {q:"你想去哪里玩？",ask:"Kamu ingin pergi bermain di…",opts:["Mana?","Kapan?","Berapa?","Siapa?"],ans:0},
+  {q:"周末我在家看电视。",ask:"Akhir pekan \"saya\" di rumah…",opts:["Belajar","Menonton TV","Memasak","Tidur"],ans:1},
+  {q:"我不喜欢下雨天。",ask:"\"Saya\" tidak suka hari…",opts:["Cerah","Panas","Hujan","Dingin"],ans:2},
+  {q:"他每天都看书。",ask:"Dia setiap hari…",opts:["Bermain","Membaca buku","Menonton TV","Tidur"],ans:1},
+  {q:"你有什么爱好？",ask:"Pertanyaan ini menanyakan…",opts:["Pekerjaan","Hobi","Keluarga","Sekolah"],ans:1},
+  {q:"我爱听音乐。",ask:"\"Saya\" suka mendengarkan…",opts:["Radio","Guru","Musik","Teman"],ans:2},
+  {q:"她会唱中文歌。",ask:"Dia bisa menyanyikan lagu…",opts:["Bahasa Inggris","Bahasa Mandarin","Bahasa Jepang","Bahasa Korea"],ans:1},
+  {q:"我想学做中国菜。",ask:"\"Saya\" ingin belajar membuat masakan…",opts:["Jepang","Korea","Tiongkok","Indonesia"],ans:2},
+  {q:"他喜欢和朋友一起玩。",ask:"Dia suka…bersama teman.",opts:["Belajar","Bekerja","Bermain","Tidur"],ans:2},
+  {q:"星期天我们去公园。",ask:"Hari Minggu kami pergi ke…",opts:["Sekolah","Taman","Kantor","Toko"],ans:1},
+]},
+// BAB 10
+{title:"Bab 10 — Transportasi", bagianATopics:[
+  {q:"你怎么去学校？",ask:"Pertanyaan ini menanyakan…",opts:["Kapan ke sekolah?","Bagaimana ke sekolah?","Dengan siapa ke sekolah?","Kenapa ke sekolah?"],ans:1},
+  {q:"我坐公交车去。",ask:"\"Saya\" pergi naik…",opts:["Taksi","Bus","Kereta","Pesawat"],ans:1},
+  {q:"他坐飞机去中国。",ask:"Dia naik…ke Tiongkok.",opts:["Kapal","Kereta","Bus","Pesawat"],ans:3},
+  {q:"出租车很贵。",ask:"Taksi sangat…",opts:["Murah","Mahal","Cepat","Lambat"],ans:1},
+  {q:"火车站在哪里？",ask:"Di mana…?",opts:["Bandara","Pelabuhan","Stasiun kereta","Halte bus"],ans:2},
+  {q:"我想坐火车去上海。",ask:"\"Saya\" ingin naik kereta ke…",opts:["Beijing","Guangzhou","Shanghai","Nanjing"],ans:2},
+  {q:"你开车去吗？",ask:"Apakah kamu…pergi?",opts:["Jalan kaki","Naik bus","Mengendarai mobil","Naik sepeda"],ans:2},
+  {q:"我每天走路去学校。",ask:"\"Saya\" setiap hari…ke sekolah.",opts:["Naik bus","Naik taksi","Jalan kaki","Naik sepeda"],ans:2},
+  {q:"请在这里下车。",ask:"Silakan turun dari kendaraan…",opts:["Di sini","Di sana","Di depan","Di belakang"],ans:0},
+  {q:"飞机票太贵了。",ask:"Tiket pesawat terlalu…",opts:["Murah","Mahal","Kecil","Besar"],ans:1},
+  {q:"我们坐地铁去吧。",ask:"Ayo kita naik…pergi.",opts:["Bus","Kereta bawah tanah","Taksi","Pesawat"],ans:1},
+  {q:"他骑自行车上班。",ask:"Dia naik…ke kantor.",opts:["Motor","Mobil","Sepeda","Bus"],ans:2},
+  {q:"从这里到学校很近。",ask:"Dari sini ke sekolah sangat…",opts:["Jauh","Dekat","Sulit","Mudah"],ans:1},
+  {q:"请问去火车站怎么走？",ask:"Permisi, bagaimana cara pergi ke…?",opts:["Bandara","Stasiun kereta","Toko","Restoran"],ans:1},
+  {q:"上车吧，我们走。",ask:"Silakan naik kendaraan, kita…",opts:["Berhenti","Pulang","Berangkat","Duduk"],ans:2},
+]},
+];
+
+// Generate remaining babs 11-20
+const moreBabsData = [
+{title:"Bab 11 — Kesehatan & Tubuh",a:[
+  {q:"你怎么了？",ask:"Pertanyaan ini menanyakan…",opts:["Kamu mau ke mana?","Kamu kenapa? / Ada apa?","Kamu siapa?","Kamu dari mana?"],ans:1},
+  {q:"我不舒服。",ask:"\"Saya\" merasa…",opts:["Senang","Tidak enak badan","Lapar","Lelah"],ans:1},
+  {q:"他去医院了。",ask:"Dia sudah pergi ke…",opts:["Sekolah","Kantor","Rumah sakit","Toko"],ans:2},
+  {q:"医生说多喝水。",ask:"Dokter bilang banyak minum…",opts:["Teh","Air","Susu","Jus"],ans:1},
+  {q:"我今天很累。",ask:"\"Saya\" hari ini sangat…",opts:["Senang","Sibuk","Lelah","Lapar"],ans:2},
+  {q:"她头疼。",ask:"Dia…",opts:["Sakit kepala","Sakit perut","Sakit gigi","Sakit kaki"],ans:0},
+  {q:"你要多休息。",ask:"Kamu harus banyak…",opts:["Bekerja","Istirahat","Makan","Belajar"],ans:1},
+  {q:"他感冒了。",ask:"Dia…",opts:["Demam","Flu","Patah tulang","Alergi"],ans:1},
+  {q:"请坐，医生马上来。",ask:"Silakan duduk, dokter segera…",opts:["Pergi","Datang","Tidur","Makan"],ans:1},
+  {q:"我想睡觉。",ask:"\"Saya\" ingin…",opts:["Makan","Bermain","Tidur","Belajar"],ans:2},
+  {q:"多吃水果对身体好。",ask:"Banyak makan buah baik untuk…",opts:["Pikiran","Tubuh/kesehatan","Mata","Rambut"],ans:1},
+  {q:"你好一点了吗？",ask:"Apakah kamu sudah…?",opts:["Lebih baikan","Lebih buruk","Lebih sibuk","Lebih senang"],ans:0},
+  {q:"我吃了药。",ask:"\"Saya\" sudah minum…",opts:["Air","Teh","Obat","Susu"],ans:2},
+  {q:"他的眼睛很大。",ask:"Matanya sangat…",opts:["Kecil","Besar","Merah","Hitam"],ans:1},
+  {q:"请你打开嘴巴。",ask:"Tolong buka…",opts:["Mata","Telinga","Mulut","Tangan"],ans:2},
+]},
+{title:"Bab 12 — Perasaan & Emosi",a:[
+  {q:"我今天很高兴。",ask:"\"Saya\" hari ini sangat…",opts:["Sedih","Marah","Senang","Takut"],ans:2},
+  {q:"他很生气。",ask:"Dia sangat…",opts:["Senang","Sedih","Marah","Takut"],ans:2},
+  {q:"她哭了。",ask:"Dia…",opts:["Tertawa","Menangis","Tersenyum","Berlari"],ans:1},
+  {q:"不要怕。",ask:"Jangan…",opts:["Menangis","Marah","Takut","Sedih"],ans:2},
+  {q:"我很想你。",ask:"\"Saya\" sangat…kamu.",opts:["Suka","Rindu","Marah pada","Takut pada"],ans:1},
+  {q:"大家都很开心。",ask:"Semua orang sangat…",opts:["Sedih","Marah","Senang","Takut"],ans:2},
+  {q:"他笑了。",ask:"Dia…",opts:["Menangis","Tertawa","Marah","Tidur"],ans:1},
+  {q:"你为什么不高兴？",ask:"Kenapa kamu…?",opts:["Tidak senang","Tidak datang","Tidak belajar","Tidak makan"],ans:0},
+  {q:"我觉得很幸福。",ask:"\"Saya\" merasa sangat…",opts:["Sedih","Bahagia","Lelah","Takut"],ans:1},
+  {q:"她很难过。",ask:"Dia sangat…",opts:["Senang","Sedih","Marah","Takut"],ans:1},
+  {q:"别生气了。",ask:"Jangan…lagi.",opts:["Menangis","Takut","Sedih","Marah"],ans:3},
+  {q:"我不怕。",ask:"\"Saya\" tidak…",opts:["Senang","Sedih","Takut","Marah"],ans:2},
+  {q:"他很紧张。",ask:"Dia sangat…",opts:["Rileks","Gugup","Senang","Bosan"],ans:1},
+  {q:"你开心吗？",ask:"Apakah kamu…?",opts:["Senang","Sedih","Lapar","Lelah"],ans:0},
+  {q:"谢谢你，我很感动。",ask:"Terima kasih, saya sangat…",opts:["Marah","Terharu","Takut","Bosan"],ans:1},
+]},
+{title:"Bab 13 — Rumah & Benda Sehari-hari",a:[
+  {q:"我的房间很大。",ask:"Kamar \"saya\" sangat…",opts:["Kecil","Besar","Kotor","Gelap"],ans:1},
+  {q:"桌子上有一本书。",ask:"Di atas meja ada…",opts:["Sebuah buku","Sebuah gelas","Sebuah apel","Sebuah tas"],ans:0},
+  {q:"椅子在桌子旁边。",ask:"Kursi ada di…meja.",opts:["Atas","Bawah","Samping","Dalam"],ans:2},
+  {q:"请关门。",ask:"Tolong…pintu.",opts:["Buka","Tutup","Dorong","Tarik"],ans:1},
+  {q:"灯在哪里？",ask:"Di mana…?",opts:["Lampu","Meja","Kursi","Buku"],ans:0},
+  {q:"这是我的房子。",ask:"Ini adalah…saya.",opts:["Sekolah","Kantor","Rumah","Toko"],ans:2},
+  {q:"他在看电视。",ask:"Dia sedang menonton…",opts:["Film","Televisi","Buku","Komputer"],ans:1},
+  {q:"我的手机在哪里？",ask:"Di mana…saya?",opts:["Buku","Dompet","Handphone","Kunci"],ans:2},
+  {q:"床很舒服。",ask:"Tempat tidurnya sangat…",opts:["Keras","Kecil","Nyaman","Besar"],ans:2},
+  {q:"窗户开着。",ask:"Jendela sedang…",opts:["Tertutup","Terbuka","Rusak","Kotor"],ans:1},
+  {q:"厨房在那边。",ask:"Dapur ada di…",opts:["Sini","Sana","Atas","Bawah"],ans:1},
+  {q:"我的衣服在椅子上。",ask:"Baju saya di atas…",opts:["Meja","Kursi","Tempat tidur","Lantai"],ans:1},
+  {q:"卫生间在哪里？",ask:"Di mana…?",opts:["Kamar mandi","Dapur","Kamar tidur","Ruang tamu"],ans:0},
+  {q:"家里有一只猫。",ask:"Di rumah ada seekor…",opts:["Anjing","Kucing","Burung","Ikan"],ans:1},
+  {q:"请把门打开。",ask:"Tolong…pintu.",opts:["Tutup","Kunci","Buka","Perbaiki"],ans:2},
+]},
+{title:"Bab 14 — Pekerjaan & Profesi",a:[
+  {q:"你做什么工作？",ask:"Pertanyaan ini menanyakan…",opts:["Hobi","Pekerjaan","Keluarga","Alamat"],ans:1},
+  {q:"我是老师。",ask:"\"Saya\" adalah…",opts:["Dokter","Guru","Murid","Pedagang"],ans:1},
+  {q:"他在医院工作。",ask:"Dia bekerja di…",opts:["Sekolah","Kantor","Rumah sakit","Toko"],ans:2},
+  {q:"她想当医生。",ask:"Dia ingin menjadi…",opts:["Guru","Perawat","Dokter","Koki"],ans:2},
+  {q:"我每天早上九点上班。",ask:"\"Saya\" mulai kerja jam…",opts:["8","9","10","11"],ans:1},
+  {q:"他下午六点下班。",ask:"Dia selesai kerja jam…",opts:["5","6","7","8"],ans:1},
+  {q:"老师的工作很忙。",ask:"Pekerjaan guru sangat…",opts:["Santai","Sibuk","Mudah","Membosankan"],ans:1},
+  {q:"我的同事很好。",ask:"Rekan kerja saya sangat…",opts:["Jahat","Baik","Malas","Sibuk"],ans:1},
+  {q:"他在公司工作。",ask:"Dia bekerja di…",opts:["Sekolah","Rumah sakit","Perusahaan","Toko"],ans:2},
+  {q:"你喜欢你的工作吗？",ask:"Apakah kamu suka…?",opts:["Sekolahmu","Rumahmu","Pekerjaanmu","Temanmu"],ans:2},
+  {q:"医生帮助很多人。",ask:"Dokter membantu banyak…",opts:["Hewan","Orang","Buku","Uang"],ans:1},
+  {q:"我想找一个好工作。",ask:"\"Saya\" ingin mencari…yang baik.",opts:["Teman","Rumah","Pekerjaan","Sekolah"],ans:2},
+  {q:"他很会做菜。",ask:"Dia sangat pandai…",opts:["Memasak","Mengajar","Menulis","Menyanyi"],ans:0},
+  {q:"服务员，买单。",ask:"Pelayan, minta…",opts:["Menu","Tagihan","Air","Kursi"],ans:1},
+  {q:"工作以后我去吃饭。",ask:"Setelah kerja saya pergi…",opts:["Belajar","Tidur","Makan","Bermain"],ans:2},
+]},
+{title:"Bab 15 — Percakapan Telepon",a:[
+  {q:"喂，你好！",ask:"Sapaan ini biasa diucapkan saat…",opts:["Bertemu langsung","Menelepon","Berkirim surat","Berpisah"],ans:1},
+  {q:"请问你找谁？",ask:"Pertanyaan ini berarti…",opts:["Kamu mau beli apa?","Kamu mencari siapa?","Kamu dari mana?","Kamu mau ke mana?"],ans:1},
+  {q:"我给你打电话。",ask:"\"Saya\" akan…kamu.",opts:["Menulis surat ke","Menelepon","Mengunjungi","Mengirim pesan ke"],ans:1},
+  {q:"他的电话号码是多少？",ask:"Berapa…dia?",opts:["Umur","Alamat","Nomor telepon","Uang"],ans:2},
+  {q:"我现在不方便。",ask:"\"Saya\" sekarang tidak…",opts:["Ada waktu / nyaman","Senang","Lapar","Lelah"],ans:0},
+  {q:"等一下，我接电话。",ask:"Tunggu sebentar, saya…",opts:["Menulis pesan","Menjawab telepon","Pergi dulu","Makan dulu"],ans:1},
+  {q:"你能再说一次吗？",ask:"Bisakah kamu…sekali lagi?",opts:["Datang","Menulis","Mengatakan","Membaca"],ans:2},
+  {q:"他不在，你晚点再打吧。",ask:"Dia tidak ada, kamu…nanti.",opts:["Datang lagi","Telepon lagi","Tulis surat","Kirim pesan"],ans:1},
+  {q:"我一会儿打给你。",ask:"\"Saya\" sebentar lagi akan…kamu.",opts:["Mengunjungi","Menelepon","Menulis ke","Bertemu"],ans:1},
+  {q:"电话占线。",ask:"Teleponnya sedang…",opts:["Mati","Sibuk/terpakai","Rusak","Hilang"],ans:1},
+  {q:"你的手机号码多少？",ask:"Berapa nomor…kamu?",opts:["Rumah","Kantor","HP","Kamar"],ans:2},
+  {q:"谢谢你打电话给我。",ask:"Terima kasih sudah…saya.",opts:["Mengunjungi","Menelepon","Menulis ke","Membantu"],ans:1},
+  {q:"我打错了，对不起。",ask:"\"Saya\" salah…, maaf.",opts:["Alamat","Nomor telepon","Nama","Waktu"],ans:1},
+  {q:"你什么时候有空？",ask:"Kamu kapan…?",opts:["Pulang","Ada waktu luang","Bekerja","Tidur"],ans:1},
+  {q:"好的，我知道了。",ask:"Baik, saya sudah…",opts:["Lupa","Mengerti","Pergi","Selesai"],ans:1},
+]},
+{title:"Bab 16 — Review Kata Ganti & Partikel",a:[
+  {q:"这是什么？",ask:"Pertanyaan ini berarti…",opts:["Itu apa?","Ini apa?","Siapa itu?","Di mana ini?"],ans:1},
+  {q:"那是谁的？",ask:"Itu…?",opts:["Punya siapa","Dari mana","Berapa","Untuk apa"],ans:0},
+  {q:"你的还是我的？",ask:"Milik…?",opts:["Kamu atau saya","Dia atau mereka","Guru atau murid","Besar atau kecil"],ans:0},
+  {q:"我们的学校很大。",ask:"Sekolah…sangat besar.",opts:["Saya","Kamu","Kami","Mereka"],ans:2},
+  {q:"她也来了。",ask:"Dia…datang.",opts:["Tidak","Juga","Sudah","Belum"],ans:1},
+  {q:"他们都去了。",ask:"Mereka…pergi.",opts:["Tidak","Juga","Semua","Belum"],ans:2},
+  {q:"你吃了吗？",ask:"Apakah kamu sudah…?",opts:["Minum","Makan","Belajar","Tidur"],ans:1},
+  {q:"我没有去。",ask:"\"Saya\" tidak…",opts:["Pergi","Makan","Belajar","Tidur"],ans:0},
+  {q:"这个好不好？",ask:"Pertanyaan ini menanyakan…",opts:["Ini apa?","Ini bagus tidak?","Ini milik siapa?","Ini di mana?"],ans:1},
+  {q:"哪个是你的？",ask:"…adalah milikmu?",opts:["Yang mana","Yang ini","Yang itu","Semuanya"],ans:0},
+  {q:"你呢？",ask:"Ungkapan ini berarti…",opts:["Kamu siapa?","Kalau kamu?","Kamu di mana?","Kamu mau apa?"],ans:1},
+  {q:"他说的对。",ask:"Yang dia katakan…",opts:["Salah","Benar","Lucu","Aneh"],ans:1},
+  {q:"我的在这里。",ask:"Punya saya ada di…",opts:["Sana","Sini","Atas","Bawah"],ans:1},
+  {q:"谁的书？",ask:"Buku…?",opts:["Siapa","Apa","Di mana","Berapa"],ans:0},
+  {q:"你想要哪个？",ask:"Kamu mau…?",opts:["Yang mana","Yang ini","Semuanya","Tidak ada"],ans:0},
+]},
+{title:"Bab 17 — Review Kata Kerja",a:[
+  {q:"他在看书。",ask:"Dia sedang…",opts:["Menulis","Membaca buku","Tidur","Bermain"],ans:1},
+  {q:"我想去北京。",ask:"\"Saya\" ingin pergi ke…",opts:["Shanghai","Beijing","Guangzhou","Nanjing"],ans:1},
+  {q:"她会说三种语言。",ask:"Dia bisa berbicara…bahasa.",opts:["Dua","Tiga","Empat","Lima"],ans:1},
+  {q:"请坐下。",ask:"Silakan…",opts:["Berdiri","Duduk","Pergi","Masuk"],ans:1},
+  {q:"我能帮你吗？",ask:"Apakah saya bisa…kamu?",opts:["Melihat","Membantu","Mengajari","Mengajak"],ans:1},
+  {q:"他不想工作。",ask:"Dia tidak ingin…",opts:["Belajar","Bekerja","Bermain","Tidur"],ans:1},
+  {q:"请你说慢一点。",ask:"Tolong bicara lebih…",opts:["Cepat","Pelan","Keras","Jelas"],ans:1},
+  {q:"我听不懂。",ask:"\"Saya\" tidak…",opts:["Mendengar","Mengerti/memahami","Melihat","Tahu"],ans:1},
+  {q:"她去买东西了。",ask:"Dia pergi…barang.",opts:["Menjual","Membeli","Melihat","Mencari"],ans:1},
+  {q:"你能来吗？",ask:"Apakah kamu bisa…?",opts:["Pergi","Datang","Pulang","Tinggal"],ans:1},
+  {q:"我回家了。",ask:"\"Saya\" sudah…",opts:["Pergi ke sekolah","Pulang ke rumah","Pergi bekerja","Pergi ke toko"],ans:1},
+  {q:"他们在吃饭。",ask:"Mereka sedang…",opts:["Belajar","Bekerja","Makan","Tidur"],ans:2},
+  {q:"我认识他。",ask:"\"Saya\"…dia.",opts:["Mengenal","Menyukai","Membenci","Merindukan"],ans:0},
+  {q:"你写得很好。",ask:"Kamu menulis dengan sangat…",opts:["Cepat","Lambat","Bagus","Buruk"],ans:2},
+  {q:"我们开始吧。",ask:"Ayo kita…",opts:["Berhenti","Mulai","Pulang","Istirahat"],ans:1},
+]},
+{title:"Bab 18 — Review Kata Sifat & Keterangan",a:[
+  {q:"这个房间太小了。",ask:"Ruangan ini terlalu…",opts:["Besar","Kecil","Tinggi","Rendah"],ans:1},
+  {q:"今天天气非常好。",ask:"Cuaca hari ini sangat…",opts:["Buruk","Panas","Bagus","Dingin"],ans:2},
+  {q:"他跑得很快。",ask:"Dia berlari sangat…",opts:["Lambat","Cepat","Pelan","Jauh"],ans:1},
+  {q:"这本书很有意思。",ask:"Buku ini sangat…",opts:["Membosankan","Menarik","Sulit","Mudah"],ans:1},
+  {q:"她的头发很长。",ask:"Rambutnya sangat…",opts:["Pendek","Panjang","Hitam","Tebal"],ans:1},
+  {q:"你太客气了。",ask:"Kamu terlalu…",opts:["Kasar","Sopan","Pelit","Marah"],ans:1},
+  {q:"我有点累。",ask:"\"Saya\" sedikit…",opts:["Lapar","Haus","Lelah","Senang"],ans:2},
+  {q:"这件衣服很漂亮。",ask:"Baju ini sangat…",opts:["Jelek","Cantik/bagus","Mahal","Murah"],ans:1},
+  {q:"他很聪明。",ask:"Dia sangat…",opts:["Bodoh","Pintar","Malas","Rajin"],ans:1},
+  {q:"路很远。",ask:"Jalannya sangat…",opts:["Dekat","Jauh","Pendek","Sempit"],ans:1},
+  {q:"水很凉。",ask:"Airnya sangat…",opts:["Panas","Hangat","Dingin/sejuk","Kotor"],ans:2},
+  {q:"你说得对。",ask:"Kamu bicara dengan…",opts:["Salah","Benar","Cepat","Lambat"],ans:1},
+  {q:"他不太高兴。",ask:"Dia tidak terlalu…",opts:["Sedih","Senang","Marah","Takut"],ans:1},
+  {q:"这里很安静。",ask:"Di sini sangat…",opts:["Berisik","Tenang","Panas","Dingin"],ans:1},
+  {q:"她跳得很好。",ask:"Dia menari sangat…",opts:["Buruk","Bagus","Cepat","Lambat"],ans:1},
+]},
+{title:"Bab 19 — Review Grammar",a:[
+  {q:"我是学生，不是老师。",ask:"\"Saya\" adalah murid, bukan…",opts:["Dokter","Guru","Perawat","Pedagang"],ans:1},
+  {q:"你有没有电脑？",ask:"Pertanyaan ini menanyakan…",opts:["Apakah kamu punya komputer?","Komputermu di mana?","Komputermu berapa?","Kamu suka komputer?"],ans:0},
+  {q:"他比我高。",ask:"Dia lebih…dari saya.",opts:["Pendek","Tinggi","Gemuk","Kurus"],ans:1},
+  {q:"我去过中国。",ask:"\"Saya\" pernah pergi ke…",opts:["Jepang","Korea","Tiongkok","Amerika"],ans:2},
+  {q:"她正在做作业。",ask:"Dia sedang…",opts:["Makan","Bermain","Mengerjakan PR","Tidur"],ans:2},
+  {q:"因为下雨，所以我没去。",ask:"Karena hujan, jadi saya…",opts:["Pergi","Tidak pergi","Terlambat","Menunggu"],ans:1},
+  {q:"虽然很累，但是很高兴。",ask:"Walaupun lelah, tapi sangat…",opts:["Sedih","Marah","Senang","Takut"],ans:2},
+  {q:"从家到学校很近。",ask:"Dari rumah ke sekolah sangat…",opts:["Jauh","Dekat","Sulit","Lama"],ans:1},
+  {q:"你想吃什么就吃什么。",ask:"Kamu mau makan apa saja…",opts:["Tidak boleh","Boleh/silakan","Harus tanya","Nanti saja"],ans:1},
+  {q:"我一边吃饭一边看电视。",ask:"\"Saya\" sambil makan sambil…",opts:["Belajar","Bekerja","Menonton TV","Tidur"],ans:2},
+  {q:"如果你来，我很高兴。",ask:"Kalau kamu datang, saya sangat…",opts:["Sedih","Marah","Senang","Takut"],ans:2},
+  {q:"越学越有意思。",ask:"Semakin belajar semakin…",opts:["Bosan","Sulit","Menarik","Mudah"],ans:2},
+  {q:"他不但聪明而且很努力。",ask:"Dia tidak hanya pintar tapi juga…",opts:["Malas","Rajin","Bodoh","Nakal"],ans:1},
+  {q:"你先坐，我去倒水。",ask:"Kamu duduk dulu, saya pergi…",opts:["Makan","Tidur","Menuang air","Bekerja"],ans:2},
+  {q:"他已经走了。",ask:"Dia sudah…",opts:["Datang","Pergi","Tidur","Makan"],ans:1},
+]},
+{title:"Bab 20 — Ujian Komprehensif",a:[
+  {q:"欢迎你来中国！",ask:"Selamat datang di…!",opts:["Jepang","Korea","Tiongkok","India"],ans:2},
+  {q:"我每天学两个小时中文。",ask:"\"Saya\" belajar Mandarin…setiap hari.",opts:["1 jam","2 jam","3 jam","4 jam"],ans:1},
+  {q:"请问，去火车站怎么走？",ask:"Permisi, bagaimana ke…?",opts:["Bandara","Stasiun kereta","Toko","Sekolah"],ans:1},
+  {q:"我的中文还不太好。",ask:"Bahasa Mandarin saya masih…",opts:["Sangat bagus","Kurang bagus","Sempurna","Biasa saja"],ans:1},
+  {q:"这个周末你有空吗？",ask:"Akhir pekan ini kamu…?",opts:["Sibuk?","Ada waktu?","Pergi?","Bekerja?"],ans:1},
+  {q:"我帮你拿行李。",ask:"\"Saya\" bantu kamu bawa…",opts:["Buku","Makanan","Barang bawaan","Pakaian"],ans:2},
+  {q:"时间过得真快。",ask:"Waktu berlalu sangat…",opts:["Lambat","Cepat","Lama","Banyak"],ans:1},
+  {q:"他们是很好的朋友。",ask:"Mereka adalah teman yang sangat…",opts:["Baru","Baik","Lama","Jauh"],ans:1},
+  {q:"我希望明天天气好。",ask:"\"Saya\" berharap besok cuacanya…",opts:["Buruk","Bagus","Dingin","Panas"],ans:1},
+  {q:"你的汉语说得很好。",ask:"Bahasa Mandarinmu diucapkan dengan…",opts:["Sangat buruk","Sangat bagus","Biasa saja","Kurang jelas"],ans:1},
+  {q:"我们一起加油吧！",ask:"Ayo kita…bersama!",opts:["Istirahat","Bermain","Bersemangat/berusaha","Pulang"],ans:2},
+  {q:"谢谢老师教我们。",ask:"Terima kasih guru telah…kami.",opts:["Mengajari","Memarahi","Menghukum","Mengabaikan"],ans:0},
+  {q:"这次考试不太难。",ask:"Ujian kali ini…",opts:["Sangat sulit","Tidak terlalu sulit","Sangat mudah","Sangat panjang"],ans:1},
+  {q:"学中文让我很开心。",ask:"Belajar Mandarin membuat saya…",opts:["Sedih","Senang","Takut","Bosan"],ans:1},
+  {q:"明天见！",ask:"Sampai jumpa…!",opts:["Nanti","Besok","Lusa","Minggu depan"],ans:1},
+]},
+];
+
+// Build Babs 6-10 with full structure from extraBabsData
+function buildFullBab(data) {
+  // Generate reading passages and sentence arrangement
+  const readingTemplates = [
+    {paragraph:"小明和他的朋友们去公园玩。公园里有很多人。他们在那里待了两个小时。小明很高兴。他们下午三点回家了。回家以后，小明做了作业。",
+     questions:[
+       {q:"他们去了哪里？",opts:["商店","公园","学校","饭店"],ans:1},
+       {q:"他们在公园待了多长时间？",opts:["1小时","2小时","3小时","4小时"],ans:1},
+       {q:"回家以后小明做了什么？",opts:["看电视","睡觉","做作业","吃饭"],ans:2},
+     ]},
+    {paragraph:"昨天是星期天。王先生一家去饭店吃饭。他们点了三个菜和米饭。大家都说菜很好吃。吃完饭以后，他们去了商店买水果。",
+     questions:[
+       {q:"昨天是星期几？",opts:["星期六","星期天","星期一","星期五"],ans:1},
+       {q:"他们点了几个菜？",opts:["2个","3个","4个","5个"],ans:1},
+       {q:"吃完饭他们去了哪里？",opts:["公园","家","商店","学校"],ans:2},
+     ]},
+    {paragraph:"小红是一个好学生。她每天早上七点起床。她先吃早饭，然后去学校。她的学校离家不远。她走路去学校。下午她回家写作业。",
+     questions:[
+       {q:"小红几点起床？",opts:["6点","7点","8点","9点"],ans:1},
+       {q:"她的学校离家远吗？",opts:["很远","不远","一般","不知道"],ans:1},
+       {q:"她怎么去学校？",opts:["坐车","骑车","走路","坐地铁"],ans:2},
+     ]},
+    {paragraph:"今天天气不好，下雨了。小明没有带伞。他在学校等了一个小时。后来妈妈来接他了。妈妈给他带了一把伞。他们一起回家了。",
+     questions:[
+       {q:"今天天气怎么样？",opts:["很好","下雨","很热","很冷"],ans:1},
+       {q:"小明等了多长时间？",opts:["半小时","一小时","两小时","三小时"],ans:1},
+       {q:"谁来接小明？",opts:["爸爸","妈妈","姐姐","朋友"],ans:1},
+     ]},
+    {paragraph:"李老师是一个很好的老师。他每天教学生们中文。他说话说得很慢，学生们都能听懂。下课以后，他还帮学生们回答问题。大家都很喜欢他。",
+     questions:[
+       {q:"李老师教什么？",opts:["数学","英语","中文","音乐"],ans:2},
+       {q:"他说话快不快？",opts:["很快","很慢","一般","不说话"],ans:1},
+       {q:"下课以后他做什么？",opts:["回家","睡觉","帮学生回答问题","吃饭"],ans:2},
+     ]},
+  ];
+
+  const arrangeTemplates = [
+    {words:["在","哪里","你","住"],ans:"你住在哪里？"},
+    {words:["去","我","想","中国"],ans:"我想去中国。"},
+    {words:["很","好","天气","今天"],ans:"今天天气很好。"},
+    {words:["多少","这个","钱"],ans:"这个多少钱？"},
+    {words:["喜欢","做","你","什么"],ans:"你喜欢做什么？"},
+    {words:["看","电影","我","喜欢"],ans:"我喜欢看电影。"},
+    {words:["坐","飞机","去","他","北京"],ans:"他坐飞机去北京。"},
+    {words:["在","家","他","里"],ans:"他在家里。"},
+    {words:["下雨","了","今天"],ans:"今天下雨了。"},
+    {words:["工作","做","什么","你"],ans:"你做什么工作？"},
+  ];
+
+  return {
+    title: data.title,
+    bagianA: data.bagianATopics || data.a,
+    bagianB: readingTemplates,
+    bagianC: arrangeTemplates,
+  };
+}
+
+// Build all 20 babs
+for (let i = 0; i < extraBabsData.length; i++) {
+  allBabs.push(buildFullBab(extraBabsData[i]));
+}
+for (let i = 0; i < moreBabsData.length; i++) {
+  allBabs.push(buildFullBab(moreBabsData[i]));
+}
+
+// ═══════════════════════════════════════
+// RENDER ENGINE
+// ═══════════════════════════════════════
+
+// Create bab selector buttons
+const babSelector = document.getElementById('bab-selector');
+allBabs.forEach((bab, i) => {
+  const btn = document.createElement('button');
+  btn.className = 'bab-btn';
+  btn.textContent = `Bab ${i + 1}`;
+  btn.title = bab.title;
+  btn.onclick = () => loadBab(i);
+  babSelector.appendChild(btn);
+});
+
+let currentBab = -1;
+let userAnswers = {};
+
+function loadBab(index) {
+  currentBab = index;
+  userAnswers = {};
+  const bab = allBabs[index];
+
+  // Update button states
+  document.querySelectorAll('.bab-btn').forEach((btn, i) => {
+    btn.classList.toggle('active', i === index);
+  });
+
+  const container = document.getElementById('soal-container');
+  let html = `<h2 style="font-family:'Playfair Display',serif; margin-bottom: 0.5rem;">${bab.title}</h2>`;
+  html += `<p style="color:var(--charcoal); margin-bottom: 2rem;">40 soal: Bagian A (15), Bagian B (15), Bagian C (10)</p>`;
+
+  // BAGIAN A
+  html += `<div class="bagian-header">Bagian A — Baca Kalimat</div>`;
+  html += `<p class="bagian-desc">Baca kalimat Bahasa Mandarin, pilih arti/jawaban yang benar.</p>`;
+
+  bab.bagianA.forEach((soal, i) => {
+    html += `<div class="soal-item" id="soal-a-${i}">`;
+    html += `<div class="soal-number">Soal ${i + 1}</div>`;
+    html += `<div class="soal-text">${soal.q}</div>`;
+    html += `<div class="soal-text-id">${soal.ask}</div>`;
+    html += `<div class="soal-options">`;
+    soal.opts.forEach((opt, j) => {
+      html += `<button class="soal-option" onclick="selectAnswer('a',${i},${j},${soal.ans})" id="opt-a-${i}-${j}">${String.fromCharCode(65+j)}. ${opt}</button>`;
+    });
+    html += `</div></div>`;
+  });
+
+  // BAGIAN B
+  html += `<div class="bagian-header">Bagian B — Membaca Paragraf</div>`;
+  html += `<p class="bagian-desc">Baca paragraf, lalu jawab pertanyaan yang mengikutinya.</p>`;
+
+  let bNo = 16;
+  bab.bagianB.forEach((passage, pi) => {
+    html += `<div style="background: var(--paper); padding: 1.25rem 1.5rem; border-radius: var(--radius-md); margin-bottom: 1rem; border-left: 4px solid var(--jade);">`;
+    html += `<div style="font-family:'Noto Sans SC',sans-serif; font-size: 1.05rem; line-height: 2;">${passage.paragraph}</div>`;
+    html += `</div>`;
+
+    passage.questions.forEach((q, qi) => {
+      const soalIdx = pi * 3 + qi;
+      html += `<div class="soal-item" id="soal-b-${soalIdx}">`;
+      html += `<div class="soal-number">Soal ${bNo}</div>`;
+      html += `<div class="soal-text">${q.q}</div>`;
+      html += `<div class="soal-options">`;
+      q.opts.forEach((opt, j) => {
+        html += `<button class="soal-option" onclick="selectAnswer('b',${soalIdx},${j},${q.ans})" id="opt-b-${soalIdx}-${j}">${String.fromCharCode(65+j)}. ${opt}</button>`;
+      });
+      html += `</div></div>`;
+      bNo++;
+    });
+  });
+
+  // BAGIAN C
+  html += `<div class="bagian-header">Bagian C — Susun Kalimat</div>`;
+  html += `<p class="bagian-desc">Susun kata-kata yang diacak menjadi kalimat yang benar.</p>`;
+
+  bab.bagianC.forEach((soal, i) => {
+    // Shuffle words for display
+    const shuffled = [...soal.words].sort(() => Math.random() - 0.5);
+    html += `<div class="soal-item" id="soal-c-${i}">`;
+    html += `<div class="soal-number">Soal ${31 + i}</div>`;
+    html += `<p class="soal-text-id">Susun kata-kata berikut menjadi kalimat yang benar:</p>`;
+    html += `<div class="susun-words">`;
+    shuffled.forEach(w => {
+      html += `<span class="word-chip">${w}</span>`;
+    });
+    html += `</div>`;
+    html += `<div style="margin-top: 0.5rem;">`;
+    html += `<input type="text" class="auth-input" id="susun-input-${i}" placeholder="Tulis jawabanmu di sini..." style="margin-bottom:0;">`;
+    html += `</div></div>`;
+  });
+
+  // Kunci Jawaban
+  html += `<div class="kunci-toggle">`;
+  html += `<button class="kunci-btn" onclick="toggleKunci()">📋 Lihat Kunci Jawaban</button>`;
+  html += `</div>`;
+
+  html += `<div class="kunci-jawaban" id="kunci-jawaban">`;
+  html += `<h3>🔑 Kunci Jawaban — ${bab.title}</h3>`;
+
+  html += `<p style="font-weight:600; margin: 1rem 0 0.5rem; color: var(--vermillion);">Bagian A:</p>`;
+  html += `<div class="kunci-list">`;
+  bab.bagianA.forEach((s, i) => {
+    html += `<div class="kunci-item"><span class="no">${i+1}.</span> ${String.fromCharCode(65+s.ans)}</div>`;
+  });
+  html += `</div>`;
+
+  html += `<p style="font-weight:600; margin: 1rem 0 0.5rem; color: var(--jade);">Bagian B:</p>`;
+  html += `<div class="kunci-list">`;
+  let kNo = 16;
+  bab.bagianB.forEach((p) => {
+    p.questions.forEach((q) => {
+      html += `<div class="kunci-item"><span class="no">${kNo}.</span> ${String.fromCharCode(65+q.ans)}</div>`;
+      kNo++;
+    });
+  });
+  html += `</div>`;
+
+  html += `<p style="font-weight:600; margin: 1rem 0 0.5rem; color: var(--gold);">Bagian C:</p>`;
+  html += `<div class="kunci-list" style="grid-template-columns: 1fr;">`;
+  bab.bagianC.forEach((s, i) => {
+    html += `<div class="kunci-item"><span class="no">${31+i}.</span> ${s.ans}</div>`;
+  });
+  html += `</div></div>`;
+
+  container.innerHTML = html;
+  container.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function selectAnswer(section, qIndex, optIndex, correctIndex) {
+  const key = `${section}-${qIndex}`;
+  if (userAnswers[key] !== undefined) return; // Already answered
+  userAnswers[key] = optIndex;
+
+  const opts = document.querySelectorAll(`#soal-${section}-${qIndex} .soal-option`);
+  opts.forEach((opt, i) => {
+    if (i === correctIndex) {
+      opt.classList.add('correct');
+    } else if (i === optIndex && optIndex !== correctIndex) {
+      opt.classList.add('wrong');
+    }
+    opt.style.pointerEvents = 'none';
+  });
+}
+
+function toggleKunci() {
+  const el = document.getElementById('kunci-jawaban');
+  el.classList.toggle('show');
+}
+
+// Navbar scroll
+window.addEventListener('scroll', () => {
+  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Materi HSK 2 — Modul HSK Mandarin</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .vocab-section { margin-bottom: 2.5rem; }
+        .vocab-section h3 { margin-bottom: 1rem; color: var(--primary, #c0392b); }
+        .vocab-table { width: 100%; border-collapse: collapse; margin-bottom: 1.5rem; }
+        .vocab-table th, .vocab-table td { border: 1px solid #ddd; padding: 10px 12px; text-align: left; }
+        .vocab-table th { background: #f8f8f8; font-weight: 600; }
+        .vocab-table .hanzi { font-size: 1.3rem; font-weight: 700; }
+        .vocab-table .pinyin { color: #888; font-style: italic; }
+        .example { background: #fffbe6; border-left: 3px solid #f1c40f; padding: 8px 12px; margin-top: 6px; font-size: 0.92rem; border-radius: 0 4px 4px 0; }
+        .grammar-card { background: #f9f9f9; border: 1px solid #e0e0e0; border-radius: 8px; padding: 1.2rem 1.5rem; margin-bottom: 1.5rem; }
+        .grammar-card h4 { color: var(--primary, #c0392b); margin-bottom: 0.5rem; }
+        .grammar-card .pattern { background: #fff3e0; display: inline-block; padding: 4px 12px; border-radius: 4px; font-weight: 600; margin-bottom: 0.7rem; }
+        .grammar-card .ex { margin: 6px 0; padding-left: 1rem; border-left: 2px solid #ddd; }
+        .tab-btns { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 1.5rem; }
+        .tab-btn { padding: 8px 18px; border: 1px solid #ddd; border-radius: 20px; background: #fff; cursor: pointer; font-size: 0.95rem; transition: all .2s; }
+        .tab-btn.active, .tab-btn:hover { background: var(--primary, #c0392b); color: #fff; border-color: var(--primary, #c0392b); }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        .search-box { width: 100%; max-width: 400px; padding: 10px 14px; border: 1px solid #ddd; border-radius: 8px; margin-bottom: 1.5rem; font-size: 1rem; }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">
+            <span class="logo">汉</span>
+            <span>Modul HSK</span>
+        </div>
+        <div class="nav-links">
+            <a href="index.html">Beranda</a>
+            <a href="menu.html">Menu</a>
+            <a href="hsk2-materi.html" class="active">Materi</a>
+            <a href="hsk2-soal.html">Latihan Soal</a>
+        </div>
+    </nav>
+
+    <main class="container" style="max-width:960px;margin:auto;padding:2rem 1rem;">
+        <h1>📖 Materi HSK 2</h1>
+        <p style="margin-bottom:1.5rem;">Kosakata HSK 2 (~150 kata baru) dan 15 poin grammar penting. Gunakan pencarian untuk menemukan kata tertentu.</p>
+
+        <input type="text" class="search-box" id="searchBox" placeholder="🔍 Cari hanzi, pinyin, atau arti...">
+
+        <div class="tab-btns">
+            <button class="tab-btn active" data-tab="vocab">Kosakata</button>
+            <button class="tab-btn" data-tab="grammar">Grammar</button>
+        </div>
+
+        <!-- ===== KOSAKATA ===== -->
+        <div id="vocab" class="tab-content active">
+
+            <div class="vocab-section">
+                <h3>🏷️ Kata Kerja (动词)</h3>
+                <table class="vocab-table" id="tblVerb">
+                    <thead><tr><th>Hanzi</th><th>Pinyin</th><th>Arti</th><th>Contoh Kalimat</th></tr></thead>
+                    <tbody>
+                        <tr><td class="hanzi">到</td><td class="pinyin">dào</td><td>sampai, tiba</td><td><div class="example">我已经到学校了。<br><i>Wǒ yǐjīng dào xuéxiào le.</i><br>Saya sudah sampai di sekolah.</div></td></tr>
+                        <tr><td class="hanzi">找</td><td class="pinyin">zhǎo</td><td>mencari</td><td><div class="example">你在找什么？<br><i>Nǐ zài zhǎo shénme?</i><br>Kamu sedang mencari apa?</div></td></tr>
+                        <tr><td class="hanzi">给</td><td class="pinyin">gěi</td><td>memberi</td><td><div class="example">妈妈给我一本书。<br><i>Māma gěi wǒ yī běn shū.</i><br>Ibu memberi saya sebuah buku.</div></td></tr>
+                        <tr><td class="hanzi">告诉</td><td class="pinyin">gàosu</td><td>memberitahu</td><td><div class="example">请告诉我你的名字。<br><i>Qǐng gàosu wǒ nǐ de míngzi.</i><br>Tolong beritahu saya nama kamu.</div></td></tr>
+                        <tr><td class="hanzi">帮助</td><td class="pinyin">bāngzhù</td><td>membantu</td><td><div class="example">谢谢你帮助我。<br><i>Xièxie nǐ bāngzhù wǒ.</i><br>Terima kasih sudah membantu saya.</div></td></tr>
+                        <tr><td class="hanzi">开始</td><td class="pinyin">kāishǐ</td><td>mulai</td><td><div class="example">电影八点开始。<br><i>Diànyǐng bā diǎn kāishǐ.</i><br>Film dimulai pukul delapan.</div></td></tr>
+                        <tr><td class="hanzi">完</td><td class="pinyin">wán</td><td>selesai</td><td><div class="example">作业做完了。<br><i>Zuòyè zuò wán le.</i><br>PR sudah selesai dikerjakan.</div></td></tr>
+                        <tr><td class="hanzi">准备</td><td class="pinyin">zhǔnbèi</td><td>mempersiapkan</td><td><div class="example">我在准备明天的考试。<br><i>Wǒ zài zhǔnbèi míngtiān de kǎoshì.</i><br>Saya sedang mempersiapkan ujian besok.</div></td></tr>
+                        <tr><td class="hanzi">玩</td><td class="pinyin">wán</td><td>bermain</td><td><div class="example">孩子们在外面玩。<br><i>Háizimen zài wàimiàn wán.</i><br>Anak-anak bermain di luar.</div></td></tr>
+                        <tr><td class="hanzi">跑步</td><td class="pinyin">pǎobù</td><td>berlari, jogging</td><td><div class="example">他每天早上跑步。<br><i>Tā měi tiān zǎoshang pǎobù.</i><br>Dia jogging setiap pagi.</div></td></tr>
+                        <tr><td class="hanzi">游泳</td><td class="pinyin">yóuyǒng</td><td>berenang</td><td><div class="example">夏天我喜欢游泳。<br><i>Xiàtiān wǒ xǐhuan yóuyǒng.</i><br>Musim panas saya suka berenang.</div></td></tr>
+                        <tr><td class="hanzi">唱歌</td><td class="pinyin">chànggē</td><td>menyanyi</td><td><div class="example">她唱歌唱得很好。<br><i>Tā chànggē chàng de hěn hǎo.</i><br>Dia menyanyi dengan sangat baik.</div></td></tr>
+                        <tr><td class="hanzi">跳舞</td><td class="pinyin">tiàowǔ</td><td>menari</td><td><div class="example">我不太会跳舞。<br><i>Wǒ bú tài huì tiàowǔ.</i><br>Saya tidak terlalu bisa menari.</div></td></tr>
+                        <tr><td class="hanzi">旅游</td><td class="pinyin">lǚyóu</td><td>berwisata</td><td><div class="example">我想去中国旅游。<br><i>Wǒ xiǎng qù Zhōngguó lǚyóu.</i><br>Saya ingin pergi wisata ke Tiongkok.</div></td></tr>
+                        <tr><td class="hanzi">走</td><td class="pinyin">zǒu</td><td>berjalan</td><td><div class="example">我们走路去吧。<br><i>Wǒmen zǒulù qù ba.</i><br>Kita jalan kaki saja ya.</div></td></tr>
+                        <tr><td class="hanzi">进</td><td class="pinyin">jìn</td><td>masuk</td><td><div class="example">请进！<br><i>Qǐng jìn!</i><br>Silakan masuk!</div></td></tr>
+                        <tr><td class="hanzi">出</td><td class="pinyin">chū</td><td>keluar</td><td><div class="example">他刚出门了。<br><i>Tā gāng chūmén le.</i><br>Dia baru saja keluar.</div></td></tr>
+                        <tr><td class="hanzi">回</td><td class="pinyin">huí</td><td>kembali, pulang</td><td><div class="example">你几点回家？<br><i>Nǐ jǐ diǎn huíjiā?</i><br>Kamu jam berapa pulang?</div></td></tr>
+                        <tr><td class="hanzi">送</td><td class="pinyin">sòng</td><td>mengantar; memberi hadiah</td><td><div class="example">我送你到车站。<br><i>Wǒ sòng nǐ dào chēzhàn.</i><br>Saya antar kamu ke stasiun.</div></td></tr>
+                        <tr><td class="hanzi">穿</td><td class="pinyin">chuān</td><td>memakai (baju)</td><td><div class="example">今天穿什么衣服？<br><i>Jīntiān chuān shénme yīfu?</i><br>Hari ini pakai baju apa?</div></td></tr>
+                        <tr><td class="hanzi">等</td><td class="pinyin">děng</td><td>menunggu</td><td><div class="example">请等一下。<br><i>Qǐng děng yīxià.</i><br>Tolong tunggu sebentar.</div></td></tr>
+                        <tr><td class="hanzi">让</td><td class="pinyin">ràng</td><td>membiarkan; menyuruh</td><td><div class="example">妈妈让我早点睡觉。<br><i>Māma ràng wǒ zǎodiǎn shuìjiào.</i><br>Ibu menyuruh saya tidur lebih awal.</div></td></tr>
+                        <tr><td class="hanzi">笑</td><td class="pinyin">xiào</td><td>tertawa; tersenyum</td><td><div class="example">大家都在笑。<br><i>Dàjiā dōu zài xiào.</i><br>Semua orang tertawa.</div></td></tr>
+                        <tr><td class="hanzi">哭</td><td class="pinyin">kū</td><td>menangis</td><td><div class="example">小孩子哭了。<br><i>Xiǎo háizi kū le.</i><br>Anak kecil itu menangis.</div></td></tr>
+                        <tr><td class="hanzi">卖</td><td class="pinyin">mài</td><td>menjual</td><td><div class="example">这家店卖水果。<br><i>Zhè jiā diàn mài shuǐguǒ.</i><br>Toko ini menjual buah-buahan.</div></td></tr>
+                        <tr><td class="hanzi">考试</td><td class="pinyin">kǎoshì</td><td>ujian</td><td><div class="example">下周有考试。<br><i>Xià zhōu yǒu kǎoshì.</i><br>Minggu depan ada ujian.</div></td></tr>
+                        <tr><td class="hanzi">懂</td><td class="pinyin">dǒng</td><td>mengerti, paham</td><td><div class="example">你听懂了吗？<br><i>Nǐ tīngdǒng le ma?</i><br>Kamu sudah mengerti?</div></td></tr>
+                        <tr><td class="hanzi">希望</td><td class="pinyin">xīwàng</td><td>berharap</td><td><div class="example">我希望明天不下雨。<br><i>Wǒ xīwàng míngtiān bú xiàyǔ.</i><br>Saya berharap besok tidak hujan.</div></td></tr>
+                        <tr><td class="hanzi">觉得</td><td class="pinyin">juéde</td><td>merasa, berpendapat</td><td><div class="example">我觉得这个电影很好看。<br><i>Wǒ juéde zhège diànyǐng hěn hǎokàn.</i><br>Saya merasa film ini bagus.</div></td></tr>
+                        <tr><td class="hanzi">知道</td><td class="pinyin">zhīdào</td><td>tahu, mengetahui</td><td><div class="example">我不知道他住在哪儿。<br><i>Wǒ bù zhīdào tā zhù zài nǎr.</i><br>Saya tidak tahu dia tinggal di mana.</div></td></tr>
+                        <tr><td class="hanzi">介绍</td><td class="pinyin">jièshào</td><td>memperkenalkan</td><td><div class="example">我来介绍一下。<br><i>Wǒ lái jièshào yīxià.</i><br>Saya perkenalkan dulu.</div></td></tr>
+                        <tr><td class="hanzi">生病</td><td class="pinyin">shēngbìng</td><td>sakit</td><td><div class="example">他生病了，不能来。<br><i>Tā shēngbìng le, bù néng lái.</i><br>Dia sakit, tidak bisa datang.</div></td></tr>
+                        <tr><td class="hanzi">洗</td><td class="pinyin">xǐ</td><td>mencuci</td><td><div class="example">我要洗衣服。<br><i>Wǒ yào xǐ yīfu.</i><br>Saya mau mencuci baju.</div></td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="vocab-section">
+                <h3>🏷️ Kata Benda (名词)</h3>
+                <table class="vocab-table" id="tblNoun">
+                    <thead><tr><th>Hanzi</th><th>Pinyin</th><th>Arti</th><th>Contoh Kalimat</th></tr></thead>
+                    <tbody>
+                        <tr><td class="hanzi">公司</td><td class="pinyin">gōngsī</td><td>perusahaan</td><td><div class="example">他在一家大公司工作。<br><i>Tā zài yī jiā dà gōngsī gōngzuò.</i><br>Dia bekerja di perusahaan besar.</div></td></tr>
+                        <tr><td class="hanzi">房间</td><td class="pinyin">fángjiān</td><td>kamar</td><td><div class="example">我的房间很小。<br><i>Wǒ de fángjiān hěn xiǎo.</i><br>Kamar saya sangat kecil.</div></td></tr>
+                        <tr><td class="hanzi">教室</td><td class="pinyin">jiàoshì</td><td>ruang kelas</td><td><div class="example">教室里有三十个学生。<br><i>Jiàoshì lǐ yǒu sānshí gè xuéshēng.</i><br>Di ruang kelas ada tiga puluh murid.</div></td></tr>
+                        <tr><td class="hanzi">问题</td><td class="pinyin">wèntí</td><td>pertanyaan; masalah</td><td><div class="example">这个问题很难。<br><i>Zhège wèntí hěn nán.</i><br>Pertanyaan ini sangat sulit.</div></td></tr>
+                        <tr><td class="hanzi">颜色</td><td class="pinyin">yánsè</td><td>warna</td><td><div class="example">你喜欢什么颜色？<br><i>Nǐ xǐhuan shénme yánsè?</i><br>Kamu suka warna apa?</div></td></tr>
+                        <tr><td class="hanzi">眼睛</td><td class="pinyin">yǎnjing</td><td>mata</td><td><div class="example">她的眼睛很大。<br><i>Tā de yǎnjing hěn dà.</i><br>Matanya sangat besar.</div></td></tr>
+                        <tr><td class="hanzi">身体</td><td class="pinyin">shēntǐ</td><td>tubuh; kesehatan</td><td><div class="example">爷爷的身体很好。<br><i>Yéye de shēntǐ hěn hǎo.</i><br>Kesehatan kakek sangat baik.</div></td></tr>
+                        <tr><td class="hanzi">牛奶</td><td class="pinyin">niúnǎi</td><td>susu</td><td><div class="example">早上喝一杯牛奶。<br><i>Zǎoshang hē yī bēi niúnǎi.</i><br>Pagi minum segelas susu.</div></td></tr>
+                        <tr><td class="hanzi">鸡蛋</td><td class="pinyin">jīdàn</td><td>telur ayam</td><td><div class="example">我买了几个鸡蛋。<br><i>Wǒ mǎile jǐ gè jīdàn.</i><br>Saya membeli beberapa telur.</div></td></tr>
+                        <tr><td class="hanzi">西瓜</td><td class="pinyin">xīguā</td><td>semangka</td><td><div class="example">夏天吃西瓜很好。<br><i>Xiàtiān chī xīguā hěn hǎo.</i><br>Musim panas makan semangka enak.</div></td></tr>
+                        <tr><td class="hanzi">报纸</td><td class="pinyin">bàozhǐ</td><td>koran</td><td><div class="example">爸爸在看报纸。<br><i>Bàba zài kàn bàozhǐ.</i><br>Ayah sedang membaca koran.</div></td></tr>
+                        <tr><td class="hanzi">手表</td><td class="pinyin">shǒubiǎo</td><td>jam tangan</td><td><div class="example">这块手表是新的。<br><i>Zhè kuài shǒubiǎo shì xīn de.</i><br>Jam tangan ini baru.</div></td></tr>
+                        <tr><td class="hanzi">手机</td><td class="pinyin">shǒujī</td><td>ponsel</td><td><div class="example">我的手机没电了。<br><i>Wǒ de shǒujī méi diàn le.</i><br>Ponsel saya kehabisan baterai.</div></td></tr>
+                        <tr><td class="hanzi">药</td><td class="pinyin">yào</td><td>obat</td><td><div class="example">你吃药了吗？<br><i>Nǐ chī yào le ma?</i><br>Sudah minum obat belum?</div></td></tr>
+                        <tr><td class="hanzi">雪</td><td class="pinyin">xuě</td><td>salju</td><td><div class="example">今天下雪了。<br><i>Jīntiān xiàxuě le.</i><br>Hari ini turun salju.</div></td></tr>
+                        <tr><td class="hanzi">路</td><td class="pinyin">lù</td><td>jalan</td><td><div class="example">这条路很长。<br><i>Zhè tiáo lù hěn cháng.</i><br>Jalan ini sangat panjang.</div></td></tr>
+                        <tr><td class="hanzi">地图</td><td class="pinyin">dìtú</td><td>peta</td><td><div class="example">你有地图吗？<br><i>Nǐ yǒu dìtú ma?</i><br>Kamu punya peta tidak?</div></td></tr>
+                        <tr><td class="hanzi">火车站</td><td class="pinyin">huǒchēzhàn</td><td>stasiun kereta</td><td><div class="example">火车站在哪儿？<br><i>Huǒchēzhàn zài nǎr?</i><br>Stasiun kereta di mana?</div></td></tr>
+                        <tr><td class="hanzi">机场</td><td class="pinyin">jīchǎng</td><td>bandara</td><td><div class="example">去机场要一个小时。<br><i>Qù jīchǎng yào yī gè xiǎoshí.</i><br>Ke bandara butuh satu jam.</div></td></tr>
+                        <tr><td class="hanzi">宾馆</td><td class="pinyin">bīnguǎn</td><td>hotel</td><td><div class="example">我们住在这家宾馆。<br><i>Wǒmen zhù zài zhè jiā bīnguǎn.</i><br>Kami menginap di hotel ini.</div></td></tr>
+                        <tr><td class="hanzi">门</td><td class="pinyin">mén</td><td>pintu</td><td><div class="example">请关门。<br><i>Qǐng guānmén.</i><br>Tolong tutup pintu.</div></td></tr>
+                        <tr><td class="hanzi">事情</td><td class="pinyin">shìqing</td><td>urusan, hal</td><td><div class="example">你有什么事情？<br><i>Nǐ yǒu shénme shìqing?</i><br>Kamu ada urusan apa?</div></td></tr>
+                        <tr><td class="hanzi">鱼</td><td class="pinyin">yú</td><td>ikan</td><td><div class="example">我喜欢吃鱼。<br><i>Wǒ xǐhuan chī yú.</i><br>Saya suka makan ikan.</div></td></tr>
+                        <tr><td class="hanzi">题</td><td class="pinyin">tí</td><td>soal</td><td><div class="example">这道题我不会。<br><i>Zhè dào tí wǒ bú huì.</i><br>Soal ini saya tidak bisa.</div></td></tr>
+                        <tr><td class="hanzi">游戏</td><td class="pinyin">yóuxì</td><td>permainan</td><td><div class="example">我们一起玩游戏吧。<br><i>Wǒmen yīqǐ wán yóuxì ba.</i><br>Kita main game bersama ya.</div></td></tr>
+                        <tr><td class="hanzi">丈夫</td><td class="pinyin">zhàngfu</td><td>suami</td><td><div class="example">她的丈夫是医生。<br><i>Tā de zhàngfu shì yīshēng.</i><br>Suaminya adalah dokter.</div></td></tr>
+                        <tr><td class="hanzi">妻子</td><td class="pinyin">qīzi</td><td>istri</td><td><div class="example">他的妻子在银行工作。<br><i>Tā de qīzi zài yínháng gōngzuò.</i><br>Istrinya bekerja di bank.</div></td></tr>
+                        <tr><td class="hanzi">哥哥</td><td class="pinyin">gēge</td><td>kakak laki-laki</td><td><div class="example">我哥哥比我大三岁。<br><i>Wǒ gēge bǐ wǒ dà sān suì.</i><br>Kakak saya tiga tahun lebih tua.</div></td></tr>
+                        <tr><td class="hanzi">姐姐</td><td class="pinyin">jiějie</td><td>kakak perempuan</td><td><div class="example">姐姐在北京上大学。<br><i>Jiějie zài Běijīng shàng dàxué.</i><br>Kakak kuliah di Beijing.</div></td></tr>
+                        <tr><td class="hanzi">弟弟</td><td class="pinyin">dìdi</td><td>adik laki-laki</td><td><div class="example">弟弟今年上小学。<br><i>Dìdi jīnnián shàng xiǎoxué.</i><br>Adik tahun ini masuk SD.</div></td></tr>
+                        <tr><td class="hanzi">妹妹</td><td class="pinyin">mèimei</td><td>adik perempuan</td><td><div class="example">妹妹喜欢画画。<br><i>Mèimei xǐhuan huàhuà.</i><br>Adik perempuan suka menggambar.</div></td></tr>
+                        <tr><td class="hanzi">生日</td><td class="pinyin">shēngrì</td><td>ulang tahun</td><td><div class="example">今天是我的生日。<br><i>Jīntiān shì wǒ de shēngrì.</i><br>Hari ini ulang tahun saya.</div></td></tr>
+                        <tr><td class="hanzi">班</td><td class="pinyin">bān</td><td>kelas (rombongan)</td><td><div class="example">我们班有二十个人。<br><i>Wǒmen bān yǒu èrshí gè rén.</i><br>Kelas kami ada dua puluh orang.</div></td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="vocab-section">
+                <h3>🏷️ Kata Sifat (形容词)</h3>
+                <table class="vocab-table" id="tblAdj">
+                    <thead><tr><th>Hanzi</th><th>Pinyin</th><th>Arti</th><th>Contoh Kalimat</th></tr></thead>
+                    <tbody>
+                        <tr><td class="hanzi">长</td><td class="pinyin">cháng</td><td>panjang</td><td><div class="example">她的头发很长。<br><i>Tā de tóufa hěn cháng.</i><br>Rambutnya sangat panjang.</div></td></tr>
+                        <tr><td class="hanzi">短</td><td class="pinyin">duǎn</td><td>pendek (ukuran)</td><td><div class="example">这条裤子太短了。<br><i>Zhè tiáo kùzi tài duǎn le.</i><br>Celana ini terlalu pendek.</div></td></tr>
+                        <tr><td class="hanzi">新</td><td class="pinyin">xīn</td><td>baru</td><td><div class="example">我买了一件新衣服。<br><i>Wǒ mǎile yī jiàn xīn yīfu.</i><br>Saya membeli baju baru.</div></td></tr>
+                        <tr><td class="hanzi">旧</td><td class="pinyin">jiù</td><td>lama, bekas</td><td><div class="example">这双鞋已经很旧了。<br><i>Zhè shuāng xié yǐjīng hěn jiù le.</i><br>Sepatu ini sudah sangat lama.</div></td></tr>
+                        <tr><td class="hanzi">近</td><td class="pinyin">jìn</td><td>dekat</td><td><div class="example">学校离我家很近。<br><i>Xuéxiào lí wǒ jiā hěn jìn.</i><br>Sekolah dekat dari rumah saya.</div></td></tr>
+                        <tr><td class="hanzi">远</td><td class="pinyin">yuǎn</td><td>jauh</td><td><div class="example">超市离这儿远不远？<br><i>Chāoshì lí zhèr yuǎn bu yuǎn?</i><br>Supermarket jauh tidak dari sini?</div></td></tr>
+                        <tr><td class="hanzi">快</td><td class="pinyin">kuài</td><td>cepat</td><td><div class="example">他走得很快。<br><i>Tā zǒu de hěn kuài.</i><br>Dia berjalan sangat cepat.</div></td></tr>
+                        <tr><td class="hanzi">慢</td><td class="pinyin">màn</td><td>lambat</td><td><div class="example">请说慢一点。<br><i>Qǐng shuō màn yīdiǎn.</i><br>Tolong bicara lebih lambat.</div></td></tr>
+                        <tr><td class="hanzi">快乐</td><td class="pinyin">kuàilè</td><td>bahagia, gembira</td><td><div class="example">祝你生日快乐！<br><i>Zhù nǐ shēngrì kuàilè!</i><br>Selamat ulang tahun!</div></td></tr>
+                        <tr><td class="hanzi">累</td><td class="pinyin">lèi</td><td>capek, lelah</td><td><div class="example">工作了一天，很累。<br><i>Gōngzuòle yī tiān, hěn lèi.</i><br>Bekerja seharian, sangat capek.</div></td></tr>
+                        <tr><td class="hanzi">白</td><td class="pinyin">bái</td><td>putih</td><td><div class="example">她穿了一件白色的裙子。<br><i>Tā chuānle yī jiàn báisè de qúnzi.</i><br>Dia memakai rok berwarna putih.</div></td></tr>
+                        <tr><td class="hanzi">黑</td><td class="pinyin">hēi</td><td>hitam</td><td><div class="example">他的头发是黑的。<br><i>Tā de tóufa shì hēi de.</i><br>Rambutnya hitam.</div></td></tr>
+                        <tr><td class="hanzi">红</td><td class="pinyin">hóng</td><td>merah</td><td><div class="example">红色是中国人最喜欢的颜色。<br><i>Hóngsè shì Zhōngguórén zuì xǐhuan de yánsè.</i><br>Merah adalah warna favorit orang Tiongkok.</div></td></tr>
+                        <tr><td class="hanzi">贵</td><td class="pinyin">guì</td><td>mahal</td><td><div class="example">这个太贵了。<br><i>Zhège tài guì le.</i><br>Ini terlalu mahal.</div></td></tr>
+                        <tr><td class="hanzi">便宜</td><td class="pinyin">piányi</td><td>murah</td><td><div class="example">这家店的东西很便宜。<br><i>Zhè jiā diàn de dōngxi hěn piányi.</i><br>Barang di toko ini sangat murah.</div></td></tr>
+                        <tr><td class="hanzi">晴</td><td class="pinyin">qíng</td><td>cerah</td><td><div class="example">今天天气很晴。<br><i>Jīntiān tiānqì hěn qíng.</i><br>Cuaca hari ini cerah.</div></td></tr>
+                        <tr><td class="hanzi">阴</td><td class="pinyin">yīn</td><td>mendung</td><td><div class="example">明天可能是阴天。<br><i>Míngtiān kěnéng shì yīntiān.</i><br>Besok mungkin mendung.</div></td></tr>
+                        <tr><td class="hanzi">错</td><td class="pinyin">cuò</td><td>salah</td><td><div class="example">这个答案是错的。<br><i>Zhège dá'àn shì cuò de.</i><br>Jawaban ini salah.</div></td></tr>
+                        <tr><td class="hanzi">奇怪</td><td class="pinyin">qíguài</td><td>aneh</td><td><div class="example">这件事很奇怪。<br><i>Zhè jiàn shì hěn qíguài.</i><br>Hal ini sangat aneh.</div></td></tr>
+                        <tr><td class="hanzi">重要</td><td class="pinyin">zhòngyào</td><td>penting</td><td><div class="example">这个会议很重要。<br><i>Zhège huìyì hěn zhòngyào.</i><br>Rapat ini sangat penting.</div></td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="vocab-section">
+                <h3>🏷️ Kata Keterangan & Lainnya (副词/其他)</h3>
+                <table class="vocab-table" id="tblOther">
+                    <thead><tr><th>Hanzi</th><th>Pinyin</th><th>Arti</th><th>Contoh Kalimat</th></tr></thead>
+                    <tbody>
+                        <tr><td class="hanzi">已经</td><td class="pinyin">yǐjīng</td><td>sudah</td><td><div class="example">我已经吃饭了。<br><i>Wǒ yǐjīng chīfàn le.</i><br>Saya sudah makan.</div></td></tr>
+                        <tr><td class="hanzi">一直</td><td class="pinyin">yīzhí</td><td>terus, selalu</td><td><div class="example">他一直在学习。<br><i>Tā yīzhí zài xuéxí.</i><br>Dia terus belajar.</div></td></tr>
+                        <tr><td class="hanzi">一起</td><td class="pinyin">yīqǐ</td><td>bersama</td><td><div class="example">我们一起去吧。<br><i>Wǒmen yīqǐ qù ba.</i><br>Kita pergi bersama ya.</div></td></tr>
+                        <tr><td class="hanzi">别</td><td class="pinyin">bié</td><td>jangan</td><td><div class="example">别担心！<br><i>Bié dānxīn!</i><br>Jangan khawatir!</div></td></tr>
+                        <tr><td class="hanzi">还</td><td class="pinyin">hái</td><td>masih; juga</td><td><div class="example">我还没吃饭。<br><i>Wǒ hái méi chīfàn.</i><br>Saya belum makan.</div></td></tr>
+                        <tr><td class="hanzi">再</td><td class="pinyin">zài</td><td>lagi (di masa depan)</td><td><div class="example">请再说一次。<br><i>Qǐng zài shuō yī cì.</i><br>Tolong bilang sekali lagi.</div></td></tr>
+                        <tr><td class="hanzi">又</td><td class="pinyin">yòu</td><td>lagi (sudah terjadi)</td><td><div class="example">他又迟到了。<br><i>Tā yòu chídào le.</i><br>Dia terlambat lagi.</div></td></tr>
+                        <tr><td class="hanzi">最</td><td class="pinyin">zuì</td><td>paling</td><td><div class="example">他是我最好的朋友。<br><i>Tā shì wǒ zuì hǎo de péngyou.</i><br>Dia teman terbaik saya.</div></td></tr>
+                        <tr><td class="hanzi">真</td><td class="pinyin">zhēn</td><td>benar-benar, sungguh</td><td><div class="example">今天真热！<br><i>Jīntiān zhēn rè!</i><br>Hari ini benar-benar panas!</div></td></tr>
+                        <tr><td class="hanzi">非常</td><td class="pinyin">fēicháng</td><td>sangat</td><td><div class="example">这个菜非常好吃。<br><i>Zhège cài fēicháng hǎochī.</i><br>Masakan ini sangat enak.</div></td></tr>
+                        <tr><td class="hanzi">可能</td><td class="pinyin">kěnéng</td><td>mungkin</td><td><div class="example">他可能不来了。<br><i>Tā kěnéng bù lái le.</i><br>Dia mungkin tidak datang.</div></td></tr>
+                        <tr><td class="hanzi">必须</td><td class="pinyin">bìxū</td><td>harus</td><td><div class="example">你必须早点来。<br><i>Nǐ bìxū zǎodiǎn lái.</i><br>Kamu harus datang lebih awal.</div></td></tr>
+                        <tr><td class="hanzi">每</td><td class="pinyin">měi</td><td>setiap</td><td><div class="example">我每天学中文。<br><i>Wǒ měi tiān xué Zhōngwén.</i><br>Saya belajar bahasa Mandarin setiap hari.</div></td></tr>
+                        <tr><td class="hanzi">向</td><td class="pinyin">xiàng</td><td>ke arah, menuju</td><td><div class="example">向左走。<br><i>Xiàng zuǒ zǒu.</i><br>Belok ke kiri.</div></td></tr>
+                        <tr><td class="hanzi">从</td><td class="pinyin">cóng</td><td>dari</td><td><div class="example">从学校到家要十分钟。<br><i>Cóng xuéxiào dào jiā yào shí fēnzhōng.</i><br>Dari sekolah ke rumah butuh sepuluh menit.</div></td></tr>
+                        <tr><td class="hanzi">离</td><td class="pinyin">lí</td><td>dari (jarak)</td><td><div class="example">这儿离超市不远。<br><i>Zhèr lí chāoshì bù yuǎn.</i><br>Dari sini ke supermarket tidak jauh.</div></td></tr>
+                        <tr><td class="hanzi">千</td><td class="pinyin">qiān</td><td>seribu</td><td><div class="example">这本书三千块钱。<br><i>Zhè běn shū sānqiān kuài qián.</i><br>Buku ini tiga ribu yuan.</div></td></tr>
+                        <tr><td class="hanzi">层</td><td class="pinyin">céng</td><td>lantai (tingkat)</td><td><div class="example">我住在五层。<br><i>Wǒ zhù zài wǔ céng.</i><br>Saya tinggal di lantai lima.</div></td></tr>
+                        <tr><td class="hanzi">次</td><td class="pinyin">cì</td><td>kali</td><td><div class="example">我去过两次上海。<br><i>Wǒ qùguo liǎng cì Shànghǎi.</i><br>Saya pernah ke Shanghai dua kali.</div></td></tr>
+                        <tr><td class="hanzi">第</td><td class="pinyin">dì</td><td>ke- (urutan)</td><td><div class="example">这是我第一次来中国。<br><i>Zhè shì wǒ dì yī cì lái Zhōngguó.</i><br>Ini pertama kalinya saya ke Tiongkok.</div></td></tr>
+                        <tr><td class="hanzi">但是</td><td class="pinyin">dànshì</td><td>tetapi</td><td><div class="example">他很忙，但是很快乐。<br><i>Tā hěn máng, dànshì hěn kuàilè.</i><br>Dia sibuk, tetapi bahagia.</div></td></tr>
+                        <tr><td class="hanzi">因为</td><td class="pinyin">yīnwèi</td><td>karena</td><td><div class="example">因为下雨，我没出门。<br><i>Yīnwèi xiàyǔ, wǒ méi chūmén.</i><br>Karena hujan, saya tidak keluar.</div></td></tr>
+                        <tr><td class="hanzi">所以</td><td class="pinyin">suǒyǐ</td><td>jadi, maka</td><td><div class="example">我很累，所以早睡了。<br><i>Wǒ hěn lèi, suǒyǐ zǎo shuìle.</i><br>Saya capek, jadi tidur lebih awal.</div></td></tr>
+                        <tr><td class="hanzi">如果</td><td class="pinyin">rúguǒ</td><td>kalau, jika</td><td><div class="example">如果明天不下雨，我们去公园。<br><i>Rúguǒ míngtiān bú xiàyǔ, wǒmen qù gōngyuán.</i><br>Kalau besok tidak hujan, kita pergi ke taman.</div></td></tr>
+                        <tr><td class="hanzi">虽然</td><td class="pinyin">suīrán</td><td>meskipun</td><td><div class="example">虽然很远，但是我还是去了。<br><i>Suīrán hěn yuǎn, dànshì wǒ háishi qùle.</i><br>Meskipun jauh, saya tetap pergi.</div></td></tr>
+                        <tr><td class="hanzi">还是</td><td class="pinyin">háishi</td><td>atau (dalam pertanyaan)</td><td><div class="example">你喝茶还是咖啡？<br><i>Nǐ hē chá háishi kāfēi?</i><br>Kamu minum teh atau kopi?</div></td></tr>
+                        <tr><td class="hanzi">为什么</td><td class="pinyin">wèishénme</td><td>mengapa, kenapa</td><td><div class="example">你为什么不高兴？<br><i>Nǐ wèishénme bù gāoxìng?</i><br>Kenapa kamu tidak senang?</div></td></tr>
+                        <tr><td class="hanzi">对</td><td class="pinyin">duì</td><td>benar; terhadap</td><td><div class="example">你说得对。<br><i>Nǐ shuō de duì.</i><br>Kamu benar.</div></td></tr>
+                        <tr><td class="hanzi">正在</td><td class="pinyin">zhèngzài</td><td>sedang (melakukan)</td><td><div class="example">他正在看书。<br><i>Tā zhèngzài kànshū.</i><br>Dia sedang membaca buku.</div></td></tr>
+                        <tr><td class="hanzi">就</td><td class="pinyin">jiù</td><td>segera; justru</td><td><div class="example">我马上就来。<br><i>Wǒ mǎshàng jiù lái.</i><br>Saya segera datang.</div></td></tr>
+                        <tr><td class="hanzi">才</td><td class="pinyin">cái</td><td>baru saja; baru</td><td><div class="example">他八点才来。<br><i>Tā bā diǎn cái lái.</i><br>Dia baru datang jam delapan.</div></td></tr>
+                        <tr><td class="hanzi">比</td><td class="pinyin">bǐ</td><td>dibanding</td><td><div class="example">今天比昨天冷。<br><i>Jīntiān bǐ zuótiān lěng.</i><br>Hari ini lebih dingin dari kemarin.</div></td></tr>
+                        <tr><td class="hanzi">外</td><td class="pinyin">wài</td><td>luar</td><td><div class="example">外面在下雨。<br><i>Wàimiàn zài xiàyǔ.</i><br>Di luar sedang hujan.</div></td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div><!-- end vocab tab -->
+
+        <!-- ===== GRAMMAR ===== -->
+        <div id="grammar" class="tab-content">
+            <h2>📝 15 Poin Grammar HSK 2</h2>
+
+            <div class="grammar-card">
+                <h4>1. 比 (bǐ) — Perbandingan</h4>
+                <div class="pattern">A + 比 + B + Kata Sifat</div>
+                <p>Digunakan untuk membandingkan dua hal. A lebih ... daripada B.</p>
+                <div class="ex">今天比昨天热。<br><i>Jīntiān bǐ zuótiān rè.</i><br>Hari ini lebih panas dari kemarin.</div>
+                <div class="ex">他比我高。<br><i>Tā bǐ wǒ gāo.</i><br>Dia lebih tinggi dari saya.</div>
+                <div class="ex">坐飞机比坐火车快。<br><i>Zuò fēijī bǐ zuò huǒchē kuài.</i><br>Naik pesawat lebih cepat dari kereta.</div>
+            </div>
+
+            <div class="grammar-card">
+                <h4>2. 从...到... (cóng...dào...) — Dari...Ke/Sampai...</h4>
+                <div class="pattern">从 + A + 到 + B</div>
+                <p>Menyatakan titik awal dan titik akhir, bisa untuk tempat atau waktu.</p>
+                <div class="ex">从学校到家要二十分钟。<br><i>Cóng xuéxiào dào jiā yào èrshí fēnzhōng.</i><br>Dari sekolah ke rumah butuh 20 menit.</div>
+                <div class="ex">从早上到晚上，他都在工作。<br><i>Cóng zǎoshang dào wǎnshang, tā dōu zài gōngzuò.</i><br>Dari pagi sampai malam, dia bekerja.</div>
+            </div>
+
+            <div class="grammar-card">
+                <h4>3. 虽然...但是... (suīrán...dànshì...) — Meskipun...Tetapi...</h4>
+                <div class="pattern">虽然 + klausa 1 + 但是 + klausa 2</div>
+                <p>Menyatakan konsesi (mengakui satu hal tetapi menekankan hal lain).</p>
+                <div class="ex">虽然很累，但是我很开心。<br><i>Suīrán hěn lèi, dànshì wǒ hěn kāixīn.</i><br>Meskipun capek, tetapi saya senang.</div>
+                <div class="ex">虽然他不高，但是篮球打得很好。<br><i>Suīrán tā bù gāo, dànshì lánqiú dǎ de hěn hǎo.</i><br>Meskipun tidak tinggi, tetapi bermain basket sangat bagus.</div>
+            </div>
+
+            <div class="grammar-card">
+                <h4>4. 因为...所以... (yīnwèi...suǒyǐ...) — Karena...Jadi...</h4>
+                <div class="pattern">因为 + alasan + 所以 + hasil</div>
+                <p>Menyatakan hubungan sebab-akibat.</p>
+                <div class="ex">因为下雨了，所以我没去跑步。<br><i>Yīnwèi xiàyǔ le, suǒyǐ wǒ méi qù pǎobù.</i><br>Karena hujan, jadi saya tidak pergi jogging.</div>
+                <div class="ex">因为我生病了，所以今天不去上班。<br><i>Yīnwèi wǒ shēngbìng le, suǒyǐ jīntiān bú qù shàngbān.</i><br>Karena saya sakit, jadi hari ini tidak pergi kerja.</div>
+            </div>
+
+            <div class="grammar-card">
+                <h4>5. 如果...就... (rúguǒ...jiù...) — Kalau/Jika...Maka...</h4>
+                <div class="pattern">如果 + kondisi + 就 + hasil</div>
+                <p>Menyatakan kalimat pengandaian/kondisional.</p>
+                <div class="ex">如果明天下雨，我就不出门。<br><i>Rúguǒ míngtiān xiàyǔ, wǒ jiù bù chūmén.</i><br>Kalau besok hujan, saya tidak keluar rumah.</div>
+                <div class="ex">如果你有时间，就来我家吧。<br><i>Rúguǒ nǐ yǒu shíjiān, jiù lái wǒ jiā ba.</i><br>Kalau kamu ada waktu, datang ke rumah saya ya.</div>
+            </div>
+
+            <div class="grammar-card">
+                <h4>6. 得 (de) — Komplemen Derajat</h4>
+                <div class="pattern">Kata Kerja + 得 + Kata Sifat/Keterangan</div>
+                <p>Menjelaskan bagaimana suatu aksi dilakukan (kualitas/derajat).</p>
+                <div class="ex">她说中文说得很好。<br><i>Tā shuō Zhōngwén shuō de hěn hǎo.</i><br>Dia berbicara Mandarin dengan sangat baik.</div>
+                <div class="ex">他跑得很快。<br><i>Tā pǎo de hěn kuài.</i><br>Dia berlari sangat cepat.</div>
+                <div class="ex">弟弟写字写得不好看。<br><i>Dìdi xiězì xiě de bù hǎokàn.</i><br>Adik menulis tidak bagus.</div>
+            </div>
+
+            <div class="grammar-card">
+                <h4>7. 正在 (zhèngzài) — Sedang</h4>
+                <div class="pattern">正在 + Kata Kerja (+ 呢)</div>
+                <p>Menyatakan aksi yang sedang berlangsung saat ini.</p>
+                <div class="ex">我正在吃饭呢。<br><i>Wǒ zhèngzài chīfàn ne.</i><br>Saya sedang makan.</div>
+                <div class="ex">他们正在开会。<br><i>Tāmen zhèngzài kāihuì.</i><br>Mereka sedang rapat.</div>
+            </div>
+
+            <div class="grammar-card">
+                <h4>8. 过 (guo) — Pengalaman</h4>
+                <div class="pattern">Kata Kerja + 过</div>
+                <p>Menyatakan pernah mengalami sesuatu di masa lalu.</p>
+                <div class="ex">我去过北京。<br><i>Wǒ qùguo Běijīng.</i><br>Saya pernah ke Beijing.</div>
+                <div class="ex">你看过这部电影吗？<br><i>Nǐ kànguo zhè bù diànyǐng ma?</i><br>Kamu pernah nonton film ini?</div>
+                <div class="ex">我没吃过日本菜。<br><i>Wǒ méi chīguo Rìběn cài.</i><br>Saya belum pernah makan masakan Jepang.</div>
+            </div>
+
+            <div class="grammar-card">
+                <h4>9. 着 (zhe) — Keadaan Berlangsung</h4>
+                <div class="pattern">Kata Kerja + 着</div>
+                <p>Menunjukkan keadaan yang sedang berlangsung (state).</p>
+                <div class="ex">门开着。<br><i>Mén kāizhe.</i><br>Pintu terbuka (dalam keadaan terbuka).</div>
+                <div class="ex">墙上挂着一幅画。<br><i>Qiáng shàng guàzhe yī fú huà.</i><br>Di dinding tergantung sebuah lukisan.</div>
+            </div>
+
+            <div class="grammar-card">
+                <h4>10. 让 (ràng) — Menyuruh/Membiarkan</h4>
+                <div class="pattern">A + 让 + B + Kata Kerja</div>
+                <p>A menyuruh/membiarkan B melakukan sesuatu.</p>
+                <div class="ex">老师让我们写作业。<br><i>Lǎoshī ràng wǒmen xiě zuòyè.</i><br>Guru menyuruh kami mengerjakan PR.</div>
+                <div class="ex">妈妈不让我看电视。<br><i>Māma bú ràng wǒ kàn diànshì.</i><br>Ibu tidak mengizinkan saya nonton TV.</div>
+            </div>
+
+            <div class="grammar-card">
+                <h4>11. 要...了 (yào...le) — Akan Segera</h4>
+                <div class="pattern">要 + Kata Kerja + 了</div>
+                <p>Menyatakan sesuatu yang akan segera terjadi.</p>
+                <div class="ex">飞机要起飞了！<br><i>Fēijī yào qǐfēi le!</i><br>Pesawat akan segera lepas landas!</div>
+                <div class="ex">要下雨了，快回家。<br><i>Yào xiàyǔ le, kuài huíjiā.</i><br>Akan segera hujan, cepat pulang.</div>
+            </div>
+
+            <div class="grammar-card">
+                <h4>12. 一边...一边... (yībiān...yībiān...) — Sambil...Sambil...</h4>
+                <div class="pattern">一边 + KK1 + 一边 + KK2</div>
+                <p>Melakukan dua aksi secara bersamaan.</p>
+                <div class="ex">他一边吃饭，一边看电视。<br><i>Tā yībiān chīfàn, yībiān kàn diànshì.</i><br>Dia makan sambil nonton TV.</div>
+                <div class="ex">她一边走路，一边听音乐。<br><i>Tā yībiān zǒulù, yībiān tīng yīnyuè.</i><br>Dia jalan kaki sambil mendengarkan musik.</div>
+            </div>
+
+            <div class="grammar-card">
+                <h4>13. 又...又... (yòu...yòu...) — Juga...Dan Juga...</h4>
+                <div class="pattern">又 + KS1 + 又 + KS2</div>
+                <p>Menggabungkan dua sifat/keadaan sekaligus.</p>
+                <div class="ex">这个房间又大又干净。<br><i>Zhège fángjiān yòu dà yòu gānjìng.</i><br>Kamar ini besar dan juga bersih.</div>
+                <div class="ex">西瓜又甜又便宜。<br><i>Xīguā yòu tián yòu piányi.</i><br>Semangka manis dan juga murah.</div>
+            </div>
+
+            <div class="grammar-card">
+                <h4>14. 就 (jiù) vs 才 (cái) — Cepat vs Lambat/Baru</h4>
+                <div class="pattern">就 → lebih cepat dari harapan<br>才 → lebih lambat dari harapan</div>
+                <p>就 menunjukkan sesuatu terjadi segera/cepat. 才 menunjukkan sesuatu terjadi terlambat atau dengan susah payah.</p>
+                <div class="ex">他六点就起床了。（cepat!）<br><i>Tā liù diǎn jiù qǐchuáng le.</i><br>Dia sudah bangun jam enam.</div>
+                <div class="ex">他十点才起床。（lambat!）<br><i>Tā shí diǎn cái qǐchuáng.</i><br>Dia baru bangun jam sepuluh.</div>
+            </div>
+
+            <div class="grammar-card">
+                <h4>15. 别 (bié) — Jangan</h4>
+                <div class="pattern">别 + Kata Kerja</div>
+                <p>Menyatakan larangan atau nasihat untuk tidak melakukan sesuatu.</p>
+                <div class="ex">别说话！<br><i>Bié shuōhuà!</i><br>Jangan bicara!</div>
+                <div class="ex">别担心，没问题的。<br><i>Bié dānxīn, méi wèntí de.</i><br>Jangan khawatir, tidak masalah.</div>
+                <div class="ex">上课的时候别玩手机。<br><i>Shàngkè de shíhou bié wán shǒujī.</i><br>Saat pelajaran jangan main HP.</div>
+            </div>
+        </div><!-- end grammar tab -->
+    </main>
+
+    <script>
+    // Auth check
+    if(sessionStorage.getItem('hsk_pass')!=='hsk2026mandarin'){window.location.href='menu.html';}
+
+    // Tabs
+    document.querySelectorAll('.tab-btn').forEach(btn=>{
+        btn.addEventListener('click',()=>{
+            document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(c=>c.classList.remove('active'));
+            btn.classList.add('active');
+            document.getElementById(btn.dataset.tab).classList.add('active');
+        });
+    });
+
+    // Search
+    document.getElementById('searchBox').addEventListener('input',function(){
+        const q=this.value.toLowerCase();
+        document.querySelectorAll('.vocab-table tbody tr').forEach(tr=>{
+            tr.style.display=tr.textContent.toLowerCase().includes(q)?'':'none';
+        });
+    });
+    </script>
+</body>
+</html>
